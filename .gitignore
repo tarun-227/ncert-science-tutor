@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.env
+*.log
+
+# Node / Vite
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/vite.log
+
+# Data — excluded from repo (large / build artifacts)
+data/ncert_science/
+data/science_english/
+data/science_tamil/
+data/science_english.pdf
+data/science_english.txt
+data/science_tamil.pdf
+data/science_tamil.txt
+data/Class_10_Science_Tamil_Medium*.pdf
+data/ch1_pages/
+data/figures/ch1/debug/
+data/raw_gemma_outputs/
+data/finetune_*.jsonl
+data/tutor_*.jsonl
+data/*.json[l]
+data/finetune_class10_science_stats.json
+
+# Scripts (build / extraction tools — not needed to run the app)
+scripts/
+build_*.py
+generate_*.py
+finetune_*.py
+download_textbooks.py
+extract_text.py
+pipeline.py
+app.py
+test_*.py
+
+# Old project files
+templates/
+results/
+design-download/
+design-v3/
+design-v3.tar.gz
+
+# Claude internal
+.claude/
+CLAUDE.md
+
+# Misc
+backend.log
+*.pdf
+*.tar.gz

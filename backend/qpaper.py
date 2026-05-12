@@ -130,7 +130,7 @@ def solve_question(question: str) -> str:
         "- Keep it concise (4-8 sentences) unless the question demands more.\n\n"
         "Answer:"
     )
-    return chat_mod._call_ollama(prompt)
+    return chat_mod._call_hf(prompt)
 
 
 # ─── PDF rendering (ReportLab Platypus, Scholarly Ink palette) ───────────────

@@ -19,16 +19,11 @@ if FIGURES_DIR.exists():
     app.mount("/figures", StaticFiles(directory=str(FIGURES_DIR)), name="figures")
 
 
-@app.on_event("startup")
-def _warmup_ollama():
-    """Load phi4-mini into memory on boot so the first user request isn't a 30s cold start."""
-    import threading
-    threading.Thread(target=chat.warmup, daemon=True).start()
-
+import os
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=os.environ.get("CORS_ORIGINS", "*").split(","),
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -254,16 +249,24 @@ def qpaper_download(job_id: str):
 
 @app.get("/api/health")
 def health():
-    import requests as req_lib
-    ollama_ok = False
-    try:
-        r = req_lib.get("http://localhost:11434/api/tags", timeout=3)
-        ollama_ok = r.status_code == 200
-    except Exception:
-        pass
     chapters_loaded = len(content.load_chapters())
     return {
-        "ollama":   ollama_ok,
         "model":    chat.MODEL,
         "chapters": chapters_loaded,
+        "groq_key_set": bool(chat.GROQ_API_KEY),
     }
+
+
+# ── Serve built React app (must be last) ─────────────────────────────────────
+
+_dist = Path(__file__).parent.parent / "frontend" / "dist"
+if _dist.exists():
+    app.mount("/assets", StaticFiles(directory=str(_dist / "assets")), name="assets")
+
+    @app.get("/")
+    async def serve_root():
+        return FileResponse(str(_dist / "index.html"))
+
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        return FileResponse(str(_dist / "index.html"))

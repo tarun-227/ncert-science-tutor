@@ -1,35 +1,28 @@
-"""Ollama Phi-4 Mini integration + prompt building."""
+"""Groq API integration + prompt building."""
 import json
+import os
 import re
 import requests
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL      = "phi4-mini"
-OPTIONS    = {"temperature": 0.4, "num_predict": 800}
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+MODEL        = "llama-3.1-8b-instant"
+GROQ_URL     = "https://api.groq.com/openai/v1/chat/completions"
 
 
-def _call_ollama(prompt: str) -> str:
-    # First call can be slow — model has to warm up (30s+ on this box)
+def _call_hf(prompt: str) -> str:
     resp = requests.post(
-        OLLAMA_URL,
-        json={"model": MODEL, "prompt": prompt, "stream": False, "options": OPTIONS},
-        timeout=300,
+        GROQ_URL,
+        headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+        json={
+            "model": MODEL,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.4,
+            "max_tokens": 800,
+        },
+        timeout=60,
     )
     resp.raise_for_status()
-    return resp.json().get("response", "").strip()
-
-
-def warmup() -> None:
-    """Fire a tiny generation so the model is loaded before the first user request."""
-    try:
-        requests.post(
-            OLLAMA_URL,
-            json={"model": MODEL, "prompt": "hi", "stream": False,
-                  "options": {"num_predict": 1}},
-            timeout=300,
-        )
-    except Exception:
-        pass  # warmup is best-effort
+    return resp.json()["choices"][0]["message"]["content"].strip()
 
 
 def build_system_block(chapter_title: str, subtopic_title: str, content: str) -> str:
@@ -71,7 +64,7 @@ def chat(
     system  = build_system_block(chapter_title, subtopic_title, subtopic_content)
     hist    = build_history_block(history)
     prompt  = f"{system}\n{hist}Student: {user_message}\n\nTutor:"
-    return _call_ollama(prompt)
+    return _call_hf(prompt)
 
 
 def generate_practice(subtopic_title: str, content: str) -> dict:
@@ -88,7 +81,7 @@ def generate_practice(subtopic_title: str, content: str) -> dict:
         f'{{"question": "...", "options": ["a) ...", "b) ...", "c) ...", "d) ..."], "answer": "b", "explanation": "..."}}],'
         f'"short": {{"question": "...", "sample_answer": "..."}}}}\n'
     )
-    raw = _call_ollama(prompt)
+    raw = _call_hf(prompt)
     # Extract JSON from response
     m = re.search(r'\{.*\}', raw, re.DOTALL)
     if m:
@@ -118,7 +111,7 @@ def exercise_solution(question: str, chapter_title: str, step_num: int = 1) -> d
         f"For descriptive: give a structured answer with key points.\n\n"
         f"Solution:"
     )
-    solution_text = _call_ollama(prompt)
+    solution_text = _call_hf(prompt)
 
     # Split into steps
     steps = []
@@ -147,7 +140,7 @@ def evaluate_short_answer(question: str, student_answer: str, sample_answer: str
         f"Also rate: Excellent / Good / Needs Improvement\n"
         f"Feedback:"
     )
-    feedback = _call_ollama(prompt)
+    feedback = _call_hf(prompt)
     rating = "Good"
     if "excellent" in feedback.lower():
         rating = "Excellent"

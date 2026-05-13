@@ -24,13 +24,18 @@ export function AuthProvider({ children }) {
     return () => subscription.unsubscribe()
   }, [])
 
-  const signIn          = (email, password) => supabase.auth.signInWithPassword({ email, password })
-  const signUp          = (email, password) => supabase.auth.signUp({ email, password })
-  const signInMagicLink = (email)           => supabase.auth.signInWithOtp({ email })
-  const signOut         = ()                => supabase.auth.signOut()
+  const signInWithGoogle = () =>
+    supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/`,  // land back on home after Google auth
+      },
+    })
+
+  const signOut = () => supabase.auth.signOut()
 
   return (
-    <AuthContext.Provider value={{ user, session, signIn, signUp, signInMagicLink, signOut }}>
+    <AuthContext.Provider value={{ user, session, signInWithGoogle, signOut }}>
       {children}
     </AuthContext.Provider>
   )

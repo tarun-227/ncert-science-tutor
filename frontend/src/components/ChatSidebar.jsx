@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { apiFetch } from '../lib/api'
 
 /* ── Inline MCQ Block (for "Check Yourself" quick checks) ─────────────── */
 
@@ -188,9 +189,8 @@ const ChatSidebar = forwardRef(function ChatSidebar({ sessionId, chapterId, curr
     setLoading(true)
 
     try {
-      const res = await fetch('/api/chat', {
+      const res = await apiFetch('/api/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           session_id:  sessionId,
           message:     userMsg,
@@ -205,7 +205,7 @@ const ChatSidebar = forwardRef(function ChatSidebar({ sessionId, chapterId, curr
     } catch (e) {
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: `⚠️ Error: ${e.message}. Make sure Ollama is running with phi4-mini.`,
+        content: `⚠️ Error: ${e.message}`,
       }])
     } finally {
       setLoading(false)
@@ -228,7 +228,7 @@ const ChatSidebar = forwardRef(function ChatSidebar({ sessionId, chapterId, curr
   }))
 
   const handleClear = () => {
-    fetch(`/api/session/${sessionId}`, { method: 'DELETE' })
+    apiFetch(`/api/session/${sessionId}`, { method: 'DELETE' })
     setMessages([{ role: 'assistant', content: 'Chat cleared! Ask me anything about this chapter.' }])
     setMcqActive(null)
     if (onClear) onClear()

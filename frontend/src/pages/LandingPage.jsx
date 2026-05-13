@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
+import { fetchAllChapterProgress } from '../lib/userdata'
 
 const SUBJECT_VARS = {
   Physics:                  { text: 'var(--physics-text)',    bg: 'var(--physics-bg)',    border: 'var(--physics-border)'    },
@@ -10,7 +12,8 @@ const SUBJECT_VARS = {
 
 const SUBJECT_ORDER = ['Chemistry', 'Physics', 'Biology', 'Environmental Science']
 
-function readSectionCount(chapterId) {
+function readSectionCountLocal(chapterId) {
+  // Local fallback used until Supabase data loads
   try {
     const raw = localStorage.getItem(`ch-${chapterId}-readSections`)
     if (!raw) return 0
@@ -41,11 +44,11 @@ function ProgressArc({ value, size = 38 }) {
   )
 }
 
-function ChapterCard({ chapter, onClick }) {
+function ChapterCard({ chapter, onClick, readCount }) {
   const [hov, setHov] = useState(false)
   const v = SUBJECT_VARS[chapter.subject] || SUBJECT_VARS.Physics
   const total = chapter.subtopic_count || 1
-  const read = readSectionCount(chapter.id)
+  const read = readCount ?? readSectionCountLocal(chapter.id)
   const progress = Math.min(1, read / total)
   const done = progress >= 1
 
@@ -125,10 +128,12 @@ function ChapterCard({ chapter, onClick }) {
 }
 
 export default function LandingPage() {
-  const [chapters, setChapters] = useState([])
-  const [loading, setLoading]   = useState(true)
-  const [error, setError]       = useState(null)
+  const [chapters, setChapters]       = useState([])
+  const [loading, setLoading]         = useState(true)
+  const [error, setError]             = useState(null)
+  const [allProgress, setAllProgress] = useState({})  // { chapterId: readCount }
   const navigate = useNavigate()
+  const { user, signOut } = useAuth()
 
   useEffect(() => {
     fetch('/api/chapters')
@@ -137,14 +142,23 @@ export default function LandingPage() {
       .catch(() => { setError('Backend not running. Start with: uvicorn backend.main:app --port 8000'); setLoading(false) })
   }, [])
 
+  // Load per-chapter read counts from Supabase (single query)
+  useEffect(() => {
+    fetchAllChapterProgress().then(counts => {
+      if (counts && Object.keys(counts).length > 0) setAllProgress(counts)
+    })
+  }, [])
+
+  const getRead = (chId) => allProgress[chId] ?? readSectionCountLocal(chId)
+
   const totalRead = chapters.reduce((n, ch) => {
     const total = ch.subtopic_count || 1
-    return n + (readSectionCount(ch.id) >= total ? 1 : 0)
+    return n + (getRead(ch.id) >= total ? 1 : 0)
   }, 0)
   const pct = chapters.length
     ? Math.round(chapters.reduce((s, ch) => {
         const total = ch.subtopic_count || 1
-        return s + Math.min(1, readSectionCount(ch.id) / total)
+        return s + Math.min(1, getRead(ch.id) / total)
       }, 0) / chapters.length * 100)
     : 0
 
@@ -196,7 +210,24 @@ export default function LandingPage() {
             <span>📄</span>
             <span>Solve a Paper</span>
           </button>
-          <span style={{ fontSize: 11, color: 'var(--ink3)' }}>Powered by Phi-4 Mini</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingLeft: 14, borderLeft: '1px solid var(--bg3)' }}>
+            <span style={{ fontSize: 11, color: 'var(--ink3)', maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {user?.email}
+            </span>
+            <button
+              onClick={signOut}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--purple)'; e.currentTarget.style.color = 'var(--purple)' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--bg3)'; e.currentTarget.style.color = 'var(--ink3)' }}
+              style={{
+                background: 'transparent', border: '1.5px solid var(--bg3)',
+                borderRadius: 100, padding: '4px 12px',
+                fontFamily: 'var(--font-ui)', fontSize: 11, fontWeight: 600,
+                color: 'var(--ink3)', cursor: 'pointer', transition: 'all 0.15s',
+              }}
+            >
+              Sign out
+            </button>
+          </div>
         </div>
       </div>
 
@@ -288,7 +319,7 @@ export default function LandingPage() {
                     gap: 14,
                   }}>
                     {chaps.map(ch => (
-                      <ChapterCard key={ch.id} chapter={ch} onClick={() => navigate(`/chapter/${ch.id}`)} />
+                      <ChapterCard key={ch.id} chapter={ch} onClick={() => navigate(`/chapter/${ch.id}`)} readCount={getRead(ch.id)} />
                     ))}
                   </div>
                 </div>

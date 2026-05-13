@@ -4,6 +4,13 @@ import ChatSidebar from '../components/ChatSidebar'
 import ExerciseSection from '../components/ExerciseSection'
 import RichContent, { countBlocks } from '../components/RichContent'
 import SubtopicBlock from '../components/SubtopicBlock'
+import { useAuth } from '../contexts/AuthContext'
+import { apiFetch } from '../lib/api'
+import {
+  fetchReadSections, toggleReadSection,
+  fetchNotes, saveNote,
+  fetchHighlights, toggleHighlight,
+} from '../lib/userdata'
 
 const SUBJECT_STYLES = {
   Physics:                  { bg: 'var(--physics-bg)',    border: 'var(--physics-border)',    color: 'var(--physics-text)'    },
@@ -23,21 +30,31 @@ const MIN_W = 260, MAX_W = 620, DEF_W = 360
 
 function NotesPanel({ sections, chapterId }) {
   const [activeSec, setActiveSec] = useState(sections?.[0]?.id || '')
-  const noteKey = `notes-${chapterId}-${activeSec}`
   const [notes, setNotes] = useState(() => {
     try { return JSON.parse(localStorage.getItem(`notes-ch-${chapterId}`) || '{}') } catch { return {} }
   })
   const [draft, setDraft] = useState(notes[activeSec] || '')
   const [saved, setSaved] = useState(false)
 
-  useEffect(() => { setDraft(notes[activeSec] || '') }, [activeSec])
+  // Fetch notes from Supabase on mount, merge with any local notes
+  useEffect(() => {
+    fetchNotes(chapterId).then(data => {
+      if (data && Object.keys(data).length > 0) {
+        setNotes(data)
+        try { localStorage.setItem(`notes-ch-${chapterId}`, JSON.stringify(data)) } catch {}
+      }
+    })
+  }, [chapterId])
 
-  const doSave = () => {
+  useEffect(() => { setDraft(notes[activeSec] || '') }, [activeSec, notes])
+
+  const doSave = async () => {
     const updated = { ...notes, [activeSec]: draft }
     setNotes(updated)
     try { localStorage.setItem(`notes-ch-${chapterId}`, JSON.stringify(updated)) } catch {}
     setSaved(true)
     setTimeout(() => setSaved(false), 1800)
+    await saveNote(chapterId, activeSec, draft)  // persist to Supabase
   }
 
   return (
@@ -170,6 +187,7 @@ const MCQ_BANK = [
 export default function ChapterPage() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const { signOut, user } = useAuth()
 
   const [chapter, setChapter] = useState(null)
   const [richChapter, setRichChapter] = useState(null)
@@ -178,16 +196,26 @@ export default function ChapterPage() {
   const [sessionId, setSessionId] = useState(null)
   const [currentSubtopic, setCurrentSubtopic] = useState(null)
 
-  // Highlights (click-to-highlight paragraphs, persisted)
+  // Highlights — seed from localStorage instantly, then sync from Supabase
   const hlKey = `st3_hl_${id}`
   const [highlights, setHighlights] = useState(() => {
     try { return JSON.parse(localStorage.getItem(hlKey) || '{}') } catch { return {} }
   })
+  useEffect(() => {
+    fetchHighlights(parseInt(id)).then(data => {
+      if (data) {
+        setHighlights(data)
+        try { localStorage.setItem(hlKey, JSON.stringify(data)) } catch {}
+      }
+    })
+  }, [id])
   const toggleHL = (pid) => {
     setHighlights(prev => {
+      const isNowOn = !prev[pid]
       const next = { ...prev }
       if (next[pid]) delete next[pid]; else next[pid] = true
       try { localStorage.setItem(hlKey, JSON.stringify(next)) } catch {}
+      toggleHighlight(parseInt(id), pid, isNowOn)  // async, no await
       return next
     })
   }
@@ -199,7 +227,7 @@ export default function ChapterPage() {
   })
   useEffect(() => { try { localStorage.setItem(tabKey, activeTab) } catch {} }, [activeTab, tabKey])
 
-  // Read-progress per section
+  // Read-progress — seed from localStorage instantly, then sync from Supabase
   const readKey = `ch-${id}-readSections`
   const [readSections, setReadSections] = useState(() => {
     try {
@@ -207,11 +235,21 @@ export default function ChapterPage() {
       return raw ? new Set(JSON.parse(raw)) : new Set()
     } catch { return new Set() }
   })
+  useEffect(() => {
+    fetchReadSections(parseInt(id)).then(data => {
+      if (data) {
+        setReadSections(data)
+        try { localStorage.setItem(readKey, JSON.stringify([...data])) } catch {}
+      }
+    })
+  }, [id])
   const toggleSectionRead = (sectionId) => {
     setReadSections(prev => {
       const next = new Set(prev)
-      if (next.has(sectionId)) next.delete(sectionId); else next.add(sectionId)
+      const isNowRead = !next.has(sectionId)
+      if (isNowRead) next.add(sectionId); else next.delete(sectionId)
       try { localStorage.setItem(readKey, JSON.stringify([...next])) } catch {}
+      toggleReadSection(parseInt(id), sectionId, isNowRead)  // async, no await
       return next
     })
   }
@@ -258,12 +296,12 @@ export default function ChapterPage() {
     let cancelled = false
     async function init() {
       try {
-        const sRes = await fetch('/api/session/new', { method: 'POST' })
+        const sRes = await apiFetch('/api/session/new', { method: 'POST' })
         const sData = await sRes.json()
         if (cancelled) return
         setSessionId(sData.session_id)
 
-        const cRes = await fetch(`/api/chapters/${id}`)
+        const cRes = await fetch(`/api/chapters/${id}`)  // public endpoint, no auth needed
         if (!cRes.ok) throw new Error('Chapter not found')
         const cData = await cRes.json()
         if (cancelled) return

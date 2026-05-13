@@ -9,7 +9,10 @@ from pydantic import BaseModel
 from typing import Optional
 import uuid
 
+from fastapi import Depends
 from backend import content, chat, sessions, qpaper
+import backend.db_sessions as db_sessions
+from backend.supabase_client import get_current_user
 
 app = FastAPI(title="NCERT Science Tutor API")
 
@@ -83,7 +86,9 @@ class ChatRequest(BaseModel):
 
 
 @app.post("/api/chat")
-def chat_endpoint(req: ChatRequest):
+def chat_endpoint(req: ChatRequest, user: dict = Depends(get_current_user)):
+    user_id = user["sub"]
+
     chapter = content.get_chapter(req.chapter_id)
     if not chapter:
         raise HTTPException(404, "Chapter not found")
@@ -105,9 +110,14 @@ def chat_endpoint(req: ChatRequest):
     }
     user_message = action_messages.get(req.action, req.message) if req.action else req.message
 
-    # Update session context
-    sessions.set_context(req.session_id, req.chapter_id, req.subtopic_id)
-    history = sessions.get_history(req.session_id)
+    # Ensure DB session exists and update context
+    db_sessions.get_or_create(req.session_id, user_id, req.chapter_id)
+    db_sessions.set_context(req.session_id, req.chapter_id, req.subtopic_id, user_id)
+
+    # Prefer DB history (persistent); fall back to in-memory if DB not configured
+    history = db_sessions.get_history(req.session_id)
+    if not history:
+        history = sessions.get_history(req.session_id)
 
     # Call AI
     try:
@@ -121,7 +131,9 @@ def chat_endpoint(req: ChatRequest):
     except Exception as e:
         raise HTTPException(503, f"AI unavailable: {str(e)}")
 
-    # Save to history
+    # Persist messages to DB (and in-memory as fallback)
+    db_sessions.add_message(req.session_id, "user",      user_message, user_id)
+    db_sessions.add_message(req.session_id, "assistant", response,     user_id)
     sessions.add_message(req.session_id, "user",      user_message)
     sessions.add_message(req.session_id, "assistant", response)
 
@@ -161,7 +173,9 @@ class ExerciseRequest(BaseModel):
 
 
 @app.post("/api/exercise")
-def exercise_solution(req: ExerciseRequest):
+def exercise_solution(req: ExerciseRequest, user: dict = Depends(get_current_user)):
+    user_id = user["sub"]
+
     chapter = content.get_chapter(req.chapter_id)
     if not chapter:
         raise HTTPException(404, "Chapter not found")
@@ -174,8 +188,10 @@ def exercise_solution(req: ExerciseRequest):
         raise HTTPException(503, f"AI unavailable: {str(e)}")
 
     # Add to chat history so student can continue asking
-    sessions.add_message(req.session_id, "user",
-                         f"Solve exercise {ex.get('id', req.ex_id)}: {ex['question'][:100]}...")
+    user_msg  = f"Solve exercise {ex.get('id', req.ex_id)}: {ex['question'][:100]}..."
+    db_sessions.add_message(req.session_id, "user",      user_msg,     user_id)
+    db_sessions.add_message(req.session_id, "assistant", result["full"], user_id)
+    sessions.add_message(req.session_id, "user",      user_msg)
     sessions.add_message(req.session_id, "assistant", result["full"])
     return result
 
@@ -202,15 +218,18 @@ def evaluate(req: EvalRequest):
 # ── Session management ────────────────────────────────────────────────────────
 
 @app.post("/api/session/new")
-def new_session():
+def new_session(user: dict = Depends(get_current_user)):
     sid = str(uuid.uuid4())
+    # Session row is created lazily on first message (we need chapter_id for that).
+    # Pre-create an in-memory entry so history lookups don't fail before first message.
     sessions.get_or_create(sid)
     return {"session_id": sid}
 
 
 @app.delete("/api/session/{session_id}")
-def clear_session(session_id: str):
-    sessions.clear(session_id)
+def clear_session(session_id: str, user: dict = Depends(get_current_user)):
+    db_sessions.clear(session_id)
+    sessions.clear(session_id)  # also clear in-memory fallback
     return {"status": "cleared"}
 
 

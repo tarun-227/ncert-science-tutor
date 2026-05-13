@@ -168,7 +168,18 @@ Downloads a complete answer PDF for review
 
 | Chapter | Rich Content (figures + equations) | Exercises |
 |---------|-----------------------------------|-----------|
-| Ch. 1 — Chemical Reactions and Equations | Full | Full |
-| Ch. 2–13 | Text + sections | Full |
+| Ch. 1 — Chemical Reactions and Equations | Full (31 equations, 10 figures, 11 activities) | Full |
+| Ch. 2 — Acids, Bases and Salts | Full (10 figures, 15 activities) | Full |
+| Ch. 3 — Metals and Non-metals | Full (13 figures, 14 activities) | Full |
+| Ch. 4 — Carbon and Its Compounds | Full (13 figures, 12 activities) | Full |
+| Ch. 5 — Life Processes | Full (14 figures, 8 activities) | Full |
+| Ch. 6 — Control and Coordination | Full (7 figures, 4 activities) | Full |
+| Ch. 7 — How do Organisms Reproduce? | Full (11 figures, 7 activities) | Full |
+| Ch. 8 — Heredity and Evolution | Full (6 figures, 2 activities) | Full |
+| Ch. 9 — Light – Reflection and Refraction | Full (11 equations, 17 figures, 13 activities) | Full |
+| Ch. 10 — The Human Eye and the Colourful World | Full (10 figures, 2 activities) | Full |
+| Ch. 11 — Electricity | Full (22 equations, 13 figures, 6 activities) | Full |
+| Ch. 12 — Magnetic Effects of Electric Current | Full (15 figures, 7 activities) | Full |
+| Ch. 13 — Our Environment | Full (4 figures, 9 activities) | Full |
 
-Rich block content (figures, equations, activities) is currently fully detailed for Chapter 1. The remaining chapters have full text and exercises; rich content will be expanded in future updates.
+All 13 chapters have full rich content including figures, activities, in-text questions, and equations (where applicable).

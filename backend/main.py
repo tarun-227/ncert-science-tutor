@@ -44,7 +44,7 @@ def get_chapter(chapter_id: int):
     return ch
 
 
-# Rich (block-typed) chapter content — currently only Chapter 1 is available.
+# Rich (block-typed) chapter content — all 13 chapters available.
 _RICH_CACHE: dict[int, dict] = {}
 
 
@@ -56,8 +56,7 @@ def get_chapter_rich(chapter_id: int):
     if not rich_path.exists():
         raise HTTPException(
             404,
-            f"Rich content for chapter {chapter_id} not yet available. "
-            "Only Chapter 1 has been processed in Stage 1.",
+            f"Rich content for chapter {chapter_id} not found.",
         )
     data = json.loads(rich_path.read_text(encoding="utf-8"))
     _RICH_CACHE[chapter_id] = data

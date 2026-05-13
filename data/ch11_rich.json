@@ -11,7 +11,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "We are familiar with air current and water current. We know that flowing water constitute water current in rivers. Similarly, if the electric charge flows through a conductor (for example, through a metallic wire), we say that there is an electric current in the conductor. In a torch, we know that the cells (or a battery, when placed in proper order) provide flow of charges or an electric current through the torch bulb to glow. We have also seen that the torch gives light only when its switch is on. What does a switch do? A switch makes a conducting link between the cell and the bulb. A continuous and closed path of an electric current is called an electric circuit. Now, if the circuit is broken anywhere (or the switch of the torch is turned off ), the current stops flowing and the bulb does not glow. How do we express electric current? Electric current is expressed by the amount of charge flowing through a particular area in unit time. In other words, it is the rate of flow of electric charges. In circuits using metallic wires, electrons constitute the flow of charges. However, electrons were not known at the time when the phenomenon of electricity was first observed. So, electric current was considered to be the flow of positive charges and the direction of flow of positive charges was taken to be the direction of electric current. Conventionally, in an electric circuit the direction of electric current is taken as opposite to the direction of the flow of electrons, which are negative charges. Reprint 2026-27 If a net charge Q, flows across any cross-section of a conductor in time t, then the current I, through the cross-section is Q ="
+          "text": "We are familiar with air current and water current. We know that flowing water constitute water current in rivers. Similarly, if the electric charge flows through a conductor (for example, through a metallic wire), we say that there is an electric current in the conductor. In a torch, we know that the cells (or a battery, when placed in proper order) provide flow of charges or an electric current through the torch bulb to glow. We have also seen that the torch gives light only when its switch is on. What does a switch do? A switch makes a conducting link between the cell and the bulb. A continuous and closed path of an electric current is called an electric circuit. Now, if the circuit is broken anywhere (or the switch of the torch is turned off ), the current stops flowing and the bulb does not glow. How do we express electric current? Electric current is expressed by the amount of charge flowing through a particular area in unit time. In other words, it is the rate of flow of electric charges. In circuits using metallic wires, electrons constitute the flow of charges. However, electrons were not known at the time when the phenomenon of electricity was first observed. So, electric current was considered to be the flow of positive charges and the direction of flow of positive charges was taken to be the direction of electric current. Conventionally, in an electric circuit the direction of electric current is taken as opposite to the direction of the flow of electrons, which are negative charges. If a net charge Q, flows across any cross-section of a conductor in time t, then the current I, through the cross-section is Q ="
         },
         {
           "type": "equation",
@@ -45,7 +45,7 @@
             },
             {
               "num": 3,
-              "text": "Calculate the number of electrons constituting one coulomb of charge. Reprint 2026-27"
+              "text": "Calculate the number of electrons constituting one coulomb of charge."
             }
           ]
         }
@@ -75,7 +75,7 @@
         },
         {
           "type": "paragraph",
-          "text": "1 V = 1 J C–1 The potential difference is measured by means of an instrument called the voltmeter. The voltmeter is always connected in parallel across the points between which the potential difference is to be measured. Example 11.2 How much work is done in moving a charge of 2 C across two points having a potential difference 12 V? Solution The amount of charge Q, that flows between two points at potential difference V (= 12 V) is 2 C. Thus, the amount of work W, done in moving the charge [from Eq. (11.2)] is Reprint 2026-27 W = VQ 12 V × 2 C = = 24 J."
+          "text": "1 V = 1 J C–1 The potential difference is measured by means of an instrument called the voltmeter. The voltmeter is always connected in parallel across the points between which the potential difference is to be measured. Example 11.2 How much work is done in moving a charge of 2 C across two points having a potential difference 12 V? Solution The amount of charge Q, that flows between two points at potential difference V (= 12 V) is 2 C. Thus, the amount of work W, done in moving the charge [from Eq. (11.2)] is W = VQ 12 V × 2 C = = 24 J."
         },
         {
           "type": "in_text_questions",
@@ -102,7 +102,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "We know that an electric circuit, as shown in Fig. 11.1, comprises a cell (or a battery), a plug key, electrical component(s), and connecting wires. It is often convenient to draw a schematic diagram, in which different components of the circuit are represented by the symbols conveniently used. Conventional symbols used to represent some of the most commonly used electrical components are given in Table 11.1. Table 11.1 Symbols of some commonly used components in circuit diagrams Sl. Components Symbols No. 1 An electric cell 2 A battery or a combination of cells 3 Plug key or switch (open) 4 Plug key or switch (closed) 5 A wire joint 6 Wires crossing without joining Reprint 2026-27 7 Electric bulb or 8 A resistor of resistance R 9 Variable resistance or rheostat or 10 Ammeter 11 Voltmeter"
+          "text": "We know that an electric circuit, as shown in Fig. 11.1, comprises a cell (or a battery), a plug key, electrical component(s), and connecting wires. It is often convenient to draw a schematic diagram, in which different components of the circuit are represented by the symbols conveniently used. Conventional symbols used to represent some of the most commonly used electrical components are given in Table 11.1. Table 11.1 Symbols of some commonly used components in circuit diagrams Sl. Components Symbols No. 1 An electric cell 2 A battery or a combination of cells 3 Plug key or switch (open) 4 Plug key or switch (closed) 5 A wire joint 6 Wires crossing without joining 7 Electric bulb or 8 A resistor of resistance R 9 Variable resistance or rheostat or 10 Ammeter 11 Voltmeter"
         }
       ]
     },
@@ -136,7 +136,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Reprint 2026-27 In this Activity, you will find that approximately the same value for V/I is obtained in each case. Thus the V–I graph is a straight line that passes through the origin of the graph, as shown in Fig. 11.3. Thus, V/I is a constant ratio. In 1827, a German physicist Georg Simon Ohm (1787–1854) found out the relationship between the current I, flowing in a metallic wire and the potential difference across its terminals. The potential difference, V, across the ends of a given metallic wire in an electric circuit is directly proportional to the current flowing through it, provided its temperature remains the same. This is called Ohm’s law. In other words –"
+          "text": "In this Activity, you will find that approximately the same value for V/I is obtained in each case. Thus the V–I graph is a straight line that passes through the origin of the graph, as shown in Fig. 11.3. Thus, V/I is a constant ratio. In 1827, a German physicist Georg Simon Ohm (1787–1854) found out the relationship between the current I, flowing in a metallic wire and the potential difference across its terminals. The potential difference, V, across the ends of a given metallic wire in an electric circuit is directly proportional to the current flowing through it, provided its temperature remains the same. This is called Ohm’s law. In other words –"
         },
         {
           "type": "figure",
@@ -198,7 +198,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Reprint 2026-27"
+          "text": ""
         },
         {
           "type": "figure",
@@ -236,7 +236,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Reprint 2026-27"
+          "text": ""
         },
         {
           "type": "figure",
@@ -273,7 +273,7 @@
         },
         {
           "type": "paragraph",
-          "text": "A where ρ (rho) is a constant of proportionality and is called the electrical resistivity of the material of the conductor. The SI unit of resistivity is Ω m. It is a characteristic property of the material. The metals and alloys Reprint 2026-27 have very low resistivity in the range of 10–8 Ω m to 10–6 Ω m. They are good conductors of electricity. Insulators like rubber and glass have resistivity of the order of 1012 to 1017 Ω m. Both the resistance and resistivity of a material vary with temperature. Table 11.2 reveals that the resistivity of an alloy is generally higher than that of its constituent metals. Alloys do not oxidise (burn) readily at high temperatures. For this reason, they are commonly used in electrical heating devices, like electric iron, toasters etc. Tungsten is used almost exclusively for filaments of electric bulbs, whereas copper and aluminium are generally used for electrical transmission lines. Table 11.2 Electrical resistivity* of some substances at 20°C Resistivity (Ω m) Material"
+          "text": "A where ρ (rho) is a constant of proportionality and is called the electrical resistivity of the material of the conductor. The SI unit of resistivity is Ω m. It is a characteristic property of the material. The metals and alloys have very low resistivity in the range of 10–8 Ω m to 10–6 Ω m. They are good conductors of electricity. Insulators like rubber and glass have resistivity of the order of 1012 to 1017 Ω m. Both the resistance and resistivity of a material vary with temperature. Table 11.2 reveals that the resistivity of an alloy is generally higher than that of its constituent metals. Alloys do not oxidise (burn) readily at high temperatures. For this reason, they are commonly used in electrical heating devices, like electric iron, toasters etc. Tungsten is used almost exclusively for filaments of electric bulbs, whereas copper and aluminium are generally used for electrical transmission lines. Table 11.2 Electrical resistivity* of some substances at 20°C Resistivity (Ω m) Material"
         },
         {
           "type": "do_you_know",
@@ -281,7 +281,7 @@
         },
         {
           "type": "paragraph",
-          "text": "* You need not memorise these values. You can use these values for solving numerical problems. Example 11.3 (a) How much current will an electric bulb draw from a 220 V source, if the resistance of the bulb filament is 1200 Ω? (b) How much current will an electric heater coil draw from a 220 V source, if the resistance of the heater coil is 100 Ω? Solution (a) We are given V = 220 V; R = 1200 Ω. From Eq. (12.6), we have the current I = 220 V/1200 Ω = 0.18 A. (b) We are given, V = 220 V, R = 100 Ω. From Eq. (11.6), we have the current I = 220 V/100 Ω = 2.2 A. Note the difference of current drawn by an electric bulb and electric heater from the same 220 V source! Reprint 2026-27 Example 11.4 The potential difference between the terminals of an electric heater is 60 V when it draws a current of 4 A from the source. What current will the heater draw if the potential difference is increased to 120 V? Solution We are given, potential difference V = 60 V, current I = 4 A. V 60 V = Ω. According to Ohm’s law, R = 15 I 4 A When the potential difference is increased to 120 V the current is given by V 120 V = 8 A current = . Ω R 15 The current through the heater becomes 8 A. Example 11.5 Resistance of a metal wire of length 1 m is 26 Ω at 20°C. If the diameter of the wire is 0.3 mm, what will be the resistivity of the metal at that temperature? Using Table 11.2, predict the material of the wire. Solution We are given the resistance R of the wire = 26 Ω, the diameter d = 0.3 mm = 3 × 10-4 m, and the length l of the wire = 1 m. Therefore, from Eq. (11.10), the resistivity of the given metallic wire is ρ = (RA/l) = (Rπd2/4l ) Substitution of values in this gives ρ = 1.84 × 10–6 Ω m The resistivity of the metal at 20°C is 1.84 × 10–6 Ω m. From Table 11.2, we see that this is the resistivity of manganese. Example 11.6 A wire of given material having length l and area of cross-section A has a resistance of 4 Ω. What would be the resistance of another wire of the same material having length l/2 and area of cross-section 2A? Solution For first wire l ρ = 4Ω R1 = A Now for second wire l /2 1 l ρ R2 = = ρ 2 A 4 A 1 R2 R1 = 4 R2= 1Ω The resistance of the new wire is 1Ω. Reprint 2026-27"
+          "text": "* You need not memorise these values. You can use these values for solving numerical problems. Example 11.3 (a) How much current will an electric bulb draw from a 220 V source, if the resistance of the bulb filament is 1200 Ω? (b) How much current will an electric heater coil draw from a 220 V source, if the resistance of the heater coil is 100 Ω? Solution (a) We are given V = 220 V; R = 1200 Ω. From Eq. (12.6), we have the current I = 220 V/1200 Ω = 0.18 A. (b) We are given, V = 220 V, R = 100 Ω. From Eq. (11.6), we have the current I = 220 V/100 Ω = 2.2 A. Note the difference of current drawn by an electric bulb and electric heater from the same 220 V source! Example 11.4 The potential difference between the terminals of an electric heater is 60 V when it draws a current of 4 A from the source. What current will the heater draw if the potential difference is increased to 120 V? Solution We are given, potential difference V = 60 V, current I = 4 A. V 60 V = Ω. According to Ohm’s law, R = 15 I 4 A When the potential difference is increased to 120 V the current is given by V 120 V = 8 A current = . Ω R 15 The current through the heater becomes 8 A. Example 11.5 Resistance of a metal wire of length 1 m is 26 Ω at 20°C. If the diameter of the wire is 0.3 mm, what will be the resistivity of the metal at that temperature? Using Table 11.2, predict the material of the wire. Solution We are given the resistance R of the wire = 26 Ω, the diameter d = 0.3 mm = 3 × 10-4 m, and the length l of the wire = 1 m. Therefore, from Eq. (11.10), the resistivity of the given metallic wire is ρ = (RA/l) = (Rπd2/4l ) Substitution of values in this gives ρ = 1.84 × 10–6 Ω m The resistivity of the metal at 20°C is 1.84 × 10–6 Ω m. From Table 11.2, we see that this is the resistivity of manganese. Example 11.6 A wire of given material having length l and area of cross-section A has a resistance of 4 Ω. What would be the resistance of another wire of the same material having length l/2 and area of cross-section 2A? Solution For first wire l ρ = 4Ω R1 = A Now for second wire l /2 1 l ρ R2 = = ρ 2 A 4 A 1 R2 R1 = 4 R2= 1Ω The resistance of the new wire is 1Ω."
         },
         {
           "type": "in_text_questions",
@@ -326,7 +326,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Reprint 2026-27"
+          "text": ""
         },
         {
           "type": "figure",
@@ -361,7 +361,7 @@
             },
             {
               "type": "paragraph",
-              "text": "You will observe that the value of the current in the ammeter is the same, independent of its position in the electric circuit. It means that in a series combination of resistors the current is the same in every part of the circuit or the same current through each resistor. Reprint 2026-27"
+              "text": "You will observe that the value of the current in the ammeter is the same, independent of its position in the electric circuit. It means that in a series combination of resistors the current is the same in every part of the circuit or the same current through each resistor."
             },
             {
               "type": "activity",
@@ -403,7 +403,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Reprint 2026-27 On applying Ohm’s law to the three resistors separately, we further have V1 = I R1 [11.13(a)] V2 = I R2 [11.13(b)] and V3 = I R3 [11.13(c)] From Eq. (11.11), I R = I R1 + I R2 + I R3 or"
+              "text": "On applying Ohm’s law to the three resistors separately, we further have V1 = I R1 [11.13(a)] V2 = I R2 [11.13(b)] and V3 = I R3 [11.13(c)] From Eq. (11.11), I R = I R1 + I R2 + I R3 or"
             },
             {
               "type": "equation",
@@ -422,7 +422,7 @@
             },
             {
               "type": "paragraph",
-              "text": "a resistor of 4 Ω to a 6 V battery Solution The resistance of electric lamp, R1 = 20 Ω, The resistance of the conductor connected in series, R2 = 4 Ω. Then the total resistance in the circuit R = R1 + R2 = 20 Ω + 4 Ω = 24 Ω. Rs The total potential difference across the two terminals of the battery V = 6 V. Now by Ohm’s law, the current through the circuit is given by I V/Rs = 6 V/24 Ω = =0.25 A. Reprint 2026-27 Applying Ohm’s law to the electric lamp and conductor separately, we get potential difference across the electric lamp, V1 = 20 Ω × 0.25 A = 5 V; and, that across the conductor, V2 = 4 Ω × 0.25 A = 1 V. Suppose that we like to replace the series combination of electric lamp and conductor by a single and equivalent resistor. Its resistance must be such that a potential difference of 6 V across the battery terminals will cause a current of 0.25 A in the circuit. The resistance R of this equivalent resistor would be R = V/I = 6 V/ 0.25 A = 24 Ω. This is the total resistance of the series circuit; it is equal to the sum of the two resistances."
+              "text": "a resistor of 4 Ω to a 6 V battery Solution The resistance of electric lamp, R1 = 20 Ω, The resistance of the conductor connected in series, R2 = 4 Ω. Then the total resistance in the circuit R = R1 + R2 = 20 Ω + 4 Ω = 24 Ω. Rs The total potential difference across the two terminals of the battery V = 6 V. Now by Ohm’s law, the current through the circuit is given by I V/Rs = 6 V/24 Ω = =0.25 A. Applying Ohm’s law to the electric lamp and conductor separately, we get potential difference across the electric lamp, V1 = 20 Ω × 0.25 A = 5 V; and, that across the conductor, V2 = 4 Ω × 0.25 A = 1 V. Suppose that we like to replace the series combination of electric lamp and conductor by a single and equivalent resistor. Its resistance must be such that a potential difference of 6 V across the battery terminals will cause a current of 0.25 A in the circuit. The resistance R of this equivalent resistor would be R = V/I = 6 V/ 0.25 A = 24 Ω. This is the total resistance of the series circuit; it is equal to the sum of the two resistances."
             },
             {
               "type": "in_text_questions",
@@ -468,7 +468,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Reprint 2026-27"
+              "text": ""
             },
             {
               "type": "figure",
@@ -514,7 +514,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Thus, we may conclude that the reciprocal of the equivalent resistance of a group of resistances joined in parallel is equal to the sum of the reciprocals of the individual resistances. Example 11.8 In the circuit diagram given in Fig. 11.10, suppose the resistors R1, R2 and R3 have the values 5 Ω, 10 Ω, 30 Ω, respectively, which have been connected to a battery of 12 V. Calculate (a) the current through each resistor, (b) the total current in the circuit, and (c) the total circuit resistance. Solution R1 = 5 Ω, R2 = 10 Ω, and R3 = 30 Ω. Potential difference across the battery, V = 12 V. This is also the potential difference across each of the individual resistor; therefore, to calculate the current in the resistors, we use Ohm’s law. The current I1, through R1 = V/ R1 I1 = 12 V/5 Ω = 2.4 A. Reprint 2026-27 The current I2, through R2 = V/ R2 I2 = 12 V/10 Ω= 1.2 A. The current I3, through R3 = V/R3 I3 = 12 V/30 Ω= 0.4 A. The total current in the circuit, I = I1 + I2 + I3 = (2.4 + 1.2 + 0.4) A = 4 A The total resistance Rp, is given by [Eq. (11.18)] 1 = + = R 510 30 3 p Thus, Rp = 3 Ω. Example 11.9 If in Fig. 11.12, R1 = 10 Ω, R2 = 40 Ω, R3 = 30 Ω, R4 = 20 Ω, R5 = 60 Ω, and a 12 V battery is connected to the arrangement. Calculate (a) the total resistance in the circuit, and (b) the total current flowing in the circuit. Solution Suppose we replace the parallel resistors R1 and R2 by an equivalent resistor of resistance, R′. Similarly we replace the parallel resistors R3, R4 and R5 by an equivalent single resistor of resistance R″. Then using Eq. (11.18), we have 1/ R′ = 1/10 + 1/40 = 5/40; that is R′ = 8 Ω. 1/ R″ Similarly, = 1/30 + 1/20 + 1/60 = 6/60; that is, R″ = 10 Ω. Thus, the total resistance, R = R′ + R″ = 18 Ω. To calculate the current, we use Ohm’s law, and get I = V/R = 12 V/18 Ω = 0.67 A. We have seen that in a series circuit the current is constant throughout the electric circuit. Thus it is obviously impracticable to"
+              "text": "Thus, we may conclude that the reciprocal of the equivalent resistance of a group of resistances joined in parallel is equal to the sum of the reciprocals of the individual resistances. Example 11.8 In the circuit diagram given in Fig. 11.10, suppose the resistors R1, R2 and R3 have the values 5 Ω, 10 Ω, 30 Ω, respectively, which have been connected to a battery of 12 V. Calculate (a) the current through each resistor, (b) the total current in the circuit, and (c) the total circuit resistance. Solution R1 = 5 Ω, R2 = 10 Ω, and R3 = 30 Ω. Potential difference across the battery, V = 12 V. This is also the potential difference across each of the individual resistor; therefore, to calculate the current in the resistors, we use Ohm’s law. The current I1, through R1 = V/ R1 I1 = 12 V/5 Ω = 2.4 A. The current I2, through R2 = V/ R2 I2 = 12 V/10 Ω= 1.2 A. The current I3, through R3 = V/R3 I3 = 12 V/30 Ω= 0.4 A. The total current in the circuit, I = I1 + I2 + I3 = (2.4 + 1.2 + 0.4) A = 4 A The total resistance Rp, is given by [Eq. (11.18)] 1 = + = R 510 30 3 p Thus, Rp = 3 Ω. Example 11.9 If in Fig. 11.12, R1 = 10 Ω, R2 = 40 Ω, R3 = 30 Ω, R4 = 20 Ω, R5 = 60 Ω, and a 12 V battery is connected to the arrangement. Calculate (a) the total resistance in the circuit, and (b) the total current flowing in the circuit. Solution Suppose we replace the parallel resistors R1 and R2 by an equivalent resistor of resistance, R′. Similarly we replace the parallel resistors R3, R4 and R5 by an equivalent single resistor of resistance R″. Then using Eq. (11.18), we have 1/ R′ = 1/10 + 1/40 = 5/40; that is R′ = 8 Ω. 1/ R″ Similarly, = 1/30 + 1/20 + 1/60 = 6/60; that is, R″ = 10 Ω. Thus, the total resistance, R = R′ + R″ = 18 Ω. To calculate the current, we use Ohm’s law, and get I = V/R = 12 V/18 Ω = 0.67 A. We have seen that in a series circuit the current is constant throughout the electric circuit. Thus it is obviously impracticable to"
             },
             {
               "type": "figure",
@@ -524,7 +524,7 @@
             },
             {
               "type": "paragraph",
-              "text": "connect an electric bulb and an electric heater in series, because they An electric circuit showing the combination of series need currents of widely different values to operate properly (see Example and parallel resistors 11.3). Another major disadvantage of a series circuit is that when one component fails the circuit is broken and none of the components works. If you have used ‘fairy lights’ to decorate buildings on festivals, on marriage celebrations etc., you might have seen the electrician spending lot of time in trouble-locating and replacing the ‘dead’ bulb – each has to be tested to find which has fused or gone. On the other hand, a parallel circuit divides the current through the electrical gadgets. The total resistance in a parallel circuit is decreased as per Eq. (11.18). This is helpful particularly when each gadget has different resistance and requires different current to operate properly. Reprint 2026-27"
+              "text": "connect an electric bulb and an electric heater in series, because they An electric circuit showing the combination of series need currents of widely different values to operate properly (see Example and parallel resistors 11.3). Another major disadvantage of a series circuit is that when one component fails the circuit is broken and none of the components works. If you have used ‘fairy lights’ to decorate buildings on festivals, on marriage celebrations etc., you might have seen the electrician spending lot of time in trouble-locating and replacing the ‘dead’ bulb – each has to be tested to find which has fused or gone. On the other hand, a parallel circuit divides the current through the electrical gadgets. The total resistance in a parallel circuit is decreased as per Eq. (11.18). This is helpful particularly when each gadget has different resistance and requires different current to operate properly."
             },
             {
               "type": "in_text_questions",
@@ -571,7 +571,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Reprint 2026-27 Applying Ohm’s law [Eq. (11.5)], we get"
+          "text": "Applying Ohm’s law [Eq. (11.5)], we get"
         },
         {
           "type": "equation",
@@ -590,7 +590,7 @@
         },
         {
           "type": "paragraph",
-          "text": "relation I = V/R. A steady current in a purely resistive electric circuit Example 11.10 An electric iron consumes energy at a rate of 840 W when heating is at the maximum rate and 360 W when the heating is at the minimum. The voltage is 220 V. What are the current and the resistance in each case? Solution From Eq. (11.19), we know that the power input is P = V I Thus the current I = P/V (a)When heating is at the maximum rate, I = 840 W/220 V = 3.82 A; and the resistance of the electric iron is R = V/I = 220 V/3.82 A = 57.60 Ω. (b)When heating is at the minimum rate, I = 360 W/220 V = 1.64 A; and the resistance of the electric iron is R = V/I = 220 V/1.64 A = 134.15 Ω. Example 11.11 100 J of heat is produced each second in a 4 Ω resistance. Find the potential difference across the resistor. Solution H = 100 J, R = 4 Ω, t = 1 s, V = ? From Eq. (11.21) we have the current through the resistor as √(H/Rt) I = √[100 J/(4 Ω × 1 s)] = = 5 A Thus the potential difference across the resistor, V [from Eq. (11.5)] is V = IR 5 A × 4 Ω = = 20 V. Reprint 2026-27"
+          "text": "relation I = V/R. A steady current in a purely resistive electric circuit Example 11.10 An electric iron consumes energy at a rate of 840 W when heating is at the maximum rate and 360 W when the heating is at the minimum. The voltage is 220 V. What are the current and the resistance in each case? Solution From Eq. (11.19), we know that the power input is P = V I Thus the current I = P/V (a)When heating is at the maximum rate, I = 840 W/220 V = 3.82 A; and the resistance of the electric iron is R = V/I = 220 V/3.82 A = 57.60 Ω. (b)When heating is at the minimum rate, I = 360 W/220 V = 1.64 A; and the resistance of the electric iron is R = V/I = 220 V/1.64 A = 134.15 Ω. Example 11.11 100 J of heat is produced each second in a 4 Ω resistance. Find the potential difference across the resistor. Solution H = 100 J, R = 4 Ω, t = 1 s, V = ? From Eq. (11.21) we have the current through the resistor as √(H/Rt) I = √[100 J/(4 Ω × 1 s)] = = 5 A Thus the potential difference across the resistor, V [from Eq. (11.5)] is V = IR 5 A × 4 Ω = = 20 V."
         },
         {
           "type": "in_text_questions",
@@ -612,7 +612,7 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Electric Current The generation of heat in a conductor is an inevitable consequence of electric current. In many cases, it is undesirable as it converts useful electrical energy into heat. In electric circuits, the unavoidable heating can increase the temperature of the components and alter their properties. However, heating effect of electric current has many useful applications. The electric laundry iron, electric toaster, electric oven, electric kettle and electric heater are some of the familiar devices based on Joule’s heating. The electric heating is also used to produce light, as in an electric bulb. Here, the filament must retain as much of the heat generated as is possible, so that it gets very hot and emits light. It must not melt at such high temperature. A strong metal with high melting point such as tungsten (melting point 3380°C) is used for making bulb filaments. The filament should be thermally isolated as much as possible, using insulating support, etc. The bulbs are usually filled with chemically inactive nitrogen and argon gases to prolong the life of filament. Most of the power consumed by the filament appears as heat, but a small part of it is in the form of light radiated. Another common application of Joule’s heating is the fuse used in electric circuits. It protects circuits and appliances by stopping the flow of any unduly high electric current. The fuse is placed in series with the device. It consists of a piece of wire made of a metal or an alloy of appropriate melting point, for example aluminium, copper, iron, lead etc. If a current larger than the specified value flows through the circuit, the temperature of the fuse wire increases. This melts the fuse wire and breaks the circuit. The fuse wire is usually encased in a cartridge of porcelain or similar material with metal ends. The fuses used for domestic purposes are rated as 1 A, 2 A, 3 A, 5 A, 10 A, etc. For an electric iron which consumes 1 kW electric power when operated at 220 V, a current of (1000/220) A, that is, 4.54 A will flow in the circuit. In this case, a 5 A fuse must be used. Reprint 2026-27"
+              "text": "Electric Current The generation of heat in a conductor is an inevitable consequence of electric current. In many cases, it is undesirable as it converts useful electrical energy into heat. In electric circuits, the unavoidable heating can increase the temperature of the components and alter their properties. However, heating effect of electric current has many useful applications. The electric laundry iron, electric toaster, electric oven, electric kettle and electric heater are some of the familiar devices based on Joule’s heating. The electric heating is also used to produce light, as in an electric bulb. Here, the filament must retain as much of the heat generated as is possible, so that it gets very hot and emits light. It must not melt at such high temperature. A strong metal with high melting point such as tungsten (melting point 3380°C) is used for making bulb filaments. The filament should be thermally isolated as much as possible, using insulating support, etc. The bulbs are usually filled with chemically inactive nitrogen and argon gases to prolong the life of filament. Most of the power consumed by the filament appears as heat, but a small part of it is in the form of light radiated. Another common application of Joule’s heating is the fuse used in electric circuits. It protects circuits and appliances by stopping the flow of any unduly high electric current. The fuse is placed in series with the device. It consists of a piece of wire made of a metal or an alloy of appropriate melting point, for example aluminium, copper, iron, lead etc. If a current larger than the specified value flows through the circuit, the temperature of the fuse wire increases. This melts the fuse wire and breaks the circuit. The fuse wire is usually encased in a cartridge of porcelain or similar material with metal ends. The fuses used for domestic purposes are rated as 1 A, 2 A, 3 A, 5 A, 10 A, etc. For an electric iron which consumes 1 kW electric power when operated at 220 V, a current of (1000/220) A, that is, 4.54 A will flow in the circuit. In this case, a 5 A fuse must be used."
             }
           ]
         }
@@ -650,7 +650,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Example 11.12 An electric bulb is connected to a 220 V generator. The current is 0.50 A. What is the power of the bulb? Solution P = VI 220 V × 0.50 A = = 110 J/s = 110 W. Example 11.13 An electric refrigerator rated 400 W operates 8 hour/day. What is the cost of the energy to operate it for 30 days at Rs 3.00 per kW h? Reprint 2026-27 Solution The total energy consumed by the refrigerator in 30 days would be 400 W × 8.0 hour/day × 30 days = 96000 W h = 96 kW h Thus the cost of energy to operate the refrigerator for 30 days is 96 kW h × Rs 3.00 per kW h = Rs 288.00"
+          "text": "Example 11.12 An electric bulb is connected to a 220 V generator. The current is 0.50 A. What is the power of the bulb? Solution P = VI 220 V × 0.50 A = = 110 J/s = 110 W. Example 11.13 An electric refrigerator rated 400 W operates 8 hour/day. What is the cost of the energy to operate it for 30 days at Rs 3.00 per kW h? Solution The total energy consumed by the refrigerator in 30 days would be 400 W × 8.0 hour/day × 30 days = 96000 W h = 96 kW h Thus the cost of energy to operate the refrigerator for 30 days is 96 kW h × Rs 3.00 per kW h = Rs 288.00"
         },
         {
           "type": "in_text_questions",
@@ -679,12 +679,12 @@
     "A set of resistors connected in parallel has an equivalent resistance Rp given by 1 = + ... R p 1 2 3 The electrical energy dissipated in a resistor is given by",
     "W = V × I × t",
     "The unit of power is watt (W). One watt of power is consumed when 1 A of current flows at a potential difference of 1 V.",
-    "The commercial unit of electrical energy is kilowatt hour (kWh). 1 kW h = 3,600,000 J = 3.6 × 106 J. Reprint 2026-27"
+    "The commercial unit of electrical energy is kilowatt hour (kWh). 1 kW h = 3,600,000 J = 3.6 × 106 J."
   ],
   "exercises": [
     {
       "num": 1,
-      "question": "A piece of wire of resistance R is cut into five equal parts. These parts are then connected in parallel. If the equivalent resistance of this combination is R′, then the ratio R/R′ is  –",
+      "question": "A piece of wire of resistance R is cut into five equal parts. These parts are then connected in parallel. If the equivalent resistance of this combination is R′, then the ratio R/R′ is –",
       "options": [
         "(a) 1/25",
         "(b) 1/5",
@@ -794,7 +794,7 @@
     },
     {
       "num": 14,
-      "question": "Compare the power used in the 2 Ω resistor in each of the following circuits: (i) a 6 V battery in series with 1 Ω and 2 Ω resistors, and (ii) a 4 V battery in parallel with 12 Ω and 2 Ω resistors. Reprint 2026-27",
+      "question": "Compare the power used in the 2 Ω resistor in each of the following circuits: (i) a 6 V battery in series with 1 Ω and 2 Ω resistors, and (ii) a 4 V battery in parallel with 12 Ω and 2 Ω resistors.",
       "options": [],
       "type": "short"
     },
@@ -818,7 +818,7 @@
     },
     {
       "num": 18,
-      "question": "Explain the following. and electric irons, made of an alloy rather than a pure metal? (e) Why are copper and aluminium wires usually employed for electricity transmission? Reprint 2026-27",
+      "question": "Explain the following. and electric irons, made of an alloy rather than a pure metal? (e) Why are copper and aluminium wires usually employed for electricity transmission?",
       "options": [
         "(a) Why is the tungsten used almost exclusively for filament of electric lamps?",
         "(b) Why are the conductors of electric heating devices, such as bread-toasters",

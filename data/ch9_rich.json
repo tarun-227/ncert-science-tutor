@@ -16,7 +16,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "A highly polished surface, such as a mirror, reflects most of the light falling on it. You are already familiar with the laws of reflection of light. Reprint 2026-27 Let us recall these laws – (i)The angle of incidence is equal to the angle of reflection, and (ii)The incident ray, the normal to the mirror at the point of incidence and the reflected ray, all lie in the same plane. These laws of reflection are applicable to all types of reflecting surfaces including spherical surfaces. You are familiar with the formation of image by a plane mirror. What are the properties of the image? Image formed by a plane mirror is always virtual and erect. The size of the image is equal to that of the object. The image formed is as far behind the mirror as the object is in front of it. Further, the image is laterally inverted. How would the images be when the reflecting surfaces are curved? Let us explore."
+          "text": "A highly polished surface, such as a mirror, reflects most of the light falling on it. You are already familiar with the laws of reflection of light. Let us recall these laws – (i)The angle of incidence is equal to the angle of reflection, and (ii)The incident ray, the normal to the mirror at the point of incidence and the reflected ray, all lie in the same plane. These laws of reflection are applicable to all types of reflecting surfaces including spherical surfaces. You are familiar with the formation of image by a plane mirror. What are the properties of the image? Image formed by a plane mirror is always virtual and erect. The size of the image is equal to that of the object. The image formed is as far behind the mirror as the object is in front of it. Further, the image is laterally inverted. How would the images be when the reflecting surfaces are curved? Let us explore."
         },
         {
           "type": "activity",
@@ -53,7 +53,7 @@
         },
         {
           "type": "paragraph",
-          "text": "mirror is a point called the pole. It lies on the surface of the Schematic representation of spherical mirror. The pole is usually represented by the letter P. mirrors; the shaded side is non-reflecting. Reprint 2026-27 The reflecting surface of a spherical mirror forms a part of a sphere. This sphere has a centre. This point is called the centre of curvature of the spherical mirror. It is represented by the letter C. Please note that the centre of curvature is not a part of the mirror. It lies outside its reflecting surface. The centre of curvature of a concave mirror lies in front of it. However, it lies behind the mirror in case of a convex mirror. You may note this in Fig.9.2 (a) and (b). The radius of the sphere of which the reflecting surface of a spherical mirror forms a part, is called the radius of curvature of the mirror. It is represented by the letter R. You may note that the distance PC is equal to the radius of curvature. Imagine a straight line passing through the pole and the centre of curvature of a spherical mirror. This line is called the principal axis. Remember that principal axis is normal to the mirror at its pole. Let us understand an important term related to mirrors, through an Activity."
+          "text": "mirror is a point called the pole. It lies on the surface of the Schematic representation of spherical mirror. The pole is usually represented by the letter P. mirrors; the shaded side is non-reflecting. The reflecting surface of a spherical mirror forms a part of a sphere. This sphere has a centre. This point is called the centre of curvature of the spherical mirror. It is represented by the letter C. Please note that the centre of curvature is not a part of the mirror. It lies outside its reflecting surface. The centre of curvature of a concave mirror lies in front of it. However, it lies behind the mirror in case of a convex mirror. You may note this in Fig.9.2 (a) and (b). The radius of the sphere of which the reflecting surface of a spherical mirror forms a part, is called the radius of curvature of the mirror. It is represented by the letter R. You may note that the distance PC is equal to the radius of curvature. Imagine a straight line passing through the pole and the centre of curvature of a spherical mirror. This line is called the principal axis. Remember that principal axis is normal to the mirror at its pole. Let us understand an important term related to mirrors, through an Activity."
         },
         {
           "type": "activity",
@@ -81,7 +81,7 @@
         },
         {
           "type": "paragraph",
-          "text": "pole and the principal focus of a spherical mirror is called (a) Concave mirror the focal length. It is represented by the letter f. (b) Convex mirror Reprint 2026-27 The reflecting surface of a spherical mirror is by-and-large spherical. The surface, then, has a circular outline. The diameter of the reflecting surface of spherical mirror is called its aperture. In Fig.9.2, distance MN represents the aperture. We shall consider in our discussion only such spherical mirrors whose aperture is much smaller than its radius of curvature. Is there a relationship between the radius of curvature R, and focal length f, of a spherical mirror? For spherical mirrors of small apertures, the radius of curvature is found to be equal to twice the focal length. We put this as R = 2f . This implies that the principal focus of a spherical mirror lies midway between the pole and centre of curvature."
+          "text": "pole and the principal focus of a spherical mirror is called (a) Concave mirror the focal length. It is represented by the letter f. (b) Convex mirror The reflecting surface of a spherical mirror is by-and-large spherical. The surface, then, has a circular outline. The diameter of the reflecting surface of spherical mirror is called its aperture. In Fig.9.2, distance MN represents the aperture. We shall consider in our discussion only such spherical mirrors whose aperture is much smaller than its radius of curvature. Is there a relationship between the radius of curvature R, and focal length f, of a spherical mirror? For spherical mirrors of small apertures, the radius of curvature is found to be equal to twice the focal length. We put this as R = 2f . This implies that the principal focus of a spherical mirror lies midway between the pole and centre of curvature."
         },
         {
           "type": "subsection",
@@ -110,7 +110,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Reprint 2026-27 You will see in the above Activity that the nature, position and size of the image formed by a concave mirror depends on the position of the object in relation to points P, F and C. The image formed is real for some positions of the object. It is found to be a virtual image for a certain other position. The image is either magnified, reduced or has the same size, depending on the position of the object. A summary of these observations is given for your reference in Table 9.1. Table 9.1 Image formation by a concave mirror for different positions of the object Position of the Size of the Nature of the object image"
+              "text": "You will see in the above Activity that the nature, position and size of the image formed by a concave mirror depends on the position of the object in relation to points P, F and C. The image formed is real for some positions of the object. It is found to be a virtual image for a certain other position. The image is either magnified, reduced or has the same size, depending on the position of the object. A summary of these observations is given for your reference in Table 9.1. Table 9.1 Image formation by a concave mirror for different positions of the object Position of the Size of the Nature of the object image"
             },
             {
               "type": "do_you_know",
@@ -135,7 +135,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Reprint 2026-27 (ii) A ray passing through the principal focus of a concave mirror or a ray which is directedtowardsthe principal focus of a convex mirror, after reflection, will emerge parallel to the principal axis. This is illustrated in Fig.9.4 (a) (a) (b) and (b)."
+              "text": "(ii) A ray passing through the principal focus of a concave mirror or a ray which is directedtowardsthe principal focus of a convex mirror, after reflection, will emerge parallel to the principal axis. This is illustrated in Fig.9.4 (a) (a) (b) and (b)."
             },
             {
               "type": "figure",
@@ -170,12 +170,12 @@
             {
               "type": "figure",
               "num": "9.7",
-              "caption": "illustrates the ray diagrams for the formation of image Light – Reflection and Refraction  Ray diagrams for the image formation by a concave mirror",
+              "caption": "illustrates the ray diagrams for the formation of image Light – Reflection and Refraction Ray diagrams for the image formation by a concave mirror",
               "image": "ch9/fig_9.7.png"
             },
             {
               "type": "paragraph",
-              "text": "by a concave mirror for various positions of the object. Reprint 2026-27"
+              "text": "by a concave mirror for various positions of the object."
             },
             {
               "type": "activity",
@@ -192,7 +192,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Uses of concave mirrors Concave mirrors are commonly used in torches, search-lights and vehicles headlights to get powerful parallel beams of light. They are often used as shaving mirrors to see a larger image of the face. The dentists use concave mirrors to see large images of the teeth of patients. Large concave mirrors are used to concentrate sunlight to produce heat in solar furnaces. (b) Image formation by a Convex Mirror We studied the image formation by a concave mirror. Now we shall study the formation of image by a convex mirror. Reprint 2026-27"
+              "text": "Uses of concave mirrors Concave mirrors are commonly used in torches, search-lights and vehicles headlights to get powerful parallel beams of light. They are often used as shaving mirrors to see a larger image of the face. The dentists use concave mirrors to see large images of the teeth of patients. Large concave mirrors are used to concentrate sunlight to produce heat in solar furnaces. (b) Image formation by a Convex Mirror We studied the image formation by a concave mirror. Now we shall study the formation of image by a convex mirror."
             },
             {
               "type": "activity",
@@ -236,7 +236,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Reprint 2026-27"
+              "text": ""
             },
             {
               "type": "paragraph",
@@ -251,7 +251,7 @@
                 },
                 {
                   "num": 2,
-                  "text": "The radius of curvature of a spherical mirror is 20 cm.  What is its focal length?"
+                  "text": "The radius of curvature of a spherical mirror is 20 cm. What is its focal length?"
                 },
                 {
                   "num": 3,
@@ -272,14 +272,14 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "While dealing with the reflection of light by spherical mirrors, we shall follow a set of sign conventions called the New Cartesian Sign Convention. In this convention, the pole (P) of the mirror is taken as the origin (Fig. 9.9). The principal axis of the mirror is taken as the x-axis (X’X) of the coordinate system. The conventions are as follows – (i) The object is always placed to the left of the mirror. This implies that the light from the object falls on the mirror from the left-hand side. (ii) All distances parallel to the principal axis are measured from the pole of the mirror. (iii) All the distances measured to the right of the origin (along + x-axis) are taken as positive while those measured to the left of the origin (along – x-axis) are taken as negative. (iv) Distances measured perpendicular to and above the principal axis (along + y-axis) are taken as positive. (v) Distances measured perpendicular to and below the principal axis (along –y-axis) are taken as negative. Reprint 2026-27 The New Cartesian Sign Convention described above is illustrated in Fig.9.9 for your reference. These sign conventions are applied to obtain the mirror formula and solve related numerical problems."
+              "text": "While dealing with the reflection of light by spherical mirrors, we shall follow a set of sign conventions called the New Cartesian Sign Convention. In this convention, the pole (P) of the mirror is taken as the origin (Fig. 9.9). The principal axis of the mirror is taken as the x-axis (X’X) of the coordinate system. The conventions are as follows – (i) The object is always placed to the left of the mirror. This implies that the light from the object falls on the mirror from the left-hand side. (ii) All distances parallel to the principal axis are measured from the pole of the mirror. (iii) All the distances measured to the right of the origin (along + x-axis) are taken as positive while those measured to the left of the origin (along – x-axis) are taken as negative. (iv) Distances measured perpendicular to and above the principal axis (along + y-axis) are taken as positive. (v) Distances measured perpendicular to and below the principal axis (along –y-axis) are taken as negative. The New Cartesian Sign Convention described above is illustrated in Fig.9.9 for your reference. These sign conventions are applied to obtain the mirror formula and solve related numerical problems."
             }
           ]
         },
         {
           "type": "subsection",
           "id": "9.2.4",
-          "title": "Mirror Formula and  Magnification",
+          "title": "Mirror Formula and Magnification",
           "blocks": [
             {
               "type": "paragraph",
@@ -320,7 +320,7 @@
             },
             {
               "type": "paragraph",
-              "text": "h u You may note that the height of the object is taken to be positive as the object is usually placed above the principal axis. The height of the image should be taken as positive for virtual images. However, it is to be taken as negative for real images. A negative sign in the value of the magnification indicates that the image is real. A positive sign in the value of the magnification indicates that the image is virtual. Reprint 2026-27 Example 9.1 A convex mirror used for rear-view on an automobile has a radius of curvature of 3.00 m. If a bus is located at 5.00 m from this mirror, find the position, nature and size of the image. Solution Radius of curvature, R = + 3.00 m; Object-distance, u = – 5.00 m; Image-distance, v = ? Height of the image, h′= ? Focal length, f = R/2 = + 3.00 m = + 1.50 m (as the principal focus of 2 a convex mirror is behind the mirror) 1 + = Since v u f 1 1 1 1 = − or, = + 1.50 – = 1.50 + v f u 5.00 ( 5.00) − + = 5.001.50 7.50 v = 7.50 + = + 1.15 m 6.50 The image is 1.15 m at the back of the mirror. h v 1.15 m ' = − Magnification, m = – − 5.00 m h u = + 0.23 The image is virtual, erect and smaller in size by a factor of 0.23. Example 9.2 An object, 4.0 cm in size, is placed at 25.0 cm in front of a concave mirror of focal length 15.0 cm. At what distance from the mirror should a screen be placed in order to obtain a sharp image? Find the nature and the size of the image. Solution Object-size, h = + 4.0 cm; Object-distance, u = – 25.0 cm; Focal length, f = –15.0 cm; Image-distance, v = ? Image-size, h′ = ? From Eq. (10.1): 1 + = v u f or, 1 1 1 = − − = − + = − v f u 15.0 25.0 Reprint 2026-27 or, 1 − + 5.0 3.0 2.0 − = or, v = – 37.5 cm v 75.0 The screen should be placed at 37.5 cm in front of the mirror. The image is real. h ' v = − Also, magnification, m = h u − + or, h′ = – v h ( 37.5cm) ( 4.0cm) − u = ( 25.0 cm) − Height of the image, h′ = – 6.0 cm The image is inverted and enlarged."
+              "text": "h u You may note that the height of the object is taken to be positive as the object is usually placed above the principal axis. The height of the image should be taken as positive for virtual images. However, it is to be taken as negative for real images. A negative sign in the value of the magnification indicates that the image is real. A positive sign in the value of the magnification indicates that the image is virtual. Example 9.1 A convex mirror used for rear-view on an automobile has a radius of curvature of 3.00 m. If a bus is located at 5.00 m from this mirror, find the position, nature and size of the image. Solution Radius of curvature, R = + 3.00 m; Object-distance, u = – 5.00 m; Image-distance, v = ? Height of the image, h′= ? Focal length, f = R/2 = + 3.00 m = + 1.50 m (as the principal focus of 2 a convex mirror is behind the mirror) 1 + = Since v u f 1 1 1 1 = − or, = + 1.50 – = 1.50 + v f u 5.00 ( 5.00) − + = 5.001.50 7.50 v = 7.50 + = + 1.15 m 6.50 The image is 1.15 m at the back of the mirror. h v 1.15 m ' = − Magnification, m = – − 5.00 m h u = + 0.23 The image is virtual, erect and smaller in size by a factor of 0.23. Example 9.2 An object, 4.0 cm in size, is placed at 25.0 cm in front of a concave mirror of focal length 15.0 cm. At what distance from the mirror should a screen be placed in order to obtain a sharp image? Find the nature and the size of the image. Solution Object-size, h = + 4.0 cm; Object-distance, u = – 25.0 cm; Focal length, f = –15.0 cm; Image-distance, v = ? Image-size, h′ = ? From Eq. (10.1): 1 + = v u f or, 1 1 1 = − − = − + = − v f u 15.0 25.0 or, 1 − + 5.0 3.0 2.0 − = or, v = – 37.5 cm v 75.0 The screen should be placed at 37.5 cm in front of the mirror. The image is real. h ' v = − Also, magnification, m = h u − + or, h′ = – v h ( 37.5cm) ( 4.0cm) − u = ( 25.0 cm) − Height of the image, h′ = – 6.0 cm The image is inverted and enlarged."
             },
             {
               "type": "in_text_questions",
@@ -345,7 +345,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Light seems to travel along straight-line paths in a transparent medium. What happens when light enters from one transparent medium to another? Does it still move along a straight-line path or change its direction? We shall recall some of our day-to-day experiences. You might have observed that the bottom of a tank or a pond containing water appears to be raised. Similarly, when a thick glass slab is placed over some printed matter, the letters appear raised when viewed through the glass slab. Why does it happen? Have you seen a pencil partly immersed in water in a glass tumbler? It appears to be displaced at the interface of air and water. You might have observed that a lemon kept in water in a glass tumbler appears to be bigger than its actual size, when viewed from the sides. How can you account for such experiences? Let us consider the case of the apparent displacement of a pencil, partly immersed in water. The light reaching you from the portion of the pencil inside water seems to come from a different direction, compared to the part above water. This makes the pencil appear to be displaced at the interface. For similar reasons, the letters appear to be raised, when seen through a glass slab placed over it. Does a pencil appear to be displaced to the same extent, if instead of water, we use liquids like kerosene or turpentine? Will the letters appear to rise to the same height if we replace a glass slab with a transparent plastic slab? You will find that the extent of the effect is different for different pair of media. These observations indicate that light does not Reprint 2026-27 travel in the same direction in all media. It appears that when travelling obliquely from one medium to another, the direction of propagation of light in the second medium changes. This phenomenon is known as refraction of light. Let us understand this phenomenon further by doing a few activities."
+          "text": "Light seems to travel along straight-line paths in a transparent medium. What happens when light enters from one transparent medium to another? Does it still move along a straight-line path or change its direction? We shall recall some of our day-to-day experiences. You might have observed that the bottom of a tank or a pond containing water appears to be raised. Similarly, when a thick glass slab is placed over some printed matter, the letters appear raised when viewed through the glass slab. Why does it happen? Have you seen a pencil partly immersed in water in a glass tumbler? It appears to be displaced at the interface of air and water. You might have observed that a lemon kept in water in a glass tumbler appears to be bigger than its actual size, when viewed from the sides. How can you account for such experiences? Let us consider the case of the apparent displacement of a pencil, partly immersed in water. The light reaching you from the portion of the pencil inside water seems to come from a different direction, compared to the part above water. This makes the pencil appear to be displaced at the interface. For similar reasons, the letters appear to be raised, when seen through a glass slab placed over it. Does a pencil appear to be displaced to the same extent, if instead of water, we use liquids like kerosene or turpentine? Will the letters appear to rise to the same height if we replace a glass slab with a transparent plastic slab? You will find that the extent of the effect is different for different pair of media. These observations indicate that light does not travel in the same direction in all media. It appears that when travelling obliquely from one medium to another, the direction of propagation of light in the second medium changes. This phenomenon is known as refraction of light. Let us understand this phenomenon further by doing a few activities."
         },
         {
           "type": "activity",
@@ -395,7 +395,7 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "To understand the phenomenon of refraction of light through a glass slab, let us do an Activity. Reprint 2026-27"
+              "text": "To understand the phenomenon of refraction of light through a glass slab, let us do an Activity."
             },
             {
               "type": "activity",
@@ -426,7 +426,7 @@
             },
             {
               "type": "paragraph",
-              "text": "slightly. What happens when a light ray is incident normally to the interface of two media? Try and find out. Now you are familiar with the refraction of light. Refraction is due to change in the speed of light as it enters from one transparent medium to another. Experiments show that refraction of light occurs according to certain laws. Reprint 2026-27 The following are the laws of refraction of light. (i) The incident ray, the refracted ray and the normal to the interface of two transparent media at the point of incidence, all lie in the same plane. (ii) The ratio of sine of angle of incidence to the sine of angle of refraction is a constant, for the light of a given colour and for the given pair of media. This law is also known as Snell’s law of refraction. (This is true for angle 0 < i < 90o) If i is the angle of incidence and r is the angle of refraction, then, sin i"
+              "text": "slightly. What happens when a light ray is incident normally to the interface of two media? Try and find out. Now you are familiar with the refraction of light. Refraction is due to change in the speed of light as it enters from one transparent medium to another. Experiments show that refraction of light occurs according to certain laws. The following are the laws of refraction of light. (i) The incident ray, the refracted ray and the normal to the interface of two transparent media at the point of incidence, all lie in the same plane. (ii) The ratio of sine of angle of incidence to the sine of angle of refraction is a constant, for the light of a given colour and for the given pair of media. This law is also known as Snell’s law of refraction. (This is true for angle 0 < i < 90o) If i is the angle of incidence and r is the angle of refraction, then, sin i"
             },
             {
               "type": "equation",
@@ -470,7 +470,7 @@
             },
             {
               "type": "paragraph",
-              "text": "v If medium 1 is vacuum or air, then the refractive index of medium 2 is considered with respect to vacuum. This is called the absolute refractive index of the medium. It is simply represented as n2. If c is the speed of Reprint 2026-27 light in air and v is the speed of light in the medium, then, the refractive index of the medium nm is given by Speed of light in the medium = cair"
+              "text": "v If medium 1 is vacuum or air, then the refractive index of medium 2 is considered with respect to vacuum. This is called the absolute refractive index of the medium. It is simply represented as n2. If c is the speed of light in air and v is the speed of light in the medium, then, the refractive index of the medium nm is given by Speed of light in the medium = cair"
             },
             {
               "type": "equation",
@@ -487,7 +487,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Reprint 2026-27"
+              "text": ""
             },
             {
               "type": "in_text_questions",
@@ -525,7 +525,7 @@
             },
             {
               "type": "paragraph",
-              "text": "spheres are called centres of curvature of the lens. (a) Converging action of a convex lens, (b) diverging The centre of curvature of a lens is usually action of a concave lens represented by the letter C. Since there are two centres of curvature, we may represent them as C1 and C2. An imaginary straight line passing through the two centres of curvature of a lens is called its principal axis. The central point of a lens is its optical centre. It is Reprint 2026-27 usually represented by the letter O. A ray of light through the optical centre of a lens passes without suffering any deviation. The effective diameter of the circular outline of a spherical lens is called its aperture. We shall confine our discussion in this Chapter to such lenses whose aperture is much less than its radius of curvature and the two centres of curvatures are equidistant from the optical centre O. Such lenses are called thin lenses with small apertures. What happens when parallel rays of light are incident on a lens? Let us do an Activity to understand this."
+              "text": "spheres are called centres of curvature of the lens. (a) Converging action of a convex lens, (b) diverging The centre of curvature of a lens is usually action of a concave lens represented by the letter C. Since there are two centres of curvature, we may represent them as C1 and C2. An imaginary straight line passing through the two centres of curvature of a lens is called its principal axis. The central point of a lens is its optical centre. It is usually represented by the letter O. A ray of light through the optical centre of a lens passes without suffering any deviation. The effective diameter of the circular outline of a spherical lens is called its aperture. We shall confine our discussion in this Chapter to such lenses whose aperture is much less than its radius of curvature and the two centres of curvatures are equidistant from the optical centre O. Such lenses are called thin lenses with small apertures. What happens when parallel rays of light are incident on a lens? Let us do an Activity to understand this."
             },
             {
               "type": "activity",
@@ -542,7 +542,7 @@
             },
             {
               "type": "paragraph",
-              "text": "The paper begins to burn producing smoke. It may even catch fire after a while. Why does this happen? The light from the Sun constitutes parallel rays of light. These rays were converged by the lens at the sharp bright spot formed on the paper. In fact, the bright spot you got on the paper is a real image of the Sun. The concentration of the sunlight at a point generated heat. This caused the paper to burn. Now, we shall consider rays of light parallel to the principal axis of a lens. What happens when you pass such rays of light through a lens? This is illustrated for a convex lens in Fig.9.12 (a) and for a concave lens in Fig.9.12 (b). Observe Fig.9.12 (a) carefully. Several rays of light parallel to the principal axis are falling on a convex lens. These rays, after refraction from the lens, are converging to a point on the principal axis. This point on the principal axis is called the principal focus of the lens. Let us see now the action of a concave lens. Observe Fig.9.12 (b) carefully. Several rays of light parallel to the principal axis are falling on a concave lens. These rays, after refraction from the lens, are appearing to diverge from a point on the principal axis. This point on the principal axis is called the principal focus of the concave lens. If you pass parallel rays from the opposite surface of the lens, you get another principal focus on the opposite side. Letter F is usually used to represent principal focus. However, a lens has two principal foci. They are represented by F1 and F2. The distance of the principal focus from the optical centre of a lens is called its focal length. The letter f is used to represent the focal length. How can you find the focal length of a convex lens? Recall the Activity 9.11. In this Activity, the distance between the position of the lens and the position of the image of the Sun gives the approximate focal length of the lens. Reprint 2026-27"
+              "text": "The paper begins to burn producing smoke. It may even catch fire after a while. Why does this happen? The light from the Sun constitutes parallel rays of light. These rays were converged by the lens at the sharp bright spot formed on the paper. In fact, the bright spot you got on the paper is a real image of the Sun. The concentration of the sunlight at a point generated heat. This caused the paper to burn. Now, we shall consider rays of light parallel to the principal axis of a lens. What happens when you pass such rays of light through a lens? This is illustrated for a convex lens in Fig.9.12 (a) and for a concave lens in Fig.9.12 (b). Observe Fig.9.12 (a) carefully. Several rays of light parallel to the principal axis are falling on a convex lens. These rays, after refraction from the lens, are converging to a point on the principal axis. This point on the principal axis is called the principal focus of the lens. Let us see now the action of a concave lens. Observe Fig.9.12 (b) carefully. Several rays of light parallel to the principal axis are falling on a concave lens. These rays, after refraction from the lens, are appearing to diverge from a point on the principal axis. This point on the principal axis is called the principal focus of the concave lens. If you pass parallel rays from the opposite surface of the lens, you get another principal focus on the opposite side. Letter F is usually used to represent principal focus. However, a lens has two principal foci. They are represented by F1 and F2. The distance of the principal focus from the optical centre of a lens is called its focal length. The letter f is used to represent the focal length. How can you find the focal length of a convex lens? Recall the Activity 9.11. In this Activity, the distance between the position of the lens and the position of the image of the Sun gives the approximate focal length of the lens."
             }
           ]
         },
@@ -572,7 +572,7 @@
             },
             {
               "type": "paragraph",
-              "text": "The nature, position and relative size of the image formed by convex lens for various positions of the object is summarised in Table 9.4. Table 9.4 Nature, position and relative size of the image formed by a convex lens for various positions of the object Position of the Relative size of Nature of objecthe image At infinity At focus F2 Highly diminished, Real and inverted point-sized Beyond 2F1 Between F2 and 2F2 Diminished Real and inverted At 2F1 At 2F2 Same size Real and inverted Between F1 and 2F1 Beyond 2F2 Enlarged Real and inverted At focus F1 At infinity Image would not be formed Between focus F1 On the same side Enlarged Virtual and erect and of the lens as the optical centre O object Let us now do an Activity to study the nature, position and relative size of the image formed by a concave lens. Reprint 2026-27"
+              "text": "The nature, position and relative size of the image formed by convex lens for various positions of the object is summarised in Table 9.4. Table 9.4 Nature, position and relative size of the image formed by a convex lens for various positions of the object Position of the Relative size of Nature of objecthe image At infinity At focus F2 Highly diminished, Real and inverted point-sized Beyond 2F1 Between F2 and 2F2 Diminished Real and inverted At 2F1 At 2F2 Same size Real and inverted Between F1 and 2F1 Beyond 2F2 Enlarged Real and inverted At focus F1 At infinity Image would not be formed Between focus F1 On the same side Enlarged Virtual and erect and of the lens as the optical centre O object Let us now do an Activity to study the nature, position and relative size of the image formed by a concave lens."
             },
             {
               "type": "activity",
@@ -615,7 +615,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Reprint 2026-27 (ii)A ray of light passing through a principal focus, after refraction from a convex lens, will emerge parallel to the principal axis. This is shown in Fig. 9.14 (a). A ray of light appearing to (a) (b) meet at the principal"
+              "text": "(ii)A ray of light passing through a principal focus, after refraction from a convex lens, will emerge parallel to the principal axis. This is shown in Fig. 9.14 (a). A ray of light appearing to (a) (b) meet at the principal"
             },
             {
               "type": "figure",
@@ -635,7 +635,7 @@
             },
             {
               "type": "paragraph",
-              "text": "The ray diagrams for the image formation in a convex lens for a few positions of the object are shown in Fig. 9.16. The ray diagrams representing the image formation in a concave lens for various positions of the object are shown in Fig. 9.17. Reprint 2026-27"
+              "text": "The ray diagrams for the image formation in a convex lens for a few positions of the object are shown in Fig. 9.16. The ray diagrams representing the image formation in a concave lens for various positions of the object are shown in Fig. 9.17."
             },
             {
               "type": "figure",
@@ -682,7 +682,7 @@
             },
             {
               "type": "paragraph",
-              "text": "v u f The lens formula given above is general and is valid in all situations for any spherical lens. Take proper care of the signs of different quantities, while putting numerical values for solving problems relating to lenses. Reprint 2026-27 Magnification The magnification produced by a lens, similar to that for spherical mirrors, is defined as the ratio of the height of the image and the height of the object. Magnification is represented by the letter m. If h is the height of the object and h′ is the height of the image given by a lens, then the magnification produced by the lens is given by, m = Height of the Imageobject = h ′"
+              "text": "v u f The lens formula given above is general and is valid in all situations for any spherical lens. Take proper care of the signs of different quantities, while putting numerical values for solving problems relating to lenses. Magnification The magnification produced by a lens, similar to that for spherical mirrors, is defined as the ratio of the height of the image and the height of the object. Magnification is represented by the letter m. If h is the height of the object and h′ is the height of the image given by a lens, then the magnification produced by the lens is given by, m = Height of the Imageobject = h ′"
             },
             {
               "type": "equation",
@@ -700,7 +700,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Example 9.3 A concave lens has focal length of 15 cm. At what distance should the object from the lens be placed so that it forms an image at 10 cm from the lens? Also, find the magnification produced by the lens. Solution A concave lens always forms a virtual, erect image on the same side of the object. Image-distance v = –10 cm; Focal length f = –15 cm; Object-distance u = ? Since 1 1 − = v u f 1 = – or, u v f 1 u = – = + ( ) –10 –15 1015 −+ 1 3 2 1 = − u 30 or, u = – 30 cm Thus, the object-distance is 30 cm. Magnification m = v/u m = −10cm 1 = + ; 0.33 − 30cm 3 The positive sign shows that the image is erect and virtual. The image is one-third of the size of the object. Example 9.4 A 2.0 cm tall object is placed perpendicular to the principal axis of a convex lens of focal length 10 cm. The distance of the object from the lens is 15 cm. Find the nature, position and size of the image. Also find its magnification. Reprint 2026-27 Solution Height of the object h = + 2.0 cm; Focal length f = + 10 cm; object-distance u = –15 cm; Image-distance v = ? Height of the image h′ = ? 1 − = Since v u f 1 = + or, v u f 1 v = + = − + ( 15)10 1510 − −+ 1 2 3 1 = v 30 or, v = + 30 cm The positive sign of v shows that the image is formed at a distance of 30 cm on the other side of the optical centre. The image is real and inverted. h v ' = Magnification m = h u h′ = h (v/u) or, Height of the image, h′ = (2.0) (+30/–15) = – 4.0 cm Magnification m = v/u + 30cm or, = − m 2 − 15cm The negative signs of m and h′ show that the image is inverted and real. It is formed below the principal axis. Thus, a real, inverted image, 4 cm tall, is formed at a distance of 30 cm on the other side of the lens. The image is two times enlarged."
+              "text": "Example 9.3 A concave lens has focal length of 15 cm. At what distance should the object from the lens be placed so that it forms an image at 10 cm from the lens? Also, find the magnification produced by the lens. Solution A concave lens always forms a virtual, erect image on the same side of the object. Image-distance v = –10 cm; Focal length f = –15 cm; Object-distance u = ? Since 1 1 − = v u f 1 = – or, u v f 1 u = – = + ( ) –10 –15 1015 −+ 1 3 2 1 = − u 30 or, u = – 30 cm Thus, the object-distance is 30 cm. Magnification m = v/u m = −10cm 1 = + ; 0.33 − 30cm 3 The positive sign shows that the image is erect and virtual. The image is one-third of the size of the object. Example 9.4 A 2.0 cm tall object is placed perpendicular to the principal axis of a convex lens of focal length 10 cm. The distance of the object from the lens is 15 cm. Find the nature, position and size of the image. Also find its magnification. Solution Height of the object h = + 2.0 cm; Focal length f = + 10 cm; object-distance u = –15 cm; Image-distance v = ? Height of the image h′ = ? 1 − = Since v u f 1 = + or, v u f 1 v = + = − + ( 15)10 1510 − −+ 1 2 3 1 = v 30 or, v = + 30 cm The positive sign of v shows that the image is formed at a distance of 30 cm on the other side of the optical centre. The image is real and inverted. h v ' = Magnification m = h u h′ = h (v/u) or, Height of the image, h′ = (2.0) (+30/–15) = – 4.0 cm Magnification m = v/u + 30cm or, = − m 2 − 15cm The negative signs of m and h′ show that the image is inverted and real. It is formed below the principal axis. Thus, a real, inverted image, 4 cm tall, is formed at a distance of 30 cm on the other side of the lens. The image is two times enlarged."
             }
           ]
         },
@@ -720,7 +720,7 @@
             },
             {
               "type": "paragraph",
-              "text": "f Reprint 2026-27 The SI unit of power of a lens is ‘dioptre’. It is denoted by the letter D. If f is expressed in metres, then, power is expressed in dioptres. Thus, 1 dioptre is the power of a lens whose focal length is 1 metre. 1D = 1m–1. You may note that the power of a convex lens is positive and that of a concave lens is negative. Opticians prescribe corrective lenses indicating their powers. Let us say the lens prescribed has power equal to + 2.0 D. This means the lens prescribed is convex. The focal length of the lens is + 0.50 m. Similarly, a lens of power – 2.5 D has a focal length of – 0.40 m. The lens is concave."
+              "text": "f The SI unit of power of a lens is ‘dioptre’. It is denoted by the letter D. If f is expressed in metres, then, power is expressed in dioptres. Thus, 1 dioptre is the power of a lens whose focal length is 1 metre. 1D = 1m–1. You may note that the power of a convex lens is positive and that of a concave lens is negative. Opticians prescribe corrective lenses indicating their powers. Let us say the lens prescribed has power equal to + 2.0 D. This means the lens prescribed is convex. The focal length of the lens is + 0.50 m. Similarly, a lens of power – 2.5 D has a focal length of – 0.40 m. The lens is concave."
             },
             {
               "type": "do_you_know",
@@ -743,7 +743,7 @@
                 },
                 {
                   "num": 2,
-                  "text": "A convex lens forms a real and inverted image of a needle at a distance of 50 cm from it.  Where is the needle placed in front of the convex lens if the image is equal to the size of the object? Also, find the power of the lens."
+                  "text": "A convex lens forms a real and inverted image of a needle at a distance of 50 cm from it. Where is the needle placed in front of the convex lens if the image is equal to the size of the object? Also, find the power of the lens."
                 },
                 {
                   "num": 3,
@@ -761,11 +761,11 @@
     "Mirrors and lenses form images of objects. Images can be either real or virtual,",
     "depending on the position of the object.",
     "The reflecting surfaces, of all types, obey the laws of reflection. The refracting surfaces obey the laws of refraction.",
-    "New Cartesian Sign Conventions are followed for spherical mirrors and lenses. Reprint 2026-27 1 + =",
+    "New Cartesian Sign Conventions are followed for spherical mirrors and lenses. 1 + =",
     "Mirror formula, f , gives the relationship between the object-distance (u), v u image-distance (v), and focal length (f) of a spherical mirror.",
     "The focal length of a spherical mirror is equal to half its radius of curvature.",
     "The magnification produced by a spherical mirror is the ratio of the height of the image to the height of the object.",
-    "A light ray travelling obliquely from a denser medium to a rarer medium bends away from the normal. A light ray bends towards the normal when it travels obliquely from a rarer to a denser medium. Light travels in vacuum with an enormous speed of 3×108 m s-1.  The speed of light",
+    "A light ray travelling obliquely from a denser medium to a rarer medium bends away from the normal. A light ray bends towards the normal when it travels obliquely from a rarer to a denser medium. Light travels in vacuum with an enormous speed of 3×108 m s-1. The speed of light",
     "is different in different media. The refractive index of a transparent medium is the ratio of the speed of light in",
     "vacuum to that in the medium.",
     "In case of a rectangular glass slab, the refraction takes place at both air-glass interface and glass-air interface. The emergent ray is parallel to the direction of incident ray. 1 – = Lens formula, f , gives the relationship between the object-distance (u),",
@@ -808,7 +808,7 @@
     },
     {
       "num": 4,
-      "question": "A spherical mirror and a thin spherical lens have each a focal length of –15 cm. The mirror and the lens are likely to be Reprint 2026-27",
+      "question": "A spherical mirror and a thin spherical lens have each a focal length of –15 cm. The mirror and the lens are likely to be",
       "options": [
         "(a) both concave.",
         "(b) both convex.",
@@ -819,7 +819,7 @@
     },
     {
       "num": 5,
-      "question": "No matter how far you stand from a mirror, your image appears erect.  The mirror is likely to be",
+      "question": "No matter how far you stand from a mirror, your image appears erect. The mirror is likely to be",
       "options": [
         "(a) only plane.",
         "(b) only concave.",
@@ -841,7 +841,7 @@
     },
     {
       "num": 7,
-      "question": "We wish to obtain an erect image of an object, using a concave mirror of focal length 15 cm. What should be the range of distance of the object from the mirror? What is the nature of the image?  Is the image larger or smaller than the object? Draw a ray diagram to show the image formation in this case.",
+      "question": "We wish to obtain an erect image of an object, using a concave mirror of focal length 15 cm. What should be the range of distance of the object from the mirror? What is the nature of the image? Is the image larger or smaller than the object? Draw a ray diagram to show the image formation in this case.",
       "options": [],
       "type": "short"
     },
@@ -857,19 +857,19 @@
     },
     {
       "num": 9,
-      "question": "One-half of a convex lens is covered with a black paper.  Will this lens produce a complete image of the object?  Verify your answer experimentally.  Explain your observations.",
+      "question": "One-half of a convex lens is covered with a black paper. Will this lens produce a complete image of the object? Verify your answer experimentally. Explain your observations.",
       "options": [],
       "type": "short"
     },
     {
       "num": 10,
-      "question": "An object 5 cm in length is held 25 cm away from a converging lens of focal length 10 cm.  Draw the ray diagram and find the position, size and the nature of the image formed.",
+      "question": "An object 5 cm in length is held 25 cm away from a converging lens of focal length 10 cm. Draw the ray diagram and find the position, size and the nature of the image formed.",
       "options": [],
       "type": "short"
     },
     {
       "num": 11,
-      "question": "A concave lens of focal length 15 cm forms an image 10 cm from the lens.  How far is the object placed from the lens? Draw the ray diagram.",
+      "question": "A concave lens of focal length 15 cm forms an image 10 cm from the lens. How far is the object placed from the lens? Draw the ray diagram.",
       "options": [],
       "type": "short"
     },
@@ -887,7 +887,7 @@
     },
     {
       "num": 14,
-      "question": "An object 5.0 cm in length is placed at a distance of 20 cm in front of a convex mirror of radius of curvature 30 cm.  Find the position of the image, its nature and size.",
+      "question": "An object 5.0 cm in length is placed at a distance of 20 cm in front of a convex mirror of radius of curvature 30 cm. Find the position of the image, its nature and size.",
       "options": [],
       "type": "short"
     },
@@ -905,7 +905,7 @@
     },
     {
       "num": 17,
-      "question": "A doctor has prescribed a corrective lens of power +1.5 D.  Find the focal length of the lens.  Is the prescribed lens diverging or converging? Reprint 2026-27",
+      "question": "A doctor has prescribed a corrective lens of power +1.5 D. Find the focal length of the lens. Is the prescribed lens diverging or converging?",
       "options": [],
       "type": "short"
     }

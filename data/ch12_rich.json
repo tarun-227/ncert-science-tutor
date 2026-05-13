@@ -2,7 +2,7 @@
   "id": 12,
   "title": "Magnetic Effects of Electric Current",
   "subject": "Physics",
-  "intro": "I n the previous Chapter on Electricity we learnt about the heating effects of electric current. What could be the other effects of electric current? We know that an electric current-carrying wire behaves like a magnet. Let us perform the following Activity to reinforce it. Resistor Long straight conductor Compass needle is deflected on passing an electric current through a metallic conductor We see that the needle is deflected. What does it mean? It means that the electric current through the copper wire has produced a magnetic effect. Thus we can say that electricity and magnetism are linked to each other. Then, what about the reverse possibility of an electric effect of moving magnets? In this Chapter we will study magnetic fields and such electromagnetic effects. We shall also study about electromagnets which involve the magnetic effect of electric current. Reprint 2026-27",
+  "intro": "I n the previous Chapter on Electricity we learnt about the heating effects of electric current. What could be the other effects of electric current? We know that an electric current-carrying wire behaves like a magnet. Let us perform the following Activity to reinforce it. Resistor Long straight conductor Compass needle is deflected on passing an electric current through a metallic conductor We see that the needle is deflected. What does it mean? It means that the electric current through the copper wire has produced a magnetic effect. Thus we can say that electricity and magnetism are linked to each other. Then, what about the reverse possibility of an electric effect of moving magnets? In this Chapter we will study magnetic fields and such electromagnetic effects. We shall also study about electromagnets which involve the magnetic effect of electric current.",
   "intro_blocks": [
     {
       "type": "activity",
@@ -90,7 +90,7 @@
           "items": [
             {
               "num": 1,
-              "text": "Why does a compass needle get deflected when brought near a bar magnet? Figure 12.2 Iron filings near the bar magnet align themselves along the field lines. The iron filings arrange themselves in a pattern as shown Fig. 12.2.  Why do the iron filings arrange in such a pattern? What does this pattern demonstrate?  The magnet exerts its influence in the region surrounding it.  Therefore the iron filings experience a force.  The force thus exerted makes iron filings to arrange in a pattern. The region surrounding a magnet, in which the force of the magnet can be detected, is said to have a magnetic field.  The lines along which the iron filings align themselves represent magnetic field lines. Are there other ways of obtaining magnetic field lines around a bar magnet?  Yes, you can yourself draw the field lines of a bar magnet. Reprint 2026-27 Figure 12.3 compass needle Figure 12.4 Field lines around a bar magnet Magnetic field is a quantity that has both direction and magnitude. The direction of the magnetic field is taken to be the direction in which a north pole of the compass needle moves inside it.  Therefore it is taken by convention that the field lines emerge from north pole and merge at the south pole (note the arrows marked on the field lines in Fig. 12.4). Inside the magnet, the direction of field lines is from its south pole to its north pole. Thus the magnetic field lines are closed curves. The relative strength of the magnetic field is shown by the degree of closeness of the field lines. The field is stronger, that is, the force acting on the pole of another magnet placed is greater where the field lines are crowded (see Fig. 12.4). No two field-lines are found to cross each other. If they did, it would mean that at the point of intersection, the compass needle would point towards two directions, which is not possible."
+              "text": "Why does a compass needle get deflected when brought near a bar magnet? Figure 12.2 Iron filings near the bar magnet align themselves along the field lines. The iron filings arrange themselves in a pattern as shown Fig. 12.2. Why do the iron filings arrange in such a pattern? What does this pattern demonstrate? The magnet exerts its influence in the region surrounding it. Therefore the iron filings experience a force. The force thus exerted makes iron filings to arrange in a pattern. The region surrounding a magnet, in which the force of the magnet can be detected, is said to have a magnetic field. The lines along which the iron filings align themselves represent magnetic field lines. Are there other ways of obtaining magnetic field lines around a bar magnet? Yes, you can yourself draw the field lines of a bar magnet. Figure 12.3 compass needle Figure 12.4 Field lines around a bar magnet Magnetic field is a quantity that has both direction and magnitude. The direction of the magnetic field is taken to be the direction in which a north pole of the compass needle moves inside it. Therefore it is taken by convention that the field lines emerge from north pole and merge at the south pole (note the arrows marked on the field lines in Fig. 12.4). Inside the magnet, the direction of field lines is from its south pole to its north pole. Thus the magnetic field lines are closed curves. The relative strength of the magnetic field is shown by the degree of closeness of the field lines. The field is stronger, that is, the force acting on the pole of another magnet placed is greater where the field lines are crowded (see Fig. 12.4). No two field-lines are found to cross each other. If they did, it would mean that at the point of intersection, the compass needle would point towards two directions, which is not possible."
             }
           ]
         }
@@ -102,7 +102,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "In Activity 12.1, we have seen that an electric current through a metallic conductor produces a magnetic field around it. In order to find the direction of the field produced let us repeat the activity in the following way – Reprint 2026-27"
+          "text": "In Activity 12.1, we have seen that an electric current through a metallic conductor produces a magnetic field around it. In order to find the direction of the field produced let us repeat the activity in the following way –"
         },
         {
           "type": "activity",
@@ -161,7 +161,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Reprint 2026-27 Variable"
+              "text": "Variable"
             },
             {
               "type": "paragraph",
@@ -186,7 +186,7 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "A convenient way of finding the direction of magnetic field associated with a current-carrying conductor is given in Fig. 12.7. Reprint 2026-27 Imagine that you are holding a current-carrying straight conductor in your right hand such that the thumb points towards the direction of current. Then your fingers will wrap around the conductor in the direction of the field lines of the magnetic field, as shown in Fig. 12.7. This is known as the right-hand thumb rule*. Example 12.1 A current through a horizontal power line flows in east to west"
+              "text": "A convenient way of finding the direction of magnetic field associated with a current-carrying conductor is given in Fig. 12.7. Imagine that you are holding a current-carrying straight conductor in your right hand such that the thumb points towards the direction of current. Then your fingers will wrap around the conductor in the direction of the field lines of the magnetic field, as shown in Fig. 12.7. This is known as the right-hand thumb rule*. Example 12.1 A current through a horizontal power line flows in east to west"
             },
             {
               "type": "figure",
@@ -217,7 +217,7 @@
             },
             {
               "type": "paragraph",
-              "text": "current would give rise to the magnetic field appearing as produced by a current-carrying straight lines at the center of the loop. By applying the right circular loop hand rule, it is easy to check that every section of the wire contributes to the magnetic field lines in the same direction within the loop. * This rule is also called Maxwell’s corkscrew rule. If we consider ourselves driving a corkscrew in the direction of the current, then the direction of the rotation of Reprint 2026-27 We know that the magnetic field produced by a current-carrying wire at a given point depends directly on the current passing through it. Therefore, if there is a circular coil having n turns, the field produced is n times as large as that produced by a single turn. This is because the current in each circular turn has the same direction, and the field due to each turn then just adds up."
+              "text": "current would give rise to the magnetic field appearing as produced by a current-carrying straight lines at the center of the loop. By applying the right circular loop hand rule, it is easy to check that every section of the wire contributes to the magnetic field lines in the same direction within the loop. * This rule is also called Maxwell’s corkscrew rule. If we consider ourselves driving a corkscrew in the direction of the current, then the direction of the rotation of We know that the magnetic field produced by a current-carrying wire at a given point depends directly on the current passing through it. Therefore, if there is a circular coil having n turns, the field produced is n times as large as that produced by a single turn. This is because the current in each circular turn has the same direction, and the field due to each turn then just adds up."
             },
             {
               "type": "activity",
@@ -278,7 +278,7 @@
               "items": [
                 {
                   "num": 1,
-                  "text": "Consider a circular loop of wire lying in is used to magnetise steel rod ? the plane of the table. Let the current inside it – an electromagnet. pass through the loop clockwise. Apply the right-hand rule to find out the and outside the loop. uniform. Draw a diagram to represent it. Reprint 2026-27"
+                  "text": "Consider a circular loop of wire lying in is used to magnetise steel rod ? the plane of the table. Let the current inside it – an electromagnet. pass through the loop clockwise. Apply the right-hand rule to find out the and outside the loop. uniform. Draw a diagram to represent it."
                 },
                 {
                   "num": 3,
@@ -320,7 +320,7 @@
         },
         {
           "type": "paragraph",
-          "text": "A current-carrying rod, AB, experiences a force perpendicular to its length and magnet is not shown here, for simplicity. The displacement of the rod in the above activity suggests that a force is exerted on the current-carrying aluminium rod when it is placed in a magnetic field. It also suggests that the direction of force is also reversed when the direction of current through the conductor is reversed. Now change the direction of field to vertically downwards by interchanging the two poles of the magnet. It is once again observed that Reprint 2026-27 the direction of force acting on the current-carrying rod gets reversed. It shows that the direction of the force on the conductor depends upon the direction of current and the direction of the magnetic field. Experiments have shown that the displacement of the rod is largest (or the magnitude of the force is the highest) when the direction of current is at right angles to the direction of the magnetic field. In such a condition we can use a simple rule to find the direction of the force on the conductor. In Activity 12.7, we considered the direction of the current and that of the magnetic field perpendicular to each other and found that the force is perpendicular to both of them. The three directions can be illustrated through a simple rule, called Fleming’s left-hand rule. According to this rule, stretch the thumb, forefinger and middle finger of your left hand such that they are mutually perpendicular (Fig. 12.13). If the first finger points in the direction of magnetic field and the second finger in the direction of current, then the"
+          "text": "A current-carrying rod, AB, experiences a force perpendicular to its length and magnet is not shown here, for simplicity. The displacement of the rod in the above activity suggests that a force is exerted on the current-carrying aluminium rod when it is placed in a magnetic field. It also suggests that the direction of force is also reversed when the direction of current through the conductor is reversed. Now change the direction of field to vertically downwards by interchanging the two poles of the magnet. It is once again observed that the direction of force acting on the current-carrying rod gets reversed. It shows that the direction of the force on the conductor depends upon the direction of current and the direction of the magnetic field. Experiments have shown that the displacement of the rod is largest (or the magnitude of the force is the highest) when the direction of current is at right angles to the direction of the magnetic field. In such a condition we can use a simple rule to find the direction of the force on the conductor. In Activity 12.7, we considered the direction of the current and that of the magnetic field perpendicular to each other and found that the force is perpendicular to both of them. The three directions can be illustrated through a simple rule, called Fleming’s left-hand rule. According to this rule, stretch the thumb, forefinger and middle finger of your left hand such that they are mutually perpendicular (Fig. 12.13). If the first finger points in the direction of magnetic field and the second finger in the direction of current, then the"
         },
         {
           "type": "figure",
@@ -363,7 +363,7 @@
           "items": [
             {
               "num": 1,
-              "text": "Which of the following property of a proton can change while it moves (a) mass (b) speed (c) velocity (d) momentum Reprint 2026-27"
+              "text": "Which of the following property of a proton can change while it moves (a) mass (b) speed (c) velocity (d) momentum"
             },
             {
               "num": 2,
@@ -383,7 +383,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "In our homes, we receive supply of electric power through a main supply (also called mains), either supported through overhead electric poles or by underground cables. One of the wires in this supply, usually with red insulation cover, is called live wire (or positive). Another wire, with black insulation, is called neutral wire (or negative). In our country, the potential difference between the two is 220 V. At the meter-board in the house, these wires pass into an electricity meter through a main fuse. Through the main switch they are connected to the line wires in the house. These wires supply electricity to separate circuits within the house. Often, two separate circuits are used, one of 15 A current rating for appliances with higher power ratings such as geysers, air coolers, etc. The other circuit is of 5 A current rating for bulbs, fans, etc. The earth wire, which has insulation of green colour, is usually connected to a metal plate deep in the earth near the house. This is used as a safety measure, especially for those appliances that have a metallic body, for example, electric press, toaster, table fan, refrigerator, etc. The metallic body is connected to the earth wire, which provides a low-resistance conducting path for the current. Thus, it ensures that any leakage of current to the metallic body of the appliance keeps its potential to that of the earth, and the user may not get a severe electric shock. Reprint 2026-27"
+          "text": "In our homes, we receive supply of electric power through a main supply (also called mains), either supported through overhead electric poles or by underground cables. One of the wires in this supply, usually with red insulation cover, is called live wire (or positive). Another wire, with black insulation, is called neutral wire (or negative). In our country, the potential difference between the two is 220 V. At the meter-board in the house, these wires pass into an electricity meter through a main fuse. Through the main switch they are connected to the line wires in the house. These wires supply electricity to separate circuits within the house. Often, two separate circuits are used, one of 15 A current rating for appliances with higher power ratings such as geysers, air coolers, etc. The other circuit is of 5 A current rating for bulbs, fans, etc. The earth wire, which has insulation of green colour, is usually connected to a metal plate deep in the earth near the house. This is used as a safety measure, especially for those appliances that have a metallic body, for example, electric press, toaster, table fan, refrigerator, etc. The metallic body is connected to the earth wire, which provides a low-resistance conducting path for the current. Thus, it ensures that any leakage of current to the metallic body of the appliance keeps its potential to that of the earth, and the user may not get a severe electric shock."
         },
         {
           "type": "figure",
@@ -408,7 +408,7 @@
             },
             {
               "num": 3,
-              "text": "What precaution should be taken to avoid the overloading of domestic electric circuits? Reprint 2026-27"
+              "text": "What precaution should be taken to avoid the overloading of domestic electric circuits?"
             }
           ]
         }
@@ -425,7 +425,7 @@
     "insulated copper wire. A current-carrying conductor when placed in a magnetic field experiences a force.",
     "If the direction of the field and that of the current are mutually perpendicular to each other, then the force acting on the conductor will be perpendicular to both and will be given by Fleming’s left-hand rule. In our houses we receive AC electric power of 220 V with a frequency of 50 Hz. One",
     "of the wires in this supply is with red insulation, called live wire. The other one is of black insulation, which is a neutral wire. The potential difference between the two is 220 V. The third is the earth wire that has green insulation and this is connected to a metallic body deep inside earth. It is used as a safety measure to ensure that any leakage of current to a metallic body does not give any severe shock to a user. Fuse is the most important safety device, used for protecting the circuits due to",
-    "short-circuiting or overloading of the circuits. Reprint 2026-27"
+    "short-circuiting or overloading of the circuits."
   ],
   "exercises": [
     {
@@ -491,7 +491,7 @@
     },
     {
       "num": 9,
-      "question": "What is the function of an earth wire? Why is it necessary to earth metallic appliances? Reprint 2026-27",
+      "question": "What is the function of an earth wire? Why is it necessary to earth metallic appliances?",
       "options": [],
       "type": "short"
     }

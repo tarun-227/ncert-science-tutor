@@ -2,7 +2,7 @@
   "id": 1,
   "title": "Chemical Reactions and Equations",
   "subject": "Chemistry",
-  "intro": "Consider the following situations of daily life and think what happens when \u2013 \u2022 milk is left at room temperature during summers. \u2022 an iron tawa/pan/nail is left exposed to humid atmosphere. \u2022 grapes get fermented. \u2022 food is cooked. \u2022 food gets digested in our body. \u2022 we respire. In all the above situations, the nature and the identity of the initial substance have somewhat changed. We have already learnt about physical and chemical changes of matter in our previous classes. Whenever a chemical change occurs, we can say that a chemical reaction has taken place. You may perhaps be wondering as to what is actually meant by a chemical reaction. How do we come to know that a chemical reaction has taken place? Let us perform some activities to find the answer to these questions. Burning of a magnesium ribbon in air and collection of magnesium oxide in a watch-glass Reprint 2026-27 You must have observed that magnesium ribbon burns with a dazzling white flame and changes into a white powder....",
+  "intro": "Consider the following situations of daily life and think what happens when – • milk is left at room temperature during summers. • an iron tawa/pan/nail is left exposed to humid atmosphere. • grapes get fermented. • food is cooked. • food gets digested in our body. • we respire. In all the above situations, the nature and the identity of the initial substance have somewhat changed. We have already learnt about physical and chemical changes of matter in our previous classes. Whenever a chemical change occurs, we can say that a chemical reaction has taken place. You may perhaps be wondering as to what is actually meant by a chemical reaction. How do we come to know that a chemical reaction has taken place? Let us perform some activities to find the answer to these questions. Burning of a magnesium ribbon in air and collection of magnesium oxide in a watch-glass You must have observed that magnesium ribbon burns with a dazzling white flame and changes into a white powder....",
   "intro_blocks": [
     {
       "type": "activity",
@@ -14,7 +14,7 @@
         "What do you observe?"
       ],
       "cautions": [
-        "This Activity needs the teacher\u2019s assistance. It would be better if students wear suitable eyeglasses."
+        "This Activity needs the teacher’s assistance. It would be better if students wear suitable eyeglasses."
       ],
       "lab_report": {
         "aim": "To demonstrate a chemical reaction between magnesium and oxygen, resulting in an exothermic process.",
@@ -70,7 +70,7 @@
         "Take a few zinc granules in a conical flask or a test tube.",
         "Add dilute hydrochloric acid or sulphuric acid to this (Fig. 1.2).",
         "Do you observe anything happening around the zinc granules? Touch the conical flask or test tube. Is there any change in its temperature?",
-        "Atoms of In reactants In products iron (i)Initial 1 (in Fe) 3 (in Fe3O4) (ii)To balance 1\u00d73"
+        "Atoms of In reactants In products iron (i)Initial 1 (in Fe) 3 (in Fe3O4) (ii)To balance 1×3"
       ],
       "cautions": [
         "Handle the acid with care."
@@ -103,7 +103,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Formation of hydrogen Activity 1.1 can be described as \u2013 when a magnesium ribbon is burnt in gas by the action of oxygen, it gets converted to magnesium oxide. This description of a dilute sulphuric acid on chemical reaction in a sentence form is quite long. It can be written in a zinc shorter form. The simplest way to do this is to write it in the form of a word-equation. The word-equation for the above reaction would be \u2013 \u2192Magnesium oxide"
+          "text": "Formation of hydrogen Activity 1.1 can be described as – when a magnesium ribbon is burnt in gas by the action of oxygen, it gets converted to magnesium oxide. This description of a dilute sulphuric acid on chemical reaction in a sentence form is quite long. It can be written in a zinc shorter form. The simplest way to do this is to write it in the form of a word-equation. The word-equation for the above reaction would be – →Magnesium oxide"
         },
         {
           "type": "equation",
@@ -112,7 +112,7 @@
         },
         {
           "type": "paragraph",
-          "text": "(Reactants) (Product) The substances that undergo chemical change in the reaction (1.1), magnesium and oxygen, are the reactants. The new substance is magnesium oxide, formed during the reaction, as a product. A word-equation shows change of reactants to products through an arrow placed between them. The reactants are written on the left-hand side (LHS) with a plus sign (+) between them. Similarly, products are written on the right-hand side (RHS) with a plus sign (+) between them. The arrowhead points towards the products, and shows the direction of the reaction. Reprint 2026-27"
+          "text": "(Reactants) (Product) The substances that undergo chemical change in the reaction (1.1), magnesium and oxygen, are the reactants. The new substance is magnesium oxide, formed during the reaction, as a product. A word-equation shows change of reactants to products through an arrow placed between them. The reactants are written on the left-hand side (LHS) with a plus sign (+) between them. Similarly, products are written on the right-hand side (RHS) with a plus sign (+) between them. The arrowhead points towards the products, and shows the direction of the reaction."
         },
         {
           "type": "subsection",
@@ -121,12 +121,12 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Is there any other shorter way for representing chemical equations? Chemical equations can be made more concise and useful if we use chemical formulae instead of words. A chemical equation represents a chemical reaction. If you recall formulae of magnesium, oxygen and magnesium oxide, the above word-equation can be written as \u2013"
+              "text": "Is there any other shorter way for representing chemical equations? Chemical equations can be made more concise and useful if we use chemical formulae instead of words. A chemical equation represents a chemical reaction. If you recall formulae of magnesium, oxygen and magnesium oxide, the above word-equation can be written as –"
             },
             {
               "type": "equation",
               "num": "1.2",
-              "body": "Mg + O2 \u2192 MgO"
+              "body": "Mg + O2 → MgO"
             },
             {
               "type": "paragraph",
@@ -141,12 +141,12 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Recall the law of conservation of mass that you studied in Class IX; mass can neither be created nor destroyed in a chemical reaction. That is, the total mass of the elements present in the products of a chemical reaction has to be equal to the total mass of the elements present in the reactants. In other words, the number of atoms of each element remains the same, before and after a chemical reaction. Hence, we need to balance a skeletal chemical equation. Is the chemical Eq. (1.2) balanced? Let us learn about balancing a chemical equation step by step. The word-equation for Activity 1.3 may be represented as \u2013 Zinc + Sulphuric acid \u2192 Zinc sulphate + Hydrogen The above word-equation may be represented by the following chemical equation \u2013"
+              "text": "Recall the law of conservation of mass that you studied in Class IX; mass can neither be created nor destroyed in a chemical reaction. That is, the total mass of the elements present in the products of a chemical reaction has to be equal to the total mass of the elements present in the reactants. In other words, the number of atoms of each element remains the same, before and after a chemical reaction. Hence, we need to balance a skeletal chemical equation. Is the chemical Eq. (1.2) balanced? Let us learn about balancing a chemical equation step by step. The word-equation for Activity 1.3 may be represented as – Zinc + Sulphuric acid → Zinc sulphate + Hydrogen The above word-equation may be represented by the following chemical equation –"
             },
             {
               "type": "equation",
               "num": "1.3",
-              "body": "Zn + H2SO4 \u2192 ZnSO4 + H2"
+              "body": "Zn + H2SO4 → ZnSO4 + H2"
             },
             {
               "type": "paragraph",
@@ -158,16 +158,16 @@
             },
             {
               "type": "paragraph",
-              "text": "As the number of atoms of each element is the same on both sides of the arrow, Eq. (1.3) is a balanced chemical equation. Let us try to balance the following chemical equation \u2013"
+              "text": "As the number of atoms of each element is the same on both sides of the arrow, Eq. (1.3) is a balanced chemical equation. Let us try to balance the following chemical equation –"
             },
             {
               "type": "equation",
               "num": "1.4",
-              "body": "Fe + H2O \u2192 Fe3O4 + H2"
+              "body": "Fe + H2O → Fe3O4 + H2"
             },
             {
               "type": "paragraph",
-              "text": "Reprint 2026-27"
+              "text": ""
             },
             {
               "type": "step",
@@ -181,7 +181,7 @@
             {
               "type": "equation",
               "num": "1.5",
-              "body": "Fe + H2O \u2192 Fe3O4 + H2"
+              "body": "Fe + H2O → Fe3O4 + H2"
             },
             {
               "type": "step",
@@ -203,7 +203,7 @@
             },
             {
               "type": "paragraph",
-              "text": "that contains the maximum number of atoms. It may be a reactant or a product. In that compound, select the element which has the maximum number of atoms. Using these criteria, we select Fe3O4 and the element oxygen in it. There are four oxygen atoms on the RHS and only one on the LHS. To balance the oxygen atoms \u2013 Atoms of In reactants In products oxygen (i)Initial 1 (in H2O) 4 (in Fe3O4) (ii)To balance 1\u00d74 To equalise the number of atoms, it must be remembered that we cannot alter the formulae of the compounds or elements involved in the reactions. For example, to balance oxygen atoms we can put coefficient \u20184\u2019 as 4 H2O and not H2O4 or (H2O)4. Now the partly balanced equation becomes \u2013"
+              "text": "that contains the maximum number of atoms. It may be a reactant or a product. In that compound, select the element which has the maximum number of atoms. Using these criteria, we select Fe3O4 and the element oxygen in it. There are four oxygen atoms on the RHS and only one on the LHS. To balance the oxygen atoms – Atoms of In reactants In products oxygen (i)Initial 1 (in H2O) 4 (in Fe3O4) (ii)To balance 1×4 To equalise the number of atoms, it must be remembered that we cannot alter the formulae of the compounds or elements involved in the reactions. For example, to balance oxygen atoms we can put coefficient ‘4’ as 4 H2O and not H2O4 or (H2O)4. Now the partly balanced equation becomes –"
             },
             {
               "type": "equation",
@@ -212,7 +212,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Fe + 4 H2O \u2192 Fe3O4 + H2 (partly balanced equation)"
+              "text": "Fe + 4 H2O → Fe3O4 + H2 (partly balanced equation)"
             },
             {
               "type": "step",
@@ -221,7 +221,7 @@
             },
             {
               "type": "paragraph",
-              "text": "to proceed further. Let us balance hydrogen atoms in the partly balanced equation. To equalise the number of H atoms, make the number of molecules of hydrogen as four on the RHS. Atoms of In reactants In products hydrogen (i)Initial 8 (in 4 H2O) 2 (in H2) (ii)To balance 8 2 \u00d7 4 The equation would be \u2013"
+              "text": "to proceed further. Let us balance hydrogen atoms in the partly balanced equation. To equalise the number of H atoms, make the number of molecules of hydrogen as four on the RHS. Atoms of In reactants In products hydrogen (i)Initial 8 (in 4 H2O) 2 (in H2) (ii)To balance 8 2 × 4 The equation would be –"
             },
             {
               "type": "equation",
@@ -230,7 +230,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Fe + 4 H2O \u2192 Fe3O4 + 4 H2 (partly balanced equation) Reprint 2026-27"
+              "text": "Fe + 4 H2O → Fe3O4 + 4 H2 (partly balanced equation)"
             },
             {
               "type": "step",
@@ -248,7 +248,7 @@
             {
               "type": "equation",
               "num": "1.8",
-              "body": "3 Fe + 4 H2O \u2192 Fe3O4 + 4 H2"
+              "body": "3 Fe + 4 H2O → Fe3O4 + 4 H2"
             },
             {
               "type": "step",
@@ -266,12 +266,12 @@
             },
             {
               "type": "paragraph",
-              "text": "3Fe + 4H2O \u2192 Fe3O4 + 4H2 (balanced equation) The numbers of atoms of elements on both sides of Eq. (1.9) are equal. This equation is now balanced. This method of balancing chemical equations is called hit-and-trial method as we make trials to balance the equation by using the smallest whole number coefficient."
+              "text": "3Fe + 4H2O → Fe3O4 + 4H2 (balanced equation) The numbers of atoms of elements on both sides of Eq. (1.9) are equal. This equation is now balanced. This method of balancing chemical equations is called hit-and-trial method as we make trials to balance the equation by using the smallest whole number coefficient."
             },
             {
               "type": "step",
               "label": "Step VII",
-              "text": "Writing Symbols of Physical States  Carefully examine"
+              "text": "Writing Symbols of Physical States Carefully examine"
             },
             {
               "type": "paragraph",
@@ -280,11 +280,11 @@
             {
               "type": "equation",
               "num": "1.10",
-              "body": "3Fe(s) + 4H2O(g) \u2192 Fe3O4(s) + 4H2(g)"
+              "body": "3Fe(s) + 4H2O(g) → Fe3O4(s) + 4H2(g)"
             },
             {
               "type": "paragraph",
-              "text": "Note that the symbol (g) is used with H2O to indicate that in this reaction water is used in the form of steam. Usually physical states are not included in a chemical equation unless it is necessary to specify them. Sometimes the reaction conditions, such as temperature, pressure, catalyst, etc., for the reaction are indicated above and/or below the arrow in the equation. For example \u2013 340atm"
+              "text": "Note that the symbol (g) is used with H2O to indicate that in this reaction water is used in the form of steam. Usually physical states are not included in a chemical equation unless it is necessary to specify them. Sometimes the reaction conditions, such as temperature, pressure, catalyst, etc., for the reaction are indicated above and/or below the arrow in the equation. For example – 340atm"
             },
             {
               "type": "equation",
@@ -293,7 +293,7 @@
             },
             {
               "type": "paragraph",
-              "text": "CO(g) + 2H (g) CH OH(l) Sunlight \uf8e7\uf8e7\uf8e7\uf8e7\uf8e7\uf8e7\u2192 6CO (aq)12H O(l) + C H O (aq)6O"
+              "text": "CO(g) + 2H (g) CH OH(l) Sunlight → 6CO (aq)12H O(l) + C H O (aq)6O"
             },
             {
               "type": "equation",
@@ -302,7 +302,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Chlorophyll (Glucose) Using these steps, can you balance Eq. (1.2) given in the text earlier? Reprint 2026-27"
+              "text": "Chlorophyll (Glucose) Using these steps, can you balance Eq. (1.2) given in the text earlier?"
             },
             {
               "type": "in_text_questions",
@@ -313,7 +313,7 @@
                 },
                 {
                   "num": 2,
-                  "text": "Write the balanced equation for the following chemical reactions. (i) Hydrogen + Chlorine \u2192 Hydrogen chloride ? (ii) Barium chloride + Aluminium sulphate \u2192  Barium sulphate + Aluminium chloride (iii) Sodium + Water  \u2192 Sodium hydroxide + Hydrogen"
+                  "text": "Write the balanced equation for the following chemical reactions. (i) Hydrogen + Chlorine → Hydrogen chloride ? (ii) Barium chloride + Aluminium sulphate → Barium sulphate + Aluminium chloride (iii) Sodium + Water → Sodium hydroxide + Hydrogen"
                 },
                 {
                   "num": 3,
@@ -384,7 +384,7 @@
             },
             {
               "type": "paragraph",
-              "text": "(calcium hydroxide) releasing a large amount of heat. water H2O(l) \u2192 Ca(OH)2(aq) + Heat"
+              "text": "(calcium hydroxide) releasing a large amount of heat. water H2O(l) → Ca(OH)2(aq) + Heat"
             },
             {
               "type": "equation",
@@ -394,11 +394,11 @@
             },
             {
               "type": "paragraph",
-              "text": "(Quick lime) (Slaked lime) In this reaction, calcium oxide and water combine to form a single product, calcium hydroxide. Such a reaction in which a single product is formed from two or more reactants is known as a combination reaction. Reprint 2026-27 Do You Know?"
+              "text": "(Quick lime) (Slaked lime) In this reaction, calcium oxide and water combine to form a single product, calcium hydroxide. Such a reaction in which a single product is formed from two or more reactants is known as a combination reaction. Do You Know?"
             },
             {
               "type": "do_you_know",
-              "text": "A solution of slaked lime produced by the reaction 1.13 is used for whitewashing walls. Calcium hydroxide reacts slowly with the carbon dioxide in air to form a thin layer of calcium carbonate on the walls. Calcium carbonate is formed after two to three days of whitewashing and gives a shiny finish to the walls. It is interesting to note that the chemical formula for marble is also CaCO3. \u2192 Ca(OH)2(aq) + CO2(g) CaCO3(s)+ H2O(l) (1.14) (Calcium hydroxide) carbonate)"
+              "text": "A solution of slaked lime produced by the reaction 1.13 is used for whitewashing walls. Calcium hydroxide reacts slowly with the carbon dioxide in air to form a thin layer of calcium carbonate on the walls. Calcium carbonate is formed after two to three days of whitewashing and gives a shiny finish to the walls. It is interesting to note that the chemical formula for marble is also CaCO3. → Ca(OH)2(aq) + CO2(g) CaCO3(s)+ H2O(l) (1.14) (Calcium hydroxide) carbonate)"
             },
             {
               "type": "paragraph",
@@ -407,7 +407,7 @@
             {
               "type": "equation",
               "num": "1.15",
-              "body": "C(s) + O2(g) \u2192 CO2(g)"
+              "body": "C(s) + O2(g) → CO2(g)"
             },
             {
               "type": "paragraph",
@@ -416,16 +416,16 @@
             {
               "type": "equation",
               "num": "1.16",
-              "body": "2H2(g) + O2(g) \u2192 2H2O(l)"
+              "body": "2H2(g) + O2(g) → 2H2O(l)"
             },
             {
               "type": "paragraph",
-              "text": "In simple language we can say that when two or more substances (elements or compounds) combine to form a single product, the reactions are called combination reactions. In Activity 1.4, we also observed that a large amount of heat is evolved. This makes the reaction mixture warm. Reactions in which heat is released along with the formation of products are called exothermic chemical reactions. Other examples of exothermic reactions are \u2013 (i)Burning of natural gas"
+              "text": "In simple language we can say that when two or more substances (elements or compounds) combine to form a single product, the reactions are called combination reactions. In Activity 1.4, we also observed that a large amount of heat is evolved. This makes the reaction mixture warm. Reactions in which heat is released along with the formation of products are called exothermic chemical reactions. Other examples of exothermic reactions are – (i)Burning of natural gas"
             },
             {
               "type": "equation",
               "num": "1.17",
-              "body": "CH4(g) + 2O2 (g) \u2192 CO2 (g) + 2H2O (g)"
+              "body": "CH4(g) + 2O2 (g) → CO2 (g) + 2H2O (g)"
             },
             {
               "type": "paragraph",
@@ -434,11 +434,11 @@
             {
               "type": "equation",
               "num": "1.18",
-              "body": "C6H12O6(aq) + 6O2(aq) \u2192 6CO2(aq) + 6H2O(l) + energy"
+              "body": "C6H12O6(aq) + 6O2(aq) → 6CO2(aq) + 6H2O(l) + energy"
             },
             {
               "type": "paragraph",
-              "text": "(Glucose) (iii)The decomposition of vegetable matter into compost is also an example of an exothermic reaction. Identify the type of the reaction taking place in Activity 1.1, where heat is given out along with the formation of a single product. Reprint 2026-27"
+              "text": "(Glucose) (iii)The decomposition of vegetable matter into compost is also an example of an exothermic reaction. Identify the type of the reaction taking place in Activity 1.1, where heat is given out along with the formation of a single product."
             }
           ]
         },
@@ -480,7 +480,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Have you noticed that the green colour of the ferrous sulphate crystals Correct way of heating has changed? You can also smell the characteristic odour of burning the boiling tube sulphur. containing crystals of ferrous sulphate Heat 2FeSO4(s)\uf8e7\uf8e7\uf8e7 Fe2O3(s) + SO2(g) + SO3(g)"
+              "text": "Have you noticed that the green colour of the ferrous sulphate crystals Correct way of heating has changed? You can also smell the characteristic odour of burning the boiling tube sulphur. containing crystals of ferrous sulphate Heat 2FeSO4(s) Fe2O3(s) + SO2(g) + SO3(g)"
             },
             {
               "type": "equation",
@@ -490,7 +490,7 @@
             },
             {
               "type": "paragraph",
-              "text": "and of smelling the odour (Ferrous sulphate)ic oxide) In this reaction you can observe that a single reactant breaks down to give simpler products. This is a decomposition reaction. Ferrous sulphate crystals (FeSO4. 7H2O) lose water when heated and the colour of the crystals changes. It then decomposes to ferric oxide (Fe2O3), sulphur dioxide (SO2) and sulphur trioxide (SO3). Ferric oxide is a solid, while SO2 and SO3 are gases. Decomposition of calcium carbonate to calcium oxide and carbon dioxide on heating is an important decomposition reaction used in various industries. Calcium oxide is called lime or quick lime. It has many uses \u2013 one is in the manufacture of cement. When a decomposition reaction is carried out by heating, it is called thermal decomposition. Heat CaCO3(s)\uf8e7\uf8e7\uf8e7 CaO(s) + CO2(g)"
+              "text": "and of smelling the odour (Ferrous sulphate)ic oxide) In this reaction you can observe that a single reactant breaks down to give simpler products. This is a decomposition reaction. Ferrous sulphate crystals (FeSO4. 7H2O) lose water when heated and the colour of the crystals changes. It then decomposes to ferric oxide (Fe2O3), sulphur dioxide (SO2) and sulphur trioxide (SO3). Ferric oxide is a solid, while SO2 and SO3 are gases. Decomposition of calcium carbonate to calcium oxide and carbon dioxide on heating is an important decomposition reaction used in various industries. Calcium oxide is called lime or quick lime. It has many uses – one is in the manufacture of cement. When a decomposition reaction is carried out by heating, it is called thermal decomposition. Heat CaCO3(s) CaO(s) + CO2(g)"
             },
             {
               "type": "equation",
@@ -537,7 +537,7 @@
             },
             {
               "type": "paragraph",
-              "text": "These fumes are of nitrogen dioxide (NO2). The Heating of lead nitrate and reaction that takes place is \u2013 emission of nitrogen dioxide Reprint 2026-27 Heat 2Pb(NO3)2(s)\uf8e7\uf8e7\uf8e72PbO(s) \uf8e7\u2192 +"
+              "text": "These fumes are of nitrogen dioxide (NO2). The Heating of lead nitrate and reaction that takes place is – emission of nitrogen dioxide Heat 2Pb(NO3)2(s)2PbO(s) → +"
             },
             {
               "type": "equation",
@@ -628,7 +628,7 @@
             },
             {
               "type": "paragraph",
-              "text": "You will see that white silver chloride turns grey in sunlight. This is Silver chloride turns grey in sunlight to form silver due to the decomposition of silver chloride into silver and chlorine by metal light. Sunlight 2AgCl(s) \uf8e7\uf8e7\uf8e7\uf8e7\u2192"
+              "text": "You will see that white silver chloride turns grey in sunlight. This is Silver chloride turns grey in sunlight to form silver due to the decomposition of silver chloride into silver and chlorine by metal light. Sunlight 2AgCl(s) →"
             },
             {
               "type": "equation",
@@ -638,7 +638,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Reprint 2026-27 Silver bromide also behaves in the same way. Sunlight 2AgBr(s) \uf8e7\uf8e7\uf8e7\uf8e7\u2192"
+              "text": "Silver bromide also behaves in the same way. Sunlight 2AgBr(s) →"
             },
             {
               "type": "equation",
@@ -655,7 +655,7 @@
               "items": [
                 {
                   "num": 1,
-                  "text": "A solution of a substance \u2018X\u2019 is used for whitewashing. (i) Name the substance \u2018X\u2019 and write its formula. (ii) Write the reaction of the substance \u2018X\u2019 named in (i) above with water."
+                  "text": "A solution of a substance ‘X’ is used for whitewashing. (i) Name the substance ‘X’ and write its formula. (ii) Write the reaction of the substance ‘X’ named in (i) above with water."
                 },
                 {
                   "num": 2,
@@ -712,12 +712,12 @@
             {
               "type": "figure",
               "num": "1.8",
-              "caption": "(a) Iron nails dipped in copper sulphate solution  (b) Iron nails and copper sulphate solutions compared before and after the experiment",
+              "caption": "(a) Iron nails dipped in copper sulphate solution (b) Iron nails and copper sulphate solutions compared before and after the experiment",
               "image": "ch1/fig_1.8.png"
             },
             {
               "type": "paragraph",
-              "text": "(a) Iron nails dipped in copper sulphate solution Reprint 2026-27 Why does the iron nail become brownish in colour and the blue colour of copper sulphate solution fades? The following chemical reaction takes place in this Activity\u2013 Fe(s) + CuSO4(aq) \u2192"
+              "text": "(a) Iron nails dipped in copper sulphate solution Why does the iron nail become brownish in colour and the blue colour of copper sulphate solution fades? The following chemical reaction takes place in this Activity– Fe(s) + CuSO4(aq) →"
             },
             {
               "type": "equation",
@@ -727,7 +727,7 @@
             },
             {
               "type": "paragraph",
-              "text": "(Copper sulphate) (Iron sulphate) In this reaction, iron has displaced or removed another element, copper, from copper sulphate solution. This reaction is known as displacement reaction. Other examples of displacement reactions are Zn(s) + CuSO4(aq) \u2192"
+              "text": "(Copper sulphate) (Iron sulphate) In this reaction, iron has displaced or removed another element, copper, from copper sulphate solution. This reaction is known as displacement reaction. Other examples of displacement reactions are Zn(s) + CuSO4(aq) →"
             },
             {
               "type": "equation",
@@ -737,7 +737,7 @@
             },
             {
               "type": "paragraph",
-              "text": "(Copper sulphate) (Zinc sulphate) Pb(s) + CuCl2(aq) \u2192"
+              "text": "(Copper sulphate) (Zinc sulphate) Pb(s) + CuCl2(aq) →"
             },
             {
               "type": "equation",
@@ -798,11 +798,11 @@
             {
               "type": "equation",
               "num": "1.27",
-              "body": "Na2SO4(aq) + BaCl2(aq) \u2192 BaSO4(s) + 2NaCl(aq)"
+              "body": "Na2SO4(aq) + BaCl2(aq) → BaSO4(s) + 2NaCl(aq)"
             },
             {
               "type": "paragraph",
-              "text": "chloride (Sodium (Barium (Sodium sulphate)chloride) Reprint 2026-27 What causes this? The white precipitate of BaSO4 is formed by the 2\u2013 and Ba2+. The other product formed is sodium chloride reaction of SO which remains in the solution. Such reactions in which there is an exchange of ions between the reactants are called double displacement reactions."
+              "text": "chloride (Sodium (Barium (Sodium sulphate)chloride) What causes this? The white precipitate of BaSO4 is formed by the 2– and Ba2+. The other product formed is sodium chloride reaction of SO which remains in the solution. Such reactions in which there is an exchange of ions between the reactants are called double displacement reactions."
             }
           ]
         },
@@ -828,7 +828,7 @@
                   "concentrated nitric acid"
                 ],
                 "procedure": [
-                  "Heat a china dish containing approximately 1 gram of finely powdered copper in an oven at around 300\u00b0C for about five minutes to remove any impurities."
+                  "Heat a china dish containing approximately 1 gram of finely powdered copper in an oven at around 300°C for about five minutes to remove any impurities."
                 ],
                 "observation": "The student should observe that the heated copper powder turns black due to oxidation.",
                 "conclusion": "This activity demonstrates how heating and oxidizing agents can change metals, showing a chemical reaction where oxygen combines with metal atoms forming oxides."
@@ -851,11 +851,11 @@
             {
               "type": "equation",
               "num": "1.28",
-              "body": "2Cu + O2 \u2192 2CuO"
+              "body": "2Cu + O2 → 2CuO"
             },
             {
               "type": "paragraph",
-              "text": "Oxidation of copper to \uf8e7\u2192 copper oxide If hydrogen gas is passed over this heated material (CuO), the black coating on the surface turns brown as the reverse reaction takes place and copper is obtained. Heat"
+              "text": "Oxidation of copper to → copper oxide If hydrogen gas is passed over this heated material (CuO), the black coating on the surface turns brown as the reverse reaction takes place and copper is obtained. Heat"
             },
             {
               "type": "equation",
@@ -875,7 +875,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Some other examples of redox reactions are: ZnO + C \u2192 +"
+              "text": "Some other examples of redox reactions are: ZnO + C → +"
             },
             {
               "type": "equation",
@@ -885,7 +885,7 @@
             },
             {
               "type": "paragraph",
-              "text": "+ \u2192 +"
+              "text": "+ → +"
             },
             {
               "type": "equation",
@@ -895,7 +895,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Reprint 2026-27 In reaction (1.31) carbon is oxidised to CO and ZnO is reduced to Zn. In reaction (1.32) HCl is oxidised to Cl2 whereas MnO2 is reduced to MnCl2. From the above examples we can say that if a substance gains oxygen or loses hydrogen during a reaction, it is oxidised. If a substance loses oxygen or gains hydrogen during a reaction, it is reduced."
+              "text": "In reaction (1.31) carbon is oxidised to CO and ZnO is reduced to Zn. In reaction (1.32) HCl is oxidised to Cl2 whereas MnO2 is reduced to MnCl2. From the above examples we can say that if a substance gains oxygen or loses hydrogen during a reaction, it is oxidised. If a substance loses oxygen or gains hydrogen during a reaction, it is reduced."
             }
           ]
         }
@@ -938,7 +938,7 @@
                 },
                 {
                   "num": 3,
-                  "text": "Identify the substances that are oxidised and the substances that are reduced in the following reactions. (i) 4Na(s) + O2(g) \u2192 2Na2O(s) (ii) CuO(s) + H2(g) \u2192 Cu(s) + H2O(l) Reprint 2026-27"
+                  "text": "Identify the substances that are oxidised and the substances that are reduced in the following reactions. (i) 4Na(s) + O2(g) → 2Na2O(s) (ii) CuO(s) + H2(g) → Cu(s) + H2O(l)"
                 }
               ]
             },
@@ -966,7 +966,7 @@
   "exercises": [
     {
       "num": 1,
-      "question": "Which of the statements about the reaction below are incorrect? 2PbO(s) + C(s) \u2192 2Pb(s) + CO2(g) (i)(a) and (b) (ii)(a) and (c) (iii)(a), (b) and (c) (iv)all Fe2O3 + 2Al \u2192 Al2O3 + 2Fe 2. The above reaction is an example of a Reprint 2026-27",
+      "question": "Which of the statements about the reaction below are incorrect? 2PbO(s) + C(s) → 2Pb(s) + CO2(g) (i)(a) and (b) (ii)(a) and (c) (iii)(a), (b) and (c) (iv)all Fe2O3 + 2Al → Al2O3 + 2Fe 2. The above reaction is an example of a",
       "options": [
         "(a) Lead is getting reduced.",
         "(b) Carbon dioxide is getting oxidised.",
@@ -1009,19 +1009,19 @@
     },
     {
       "num": 6,
-      "question": "Balance the following chemical equations. HNO3 + Ca(OH)2 \u2192 Ca(NO3)2 + H2O (a) NaOH + H2SO4 \u2192 Na2SO4 + H2O (b) NaCl + AgNO3 \u2192 AgCl + NaNO3 (c) BaCl2 + H2SO4 \u2192 BaSO4 + HCl (d)",
+      "question": "Balance the following chemical equations. HNO3 + Ca(OH)2 → Ca(NO3)2 + H2O (a) NaOH + H2SO4 → Na2SO4 + H2O (b) NaCl + AgNO3 → AgCl + NaNO3 (c) BaCl2 + H2SO4 → BaSO4 + HCl (d)",
       "options": [],
       "type": "short"
     },
     {
       "num": 7,
-      "question": "Write the balanced chemical equations for the following reactions. Calcium hydroxide + Carbon dioxide  \u2192  Calcium carbonate + Water (a) Zinc + Silver nitrate  \u2192  Zinc nitrate + Silver (b) Aluminium + Copper chloride  \u2192  Aluminium chloride + Copper (c) Barium chloride + Potassium sulphate \u2192 Barium sulphate + Potassium chloride (d)",
+      "question": "Write the balanced chemical equations for the following reactions. Calcium hydroxide + Carbon dioxide → Calcium carbonate + Water (a) Zinc + Silver nitrate → Zinc nitrate + Silver (b) Aluminium + Copper chloride → Aluminium chloride + Copper (c) Barium chloride + Potassium sulphate → Barium sulphate + Potassium chloride (d)",
       "options": [],
       "type": "short"
     },
     {
       "num": 8,
-      "question": "Write the balanced chemical equation for the following and identify the type of reaction in each case. Potassium bromide(aq) + Barium iodide(aq) \u2192  Potassium iodide(aq) + (a) Barium bromide(s) Zinc carbonate(s) \u2192  Zinc oxide(s) + Carbon dioxide(g) (b) Hydrogen(g) + Chlorine(g)  \u2192  Hydrogen chloride(g) (c) Magnesium(s) + Hydrochloric acid(aq)  \u2192  Magnesium chloride(aq) + Hydrogen(g) (d)",
+      "question": "Write the balanced chemical equation for the following and identify the type of reaction in each case. Potassium bromide(aq) + Barium iodide(aq) → Potassium iodide(aq) + (a) Barium bromide(s) Zinc carbonate(s) → Zinc oxide(s) + Carbon dioxide(g) (b) Hydrogen(g) + Chlorine(g) → Hydrogen chloride(g) (c) Magnesium(s) + Hydrochloric acid(aq) → Magnesium chloride(aq) + Hydrogen(g) (d)",
       "options": [],
       "type": "short"
     },
@@ -1039,7 +1039,7 @@
     },
     {
       "num": 11,
-      "question": "Why are decomposition reactions called the opposite of combination reactions? Write equations for these reactions. Reprint 2026-27",
+      "question": "Why are decomposition reactions called the opposite of combination reactions? Write equations for these reactions.",
       "options": [],
       "type": "short"
     },
@@ -1078,7 +1078,7 @@
     },
     {
       "num": 17,
-      "question": "A shiny brown coloured element \u2018X\u2019 on heating in air becomes black in colour. Name the element \u2018X\u2019 and the black coloured compound formed.",
+      "question": "A shiny brown coloured element ‘X’ on heating in air becomes black in colour. Name the element ‘X’ and the black coloured compound formed.",
       "options": [],
       "type": "short"
     },
@@ -1096,7 +1096,7 @@
     },
     {
       "num": 20,
-      "question": "Explain the following terms with one example each. Reprint 2026-27",
+      "question": "Explain the following terms with one example each.",
       "options": [
         "(a) Corrosion",
         "(b) Rancidity"

@@ -6,7 +6,7 @@ that chat history survives server restarts (Railway sleeps, redeploys, etc.).
 Falls back gracefully to the in-memory store when Supabase is not configured.
 """
 from __future__ import annotations
-import sessions as _mem  # in-memory fallback
+import backend.sessions as _mem  # in-memory fallback
 
 try:
     from backend.supabase_client import supabase as _sb

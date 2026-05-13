@@ -11,4 +11,3 @@ pydantic==2.11.7
 httpx==0.28.1
 requests==2.32.3
 supabase>=2.15.0
-python-jose[cryptography]==3.3.0

@@ -35,11 +35,6 @@
     {
       "id": "5.2",
       "title": "NUTRITION",
-      "blocks": []
-    },
-    {
-      "id": "5.2",
-      "title": "NUTRITION",
       "blocks": [
         {
           "type": "paragraph",
@@ -226,11 +221,6 @@
     },
     {
       "id": "5.3",
-      "title": "RESPIRTION",
-      "blocks": []
-    },
-    {
-      "id": "5.3",
       "title": "RESPIRATION",
       "blocks": [
         {
@@ -368,7 +358,7 @@
         },
         {
           "type": "paragraph",
-          "text": "atmosphere. Since the exchange of oxygen and carbon dioxidet commonly affects the has to take place across this surface, this surface is very finetongue, lungs, heart and"
+          "text": "atmosphere. Since the exchange of oxygen and carbon dioxidet commonly affects the has to take place across this surface, this surface is very fine tongue, lungs, heart and"
         },
         {
           "type": "do_you_know",
@@ -562,7 +552,7 @@
         },
         {
           "type": "do_you_know",
-          "text": "frominhaledair."
+          "text": "from inhaled air."
         },
         {
           "type": "paragraph",
@@ -582,7 +572,7 @@
         },
         {
           "type": "paragraph",
-          "text": "dust, smoke and otheralone cannot take care of oxygen delivery to all parts of the body."
+          "text": "dust, smoke and other alone cannot take care of oxygen delivery to all parts of the body."
         },
         {
           "type": "do_you_know",
@@ -594,7 +584,7 @@
         },
         {
           "type": "do_you_know",
-          "text": "lungsandcause"
+          "text": "lungs and cause"
         },
         {
           "type": "paragraph",
@@ -646,11 +636,6 @@
     {
       "id": "5.4",
       "title": "TRANSPORTATION",
-      "blocks": []
-    },
-    {
-      "id": "5.4",
-      "title": "TRANSPORTION",
       "blocks": [
         {
           "type": "subsection",

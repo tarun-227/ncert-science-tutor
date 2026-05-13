@@ -98,7 +98,7 @@
     },
     {
       "id": "12.2",
-      "title": "MAGNETIC FIELD DUE TO A CURRENT-CARRYING CONDUCTOR CONDUCTOR",
+      "title": "MAGNETIC FIELD DUE TO A CURRENT-CARRYING CONDUCTOR",
       "blocks": [
         {
           "type": "paragraph",
@@ -282,7 +282,7 @@
                 },
                 {
                   "num": 3,
-                  "text": "Choose the correct option. (a)is zero. (b)decreases as we move towards its end. (c)increases as we move towards its end. (d)is the same at all points."
+                  "text": "Choose the correct option. (a) is zero. (b) decreases as we move towards its end. (c) increases as we move towards its end. (d) is the same at all points."
                 }
               ]
             }
@@ -292,7 +292,7 @@
     },
     {
       "id": "12.3",
-      "title": "FORCE ON A CURRENT-CARRYING CONDUCTOR 12.3FORCE ON A CURRENTARRYING CONDUCTOR IN A MAGNETIC FIELD",
+      "title": "FORCE ON A CURRENT-CARRYING CONDUCTOR IN MAGNETIC FIELD",
       "blocks": [
         {
           "type": "paragraph",
@@ -342,7 +342,7 @@
         },
         {
           "type": "paragraph",
-          "text": "the force acting on the conductor. Devices that use current-carrying conductors and magnetic fields include electric motor, electric generator, loudspeakers, microphones and measuring instruments. Example 12.2 An electron enters a magnetic field at right angles to it, as shown in Fig. 12.14. The direction of force acting on the electron will be (a)to the right. (b)to the left. (c)out of the page. (d)into the page."
+          "text": "the force acting on the conductor. Devices that use current-carrying conductors and magnetic fields include electric motor, electric generator, loudspeakers, microphones and measuring instruments. Example 12.2 An electron enters a magnetic field at right angles to it, as shown in Fig. 12.14. The direction of force acting on the electron will be (a) to the right. (b) to the left. (c) out of the page. (d) into the page."
         },
         {
           "type": "figure",
@@ -363,7 +363,7 @@
           "items": [
             {
               "num": 1,
-              "text": "Which of the following property of a proton can change while it moves (a)mass (b)speed (c)velocity (d)momentum Reprint 2026-27"
+              "text": "Which of the following property of a proton can change while it moves (a) mass (b) speed (c) velocity (d) momentum Reprint 2026-27"
             },
             {
               "num": 2,
@@ -371,7 +371,7 @@
             },
             {
               "num": 3,
-              "text": "A positively-charged particle (alpha-particle) projected towards west is field is (a)towards south (b)towards east (c)downward (d)upward More to Know!"
+              "text": "A positively-charged particle (alpha-particle) projected towards west is field is (a) towards south (b) towards east (c) downward (d) upward More to Know!"
             }
           ]
         }

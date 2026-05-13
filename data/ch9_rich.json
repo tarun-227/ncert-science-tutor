@@ -13,11 +13,6 @@
     {
       "id": "9.1",
       "title": "REFLECTION OF LIGHT",
-      "blocks": []
-    },
-    {
-      "id": "9.1",
-      "title": "REFLECTION OF LIGHT",
       "blocks": [
         {
           "type": "paragraph",
@@ -45,15 +40,10 @@
     {
       "id": "9.2",
       "title": "SPHERICAL MIRRORS",
-      "blocks": []
-    },
-    {
-      "id": "9.2",
-      "title": "SPHERICAL MIRRORS",
       "blocks": [
         {
           "type": "paragraph",
-          "text": "The reflecting surface of a spherical mirror may be curved inwards or outwards. A spherical mirror, whose reflecting surface is curved inwards, that is, faces towards the centre of the sphere, is called a concave mirror. A spherical mirror whose reflecting surface is curved outwards, is called a convex mirror. The schematic representation of these mirrors is shown in Fig. 9.1. You may note in these diagrams that the back of the mirror is shaded. You may now understand that the surface of the spoon curved inwards can be approximated to a concave mirror and the surface of the spoon bulged outwards can be approximated to a convex mirror. Before we move further on spherical mirrors, we need to recognise and understand the meaning of a few terms. These terms are commonly used in discussions about spherical (a) Concave mirror(b) Convex mirror mirrors. The centre of the reflecting surface of a spherical"
+          "text": "The reflecting surface of a spherical mirror may be curved inwards or outwards. A spherical mirror, whose reflecting surface is curved inwards, that is, faces towards the centre of the sphere, is called a concave mirror. A spherical mirror whose reflecting surface is curved outwards, is called a convex mirror. The schematic representation of these mirrors is shown in Fig. 9.1. You may note in these diagrams that the back of the mirror is shaded. You may now understand that the surface of the spoon curved inwards can be approximated to a concave mirror and the surface of the spoon bulged outwards can be approximated to a convex mirror. Before we move further on spherical mirrors, we need to recognise and understand the meaning of a few terms. These terms are commonly used in discussions about spherical (a) Concave mirror (b) Convex mirror mirrors. The centre of the reflecting surface of a spherical"
         },
         {
           "type": "figure",
@@ -124,11 +114,18 @@
             },
             {
               "type": "do_you_know",
-              "text": "At infinity At the focus F Highly diminished,Real and inverted point-sized Beyond C Between F and C Diminished Real and inverted At C Same size Real and inverted Between C and F Beyond C Enlarged Real and inverted At F At infinity Image would not be formed Between P and F Behind the mirror Enlarged Virtual and erect"
-            },
+              "text": "At infinity At the focus F Highly diminished, Real and inverted point-sized Beyond C Between F and C Diminished Real and inverted At C Same size Real and inverted Between C and F Beyond C Enlarged Real and inverted At F At infinity Image would not be formed Between P and F Behind the mirror Enlarged Virtual and erect"
+            }
+          ]
+        },
+        {
+          "type": "subsection",
+          "id": "9.2.2",
+          "title": "Representation of Images Formed by Spherical",
+          "blocks": [
             {
               "type": "paragraph",
-              "text": "9.2.2Representation of Images Formed by Spherical Mirrors Using Ray Diagrams We can also study the formation of images by spherical mirrors by drawing ray diagrams. Consider an extended object, of finite size, placed in front of a spherical mirror. Each small portion of the extended object acts like a point source. An infinite number of rays originate from each of these points. To construct the ray diagrams, in order to locate the image of an object, an arbitrarily large number of rays emanating from a point could be considered. However, it is more convenient to consider only two rays, for the sake of clarity of the ray diagram. These rays are so chosen that it is easy to know their directions after reflection from the mirror. The intersection of at least two reflected rays give the position of image of the point object. Any two of the following rays can be considered for locating the image. A ray parallel to the principal (i) axis, after reflection, will pass through the principal focus in case of a concave mirror or appear to diverge from the principal focus in case of a convex mirror. This is illustrated in Fig.9.3 (a) (b) (a) and (b)."
+              "text": "Mirrors Using Ray Diagrams We can also study the formation of images by spherical mirrors by drawing ray diagrams. Consider an extended object, of finite size, placed in front of a spherical mirror. Each small portion of the extended object acts like a point source. An infinite number of rays originate from each of these points. To construct the ray diagrams, in order to locate the image of an object, an arbitrarily large number of rays emanating from a point could be considered. However, it is more convenient to consider only two rays, for the sake of clarity of the ray diagram. These rays are so chosen that it is easy to know their directions after reflection from the mirror. The intersection of at least two reflected rays give the position of image of the point object. Any two of the following rays can be considered for locating the image. A ray parallel to the principal (i) axis, after reflection, will pass through the principal focus in case of a concave mirror or appear to diverge from the principal focus in case of a convex mirror. This is illustrated in Fig.9.3 (a) (b) (a) and (b)."
             },
             {
               "type": "figure",
@@ -222,7 +219,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Table 9.2 Nature, position and relative size of the image formed by a convex mirror Position of the Size of the Nature of the object image At infinity At the focus F, Highly diminished, Virtual and erect behind the mirror point-sized Between infinityP and F, Diminished Virtual and erect and the pole P ofbehind the mirror the mirror You have so far studied the image formation by a plane mirror, a concave mirror and a convex mirror. Which of these mirrors will give the full image of a large object? Let us explore through an Activity."
+              "text": "Table 9.2 Nature, position and relative size of the image formed by a convex mirror Position of the Size of the Nature of the object image At infinity At the focus F, Highly diminished, Virtual and erect behind the mirror point-sized Between infinityP and F, Diminished Virtual and erect and the pole P of behind the mirror the mirror You have so far studied the image formation by a plane mirror, a concave mirror and a convex mirror. Which of these mirrors will give the full image of a large object? Let us explore through an Activity."
             },
             {
               "type": "activity",
@@ -275,7 +272,7 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "While dealing with the reflection of light by spherical mirrors, we shall follow a set of sign conventions called the New Cartesian Sign Convention. In this convention, the pole (P) of the mirror is taken as the origin (Fig. 9.9). The principal axis of the mirror is taken as the x-axis (X’X) of the coordinate system. The conventions are as follows – (i)The object is always placed to the left of the mirror. This implies that the light from the object falls on the mirror from the left-hand side. (ii)All distances parallel to the principal axis are measured from the pole of the mirror. (iii)All the distances measured to the right of the origin (along + x-axis) are taken as positive while those measured to the left of the origin (along – x-axis) are taken as negative. (iv)Distances measured perpendicular to and above the principal axis (along + y-axis) are taken as positive. (v)Distances measured perpendicular to and below the principal axis (along –y-axis) are taken as negative. Reprint 2026-27 The New Cartesian Sign Convention described above is illustrated in Fig.9.9 for your reference. These sign conventions are applied to obtain the mirror formula and solve related numerical problems."
+              "text": "While dealing with the reflection of light by spherical mirrors, we shall follow a set of sign conventions called the New Cartesian Sign Convention. In this convention, the pole (P) of the mirror is taken as the origin (Fig. 9.9). The principal axis of the mirror is taken as the x-axis (X’X) of the coordinate system. The conventions are as follows – (i) The object is always placed to the left of the mirror. This implies that the light from the object falls on the mirror from the left-hand side. (ii) All distances parallel to the principal axis are measured from the pole of the mirror. (iii) All the distances measured to the right of the origin (along + x-axis) are taken as positive while those measured to the left of the origin (along – x-axis) are taken as negative. (iv) Distances measured perpendicular to and above the principal axis (along + y-axis) are taken as positive. (v) Distances measured perpendicular to and below the principal axis (along –y-axis) are taken as negative. Reprint 2026-27 The New Cartesian Sign Convention described above is illustrated in Fig.9.9 for your reference. These sign conventions are applied to obtain the mirror formula and solve related numerical problems."
             }
           ]
         },
@@ -291,11 +288,11 @@
             {
               "type": "equation",
               "num": "9.1",
-              "body": "+="
+              "body": "+ ="
             },
             {
               "type": "paragraph",
-              "text": "vuf This formula is valid in all situations for all spherical mirrors for all positions of the"
+              "text": "v u f This formula is valid in all situations for all spherical mirrors for all positions of the"
             },
             {
               "type": "figure",
@@ -305,7 +302,7 @@
             },
             {
               "type": "paragraph",
-              "text": "object. You must use the New Cartesian Sign The New Cartesian Sign Convention for spherical mirrors Convention while substituting numerical values for u, v, f, and R in the mirror formula for solving problems. Magnification Magnification produced by a spherical mirror gives the relative extent to which the image of an object is magnified with respect to the object size. It is expressed as the ratio of the height of the image to the height of the object. It is usually represented by the letter m. If h is the height of the object and h′ is the height of the image, then the magnification m produced by a spherical mirror is given by Height of the image () h ′ m = h Height of the object ( ) ′ h"
+              "text": "object. You must use the New Cartesian Sign The New Cartesian Sign Convention for spherical mirrors Convention while substituting numerical values for u, v, f, and R in the mirror formula for solving problems. Magnification Magnification produced by a spherical mirror gives the relative extent to which the image of an object is magnified with respect to the object size. It is expressed as the ratio of the height of the image to the height of the object. It is usually represented by the letter m. If h is the height of the object and h′ is the height of the image, then the magnification m produced by a spherical mirror is given by Height of the image ( ) h ′ m = h Height of the object ( ) ′ h"
             },
             {
               "type": "equation",
@@ -314,7 +311,7 @@
             },
             {
               "type": "paragraph",
-              "text": "h The magnification m is also related to the object distance (u) and image distance (v). It can be expressed as: hv ′ = −"
+              "text": "h The magnification m is also related to the object distance (u) and image distance (v). It can be expressed as: h v ′ = −"
             },
             {
               "type": "equation",
@@ -323,7 +320,7 @@
             },
             {
               "type": "paragraph",
-              "text": "hu You may note that the height of the object is taken to be positive as the object is usually placed above the principal axis. The height of the image should be taken as positive for virtual images. However, it is to be taken as negative for real images. A negative sign in the value of the magnification indicates that the image is real. A positive sign in the value of the magnification indicates that the image is virtual. Reprint 2026-27 Example 9.1 A convex mirror used for rear-view on an automobile has a radius of curvature of 3.00 m. If a bus is located at 5.00 m from this mirror, find the position, nature and size of the image. Solution Radius of curvature, R = + 3.00 m; Object-distance,u = – 5.00 m; Image-distance,v = ? Height of the image, h′= ? Focal length, f = R/2 = + 3.00 m = + 1.50 m (as the principal focus of 2 a convex mirror is behind the mirror) 1 += Since vuf 1 1 1 1 =− or, = + 1.50 – = 1.50 + vfu 5.00 ( 5.00) − + = 5.001.50 7.50 v = 7.50 + = + 1.15 m 6.50 The image is 1.15 m at the back of the mirror. h v 1.15 m ' = − Magnification, m = – − 5.00 m hu = + 0.23 The image is virtual, erect and smaller in size by a factor of 0.23. Example 9.2 An object, 4.0 cm in size, is placed at 25.0 cm in front of a concave mirror of focal length 15.0 cm. At what distance from the mirror should a screen be placed in order to obtain a sharp image? Find the nature and the size of the image. Solution Object-size, h = + 4.0 cm; Object-distance, u = – 25.0 cm; Focal length, f = –15.0 cm; Image-distance, v = ? Image-size, h′ = ? From Eq. (10.1): 1 += vuf or, 1 1 1 =− − = − + = − vfu 15.025.0 Reprint 2026-27 or, 1 −+ 5.03.02.0 − = or, v = – 37.5 cm v 75.0 The screen should be placed at 37.5 cm in front of the mirror. The image is real. h ' v = − Also, magnification, m = hu − + or, h′ = – v h ( 37.5cm) ( 4.0cm) − u = ( 25.0 cm) − Height of the image, h′ = – 6.0 cm The image is inverted and enlarged."
+              "text": "h u You may note that the height of the object is taken to be positive as the object is usually placed above the principal axis. The height of the image should be taken as positive for virtual images. However, it is to be taken as negative for real images. A negative sign in the value of the magnification indicates that the image is real. A positive sign in the value of the magnification indicates that the image is virtual. Reprint 2026-27 Example 9.1 A convex mirror used for rear-view on an automobile has a radius of curvature of 3.00 m. If a bus is located at 5.00 m from this mirror, find the position, nature and size of the image. Solution Radius of curvature, R = + 3.00 m; Object-distance, u = – 5.00 m; Image-distance, v = ? Height of the image, h′= ? Focal length, f = R/2 = + 3.00 m = + 1.50 m (as the principal focus of 2 a convex mirror is behind the mirror) 1 + = Since v u f 1 1 1 1 = − or, = + 1.50 – = 1.50 + v f u 5.00 ( 5.00) − + = 5.001.50 7.50 v = 7.50 + = + 1.15 m 6.50 The image is 1.15 m at the back of the mirror. h v 1.15 m ' = − Magnification, m = – − 5.00 m h u = + 0.23 The image is virtual, erect and smaller in size by a factor of 0.23. Example 9.2 An object, 4.0 cm in size, is placed at 25.0 cm in front of a concave mirror of focal length 15.0 cm. At what distance from the mirror should a screen be placed in order to obtain a sharp image? Find the nature and the size of the image. Solution Object-size, h = + 4.0 cm; Object-distance, u = – 25.0 cm; Focal length, f = –15.0 cm; Image-distance, v = ? Image-size, h′ = ? From Eq. (10.1): 1 + = v u f or, 1 1 1 = − − = − + = − v f u 15.0 25.0 Reprint 2026-27 or, 1 − + 5.0 3.0 2.0 − = or, v = – 37.5 cm v 75.0 The screen should be placed at 37.5 cm in front of the mirror. The image is real. h ' v = − Also, magnification, m = h u − + or, h′ = – v h ( 37.5cm) ( 4.0cm) − u = ( 25.0 cm) − Height of the image, h′ = – 6.0 cm The image is inverted and enlarged."
             },
             {
               "type": "in_text_questions",
@@ -575,7 +572,7 @@
             },
             {
               "type": "paragraph",
-              "text": "The nature, position and relative size of the image formed by convex lens for various positions of the object is summarised in Table 9.4. Table 9.4 Nature, position and relative size of the image formed by a convex lens for various positions of the object Position of the Relative size of Nature of objecthe image At infinity At focus F2 Highly diminished,Real and inverted point-sized Beyond 2F1 Between F2 and 2F2Diminished Real and inverted At 2F1 At 2F2 Same size Real and inverted Between F1 and 2F1Beyond 2F2 Enlarged Real and inverted At focus F1 At infinity Image would not be formed Between focus F1 On the same side Enlarged Virtual and erect and of the lens as the optical centre O object Let us now do an Activity to study the nature, position and relative size of the image formed by a concave lens. Reprint 2026-27"
+              "text": "The nature, position and relative size of the image formed by convex lens for various positions of the object is summarised in Table 9.4. Table 9.4 Nature, position and relative size of the image formed by a convex lens for various positions of the object Position of the Relative size of Nature of objecthe image At infinity At focus F2 Highly diminished, Real and inverted point-sized Beyond 2F1 Between F2 and 2F2 Diminished Real and inverted At 2F1 At 2F2 Same size Real and inverted Between F1 and 2F1 Beyond 2F2 Enlarged Real and inverted At focus F1 At infinity Image would not be formed Between focus F1 On the same side Enlarged Virtual and erect and of the lens as the optical centre O object Let us now do an Activity to study the nature, position and relative size of the image formed by a concave lens. Reprint 2026-27"
             },
             {
               "type": "activity",
@@ -587,7 +584,7 @@
                 "Look through the lens from the other side and observe the image. Try to get the image on a screen, if possible. If not, observe the image directly through the lens.",
                 "Note down the nature, relative size and approximate position of the image.",
                 "Move the candle away from the lens. Note the change in the size of the image. What happens to the size of the image when the candle is placed too far away from the lens.",
-                "Position of the Relative size of Nature of objecthe image At infinity At focus F1 Highly diminished,Virtual and erect point-sized Between infinity andfocus F1 Diminished Virtual and erect optical centre O and optical centre O of the lens"
+                "Position of the Relative size of Nature of objecthe image At infinity At focus F1 Highly diminished, Virtual and erect point-sized Between infinity andfocus F1 Diminished Virtual and erect optical centre O and optical centre O of the lens"
               ],
               "cautions": []
             },
@@ -628,7 +625,7 @@
             },
             {
               "type": "paragraph",
-              "text": "focus of a concave lens, after refraction, will emerge parallel to the principal axis. This is shown in Fig.9.14 (b). (iii)A ray of light passing through the optical centre of a lens will emerge without any deviation.This (a) (b) illustrated in Fig.9.15(a) and Fig.9.15 (b)."
+              "text": "focus of a concave lens, after refraction, will emerge parallel to the principal axis. This is shown in Fig.9.14 (b). (iii)A ray of light passing through the optical centre of a lens will emerge without any deviation. This (a) (b) illustrated in Fig.9.15(a) and Fig.9.15 (b)."
             },
             {
               "type": "figure",
@@ -681,11 +678,11 @@
             {
               "type": "equation",
               "num": "9.8",
-              "body": "−="
+              "body": "− ="
             },
             {
               "type": "paragraph",
-              "text": "vuf The lens formula given above is general and is valid in all situations for any spherical lens. Take proper care of the signs of different quantities, while putting numerical values for solving problems relating to lenses. Reprint 2026-27 Magnification The magnification produced by a lens, similar to that for spherical mirrors, is defined as the ratio of the height of the image and the height of the object. Magnification is represented by the letter m. If h is the height of the object and h′ is the height of the image given by a lens, then the magnification produced by the lens is given by, m = Height of the Imageobject = h ′"
+              "text": "v u f The lens formula given above is general and is valid in all situations for any spherical lens. Take proper care of the signs of different quantities, while putting numerical values for solving problems relating to lenses. Reprint 2026-27 Magnification The magnification produced by a lens, similar to that for spherical mirrors, is defined as the ratio of the height of the image and the height of the object. Magnification is represented by the letter m. If h is the height of the object and h′ is the height of the image given by a lens, then the magnification produced by the lens is given by, m = Height of the Imageobject = h ′"
             },
             {
               "type": "equation",
@@ -703,7 +700,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Example 9.3 A concave lens has focal length of 15 cm. At what distance should the object from the lens be placed so that it forms an image at 10 cm from the lens? Also, find the magnification produced by the lens. Solution A concave lens always forms a virtual, erect image on the same side of the object. Image-distance v = –10 cm; Focal length f = –15 cm; Object-distance u= ? Since 1 1 −= vuf 1 = – or, uvf 1 u = – =+ () –10–151015 −+ 1321 = − u 30 or, u = – 30 cm Thus, the object-distance is 30 cm. Magnification m = v/u m = −10cm 1 =+ ; 0.33 − 30cm3 The positive sign shows that the image is erect and virtual. The image is one-third of the size of the object. Example 9.4 A 2.0 cm tall object is placed perpendicular to the principal axis of a convex lens of focal length 10 cm. The distance of the object from the lens is 15 cm. Find the nature, position and size of the image. Also find its magnification. Reprint 2026-27 Solution Height of the object h = + 2.0 cm; Focal length f = + 10 cm; object-distance u = –15 cm; Image-distance v = ? Height of the image h′ = ? 1 −= Since vuf 1 =+ or, vuf 1 v = += −+ ( 15)101510 − −+ 1231 = v 30 or,v = + 30 cm The positive sign of v shows that the image is formed at a distance of 30 cm on the other side of the optical centre. The image is real and inverted. hv ' = Magnification m = hu h′ = h (v/u) or, Height of the image, h′ = (2.0) (+30/–15) = – 4.0 cm Magnification m = v/u + 30cm or, = − m 2 − 15cm The negative signs of m and h′ show that the image is inverted and real. It is formed below the principal axis. Thus, a real, inverted image, 4 cm tall, is formed at a distance of 30 cm on the other side of the lens. The image is two times enlarged."
+              "text": "Example 9.3 A concave lens has focal length of 15 cm. At what distance should the object from the lens be placed so that it forms an image at 10 cm from the lens? Also, find the magnification produced by the lens. Solution A concave lens always forms a virtual, erect image on the same side of the object. Image-distance v = –10 cm; Focal length f = –15 cm; Object-distance u = ? Since 1 1 − = v u f 1 = – or, u v f 1 u = – = + ( ) –10 –15 1015 −+ 1 3 2 1 = − u 30 or, u = – 30 cm Thus, the object-distance is 30 cm. Magnification m = v/u m = −10cm 1 = + ; 0.33 − 30cm 3 The positive sign shows that the image is erect and virtual. The image is one-third of the size of the object. Example 9.4 A 2.0 cm tall object is placed perpendicular to the principal axis of a convex lens of focal length 10 cm. The distance of the object from the lens is 15 cm. Find the nature, position and size of the image. Also find its magnification. Reprint 2026-27 Solution Height of the object h = + 2.0 cm; Focal length f = + 10 cm; object-distance u = –15 cm; Image-distance v = ? Height of the image h′ = ? 1 − = Since v u f 1 = + or, v u f 1 v = + = − + ( 15)10 1510 − −+ 1 2 3 1 = v 30 or, v = + 30 cm The positive sign of v shows that the image is formed at a distance of 30 cm on the other side of the optical centre. The image is real and inverted. h v ' = Magnification m = h u h′ = h (v/u) or, Height of the image, h′ = (2.0) (+30/–15) = – 4.0 cm Magnification m = v/u + 30cm or, = − m 2 − 15cm The negative signs of m and h′ show that the image is inverted and real. It is formed below the principal axis. Thus, a real, inverted image, 4 cm tall, is formed at a distance of 30 cm on the other side of the lens. The image is two times enlarged."
             }
           ]
         },
@@ -764,15 +761,15 @@
     "Mirrors and lenses form images of objects. Images can be either real or virtual,",
     "depending on the position of the object.",
     "The reflecting surfaces, of all types, obey the laws of reflection. The refracting surfaces obey the laws of refraction.",
-    "New Cartesian Sign Conventions are followed for spherical mirrors and lenses. Reprint 2026-27 1 +=",
-    "Mirror formula, f , gives the relationship between the object-distance (u), vu image-distance (v), and focal length (f) of a spherical mirror.",
+    "New Cartesian Sign Conventions are followed for spherical mirrors and lenses. Reprint 2026-27 1 + =",
+    "Mirror formula, f , gives the relationship between the object-distance (u), v u image-distance (v), and focal length (f) of a spherical mirror.",
     "The focal length of a spherical mirror is equal to half its radius of curvature.",
     "The magnification produced by a spherical mirror is the ratio of the height of the image to the height of the object.",
     "A light ray travelling obliquely from a denser medium to a rarer medium bends away from the normal. A light ray bends towards the normal when it travels obliquely from a rarer to a denser medium. Light travels in vacuum with an enormous speed of 3×108 m s-1.  The speed of light",
     "is different in different media. The refractive index of a transparent medium is the ratio of the speed of light in",
     "vacuum to that in the medium.",
-    "In case of a rectangular glass slab, the refraction takes place at both air-glass interface and glass-air interface. The emergent ray is parallel to the direction of incident ray. 1 –= Lens formula, f , gives the relationship between the object-distance (u),",
-    "vu image-distance (v), and the focal length (f) of a spherical lens. Power of a lens is the reciprocal of its focal length. The SI unit of power of a lens is",
+    "In case of a rectangular glass slab, the refraction takes place at both air-glass interface and glass-air interface. The emergent ray is parallel to the direction of incident ray. 1 – = Lens formula, f , gives the relationship between the object-distance (u),",
+    "v u image-distance (v), and the focal length (f) of a spherical lens. Power of a lens is the reciprocal of its focal length. The SI unit of power of a lens is",
     "dioptre."
   ],
   "exercises": [

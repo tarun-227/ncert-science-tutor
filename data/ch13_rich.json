@@ -8,11 +8,6 @@
     {
       "id": "13.1",
       "title": "ECO-SYSTEM — WHAT ARE ITS COMPONENTS?",
-      "blocks": []
-    },
-    {
-      "id": "13.1",
-      "title": "ECO-SYSTEM — WHAT ARE ITS COMPONENTS?",
       "blocks": [
         {
           "type": "paragraph",
@@ -125,18 +120,20 @@
                 {
                   "num": 2,
                   "text": "What is the role of decomposers in the ecosystem?"
-                },
-                {
-                  "num": 13,
-                  "text": "2HOW DO OUR ACTIVITIES AFFECT THE"
-                },
-                {
-                  "num": 13,
-                  "text": "2HOW DO OUR ACTIVITIES AFFECT THE ENVIRONMENT? ENVIRONMENT? We are an integral part of the environment. Changes in the environment affect us and our activities change the environment around us. We have already seen in Class IX how our activities pollute the environment. In this chapter, we shall be looking at two of the environmental problems in detail, that is, depletion of the ozone layer and waste disposal."
                 }
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "13.2",
+      "title": "HOW DO OUR ACTIVITIES AFFECT THE ENVIRONMENT?",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "We are an integral part of the environment. Changes in the environment affect us and our activities change the environment around us. We have already seen in Class IX how our activities pollute the environment. In this chapter, we shall be looking at two of the environmental problems in detail, that is, depletion of the ozone layer and waste disposal."
         },
         {
           "type": "subsection",
@@ -145,7 +142,7 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Ozone (O3) is a molecule formed by three atoms of oxygen. While O2, which we normally refer to as oxygen, is essential for all aerobic forms of life. Ozone, is a deadly poison. However, at the higher levels of the atmosphere, ozone performs an essential function. It shields the surface of the earth from ultraviolet (UV) radiation from the Sun. This radiation Reprint 2026-27 is highly damaging to organisms, for example, it is known to cause skin cancer in human beings. Ozone at the higher levels of the atmosphere is a product of UV radiation acting on oxygen (O2) molecule. The higher energy UV radiations split apart some moleculer oxygen (O2) into free oxygen (O) atoms. These atoms then combine with the molecular oxygen to form ozone as shown— → UV O+O +→ O ( Ozone) The amount of ozone in the atmosphere began to drop sharply in the 1980s. This decrease has been linked to synthetic chemicals like chlorofluorocarbons (CFCs) which are used as refrigerants and in fire extinguishers. In 1987, the United Nations Environment Programme (UNEP) succeeded in forging an agreement to freeze CFC production at 1986 levels. It is now mandatory for all the manufacturing companies to make CFC-free refrigerators throughout the world."
+              "text": "Ozone (O3) is a molecule formed by three atoms of oxygen. While O2, which we normally refer to as oxygen, is essential for all aerobic forms of life. Ozone, is a deadly poison. However, at the higher levels of the atmosphere, ozone performs an essential function. It shields the surface of the earth from ultraviolet (UV) radiation from the Sun. This radiation Reprint 2026-27 is highly damaging to organisms, for example, it is known to cause skin cancer in human beings. Ozone at the higher levels of the atmosphere is a product of UV radiation acting on oxygen (O2) molecule. The higher energy UV radiations split apart some moleculer oxygen (O2) into free oxygen (O) atoms. These atoms then combine with the molecular oxygen to form ozone as shown— → UV O+O + → O 2 3 ( Ozone) The amount of ozone in the atmosphere began to drop sharply in the 1980s. This decrease has been linked to synthetic chemicals like chlorofluorocarbons (CFCs) which are used as refrigerants and in fire extinguishers. In 1987, the United Nations Environment Programme (UNEP) succeeded in forging an agreement to freeze CFC production at 1986 levels. It is now mandatory for all the manufacturing companies to make CFC-free refrigerators throughout the world."
             },
             {
               "type": "activity",
@@ -249,7 +246,7 @@
                 },
                 {
                   "num": 3,
-                  "text": "Give any two ways in which non-biodegradable substances would affect Visit any town or city, and we are sure to find heaps of garbage all over the place. Visit any place of tourist interest and we are sure to find the place littered with empty food wrappers. In the earlier classes we have talked about this problem of dealing with the garbage that we generate. Let us now look at the problem a bit more deeply. Reprint 2026-27 Improvements in our life-style have resulted in greater amounts of waste material generation. Changes in attitude also have a role to play, with more and more things we use becoming disposable. Changes in packaging have resulted in much of our waste becoming non- biodegradable. What do you think will be the impact of these on our environment? Reprint 2026-27 QUESTIONS ?"
+                  "text": "Give any two ways in which non-biodegradable substances would affect Visit any town or city, and we are sure to find heaps of garbage all over the place. Visit any place of tourist interest and we are sure to find the place littered with empty food wrappers. In the earlier classes we have talked about this problem of dealing with the garbage that we generate. Let us now look at the problem a bit more deeply. Reprint 2026-27 Improvements in our life-style have resulted in greater amounts of waste material generation. Changes in attitude also have a role to play, with more and more things we use becoming disposable. Changes in packaging have resulted in much of our waste becoming non- biodegradable. What do you think will be the impact of these on our environment? Reprint 2026-27 Q U E S T I O N S ?"
                 },
                 {
                   "num": 1,

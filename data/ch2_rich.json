@@ -14,10 +14,6 @@
         {
           "num": 1,
           "text": "You have been provided with three test tubes. One of them contains distilled water and the other two contain an acidic solution and a basic solution, respectively. If you are given only red litmus paper, how will you identify the contents of each test tube?"
-        },
-        {
-          "num": 2,
-          "text": "1UNDERSTANDING THE CHEMICAL PROPERTIES OF"
         }
       ]
     }
@@ -25,7 +21,7 @@
   "sections": [
     {
       "id": "2.1",
-      "title": "UNDERSTANDING THE CHEMICAL PROPERTIES OF ACIDS AND BASES ACIDS AND BASES",
+      "title": "UNDERSTANDING THE CHEMICAL PROPERTIES OF ACIDS AND BASES",
       "blocks": [
         {
           "type": "subsection",
@@ -46,7 +42,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Table 2.1 Sample Red Blue Phenolph- Methyl solutionlitmus -thaleinorange"
+              "text": "Table 2.1 Sample Red Blue Phenolph- Methyl solution litmus -thalein orange"
             },
             {
               "type": "do_you_know",
@@ -151,7 +147,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Passing carbon dioxide gas through calcium hydroxide solution The reactions occurring in the above Activity are written as – + → + Test tube A: Na CO(s)2HCl(aq)2Na H O(l) + CO(g) + → + Test tube B: NaHCO(s)HCl(aq)Na H O(l) + CO(g) On passing the carbon dioxide gas evolved through lime water, + → + Ca(OH)(aq)CO(g)CaCO s( )H O(l) (Lime water) (White precipitate) Reprint 2026-27 On passing excess carbon dioxide the following reaction takes place: + → CaCO s( )H O(l)+ CO (g)Ca(HCO) (aq) (Soluble in water) Limestone, chalk and marble are different forms of calcium carbonate. All metal carbonates and hydrogencarbonates react with acids to give a corresponding salt, carbon dioxide and water. Thus, the reaction can be summarised as – Metal carbonate/Metal hydrogencarbonate + Acid → Salt + Carbon dioxide + Water"
+              "text": "Passing carbon dioxide gas through calcium hydroxide solution The reactions occurring in the above Activity are written as – + → + Test tube A: Na CO(s) 2HCl(aq) 2Na H O(l) + CO(g) 2 3 + → + Test tube B: NaHCO(s) HCl(aq) Na H O(l) + CO(g) On passing the carbon dioxide gas evolved through lime water, + → + Ca(OH)(aq) CO(g) CaCO s( ) H O(l) (Lime water) (White precipitate) Reprint 2026-27 On passing excess carbon dioxide the following reaction takes place: + → CaCO s( ) H O(l)+ CO (g) Ca(HCO) (aq) (Soluble in water) Limestone, chalk and marble are different forms of calcium carbonate. All metal carbonates and hydrogencarbonates react with acids to give a corresponding salt, carbon dioxide and water. Thus, the reaction can be summarised as – Metal carbonate/Metal hydrogencarbonate + Acid → Salt + Carbon dioxide + Water"
             }
           ]
         },
@@ -235,12 +231,7 @@
     },
     {
       "id": "2.2",
-      "title": "WHAT DO ALL ACIDS AND ALL BASES HAVE IN",
-      "blocks": []
-    },
-    {
-      "id": "2.2",
-      "title": "WHAT DO ALL ACIDS AND ALL BASES HAVE IN COMMON? COMMON?",
+      "title": "WHAT DO ALL ACIDS AND ALL BASES HAVE IN COMMON?",
       "blocks": [
         {
           "type": "paragraph",
@@ -304,7 +295,7 @@
             },
             {
               "type": "paragraph",
-              "text": "This experiment suggests that hydrogen ions in HCl are produced in the presence of water. The separation of H+ ion from HCl molecules cannot occur in the absence of water. HCl + H2O → H3O+ + Cl– Hydrogen ions cannot exist alone, but they exist after combining with water molecules. Thus hydrogen ions must always be shown as H+(aq) or hydronium ion (H3O+). H+ + H2O → H3O+ We have seen that acids give H3O+ or H+(aq) ion in water. Let us see what happens when a base is dissolved in water. NaOH(s)Na+ (aq) + OH– (aq) H O → Reprint 2026-27 H O → + – KOH(s) K (aq)+OH (aq) Mg2+(aq)+2OH–(aq) H O Mg(OH)2(s) → Bases generate hydroxide (OH–) ions in water. Bases which are soluble in water are called alkalis. Do You Know?"
+              "text": "This experiment suggests that hydrogen ions in HCl are produced in the presence of water. The separation of H+ ion from HCl molecules cannot occur in the absence of water. HCl + H2O → H3O+ + Cl– Hydrogen ions cannot exist alone, but they exist after combining with water molecules. Thus hydrogen ions must always be shown as H+(aq) or hydronium ion (H3O+). H+ + H2O → H3O+ We have seen that acids give H3O+ or H+(aq) ion in water. Let us see what happens when a base is dissolved in water. NaOH(s) Na+ (aq) + OH– (aq) H O  → Reprint 2026-27 H O → + – KOH(s) K (aq)+OH (aq) Mg2+(aq)+2OH–(aq) H O Mg(OH)2(s)  → Bases generate hydroxide (OH–) ions in water. Bases which are soluble in water are called alkalis. Do You Know?"
             },
             {
               "type": "do_you_know",
@@ -374,11 +365,6 @@
     {
       "id": "2.3",
       "title": "HOW STRONG ARE ACID OR BASE SOLUTIONS?",
-      "blocks": []
-    },
-    {
-      "id": "2.3",
-      "title": "HOW STRONG ARE ACID OR BASE SOLUTIONS?",
       "blocks": [
         {
           "type": "paragraph",
@@ -407,7 +393,7 @@
         },
         {
           "type": "paragraph",
-          "text": "S. Solution Colour ofApprox-Nature of No. pH paper-imatesubstance pH value"
+          "text": "S. Solution Colour ofApprox-Nature of No. pH paper -imate substance pH value"
         },
         {
           "type": "figure",
@@ -422,12 +408,6 @@
         {
           "type": "paragraph",
           "text": "The strength of acids and bases depends on the number of H+ ions and OH– ions produced, respectively. If we take hydrochloric acid and acetic acid of the same concentration, say one molar, then these produce different amounts of hydrogen ions. Acids that give rise to more H+ ions are said to be strong acids, and acids that give less H+ ions are said to be weak acids. Can you now say what weak and strong bases are?"
-        },
-        {
-          "type": "subsection",
-          "id": "2.3.1",
-          "title": "Importance of pH in Everyday Life",
-          "blocks": []
         },
         {
           "type": "subsection",
@@ -469,7 +449,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Table 2.3 Some naturally occurring acids Natural sourceAcid Vinegar Acetic acid Sour milk (Curd) Lactic acid Orange Citric acid Lemon Citric acid Tamarind Tartaric acid Ant sting Methanoic acid Tomato Oxalic acid Nettle sting Methanoic acid"
+              "text": "Table 2.3 Some naturally occurring acids Natural source Acid Vinegar Acetic acid Sour milk (Curd) Lactic acid Orange Citric acid Lemon Citric acid Tamarind Tartaric acid Ant sting Methanoic acid Tomato Oxalic acid Nettle sting Methanoic acid"
             },
             {
               "type": "in_text_questions",
@@ -547,7 +527,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Salts of a strong acid and a strong base Table 2.4 are neutral with pH value of 7. On the other Salt pH Acid usedBase used hand, salts of a strong acid and weak base are acidic with pH value less than 7 and those of a strong base and weak acid are basic in nature, with pH value more than 7."
+              "text": "Salts of a strong acid and a strong base Table 2.4 are neutral with pH value of 7. On the other Salt pH Acid used Base used hand, salts of a strong acid and weak base are acidic with pH value less than 7 and those of a strong base and weak acid are basic in nature, with pH value more than 7."
             }
           ]
         },
@@ -568,7 +548,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Bleaching powder You have already come to know that chlorine is produced during the electrolysis of aqueous sodium chloride (brine). This chlorine gas is used for the manufacture of bleaching powder. Bleaching powder is produced by the action of chlorine on dry slaked lime [Ca(OH)2]. Bleaching powder is represented as Ca(ClO)2, though the actual composition is quite complex. 2Ca(OH)2 + 2Cl2 ® Ca(ClO)2 + CaCl2 + 2H2O Reprint 2026-27 Bleaching powder is used – (i)for bleaching cotton and linen in the textile industry, for bleaching wood pulp in paper factories and for bleaching washed clothes in laundry; (ii)as an oxidising agent in many chemical industries; and (iii)to make drinking water free from germs. Baking soda The baking soda is commonly used in the kitchen for making tasty crispy pakoras, etc. Sometimes it is added for faster cooking. The chemical name of the compound is sodium hydrogencarbonate (NaHCO3). It is produced using sodium chloride as one of the raw materials. → NaCl + H O + CO+ NH Cl + NaHCO (Ammonium (Sodium chloride)hydrogencarbonate) Did you check the pH of sodium hydrogencarbonate in Activity 2.14? Can you correlate why it can be used to neutralise an acid? It is a mild non-corrosive basic salt. The following reaction takes place when it is heated during cooking – Heat → 2NaHCO Na CO + H O+CO (Sodium hydrogencarbonate) Sodium hydrogencarbonate has got various uses in the household. Uses of Baking soda (i)Baking powder is a mixture of baking soda (sodium hydrogen carbonate) and tartaric acid which is a weak edible acid. When baking powder is heated or mixed in water, the following reaction takes place – NaHCO3 + H+ ® CO2 + H2O + Sodium salt of acid (From any acid) Carbon dioxide produced during the reaction can cause bread or cake to rise making them soft and spongy. (ii)Sodium hydrogencarbonate is also an ingredient in antacids. Being alkaline, it neutralises excess acid in the stomach and provides relief. (iii)It is also used in soda-acid fire extinguishers. Washing soda Another chemical that can be obtained from sodium chloride is Na2CO3.10H2O (washing soda). You have seen above that sodium carbonate can be obtained by heating baking soda; recrystallisation of sodium carbonate gives washing soda. It is also a basic salt. + → Na CO10H O .10H O Sodium ( carbonate ) Reprint 2026-27 What does 10H2O signify? Does it make Na2CO3 wet? We will address this question in the next section. Sodium carbonate and sodium hydrogencarbonate are useful chemicals for many industrial processes as well. Uses of washing soda (i)Sodium carbonate (washing soda) is used in glass, soap and paper industries. (ii)It is used in the manufacture of sodium compounds such as borax. (iii)Sodium carbonate can be used as a cleaning agent for domestic purposes. (iv)It is used for removing permanent hardness of water."
+              "text": "Bleaching powder You have already come to know that chlorine is produced during the electrolysis of aqueous sodium chloride (brine). This chlorine gas is used for the manufacture of bleaching powder. Bleaching powder is produced by the action of chlorine on dry slaked lime [Ca(OH)2]. Bleaching powder is represented as Ca(ClO)2, though the actual composition is quite complex. 2Ca(OH)2 + 2Cl2 ® Ca(ClO)2 + CaCl2 + 2H2O Reprint 2026-27 Bleaching powder is used – (i)for bleaching cotton and linen in the textile industry, for bleaching wood pulp in paper factories and for bleaching washed clothes in laundry; (ii)as an oxidising agent in many chemical industries; and (iii)to make drinking water free from germs. Baking soda The baking soda is commonly used in the kitchen for making tasty crispy pakoras, etc. Sometimes it is added for faster cooking. The chemical name of the compound is sodium hydrogencarbonate (NaHCO3). It is produced using sodium chloride as one of the raw materials. → NaCl + H O + CO+ NH Cl + NaHCO (Ammonium (Sodium chloride) hydrogencarbonate) Did you check the pH of sodium hydrogencarbonate in Activity 2.14? Can you correlate why it can be used to neutralise an acid? It is a mild non-corrosive basic salt. The following reaction takes place when it is heated during cooking – Heat → 2NaHCO Na CO + H O+CO 2 3 2 (Sodium hydrogencarbonate) Sodium hydrogencarbonate has got various uses in the household. Uses of Baking soda (i)Baking powder is a mixture of baking soda (sodium hydrogen carbonate) and tartaric acid which is a weak edible acid. When baking powder is heated or mixed in water, the following reaction takes place – NaHCO3 + H+ ® CO2 + H2O + Sodium salt of acid (From any acid) Carbon dioxide produced during the reaction can cause bread or cake to rise making them soft and spongy. (ii)Sodium hydrogencarbonate is also an ingredient in antacids. Being alkaline, it neutralises excess acid in the stomach and provides relief. (iii)It is also used in soda-acid fire extinguishers. Washing soda Another chemical that can be obtained from sodium chloride is Na2CO3.10H2O (washing soda). You have seen above that sodium carbonate can be obtained by heating baking soda; recrystallisation of sodium carbonate gives washing soda. It is also a basic salt. + → Na CO 10H O .10H O 2 3 3 2 Sodium ( carbonate ) Reprint 2026-27 What does 10H2O signify? Does it make Na2CO3 wet? We will address this question in the next section. Sodium carbonate and sodium hydrogencarbonate are useful chemicals for many industrial processes as well. Uses of washing soda (i)Sodium carbonate (washing soda) is used in glass, soap and paper industries. (ii)It is used in the manufacture of sodium compounds such as borax. (iii)Sodium carbonate can be used as a cleaning agent for domestic purposes. (iv)It is used for removing permanent hardness of water."
             }
           ]
         },
@@ -602,7 +582,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Removing water crystallisation. When we heat the crystals, this water is removed and the of crystallisation salt turns white. If you moisten the crystals again with water, you will find that blue colour of the crystals reappears. Water of crystallisation is the fixed number of water molecules present in one formula unit of a salt. Five water molecules are present in one formula unit of copper sulphate. Chemical formula for hydrated copper sulphate is Cu SO4. 5H2O. Now you would be able to answer the question whether the molecule of Na2CO3.10H2O is wet. One other salt, which possesses water of crystallisation is gypsum. It has two water molecules as water of cyrstallisation. It has the chemical formula CaSO4.2H2O. Let us look into the use of this salt. Plaster of Paris On heating gypsum at 373 K, it loses water molecules and becomes 1 CaSO .H O calcium sulphate hemihydrate ( ). This is called Plaster of 2 Reprint 2026-27 Paris, the substance which doctors use as plaster for supporting fractured bones in the right position. Plaster of Paris is a white powder and on mixing with water, it changes to gypsum once again giving a hard solid mass. CaSO .12 H O +11 → 2 H OCaSO .2H O (Plaster of Paris) Gypsum) ( Note that only half a water molecule is shown to be attached as water of crystallisation. How can you get half a water molecule? It is written in this form because two formula units of CaSO4 share one molecule of water. Plaster of Paris is used for making toys, materials for decoration and for making surfaces smooth. Try to find out why is calcium sulphate hemihydrate called ‘Plaster of Paris’ ?"
+              "text": "Removing water crystallisation. When we heat the crystals, this water is removed and the of crystallisation salt turns white. If you moisten the crystals again with water, you will find that blue colour of the crystals reappears. Water of crystallisation is the fixed number of water molecules present in one formula unit of a salt. Five water molecules are present in one formula unit of copper sulphate. Chemical formula for hydrated copper sulphate is Cu SO4. 5H2O. Now you would be able to answer the question whether the molecule of Na2CO3.10H2O is wet. One other salt, which possesses water of crystallisation is gypsum. It has two water molecules as water of cyrstallisation. It has the chemical formula CaSO4.2H2O. Let us look into the use of this salt. Plaster of Paris On heating gypsum at 373 K, it loses water molecules and becomes 1 CaSO . H O calcium sulphate hemihydrate ( ). This is called Plaster of 4 2 2 Reprint 2026-27 Paris, the substance which doctors use as plaster for supporting fractured bones in the right position. Plaster of Paris is a white powder and on mixing with water, it changes to gypsum once again giving a hard solid mass. CaSO .12 H O +11 → 2 H O CaSO .2H O 4 2 (Plaster of Paris) Gypsum) ( Note that only half a water molecule is shown to be attached as water of crystallisation. How can you get half a water molecule? It is written in this form because two formula units of CaSO4 share one molecule of water. Plaster of Paris is used for making toys, materials for decoration and for making surfaces smooth. Try to find out why is calcium sulphate hemihydrate called ‘Plaster of Paris’ ?"
             },
             {
               "type": "in_text_questions",

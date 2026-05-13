@@ -150,7 +150,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Compile your observations regarding metals and non-metals in Table 3.1. Table 3.1 Element SymbolType ofHardnessMalleabilityDuctilityConductsSonority surface Electricity On the bases of the observations recorded in Table 3.1, discuss the general physical properties of metals and non-metals in the class. You must have concluded that we cannot group elements according to their physical properties alone, as there are many exceptions. For example – (i)All metals except mercury exist as solids at room temperature. In Activity 3.5, you have observed that metals have high melting Reprint 2026-27 points but gallium and caesium have very low melting points. These two metals will melt if you keep them on your palm. (ii)Iodine is a non-metal but it is lustrous. (iii)Carbon is a non-metal that can exist in different forms. Each form is called an allotrope. Diamond, an allotrope of carbon, is the hardest natural substance known and has a very high melting and boiling point. Graphite, another allotrope of carbon, is a conductor of electricity. (iv)Alkali metals (lithium, sodium, potassium) are so soft that they can be cut with a knife. They have low densities and low melting points. Elements can be more clearly classified as metals and non-metals on the basis of their chemical properties."
+              "text": "Compile your observations regarding metals and non-metals in Table 3.1. Table 3.1 Element SymbolType ofHardness Malleability Ductility Conducts Sonority surface Electricity On the bases of the observations recorded in Table 3.1, discuss the general physical properties of metals and non-metals in the class. You must have concluded that we cannot group elements according to their physical properties alone, as there are many exceptions. For example – (i)All metals except mercury exist as solids at room temperature. In Activity 3.5, you have observed that metals have high melting Reprint 2026-27 points but gallium and caesium have very low melting points. These two metals will melt if you keep them on your palm. (ii)Iodine is a non-metal but it is lustrous. (iii)Carbon is a non-metal that can exist in different forms. Each form is called an allotrope. Diamond, an allotrope of carbon, is the hardest natural substance known and has a very high melting and boiling point. Graphite, another allotrope of carbon, is a conductor of electricity. (iv)Alkali metals (lithium, sodium, potassium) are so soft that they can be cut with a knife. They have low densities and low melting points. Elements can be more clearly classified as metals and non-metals on the basis of their chemical properties."
             },
             {
               "type": "activity",
@@ -193,11 +193,6 @@
     {
       "id": "3.2",
       "title": "CHEMICAL PROPERTIES OF METALS",
-      "blocks": []
-    },
-    {
-      "id": "3.2",
-      "title": "CHEMICAL PROPERTIES OF METALS",
       "blocks": [
         {
           "type": "paragraph",
@@ -232,7 +227,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Almost all metals combine with oxygen to form metal oxides. Metal + Oxygen → Metal oxide For example, when copper is heated in air, it combines with oxygen to form copper(II) oxide, a black oxide. 2Cu + O2 → 2CuO (Copper)(II) oxide) Similarly, aluminium forms aluminium oxide. 3O2 → 2Al2O3 4Al+ (Aluminium) (Aluminium oxide) Recall from Chapter 2, how copper oxide reacts with hydrochloric acid. We have learnt that metal oxides are basic in nature. But some metal oxides, such as aluminium oxide, zinc oxide show both acidic as well as basic behaviour. Such metal oxides which react with both acids as well as bases to produce salts and water are known as amphoteric oxides. Aluminium oxide reacts in the following manner with acids and bases – → Al2O3 + 6HCl 2AlCl3+ 3H2O → Al2O3 + 2NaOH 2NaAlO2 + H2O (Sodium aluminate) Most metal oxides are insoluble in water but some of these dissolve in water to form alkalis. Sodium oxide and potassium oxide dissolve in water to produce alkalis as follows – Na2O(s) + H2O(l) → 2NaOH(aq) + H2O(l) → 2KOH(aq) K2O(s) Reprint 2026-27 We have observed in Activity 3.9 that all metals do not react with oxygen at the same rate. Different metals show different reactivities towards oxygen. Metals such as potassium and sodium react so vigorously that they catch fire if kept in the open. Hence, to protect them and to prevent accidental fires, they are kept immersed in kerosene oil. At ordinary temperature, the surfaces of metals such as magnesium, aluminium, zinc, lead, etc., are covered with a thin layer of oxide. The protective oxide layer prevents the metal from further oxidation. Iron does not burn on heating but iron filings burn vigorously when sprinkled in the flame of the burner. Copper does not burn, but the hot metal is coated with a black coloured layer of copper(II) oxide. Silver and gold do not react with oxygen even at high temperatures. Do You Know?"
+              "text": "Almost all metals combine with oxygen to form metal oxides. Metal + Oxygen → Metal oxide For example, when copper is heated in air, it combines with oxygen to form copper(II) oxide, a black oxide. 2Cu + O2 → 2CuO (Copper)(II) oxide) Similarly, aluminium forms aluminium oxide. 3O2 → 2Al2O3 4Al + (Aluminium) (Aluminium oxide) Recall from Chapter 2, how copper oxide reacts with hydrochloric acid. We have learnt that metal oxides are basic in nature. But some metal oxides, such as aluminium oxide, zinc oxide show both acidic as well as basic behaviour. Such metal oxides which react with both acids as well as bases to produce salts and water are known as amphoteric oxides. Aluminium oxide reacts in the following manner with acids and bases – → Al2O3 + 6HCl 2AlCl3 + 3H2O → Al2O3 + 2NaOH 2NaAlO2 + H2O (Sodium aluminate) Most metal oxides are insoluble in water but some of these dissolve in water to form alkalis. Sodium oxide and potassium oxide dissolve in water to produce alkalis as follows – Na2O(s) + H2O(l) → 2NaOH(aq) + H2O(l) → 2KOH(aq) K2O(s) Reprint 2026-27 We have observed in Activity 3.9 that all metals do not react with oxygen at the same rate. Different metals show different reactivities towards oxygen. Metals such as potassium and sodium react so vigorously that they catch fire if kept in the open. Hence, to protect them and to prevent accidental fires, they are kept immersed in kerosene oil. At ordinary temperature, the surfaces of metals such as magnesium, aluminium, zinc, lead, etc., are covered with a thin layer of oxide. The protective oxide layer prevents the metal from further oxidation. Iron does not burn on heating but iron filings burn vigorously when sprinkled in the flame of the burner. Copper does not burn, but the hot metal is coated with a black coloured layer of copper(II) oxide. Silver and gold do not react with oxygen even at high temperatures. Do You Know?"
             },
             {
               "type": "do_you_know",
@@ -383,7 +378,7 @@
                 },
                 {
                   "num": 2,
-                  "text": "Write equations for the reactions of (i) iron with steam (ii) calcium and potassium with water following solution one by one. The results obtained have been tabulated as follows. MetalIron(II) sulphateCopper(II) sulphateZinc sulphateSilver nitrate A No reaction Displacement B Displacement No reaction C No reaction Displacement D No reaction A, B, C and D. (i)Which is the most reactive metal? (ii)What would you observe if B is added to a solution of Copper(II) sulphate? reactivity."
+                  "text": "Write equations for the reactions of (i) iron with steam (ii) calcium and potassium with water following solution one by one. The results obtained have been tabulated as follows. Metal Iron(II) sulphate Copper(II) sulphate Zinc sulphate Silver nitrate A No reaction Displacement B Displacement No reaction C No reaction Displacement D No reaction A, B, C and D. (i) Which is the most reactive metal? (ii) What would you observe if B is added to a solution of Copper(II) sulphate? reactivity."
                 },
                 {
                   "num": 4,
@@ -405,15 +400,15 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "In the above activities, you saw the reactions of metals with a number of reagents. Why do metals react in this manner? Let us recall what we learnt about the electronic configuration of elements in Class IX. We learnt that noble gases, which have a completely filled valence shell, show little chemical activity. We, therefore, explain the reactivity of elements as a tendency to attain a completely filled valence shell. Let us have a look at the electronic configuration of noble gases and some metals and non-metals. We can see from Table 3.3 that a sodium atom has one electron in its outermost shell. If it loses the electron from its M shell then its L shell now becomes the outermost shell and that has a stable octet. The nucleus of this atom still has 11 protons but the number of electrons has become 10, so there is a net positive charge giving us a sodium cation Na+. On the other hand chlorine has seven electrons in its outermost shell Reprint 2026-27 Table 3.3 Electronic configurations of some elements Type of Element AtomicNumber of element numberelectrons in shells"
+          "text": "In the above activities, you saw the reactions of metals with a number of reagents. Why do metals react in this manner? Let us recall what we learnt about the electronic configuration of elements in Class IX. We learnt that noble gases, which have a completely filled valence shell, show little chemical activity. We, therefore, explain the reactivity of elements as a tendency to attain a completely filled valence shell. Let us have a look at the electronic configuration of noble gases and some metals and non-metals. We can see from Table 3.3 that a sodium atom has one electron in its outermost shell. If it loses the electron from its M shell then its L shell now becomes the outermost shell and that has a stable octet. The nucleus of this atom still has 11 protons but the number of electrons has become 10, so there is a net positive charge giving us a sodium cation Na+. On the other hand chlorine has seven electrons in its outermost shell Reprint 2026-27 Table 3.3 Electronic configurations of some elements Type of Element Atomic Number of element number electrons in shells"
         },
         {
           "type": "do_you_know",
-          "text": "KLMN Noble gasesHelium (He) 2 Neon (Ne) 10 28 Argon (Ar) 18 28 Sodium (Na) 11 281 Magnesium (Mg)12 82 Aluminium (Al) 13 283 Potassium (K) 19 28 1 Calcium (Ca) 20 28 2 7 25 Oxygen (O) 8 26 Fluorine (F) 9 27 Phosphorus (P) 15 285 Sulphur (S) 16 286 Chlorine (Cl) 17 287"
+          "text": "K L M N Noble gases Helium (He) 2 Neon (Ne) 10 2 8 Argon (Ar) 18 2 8 Sodium (Na) 11 2 8 1 Magnesium (Mg) 12 8 2 Aluminium (Al) 13 2 8 3 Potassium (K) 19 2 8 1 Calcium (Ca) 20 2 8 2 7 2 5 Oxygen (O) 8 2 6 Fluorine (F) 9 2 7 Phosphorus (P) 15 2 8 5 Sulphur (S) 16 2 8 6 Chlorine (Cl) 17 2 8 7"
         },
         {
           "type": "paragraph",
-          "text": "and it requires one more electron to complete its octet. If sodium and chlorine were to react, the electron lost by sodium could be taken up by chlorine. After gaining an electron, the chlorine atom gets a unit negative charge, because its nucleus has 17 protons and there are 18 electrons in its K, L and M shells. This gives us a chloride anion C1–. So both these elements can have a give-and-take relation between them as follows (Fig. 3.5). → + – Na + e 2,8,1 (Sodium cation) → – Cl+eCl 2,8,7 2,8,8 (Chloride anion)"
+          "text": "and it requires one more electron to complete its octet. If sodium and chlorine were to react, the electron lost by sodium could be taken up by chlorine. After gaining an electron, the chlorine atom gets a unit negative charge, because its nucleus has 17 protons and there are 18 electrons in its K, L and M shells. This gives us a chloride anion C1–. So both these elements can have a give-and-take relation between them as follows (Fig. 3.5). → + – Na + e 2,8,1 (Sodium cation) → – Cl +e Cl 2,8,7 2,8,8 (Chloride anion)"
         },
         {
           "type": "figure",
@@ -423,7 +418,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Sodium and chloride ions, being oppositely charged, attract each other and are held by strong electrostatic forces of attraction to exist as sodium chloride (NaCl). It should be noted that sodium chloride does not exist as molecules but aggregates of oppositely charged ions. Let us see the formation of one more ionic compound, magnesium chloride (Fig. 3.6). Reprint 2026-27 → 2+ + 2 – Mg e 2 8 2, , (Magnesium cation) → – Cl+e Cl 2,8,7 2,8,8 (Chloride anion)"
+          "text": "Sodium and chloride ions, being oppositely charged, attract each other and are held by strong electrostatic forces of attraction to exist as sodium chloride (NaCl). It should be noted that sodium chloride does not exist as molecules but aggregates of oppositely charged ions. Let us see the formation of one more ionic compound, magnesium chloride (Fig. 3.6). Reprint 2026-27 → 2+ + 2 – Mg e 2 8 2, , (Magnesium cation) → – Cl +e Cl 2,8,7 2,8,8 (Chloride anion)"
         },
         {
           "type": "figure",
@@ -496,7 +491,7 @@
               "items": [
                 {
                   "num": 1,
-                  "text": "(i)Write the electron-dot structures for sodium, oxygen and ? magnesium. (ii)Show the formation of Na2O and MgO by the transfer of  electrons. (iii)What are the ions present in these compounds?"
+                  "text": "(i)Write the electron-dot structures for sodium, oxygen and ? magnesium. (ii) Show the formation of Na2O and MgO by the transfer of  electrons. (iii) What are the ions present in these compounds?"
                 },
                 {
                   "num": 2,
@@ -561,7 +556,7 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Metals low in the activity series are very unreactive. The oxides of these metals can be reduced to metals by heating alone. For example, cinnabar (HgS) is an ore of mercury. When it is heated in air, it is first converted into mercuric oxide (HgO). Mercuric oxide is then reduced to mercury on further heating. Heat → 2HgS(s) + 3O (g) 2HgO(s) + 2SO (g) Heat → 2HgO(s) 2Hg(l) + O (g) Similarly, copper which is found as Cu2S in nature can be obtained from its ore by just heating in air. Heat → 2Cu S + 3O (g) 2Cu O(s) + 2SO (g) Heat → 6Cu(s) + SO (g) 2Cu O + Cu S"
+              "text": "Metals low in the activity series are very unreactive. The oxides of these metals can be reduced to metals by heating alone. For example, cinnabar (HgS) is an ore of mercury. When it is heated in air, it is first converted into mercuric oxide (HgO). Mercuric oxide is then reduced to mercury on further heating. Heat → 2HgS(s) + 3O (g) 2HgO(s) + 2SO (g) Heat → 2HgO(s) 2Hg(l) + O (g) Similarly, copper which is found as Cu2S in nature can be obtained from its ore by just heating in air. Heat → 2Cu S + 3O (g) 2Cu O(s) + 2SO (g) Heat  → 6Cu(s) + SO (g) 2Cu O + Cu S"
             }
           ]
         },
@@ -697,7 +692,7 @@
               "items": [
                 {
                   "num": 1,
-                  "text": "Metallic oxides of zinc, magnesium and copper were heated with the ? Metal ZincMagnesiumCopper Zinc oxide Magnesium oxide Copper oxide In which cases will you find displacement reactions taking place?"
+                  "text": "Metallic oxides of zinc, magnesium and copper were heated with the ? Metal Zinc Magnesium Copper Zinc oxide Magnesium oxide Copper oxide In which cases will you find displacement reactions taking place?"
                 },
                 {
                   "num": 3,
@@ -802,7 +797,7 @@
     },
     {
       "num": 9,
-      "question": "Pratyush took sulphur powder on a spatula and heated it. He collected the gas evolved by inverting a test tube over it, as shown in figure below. (i)dry litmus paper? (ii)moist litmus paper? equation for the reaction taking place.",
+      "question": "Pratyush took sulphur powder on a spatula and heated it. He collected the gas evolved by inverting a test tube over it, as shown in figure below. (i) dry litmus paper? (ii) moist litmus paper? equation for the reaction taking place.",
       "options": [
         "(a) What will be the action of gas on",
         "(b) Write a balanced chemical"

@@ -237,11 +237,6 @@
     {
       "id": "6.3",
       "title": "HORMONES IN ANIMALS",
-      "blocks": []
-    },
-    {
-      "id": "6.3",
-      "title": "HORMONES IN ANIMALS",
       "blocks": [
         {
           "type": "paragraph",
@@ -401,7 +396,7 @@
           "num": "6.4",
           "title": "n  Hormones are secreted by endocrine glands and have specific functions. Complete",
           "steps": [
-            "Table 6.1 based on the hormone, the endocrine gland or the functions provided. Table 6.1 : Some important hormones and their functions S.No.Hormone Endocrine GlandFunctions 1. Growth hormonePituitary gland Stimulates growth in all organs 2. Thyroid gland Regulates metabolism for body growth 3. Insulin Regulates blood sugar level 4. Testosterone Testes 5. Ovaries Development of female sex organs, regulates menstrual cycle, etc. 6. Adrenaline Adrenal gland 7. Releasing Stimulates pituitary gland to release hormones"
+            "Table 6.1 based on the hormone, the endocrine gland or the functions provided. Table 6.1 : Some important hormones and their functions S.No.Hormone Endocrine Gland Functions 1. Growth hormone Pituitary gland Stimulates growth in all organs 2. Thyroid gland Regulates metabolism for body growth 3. Insulin Regulates blood sugar level 4. Testosterone Testes 5. Ovaries Development of female sex organs, regulates menstrual cycle, etc. 6. Adrenaline Adrenal gland 7. Releasing Stimulates pituitary gland to release hormones"
           ],
           "cautions": []
         },

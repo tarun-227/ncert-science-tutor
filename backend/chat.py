@@ -10,6 +10,7 @@ GROQ_URL     = "https://api.groq.com/openai/v1/chat/completions"
 
 
 def _call_hf(prompt: str) -> str:
+    """Single-turn call — used by practice / exercise / evaluate helpers."""
     resp = requests.post(
         GROQ_URL,
         headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
@@ -25,33 +26,21 @@ def _call_hf(prompt: str) -> str:
     return resp.json()["choices"][0]["message"]["content"].strip()
 
 
-def build_system_block(chapter_title: str, subtopic_title: str, content: str) -> str:
-    return (
-        f"You are a friendly, patient Class 10 Science tutor.\n"
-        f"The student is currently studying:\n"
-        f"  Chapter: {chapter_title}\n"
-        f"  Topic:   {subtopic_title}\n\n"
-        f"Relevant textbook content:\n"
-        f"---\n{content[:1500]}\n---\n\n"
-        f"Rules:\n"
-        f"- Answer specifically about this topic only\n"
-        f"- Be concise but complete (3-6 sentences usually enough)\n"
-        f"- If asked to explain: start with a real-life observation, then the concept\n"
-        f"- If asked to simplify: use an everyday analogy a 15-year-old would relate to\n"
-        f"- If asked for an example: give a concrete real-world example\n"
-        f"- For numericals: show step-by-step with each formula clearly stated\n"
-        f"- End with the key exam point when relevant\n"
+def _call_chat(messages: list[dict]) -> str:
+    """Multi-turn call — used by the interactive tutor chat."""
+    resp = requests.post(
+        GROQ_URL,
+        headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+        json={
+            "model": MODEL,
+            "messages": messages,
+            "temperature": 0.4,
+            "max_tokens": 800,
+        },
+        timeout=60,
     )
-
-
-def build_history_block(history: list[dict]) -> str:
-    if not history:
-        return ""
-    lines = ["Previous conversation:"]
-    for msg in history[-8:]:  # last 4 pairs
-        role = "Student" if msg["role"] == "user" else "Tutor"
-        lines.append(f"{role}: {msg['content'][:300]}")
-    return "\n".join(lines) + "\n\n"
+    resp.raise_for_status()
+    return resp.json()["choices"][0]["message"]["content"].strip()
 
 
 def chat(
@@ -61,10 +50,38 @@ def chat(
     subtopic_content: str,
     history: list[dict],
 ) -> str:
-    system  = build_system_block(chapter_title, subtopic_title, subtopic_content)
-    hist    = build_history_block(history)
-    prompt  = f"{system}\n{hist}Student: {user_message}\n\nTutor:"
-    return _call_hf(prompt)
+    """Interactive tutor chat using proper multi-turn message format.
+
+    Uses system / user / assistant roles so the model never confuses the
+    conversation history with its own output and never hallucinates a fake
+    'Student:' turn.
+    """
+    system_content = (
+        f"You are a friendly, patient Class 10 Science tutor.\n"
+        f"The student is currently studying:\n"
+        f"  Chapter: {chapter_title}\n"
+        f"  Topic:   {subtopic_title}\n\n"
+        f"Relevant textbook content:\n"
+        f"---\n{subtopic_content[:1500]}\n---\n\n"
+        f"Rules:\n"
+        f"- ALWAYS answer the student's current question directly — do not continue or invent previous topics.\n"
+        f"- Be concise but complete (3–6 sentences is usually enough).\n"
+        f"- If asked to explain: start with a real-life observation, then the concept.\n"
+        f"- If asked to simplify: use an everyday analogy a 15-year-old would relate to.\n"
+        f"- If asked for an example: give a concrete real-world example.\n"
+        f"- For numericals: show step-by-step with each formula clearly stated.\n"
+        f"- End with the key exam point when relevant.\n"
+    )
+
+    messages: list[dict] = [{"role": "system", "content": system_content}]
+
+    # Inject history as proper user / assistant turns (last 4 pairs = 8 messages)
+    for msg in history[-8:]:
+        messages.append({"role": msg["role"], "content": msg["content"][:400]})
+
+    messages.append({"role": "user", "content": user_message})
+
+    return _call_chat(messages)
 
 
 def generate_practice(subtopic_title: str, content: str) -> dict:

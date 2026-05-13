@@ -76,12 +76,12 @@ function Callout({ type = 'keypoint', children, text }) {
       }}>
         {cfg.label}
       </div>
-      <p style={{
+      <div style={{
         fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.75,
         color: 'var(--ink2)', textWrap: 'pretty', margin: 0,
       }}>
         {text || children}
-      </p>
+      </div>
     </div>
   )
 }

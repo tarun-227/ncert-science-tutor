@@ -30,14 +30,17 @@ export async function fetchReadSections(chapterId) {
 
 export async function toggleReadSection(chapterId, sectionId, isRead) {
   try {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return
     if (isRead) {
       await supabase.from('read_progress').upsert(
-        { chapter_id: chapterId, section_id: sectionId },
+        { user_id: user.id, chapter_id: chapterId, section_id: sectionId },
         { onConflict: 'user_id,chapter_id,section_id' }
       )
     } else {
       await supabase.from('read_progress')
         .delete()
+        .eq('user_id', user.id)
         .eq('chapter_id', chapterId)
         .eq('section_id', sectionId)
     }
@@ -66,8 +69,10 @@ export async function fetchNotes(chapterId) {
 
 export async function saveNote(chapterId, sectionId, content) {
   try {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return
     await supabase.from('notes').upsert(
-      { chapter_id: chapterId, section_id: sectionId, content },
+      { user_id: user.id, chapter_id: chapterId, section_id: sectionId, content },
       { onConflict: 'user_id,chapter_id,section_id' }
     )
   } catch { /* silent */ }
@@ -95,14 +100,17 @@ export async function fetchHighlights(chapterId) {
 
 export async function toggleHighlight(chapterId, paragraphId, isHighlighted) {
   try {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return
     if (isHighlighted) {
       await supabase.from('highlights').upsert(
-        { chapter_id: chapterId, paragraph_id: paragraphId },
+        { user_id: user.id, chapter_id: chapterId, paragraph_id: paragraphId },
         { onConflict: 'user_id,chapter_id,paragraph_id' }
       )
     } else {
       await supabase.from('highlights')
         .delete()
+        .eq('user_id', user.id)
         .eq('chapter_id', chapterId)
         .eq('paragraph_id', paragraphId)
     }

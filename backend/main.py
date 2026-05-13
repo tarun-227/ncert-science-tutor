@@ -1,6 +1,9 @@
 """FastAPI backend — AI Learning Product."""
 import json
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()  # loads .env from project root in development
+
 from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -218,9 +221,9 @@ def evaluate(req: EvalRequest):
 # ── Session management ────────────────────────────────────────────────────────
 
 @app.post("/api/session/new")
-def new_session(user: dict = Depends(get_current_user)):
+def new_session():
+    """Create a new chat session UUID. No auth required — auth is checked at /api/chat."""
     sid = str(uuid.uuid4())
-    # Session row is created lazily on first message (we need chapter_id for that).
     # Pre-create an in-memory entry so history lookups don't fail before first message.
     sessions.get_or_create(sid)
     return {"session_id": sid}

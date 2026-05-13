@@ -296,10 +296,24 @@ export default function ChapterPage() {
     let cancelled = false
     async function init() {
       try {
-        const sRes = await apiFetch('/api/session/new', { method: 'POST' })
-        const sData = await sRes.json()
+        // Create a session ID — fall back to a client-generated UUID if the
+        // endpoint fails (e.g. auth error on first load) so the Tutor tab
+        // always opens.  Auth is checked per-message at /api/chat instead.
+        let sid = null
+        try {
+          const sRes = await apiFetch('/api/session/new', { method: 'POST' })
+          if (sRes.ok) {
+            const sData = await sRes.json()
+            sid = sData.session_id
+          } else {
+            console.warn('Session endpoint returned', sRes.status, '— using client UUID fallback')
+          }
+        } catch (sessionErr) {
+          console.warn('Session endpoint error:', sessionErr)
+        }
+        if (!sid) sid = crypto.randomUUID()
         if (cancelled) return
-        setSessionId(sData.session_id)
+        setSessionId(sid)
 
         const cRes = await fetch(`/api/chapters/${id}`)  // public endpoint, no auth needed
         if (!cRes.ok) throw new Error('Chapter not found')
@@ -579,14 +593,23 @@ export default function ChapterPage() {
           <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
             {sideTab === 'toc' && <TOCPanel sections={secs} readSections={readSections} onToggleRead={toggleSectionRead} sc={sc} />}
             {sideTab === 'notes' && <NotesPanel sections={secs} chapterId={chapter.id} />}
-            {sideTab === 'chat' && sessionId && (
-              <ChatSidebar
-                ref={chatRef}
-                sessionId={sessionId}
-                chapterId={chapter.id}
-                currentSubtopic={currentSubtopic}
-                onClear={() => setCurrentSubtopic(null)}
-              />
+            {sideTab === 'chat' && (
+              sessionId
+                ? <ChatSidebar
+                    ref={chatRef}
+                    sessionId={sessionId}
+                    chapterId={chapter.id}
+                    currentSubtopic={currentSubtopic}
+                    onClear={() => setCurrentSubtopic(null)}
+                  />
+                : <div style={{
+                    flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    flexDirection: 'column', gap: 10, color: 'var(--ink3)',
+                    fontFamily: 'var(--font-ui)', fontSize: 13,
+                  }}>
+                    <div style={{ fontSize: 24 }}>⏳</div>
+                    <div>Starting session…</div>
+                  </div>
             )}
           </div>
 

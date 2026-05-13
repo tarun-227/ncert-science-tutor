@@ -3,7 +3,8 @@
 Replaces the in-memory sessions.py dict with persistent Supabase rows so
 that chat history survives server restarts (Railway sleeps, redeploys, etc.).
 
-Falls back gracefully to the in-memory store when Supabase is not configured.
+Falls back gracefully to the in-memory store when Supabase is not configured
+or when the service key doesn't have DB access (e.g. sb_secret_ format keys).
 """
 from __future__ import annotations
 import backend.sessions as _mem  # in-memory fallback
@@ -15,7 +16,6 @@ except ImportError:
 
 MAX_HISTORY = 10  # last 10 pairs = 20 messages
 
-
 def _use_db() -> bool:
     return _sb is not None
 
@@ -26,15 +26,21 @@ def get_or_create(session_id: str, user_id: str = "anonymous", chapter_id: int =
     """Ensure a chat_sessions row exists and return it."""
     if not _use_db():
         return _mem.get_or_create(session_id)
-    res = _sb.table("chat_sessions").select("*").eq("id", session_id).maybe_single().execute()
-    if res.data:
-        return res.data
-    new = _sb.table("chat_sessions").insert({
-        "id":         session_id,
-        "user_id":    user_id,
-        "chapter_id": chapter_id,
-    }).execute()
-    return new.data[0] if new.data else {}
+    try:
+        res = _sb.table("chat_sessions").select("*").eq("id", session_id).maybe_single().execute()
+        if res.data:
+            return res.data
+        new = _sb.table("chat_sessions").insert({
+            "id":         session_id,
+            "user_id":    user_id,
+            "chapter_id": chapter_id,
+        }).execute()
+        global _db_available
+        _db_available = True  # first successful call confirms DB works
+        return new.data[0] if new.data else {}
+    except Exception as exc:
+        print(f"[db_sessions] DB error (falling back to in-memory): {exc}")
+        return _mem.get_or_create(session_id)
 
 
 def set_context(session_id: str, chapter_id: int | None, subtopic_id: str | None,
@@ -43,11 +49,15 @@ def set_context(session_id: str, chapter_id: int | None, subtopic_id: str | None
     if not _use_db():
         _mem.set_context(session_id, chapter_id, subtopic_id)
         return
-    _sb.table("chat_sessions").update({
-        "chapter_id":  chapter_id,
-        "subtopic_id": subtopic_id,
-        "last_active": "now()",
-    }).eq("id", session_id).execute()
+    try:
+        _sb.table("chat_sessions").update({
+            "chapter_id":  chapter_id,
+            "subtopic_id": subtopic_id,
+            "last_active": "now()",
+        }).eq("id", session_id).execute()
+    except Exception as exc:
+        print(f"[db_sessions] DB error (falling back to in-memory): {exc}")
+        _mem.set_context(session_id, chapter_id, subtopic_id)
 
 
 def add_message(session_id: str, role: str, content: str,
@@ -56,29 +66,36 @@ def add_message(session_id: str, role: str, content: str,
     if not _use_db():
         _mem.add_message(session_id, role, content)
         return
-    _sb.table("chat_messages").insert({
-        "session_id": session_id,
-        "user_id":    user_id,
-        "role":       role,
-        "content":    content,
-    }).execute()
-    # Bump last_active
-    _sb.table("chat_sessions").update({"last_active": "now()"}).eq("id", session_id).execute()
+    try:
+        _sb.table("chat_messages").insert({
+            "session_id": session_id,
+            "user_id":    user_id,
+            "role":       role,
+            "content":    content,
+        }).execute()
+        _sb.table("chat_sessions").update({"last_active": "now()"}).eq("id", session_id).execute()
+    except Exception as exc:
+        print(f"[db_sessions] DB error (falling back to in-memory): {exc}")
+        _mem.add_message(session_id, role, content)
 
 
 def get_history(session_id: str) -> list[dict]:
     """Return the last MAX_HISTORY*2 messages as [{role, content}]."""
     if not _use_db():
         return _mem.get_history(session_id)
-    res = (
-        _sb.table("chat_messages")
-        .select("role, content")
-        .eq("session_id", session_id)
-        .order("created_at", desc=False)
-        .limit(MAX_HISTORY * 2)
-        .execute()
-    )
-    return res.data or []
+    try:
+        res = (
+            _sb.table("chat_messages")
+            .select("role, content")
+            .eq("session_id", session_id)
+            .order("created_at", desc=False)
+            .limit(MAX_HISTORY * 2)
+            .execute()
+        )
+        return res.data or []
+    except Exception as exc:
+        print(f"[db_sessions] DB error (falling back to in-memory): {exc}")
+        return _mem.get_history(session_id)
 
 
 def clear(session_id: str) -> None:
@@ -86,4 +103,8 @@ def clear(session_id: str) -> None:
     if not _use_db():
         _mem.clear(session_id)
         return
-    _sb.table("chat_messages").delete().eq("session_id", session_id).execute()
+    try:
+        _sb.table("chat_messages").delete().eq("session_id", session_id).execute()
+    except Exception as exc:
+        print(f"[db_sessions] DB error (falling back to in-memory): {exc}")
+        _mem.clear(session_id)

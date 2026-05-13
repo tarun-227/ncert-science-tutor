@@ -2,7 +2,7 @@
   "id": 1,
   "title": "Chemical Reactions and Equations",
   "subject": "Chemistry",
-  "intro": "Consider the following situations of daily life and think what happens when – • milk is left at room temperature during summers. • an iron tawa/pan/nail is left exposed to humid atmosphere. • grapes get fermented. • food is cooked. • food gets digested in our body. • we respire. In all the above situations, the nature and the identity of the initial substance have somewhat changed. We have already learnt about physical and chemical changes of matter in our previous classes. Whenever a chemical change occurs, we can say that a chemical reaction has taken place. You may perhaps be wondering as to what is actually meant by a chemical reaction. How do we come to know that a chemical reaction has taken place? Let us perform some activities to find the answer to these questions. Burning of a magnesium ribbon in air and collection of magnesium oxide in a watch-glass You must have observed that magnesium ribbon burns with a dazzling white flame and changes into a white powder....",
+  "intro": "– n milk is left at room temperature during summers. n an iron tawa/pan/nail is left exposed to humid atmosphere. n grapes get fermented. n food is cooked. n food gets digested in our body. n we respire. In all the above situations, the nature and the identity of the initial substance have somewhat changed. We have already learnt about physical and chemical changes of matter in our previous classes. Whenever a chemical change occurs, we can say that a chemical reaction has taken place. You may perhaps be wondering as to what is actually meant by a chemical reaction. How do we come to know that a chemical reaction has taken place? Let us perform some activities to find the answer to these questions. Burning of a magnesium ribbon in air and collection of magnesium oxide in a watch-glass You must have observed that magnesium ribbon burns with a dazzling white flame and changes into a white powder. This powder is magnesium oxide. It is formed due to the reaction between magnesium and oxygen present in the air. From the above three activities, we can say that any of the following observations helps us to determine whether a chemical reaction has taken place – change in state n n change...",
   "intro_blocks": [
     {
       "type": "activity",
@@ -15,22 +15,7 @@
       ],
       "cautions": [
         "This Activity needs the teacher’s assistance. It would be better if students wear suitable eyeglasses."
-      ],
-      "lab_report": {
-        "aim": "To demonstrate a chemical reaction between magnesium and oxygen, resulting in an exothermic process.",
-        "materials": [
-          "Magnesium ribbon (3-4 cm long)",
-          "Sandpaper",
-          "Watch-glass for collecting ash",
-          "Spirit lamp or burner"
-        ],
-        "procedure": [
-          "Clean the magnesium ribbon by rubbing it with sandpaper to remove any impurities.",
-          "Hold a clean piece of magnesium ribbon using tongs, ensuring you keep your eyes safe from direct exposure."
-        ],
-        "observation": "Observe and note that when burning magnesium in front of an open flame (spirit lamp or burner), the metal burns brightly producing white ash. Note down what happens to the appearance as it reacts.",
-        "conclusion": "This activity demonstrates how metals react with oxygen, forming oxides through exothermic reactions."
-      }
+      ]
     },
     {
       "type": "figure",
@@ -47,20 +32,7 @@
         "Add potassium iodide solution to this.",
         "What do you observe?"
       ],
-      "cautions": [],
-      "lab_report": {
-        "aim": "To demonstrate a chemical reaction between lead nitrate and potassium iodide solutions.",
-        "materials": [
-          "lead nitrate solution",
-          "potassium iodide solution"
-        ],
-        "procedure": [
-          "Take some lead nitrate solution in a test tube",
-          "Add an equal amount of potassium iodide solution to the test tube"
-        ],
-        "observation": "The student should observe that a yellow precipitate forms, indicating the formation of lead iodide.",
-        "conclusion": "This activity demonstrates how certain chemical reactions result in observable physical changes."
-      }
+      "cautions": []
     },
     {
       "type": "activity",
@@ -74,20 +46,7 @@
       ],
       "cautions": [
         "Handle the acid with care."
-      ],
-      "lab_report": {
-        "aim": "To demonstrate a chemical reaction between zinc and an acid, observing changes in temperature.",
-        "materials": [
-          "zinc granules",
-          "dilute hydrochloric acid or sulphuric acid"
-        ],
-        "procedure": [
-          "Place the zinc granules into either a conical flask or test tube.",
-          "Carefully add dilute hydrochloric acid to this setup."
-        ],
-        "observation": "Observe any reaction around the zinc and note if there is an increase in temperature.",
-        "conclusion": "The activity demonstrates that chemical reactions can produce heat, indicating exothermic processes. It also shows how atoms rearrange during a balanced redox reaction between iron (i)Initial: Fe(i)=1; O4(ii): Fe3O4=3 and the corresponding balancing of reactants to products."
-      }
+      ]
     }
   ],
   "sections": [
@@ -108,7 +67,7 @@
         {
           "type": "equation",
           "num": "1.1",
-          "body": "Magnesium + Oxygen -> Magnesium oxide"
+          "body": "Magnesium + Oxygen"
         },
         {
           "type": "paragraph",
@@ -141,7 +100,16 @@
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Recall the law of conservation of mass that you studied in Class IX; mass can neither be created nor destroyed in a chemical reaction. That is, the total mass of the elements present in the products of a chemical reaction has to be equal to the total mass of the elements present in the reactants. In other words, the number of atoms of each element remains the same, before and after a chemical reaction. Hence, we need to balance a skeletal chemical equation. Is the chemical Eq. (1.2) balanced? Let us learn about balancing a chemical equation step by step. The word-equation for Activity 1.3 may be represented as – Zinc + Sulphuric acid → Zinc sulphate + Hydrogen The above word-equation may be represented by the following chemical equation –"
+              "text": "Recall the law of conservation of mass that you studied in Class IX; mass can neither be created nor destroyed in a chemical reaction. That is, the total mass of the elements present in the products of a chemical reaction has to be equal to the total mass of the elements present in the reactants. In other words, the number of atoms of each element remains the same, before and after a chemical reaction. Hence, we need to balance a skeletal chemical equation. Is the chemical Eq. (1.2) balanced? Let us learn about balancing a chemical equation step by step. The word-equation for Activity 1.3 may be represented as –"
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "Zinc + Sulphuric acid → Zinc sulphate + Hydrogen"
+            },
+            {
+              "type": "paragraph",
+              "text": "The above word-equation may be represented by the following chemical equation –"
             },
             {
               "type": "equation",
@@ -150,7 +118,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Let us examine the number of atoms of different elements on both sides of the arrow. ElementNumber of atoms in reactants (LHS) in products (RHS)"
+              "text": "Let us examine the number of atoms of different elements on both sides of the arrow. Element Number of atoms in reactants (LHS) in products (RHS)"
             },
             {
               "type": "do_you_know",
@@ -164,10 +132,6 @@
               "type": "equation",
               "num": "1.4",
               "body": "Fe + H2O → Fe3O4 + H2"
-            },
-            {
-              "type": "paragraph",
-              "text": ""
             },
             {
               "type": "step",
@@ -208,11 +172,16 @@
             {
               "type": "equation",
               "num": "1.6",
-              "body": "Fe + 4H2O -> Fe3O4 + H2"
+              "body": ""
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "Fe + 4 H2O → Fe3O4 + H2"
             },
             {
               "type": "paragraph",
-              "text": "Fe + 4 H2O → Fe3O4 + H2 (partly balanced equation)"
+              "text": "(partly balanced equation)"
             },
             {
               "type": "step",
@@ -226,11 +195,16 @@
             {
               "type": "equation",
               "num": "1.7",
-              "body": "Fe + 4H2O -> Fe3O4 + 4H2"
+              "body": ""
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "Fe + 4 H2O → Fe3O4 + 4 H2"
             },
             {
               "type": "paragraph",
-              "text": "Fe + 4 H2O → Fe3O4 + 4 H2 (partly balanced equation)"
+              "text": "(partly balanced equation)"
             },
             {
               "type": "step",
@@ -262,16 +236,21 @@
             {
               "type": "equation",
               "num": "1.9",
-              "body": "3Fe + 4H2O -> Fe3O4 + 4H2"
+              "body": ""
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "3Fe + 4H2O → Fe3O4 + 4H2"
             },
             {
               "type": "paragraph",
-              "text": "3Fe + 4H2O → Fe3O4 + 4H2 (balanced equation) The numbers of atoms of elements on both sides of Eq. (1.9) are equal. This equation is now balanced. This method of balancing chemical equations is called hit-and-trial method as we make trials to balance the equation by using the smallest whole number coefficient."
+              "text": "(balanced equation) The numbers of atoms of elements on both sides of Eq. (1.9) are equal. This equation is now balanced. This method of balancing chemical equations is called hit-and-trial method as we make trials to balance the equation by using the smallest whole number coefficient."
             },
             {
               "type": "step",
               "label": "Step VII",
-              "text": "Writing Symbols of Physical States Carefully examine"
+              "text": "Writing Symbols of Physical States  Carefully examine"
             },
             {
               "type": "paragraph",
@@ -289,16 +268,16 @@
             {
               "type": "equation",
               "num": "1.11",
-              "body": "CO(g) + 2H2(g) -> CH3OH(l)"
+              "body": "-> →"
             },
             {
               "type": "paragraph",
-              "text": "CO(g) + 2H (g) CH OH(l) Sunlight → 6CO (aq)12H O(l) + C H O (aq)6O"
+              "text": "CO(g) + 2H (g) CH OH(l) Sunlight 6CO (aq)12H O(l) + C H O (aq) 6O"
             },
             {
               "type": "equation",
               "num": "1.12",
-              "body": "6CO2(g) + 6H2O(l) -> C6H12O6(aq) + 6O2(g)"
+              "body": "6H O(l)"
             },
             {
               "type": "paragraph",
@@ -309,15 +288,7 @@
               "items": [
                 {
                   "num": 1,
-                  "text": "Why should a magnesium ribbon be cleaned before burning in air?"
-                },
-                {
-                  "num": 2,
-                  "text": "Write the balanced equation for the following chemical reactions. (i) Hydrogen + Chlorine → Hydrogen chloride ? (ii) Barium chloride + Aluminium sulphate → Barium sulphate + Aluminium chloride (iii) Sodium + Water → Sodium hydroxide + Hydrogen"
-                },
-                {
-                  "num": 3,
-                  "text": "Write a balanced chemical equation with state symbols for the following reactions. (i) Solutions of barium chloride and sodium sulphate in water react to give insoluble barium sulphate and the solution of sodium chloride. (ii) Sodium hydroxide solution (in water) reacts with hydrochloric acid solution (in water) to produce sodium chloride solution and water."
+                  "text": "Why should a magnesium ribbon be cleaned before burning in air? (i) Hydrogen + Chlorine → Hydrogen chloride ? (ii) Barium chloride + Aluminium sulphate →  Barium sulphate + Aluminium chloride (iii) Sodium + Water  → Sodium hydroxide + Hydrogen (i) Solutions of barium chloride and sodium sulphate in water react to give insoluble barium sulphate and the solution of sodium chloride. (ii) Sodium hydroxide solution (in water) reacts with hydrochloric acid solution (in water) to produce sodium chloride solution and water."
                 }
               ]
             }
@@ -348,21 +319,7 @@
                 "Touch the beaker as shown in Fig. 1.3.",
                 "Do you feel any change in temperature?"
               ],
-              "cautions": [],
-              "lab_report": {
-                "aim": "To demonstrate an exothermic chemical reaction when calcium oxide reacts with water.",
-                "materials": [
-                  "Calcium Oxide (Quick Lime)",
-                  "Water",
-                  "Beaker"
-                ],
-                "procedure": [
-                  "Place a small amount of Calcium Oxide in the beaker.",
-                  "Slowly add Water to this mixture."
-                ],
-                "observation": "Touching or feeling any change in temperature.",
-                "conclusion": "The activity demonstrates that calcium oxide reacts with water exothermically, releasing heat and causing an increase in temperature. This illustrates a chemical reaction where energy is released into the surroundings as bonds are formed between new substances."
-              }
+              "cautions": []
             },
             {
               "type": "figure",
@@ -384,13 +341,17 @@
             },
             {
               "type": "paragraph",
-              "text": "(calcium hydroxide) releasing a large amount of heat. water H2O(l) → Ca(OH)2(aq) + Heat"
+              "text": "(calcium hydroxide) releasing a large amount of heat. water"
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "H2O(l) → Ca(OH)2(aq) + Heat"
             },
             {
               "type": "equation",
               "num": "1.13",
-              "body": "CaO(s) + H2O(l) -> Ca(OH)2(aq)",
-              "label": "Calcium oxide + water -> slaked lime (combination reaction)"
+              "body": "CaO(s) +"
             },
             {
               "type": "paragraph",
@@ -398,11 +359,11 @@
             },
             {
               "type": "do_you_know",
-              "text": "A solution of slaked lime produced by the reaction 1.13 is used for whitewashing walls. Calcium hydroxide reacts slowly with the carbon dioxide in air to form a thin layer of calcium carbonate on the walls. Calcium carbonate is formed after two to three days of whitewashing and gives a shiny finish to the walls. It is interesting to note that the chemical formula for marble is also CaCO3. → Ca(OH)2(aq) + CO2(g) CaCO3(s)+ H2O(l) (1.14) (Calcium hydroxide) carbonate)"
+              "text": "A solution of slaked lime produced by the reaction 1.13 is used for whitewashing walls. Calcium hydroxide reacts slowly with the carbon dioxide in air to form a thin layer of calcium carbonate on the walls. Calcium carbonate is formed after two to three days of whitewashing and gives a shiny finish to the walls. It is interesting to note that the chemical formula for marble is also CaCO3. → Ca(OH)2(aq) + CO2(g) CaCO3(s) + H2O(l) (1.14) (Calcium hydroxide) carbonate)"
             },
             {
               "type": "paragraph",
-              "text": "Let us discuss some more examples of combination reactions. (i)Burning of coal"
+              "text": "Let us discuss some more examples of combination reactions. (i) Burning of coal"
             },
             {
               "type": "equation",
@@ -411,7 +372,7 @@
             },
             {
               "type": "paragraph",
-              "text": "(ii)Formation of water from H2(g) and O2(g)"
+              "text": "(ii) Formation of water from H2(g) and O2(g)"
             },
             {
               "type": "equation",
@@ -420,7 +381,7 @@
             },
             {
               "type": "paragraph",
-              "text": "In simple language we can say that when two or more substances (elements or compounds) combine to form a single product, the reactions are called combination reactions. In Activity 1.4, we also observed that a large amount of heat is evolved. This makes the reaction mixture warm. Reactions in which heat is released along with the formation of products are called exothermic chemical reactions. Other examples of exothermic reactions are – (i)Burning of natural gas"
+              "text": "In simple language we can say that when two or more substances (elements or compounds) combine to form a single product, the reactions are called combination reactions. In Activity 1.4, we also observed that a large amount of heat is evolved. This makes the reaction mixture warm. Reactions in which heat is released along with the formation of products are called exothermic chemical reactions. Other examples of exothermic reactions are – (i) Burning of natural gas"
             },
             {
               "type": "equation",
@@ -429,7 +390,7 @@
             },
             {
               "type": "paragraph",
-              "text": "(ii)Do you know that respiration is an exothermic process? We all know that we need energy to stay alive. We get this energy from the food we eat. During digestion, food is broken down into simpler substances. For example, rice, potatoes and bread contain carbohydrates. These carbohydrates are broken down to form glucose. This glucose combines with oxygen in the cells of our body and provides energy. The special name of this reaction is respiration, the process of which you will study in Chapter 6."
+              "text": "(ii) Do you know that respiration is an exothermic process? We all know that we need energy to stay alive. We get this energy from the food we eat. During digestion, food is broken down into simpler substances. For example, rice, potatoes and bread contain carbohydrates. These carbohydrates are broken down to form glucose. This glucose combines with oxygen in the cells of our body and provides energy. The special name of this reaction is respiration, the process of which you will study in Chapter 6."
             },
             {
               "type": "equation",
@@ -438,7 +399,7 @@
             },
             {
               "type": "paragraph",
-              "text": "(Glucose) (iii)The decomposition of vegetable matter into compost is also an example of an exothermic reaction. Identify the type of the reaction taking place in Activity 1.1, where heat is given out along with the formation of a single product."
+              "text": "(Glucose) (iii) The decomposition of vegetable matter into compost is also an example of an exothermic reaction. Identify the type of the reaction taking place in Activity 1.1, where heat is given out along with the formation of a single product."
             }
           ]
         },
@@ -457,20 +418,7 @@
                 "Heat the boiling tube over the flame of a burner or spirit lamp as shown in Fig. 1.4.",
                 "Observe the colour of the crystals after heating."
               ],
-              "cautions": [],
-              "lab_report": {
-                "aim": "To demonstrate a chemical reaction by heating ferrous sulphate crystals and observing color change.",
-                "materials": [
-                  "2 g of ferrous sulphate crystals",
-                  "dry boiling tube"
-                ],
-                "procedure": [
-                  "Place approximately 2 grams of ferrous sulphate crystals into the dry boiling tube.",
-                  "Note down their initial colour before starting the experiment."
-                ],
-                "observation": "Observe and note any change in color after heating.",
-                "conclusion": "The activity demonstrates that chemical reactions can cause a visible transformation, such as changing colours due to decomposition or oxidation processes occurring within ferrous sulphate crystals when heated."
-              }
+              "cautions": []
             },
             {
               "type": "figure",
@@ -480,23 +428,21 @@
             },
             {
               "type": "paragraph",
-              "text": "Have you noticed that the green colour of the ferrous sulphate crystals Correct way of heating has changed? You can also smell the characteristic odour of burning the boiling tube sulphur. containing crystals of ferrous sulphate Heat 2FeSO4(s) Fe2O3(s) + SO2(g) + SO3(g)"
+              "text": "Have you noticed that the green colour of the ferrous sulphate crystals Correct way of heating has changed? You can also smell the characteristic odour of burning the boiling tube sulphur. containing crystals of ferrous sulphate Heat 2FeSO4(s)  Fe2O3(s) + SO2(g) + SO3(g)"
             },
             {
               "type": "equation",
               "num": "1.19",
-              "body": "2FeSO4(s) -> Fe2O3(s) + SO2(g) + SO3(g)",
-              "label": "Thermal decomposition of ferrous sulphate"
+              "body": "-> →"
             },
             {
               "type": "paragraph",
-              "text": "and of smelling the odour (Ferrous sulphate)ic oxide) In this reaction you can observe that a single reactant breaks down to give simpler products. This is a decomposition reaction. Ferrous sulphate crystals (FeSO4. 7H2O) lose water when heated and the colour of the crystals changes. It then decomposes to ferric oxide (Fe2O3), sulphur dioxide (SO2) and sulphur trioxide (SO3). Ferric oxide is a solid, while SO2 and SO3 are gases. Decomposition of calcium carbonate to calcium oxide and carbon dioxide on heating is an important decomposition reaction used in various industries. Calcium oxide is called lime or quick lime. It has many uses – one is in the manufacture of cement. When a decomposition reaction is carried out by heating, it is called thermal decomposition. Heat CaCO3(s) CaO(s) + CO2(g)"
+              "text": "and of smelling the odour (Ferrous sulphate)ic oxide) In this reaction you can observe that a single reactant breaks down to give simpler products. This is a decomposition reaction. Ferrous sulphate crystals (FeSO4. 7H2O) lose water when heated and the colour of the crystals changes. It then decomposes to ferric oxide (Fe2O3), sulphur dioxide (SO2) and sulphur trioxide (SO3). Ferric oxide is a solid, while SO2 and SO3 are gases. Decomposition of calcium carbonate to calcium oxide and carbon dioxide on heating is an important decomposition reaction used in various industries. Calcium oxide is called lime or quick lime. It has many uses – one is in the manufacture of cement. When a decomposition reaction is carried out by heating, it is called thermal decomposition. Heat CaCO3(s)  CaO(s) + CO2(g)"
             },
             {
               "type": "equation",
               "num": "1.20",
-              "body": "CaCO3(s) -> CaO(s) + CO2(g)",
-              "label": "Thermal decomposition of limestone"
+              "body": "-> →"
             },
             {
               "type": "paragraph",
@@ -511,19 +457,7 @@
                 "Hold the boiling tube with a pair of tongs and heat it over a flame, as shown in Fig. 1.5.",
                 "What do you observe? Note down the change, if any."
               ],
-              "cautions": [],
-              "lab_report": {
-                "aim": "To demonstrate a chemical reaction between lead nitrate and another substance upon heating.",
-                "materials": [
-                  "2 g of lead nitrate powder",
-                  "boiling tube"
-                ],
-                "procedure": [
-                  "Place approximately 2 grams of lead nitrate in the boiling tube using tongs for safety."
-                ],
-                "observation": "Note any changes such as color change, gas evolution or residue formation after heating.",
-                "conclusion": "The activity demonstrates that chemical reactions can result from heat-induced decomposition and transformation processes involving compounds like lead nitrate."
-              }
+              "cautions": []
             },
             {
               "type": "paragraph",
@@ -537,13 +471,12 @@
             },
             {
               "type": "paragraph",
-              "text": "These fumes are of nitrogen dioxide (NO2). The Heating of lead nitrate and reaction that takes place is – emission of nitrogen dioxide Heat 2Pb(NO3)2(s)2PbO(s) → +"
+              "text": "These fumes are of nitrogen dioxide (NO2). The Heating of lead nitrate and reaction that takes place is – emission of nitrogen dioxide Heat 2Pb(NO3)2(s) 2PbO(s) +"
             },
             {
               "type": "equation",
               "num": "1.21",
-              "body": "2Pb(NO3)2(s) -> 2PbO(s) + 4NO2(g) + O2(g)",
-              "label": "Thermal decomposition of lead nitrate (brown NO2 fumes)"
+              "body": "4NO2(g) + O2(g)"
             },
             {
               "type": "paragraph",
@@ -568,22 +501,7 @@
               ],
               "cautions": [
                 "This step must be performed carefully by the teacher."
-              ],
-              "lab_report": {
-                "aim": "To demonstrate electrolysis of water and identify gases produced at each electrode.",
-                "materials": [
-                  "Plastic mug with drilled holes in its base fitted with rubber stoppers containing carbon electrodes (Fig. 1.6)",
-                  "Battery, preferably a 6-volt battery",
-                  "Water",
-                  "Dilute sulphuric acid solution"
-                ],
-                "procedure": [
-                  "Connect the two carbon electrode-filled rubber stoppers to one terminal of your 6 volt battery.",
-                  "Fill the mug with water until it covers both electrodes. Add few drops of dilute sulphuric acid into this mixture."
-                ],
-                "observation": "Bubbles will form at each electrode, displacing some amount of liquid in two separate test tubes filled and inverted over them respectively.",
-                "conclusion": "The gases produced during electrolysis are hydrogen (at the cathode) which is lighter than air causing it to rise up first filling one tube faster. Oxygen forms later as it's heavier."
-              }
+              ]
             },
             {
               "type": "figure",
@@ -605,20 +523,7 @@
                 "Place this china dish in sunlight for some time (Fig. 1.7).",
                 "Observe the colour of the silver chloride after some time."
               ],
-              "cautions": [],
-              "lab_report": {
-                "aim": "To demonstrate that silver chloride decomposes under sunlight, resulting in a color change.",
-                "materials": [
-                  "2 g of Silver Chloride",
-                  "China dish"
-                ],
-                "procedure": [
-                  "Place approximately 2 grams of silver chloride into the china dish.",
-                  "Observe and note down its initial colour."
-                ],
-                "observation": "The student should observe that initially, silver chloride is white in color.",
-                "conclusion": "This activity demonstrates how sunlight can cause a chemical reaction by breaking down compounds like silver chloride. The decomposition of silver chloride results in the formation of elemental silver and chlorine gas which are not visible to our eyes but indicate their presence through changes observed."
-              }
+              "cautions": []
             },
             {
               "type": "figure",
@@ -628,23 +533,21 @@
             },
             {
               "type": "paragraph",
-              "text": "You will see that white silver chloride turns grey in sunlight. This is Silver chloride turns grey in sunlight to form silver due to the decomposition of silver chloride into silver and chlorine by metal light. Sunlight 2AgCl(s) →"
+              "text": "You will see that white silver chloride turns grey in sunlight. This is Silver chloride turns grey in sunlight to form silver due to the decomposition of silver chloride into silver and chlorine by metal light. Sunlight 2AgCl(s)"
             },
             {
               "type": "equation",
               "num": "1.22",
-              "body": "2AgCl(s) -> 2Ag(s) + Cl2(g)",
-              "label": "Photodecomposition of silver chloride in sunlight"
+              "body": "2Ag(s) + Cl2(g)"
             },
             {
               "type": "paragraph",
-              "text": "Silver bromide also behaves in the same way. Sunlight 2AgBr(s) →"
+              "text": "Silver bromide also behaves in the same way. Sunlight 2AgBr(s)"
             },
             {
               "type": "equation",
               "num": "1.23",
-              "body": "2AgBr(s) -> 2Ag(s) + Br2(g)",
-              "label": "Photodecomposition of silver bromide in sunlight"
+              "body": "2Ag(s) + Br2(g)"
             },
             {
               "type": "paragraph",
@@ -686,33 +589,12 @@
                 "Compare the intensity of the blue colour of copper sulphate solutions in test tubes (A) and (B) [Fig. 1.8 (b)].",
                 "Also, compare the colour of the iron nails dipped in the copper sulphate solution with the one kept aside [Fig. 1.8 (b)]."
               ],
-              "cautions": [],
-              "lab_report": {
-                "aim": "To demonstrate a single displacement reaction where iron displaces copper from its sulphate solution.",
-                "materials": [
-                  "Three clean iron nails",
-                  "Two test tubes marked as (A) and (B)",
-                  "About 10 mL of copper sulphate solution for each tube"
-                ],
-                "procedure": [
-                  "Clean the three iron nails by rubbing them with sandpaper to remove any rust or impurities.",
-                  "Fill one test tube labeled A with about 10 mL of water, leaving it as a control sample without adding anything else. Fill another test tube B also up to approximately 10 mL but add copper sulphate solution instead.",
-                  "Tie two iron nails together using thread and immerse them in the copper sulphate solution contained within test tube B for around twenty minutes while keeping one nail aside untouched."
-                ],
-                "observation": [
-                  "Observe any changes that occur with both sets of solutions after immersion, noting differences between tubes A (water) versus B (copper sulphate).",
-                  "Examine the iron nails immersed in copper sulphate solution and compare them to those left out. Note if there is a change on their surface."
-                ],
-                "conclusion": [
-                  "The activity demonstrates that when an active metal like iron comes into contact with a salt of less reactive metals, such as copper, it displaces the latter from its compound due to higher reactivity.",
-                  "Iron nails immersed in copper sulphate solution will show signs of rusting and deposit on them indicating displacement."
-                ]
-              }
+              "cautions": []
             },
             {
               "type": "figure",
               "num": "1.8",
-              "caption": "(a) Iron nails dipped in copper sulphate solution (b) Iron nails and copper sulphate solutions compared before and after the experiment",
+              "caption": "(a) Iron nails dipped in copper sulphate solution  (b) Iron nails and copper sulphate solutions compared before and after the experiment",
               "image": "ch1/fig_1.8.png"
             },
             {
@@ -722,8 +604,7 @@
             {
               "type": "equation",
               "num": "1.24",
-              "body": "Fe(s) + CuSO4(aq) -> FeSO4(aq) + Cu(s)",
-              "label": "Displacement: iron displaces copper from copper sulphate"
+              "body": "FeSO4(aq) + Cu(s)"
             },
             {
               "type": "paragraph",
@@ -732,8 +613,7 @@
             {
               "type": "equation",
               "num": "1.25",
-              "body": "Zn(s) + CuSO4(aq) -> ZnSO4(aq) + Cu(s)",
-              "label": "Displacement: zinc displaces copper from copper sulphate"
+              "body": "ZnSO4(aq) + Cu(s)"
             },
             {
               "type": "paragraph",
@@ -742,8 +622,7 @@
             {
               "type": "equation",
               "num": "1.26",
-              "body": "Pb(s) + CuCl2(aq) -> PbCl2(aq) + Cu(s)",
-              "label": "Displacement: lead displaces copper from copper chloride"
+              "body": "PbCl2(aq) + Cu(s)"
             },
             {
               "type": "paragraph",
@@ -766,20 +645,7 @@
                 "Mix the two solutions (Fig. 1.9).",
                 "What do you observe?"
               ],
-              "cautions": [],
-              "lab_report": {
-                "aim": "To demonstrate a double displacement reaction between sodium sulphate and barium chloride solutions.",
-                "materials": [
-                  "sodium sulphate solution",
-                  "barium chloride solution"
-                ],
-                "procedure": [
-                  "Take approximately 3 mL of sodium sulphate solution in one test tube.",
-                  "In another clean, dry test tube, take about 3 mL of barium chloride solution."
-                ],
-                "observation": "A white precipitate forms when the two solutions are mixed.",
-                "conclusion": "The activity illustrates a chemical reaction where sodium sulphate and barium chloride react to form insoluble barium sulfate (precipitate) and soluble sodium chloride in water, demonstrating double displacement reactions."
-              }
+              "cautions": []
             },
             {
               "type": "paragraph",
@@ -802,7 +668,7 @@
             },
             {
               "type": "paragraph",
-              "text": "chloride (Sodium (Barium (Sodium sulphate)chloride) What causes this? The white precipitate of BaSO4 is formed by the 2– and Ba2+. The other product formed is sodium chloride reaction of SO which remains in the solution. Such reactions in which there is an exchange of ions between the reactants are called double displacement reactions."
+              "text": "chloride (Sodium (Barium (Sodium sulphate) chloride) What causes this? The white precipitate of BaSO4 is formed by the 2– and Ba2+. The other product formed is sodium chloride reaction of SO which remains in the solution. Such reactions in which there is an exchange of ions between the reactants are called double displacement reactions."
             }
           ]
         },
@@ -819,20 +685,7 @@
                 "Heat a china dish containing about 1 g copper powder (Fig. 1.10).",
                 "What do you observe?"
               ],
-              "cautions": [],
-              "lab_report": {
-                "aim": "To demonstrate a chemical reaction between copper powder and concentrated nitric acid.",
-                "materials": [
-                  "china dish",
-                  "copper powder (1 g)",
-                  "concentrated nitric acid"
-                ],
-                "procedure": [
-                  "Heat a china dish containing approximately 1 gram of finely powdered copper in an oven at around 300°C for about five minutes to remove any impurities."
-                ],
-                "observation": "The student should observe that the heated copper powder turns black due to oxidation.",
-                "conclusion": "This activity demonstrates how heating and oxidizing agents can change metals, showing a chemical reaction where oxygen combines with metal atoms forming oxides."
-              }
+              "cautions": []
             },
             {
               "type": "paragraph",
@@ -851,17 +704,16 @@
             {
               "type": "equation",
               "num": "1.28",
-              "body": "2Cu + O2 → 2CuO"
+              "body": "2Cu + O2 -> 2CuO"
             },
             {
               "type": "paragraph",
-              "text": "Oxidation of copper to → copper oxide If hydrogen gas is passed over this heated material (CuO), the black coating on the surface turns brown as the reverse reaction takes place and copper is obtained. Heat"
+              "text": "Oxidation of copper to copper oxide If hydrogen gas is passed over this heated material (CuO), the black coating on the surface turns brown as the reverse reaction takes place and copper is obtained. Heat"
             },
             {
               "type": "equation",
               "num": "1.29",
-              "body": "CuO(s) + H2(g) -> Cu(s) + H2O(l)",
-              "label": "Reduction of copper oxide by hydrogen (redox reaction)"
+              "body": "-> →"
             },
             {
               "type": "paragraph",
@@ -870,8 +722,7 @@
             {
               "type": "equation",
               "num": "1.30",
-              "body": "ZnO(s) + C(s) -> Zn(s) + CO(g)",
-              "label": "Redox: ZnO reduced to Zn; C oxidised to CO"
+              "body": ""
             },
             {
               "type": "paragraph",
@@ -880,18 +731,16 @@
             {
               "type": "equation",
               "num": "1.31",
-              "body": "ZnO(s) + C(s) -> Zn(s) + CO(g)",
-              "label": "Redox: ZnO reduced to Zn; C oxidised to CO"
+              "body": "Zn CO"
             },
             {
               "type": "paragraph",
-              "text": "+ → +"
+              "text": "+ +"
             },
             {
               "type": "equation",
               "num": "1.32",
-              "body": "MnO2 + 4HCl -> MnCl2 + 2H2O + Cl2",
-              "label": "Redox: MnO2 reduced to MnCl2; HCl oxidised to Cl2"
+              "body": "MnO 4HCl MnCl 2H O Cl"
             },
             {
               "type": "paragraph",
@@ -938,7 +787,7 @@
                 },
                 {
                   "num": 3,
-                  "text": "Identify the substances that are oxidised and the substances that are reduced in the following reactions. (i) 4Na(s) + O2(g) → 2Na2O(s) (ii) CuO(s) + H2(g) → Cu(s) + H2O(l)"
+                  "text": "Identify the substances that are oxidised and the substances (i) 4Na(s) + O2(g) → 2Na2O(s) (ii) CuO(s) + H2(g) → Cu(s) + H2O(l)"
                 }
               ]
             },
@@ -966,7 +815,7 @@
   "exercises": [
     {
       "num": 1,
-      "question": "Which of the statements about the reaction below are incorrect? 2PbO(s) + C(s) → 2Pb(s) + CO2(g) (i)(a) and (b) (ii)(a) and (c) (iii)(a), (b) and (c) (iv)all Fe2O3 + 2Al → Al2O3 + 2Fe 2. The above reaction is an example of a",
+      "question": "Which of the statements about the reaction below are incorrect? 2PbO(s) + C(s) → 2Pb(s) + CO2(g) (i) (a) and (b) (ii) (a) and (c) (iii) (a), (b) and (c) (iv) all Fe2O3 + 2Al → Al2O3 + 2Fe 2. The above reaction is an example of a",
       "options": [
         "(a) Lead is getting reduced.",
         "(b) Carbon dioxide is getting oxidised.",
@@ -1015,13 +864,13 @@
     },
     {
       "num": 7,
-      "question": "Write the balanced chemical equations for the following reactions. Calcium hydroxide + Carbon dioxide → Calcium carbonate + Water (a) Zinc + Silver nitrate → Zinc nitrate + Silver (b) Aluminium + Copper chloride → Aluminium chloride + Copper (c) Barium chloride + Potassium sulphate → Barium sulphate + Potassium chloride (d)",
+      "question": "Write the balanced chemical equations for the following reactions. Calcium hydroxide + Carbon dioxide  →  Calcium carbonate + Water (a) Zinc + Silver nitrate  →  Zinc nitrate + Silver (b) Aluminium + Copper chloride  →  Aluminium chloride + Copper (c) Barium chloride + Potassium sulphate → Barium sulphate + Potassium chloride (d)",
       "options": [],
       "type": "short"
     },
     {
       "num": 8,
-      "question": "Write the balanced chemical equation for the following and identify the type of reaction in each case. Potassium bromide(aq) + Barium iodide(aq) → Potassium iodide(aq) + (a) Barium bromide(s) Zinc carbonate(s) → Zinc oxide(s) + Carbon dioxide(g) (b) Hydrogen(g) + Chlorine(g) → Hydrogen chloride(g) (c) Magnesium(s) + Hydrochloric acid(aq) → Magnesium chloride(aq) + Hydrogen(g) (d)",
+      "question": "Write the balanced chemical equation for the following and identify the type of reaction in each case. Potassium bromide(aq) + Barium iodide(aq) →  Potassium iodide(aq) + (a) Barium bromide(s) Zinc carbonate(s) →  Zinc oxide(s) + Carbon dioxide(g) (b) Hydrogen(g) + Chlorine(g)  →  Hydrogen chloride(g) (c) Magnesium(s) + Hydrochloric acid(aq)  →  Magnesium chloride(aq) + Hydrogen(g) (d)",
       "options": [],
       "type": "short"
     },

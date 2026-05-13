@@ -70,10 +70,6 @@
             },
             {
               "type": "paragraph",
-              "text": ""
-            },
-            {
-              "type": "paragraph",
               "text": "Which of these – vanilla, onion and clove, can be used as olfactory indicators on the basis of your observations? Let us do some more activities to understand the chemical properties of acids and bases."
             }
           ]
@@ -100,7 +96,16 @@
             },
             {
               "type": "paragraph",
-              "text": "gas by burning Note that the metal in the above reactions displaces hydrogen atoms from the acids as hydrogen gas and forms a compound called a salt. Thus, the reaction of a metal with an acid can be summarised as – Acid + Metal → Salt + Hydrogen gas Can you now write the equations for the reactions you have observed?"
+              "text": "gas by burning Note that the metal in the above reactions displaces hydrogen atoms from the acids as hydrogen gas and forms a compound called a salt. Thus, the reaction of a metal with an acid can be summarised as –"
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "Acid + Metal → Salt + Hydrogen gas"
+            },
+            {
+              "type": "paragraph",
+              "text": "Can you now write the equations for the reactions you have observed?"
             },
             {
               "type": "activity",
@@ -113,7 +118,16 @@
             },
             {
               "type": "paragraph",
-              "text": "The reaction that takes place can be written as follows. 2NaOH(aq) + Zn(s) → Na2ZnO2(s) + H2(g) (Sodium zincate) You find again that hydrogen is formed in the reaction. However, such reactions are not possible with all metals."
+              "text": "The reaction that takes place can be written as follows."
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "2NaOH(aq) + Zn(s) → Na2ZnO2(s) + H2(g)"
+            },
+            {
+              "type": "paragraph",
+              "text": "(Sodium zincate) You find again that hydrogen is formed in the reaction. However, such reactions are not possible with all metals."
             }
           ]
         },
@@ -147,7 +161,12 @@
             },
             {
               "type": "paragraph",
-              "text": "Passing carbon dioxide gas through calcium hydroxide solution The reactions occurring in the above Activity are written as – + → + Test tube A: Na CO(s) 2HCl(aq) 2Na H O(l) + CO(g) 2 3 + → + Test tube B: NaHCO(s) HCl(aq) Na H O(l) + CO(g) On passing the carbon dioxide gas evolved through lime water, + → + Ca(OH)(aq) CO(g) CaCO s( ) H O(l) (Lime water) (White precipitate) On passing excess carbon dioxide the following reaction takes place: + → CaCO s( ) H O(l)+ CO (g) Ca(HCO) (aq) (Soluble in water) Limestone, chalk and marble are different forms of calcium carbonate. All metal carbonates and hydrogencarbonates react with acids to give a corresponding salt, carbon dioxide and water. Thus, the reaction can be summarised as – Metal carbonate/Metal hydrogencarbonate + Acid → Salt + Carbon dioxide + Water"
+              "text": "Passing carbon dioxide gas through calcium hydroxide solution The reactions occurring in the above Activity are written as – + + Test tube A: Na CO(s) 2HCl(aq) 2Na H O(l) + CO(g) 2 3 + + Test tube B: NaHCO(s) HCl(aq) Na H O(l) + CO(g) On passing the carbon dioxide gas evolved through lime water, + + Ca(OH)(aq) CO(g) CaCO s( ) H O(l) (Lime water) (White precipitate) On passing excess carbon dioxide the following reaction takes place: + CaCO s( ) H O(l)+ CO (g) Ca(HCO) (aq) (Soluble in water) Limestone, chalk and marble are different forms of calcium carbonate. All metal carbonates and hydrogencarbonates react with acids to give a corresponding salt, carbon dioxide and water. Thus, the reaction can be summarised as –"
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "Metal carbonate/Metal hydrogencarbonate + Acid → Salt + Carbon dioxide + Water"
             }
           ]
         },
@@ -174,7 +193,21 @@
             },
             {
               "type": "paragraph",
-              "text": "In the above Activity, we have observed that the effect of a base is nullified by an acid and vice-versa. The reaction taking place is written as – NaOH(aq) + HCl(aq) → NaCl(aq) + H2O(l) The reaction between an acid and a base to give a salt and water is known as a neutralisation reaction. In general, a neutralisation reaction can be written as – Base + Acid → Salt + Water"
+              "text": "In the above Activity, we have observed that the effect of a base is nullified by an acid and vice-versa. The reaction taking place is written as –"
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "NaOH(aq) + HCl(aq) → NaCl(aq) + H2O(l)"
+            },
+            {
+              "type": "paragraph",
+              "text": "The reaction between an acid and a base to give a salt and water is known as a neutralisation reaction. In general, a neutralisation reaction can be written as –"
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "Base + Acid → Salt + Water"
             }
           ]
         },
@@ -195,7 +228,16 @@
             },
             {
               "type": "paragraph",
-              "text": "You will notice that the colour of the solution becomes blue-green and the copper oxide dissolves. The blue-green colour of the solution is due to the formation of copper(II) chloride in the reaction. The general reaction between a metal oxide and an acid can be written as – Metal oxide + Acid → Salt + Water Now write and balance the equation for the above reaction. Since metallic oxides react with acids to give salts and water, similar to the reaction of a base with an acid, metallic oxides are said to be basic oxides."
+              "text": "You will notice that the colour of the solution becomes blue-green and the copper oxide dissolves. The blue-green colour of the solution is due to the formation of copper(II) chloride in the reaction. The general reaction between a metal oxide and an acid can be written as –"
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "Metal oxide + Acid → Salt + Water"
+            },
+            {
+              "type": "paragraph",
+              "text": "Now write and balance the equation for the above reaction. Since metallic oxides react with acids to give salts and water, similar to the reaction of a base with an acid, metallic oxides are said to be basic oxides."
             }
           ]
         },
@@ -295,7 +337,25 @@
             },
             {
               "type": "paragraph",
-              "text": "This experiment suggests that hydrogen ions in HCl are produced in the presence of water. The separation of H+ ion from HCl molecules cannot occur in the absence of water. HCl + H2O → H3O+ + Cl– Hydrogen ions cannot exist alone, but they exist after combining with water molecules. Thus hydrogen ions must always be shown as H+(aq) or hydronium ion (H3O+). H+ + H2O → H3O+ We have seen that acids give H3O+ or H+(aq) ion in water. Let us see what happens when a base is dissolved in water. NaOH(s) Na+ (aq) + OH– (aq) H O  → H O → + – KOH(s) K (aq)+OH (aq) Mg2+(aq)+2OH–(aq) H O Mg(OH)2(s)  → Bases generate hydroxide (OH–) ions in water. Bases which are soluble in water are called alkalis. Do You Know?"
+              "text": "This experiment suggests that hydrogen ions in HCl are produced in the presence of water. The separation of H+ ion from HCl molecules cannot occur in the absence of water."
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "HCl + H2O → H3O+ + Cl–"
+            },
+            {
+              "type": "paragraph",
+              "text": "Hydrogen ions cannot exist alone, but they exist after combining with water molecules. Thus hydrogen ions must always be shown as H+(aq) or hydronium ion (H3O+)."
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "H+ + H2O → H3O+"
+            },
+            {
+              "type": "paragraph",
+              "text": "We have seen that acids give H3O+ or H+(aq) ion in water. Let us see what happens when a base is dissolved in water. NaOH(s) Na+ (aq) + OH– (aq) H O H O + – KOH(s) K (aq)+OH (aq) Mg2+(aq)+2OH–(aq) H O Mg(OH)2(s) Bases generate hydroxide (OH–) ions in water. Bases which are soluble in water are called alkalis. Do You Know?"
             },
             {
               "type": "do_you_know",
@@ -303,7 +363,21 @@
             },
             {
               "type": "paragraph",
-              "text": "Now as we have identified that all acids generate H+(aq) and all –(aq), we can view the neutralisation reaction as bases generate OH follows – Acid + Base → Salt + Water H X + M OH → MX + HOH – (aq) → H2O(l) H+(aq) + OH Let us see what is involved when water is mixed with an acid or a base."
+              "text": "Now as we have identified that all acids generate H+(aq) and all –(aq), we can view the neutralisation reaction as bases generate OH follows –"
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "Acid + Base → Salt + Water"
+            },
+            {
+              "type": "equation",
+              "num": null,
+              "body": "H X + M OH → MX + HOH"
+            },
+            {
+              "type": "paragraph",
+              "text": "– (aq) → H2O(l) H+(aq) + OH Let us see what is involved when water is mixed with an acid or a base."
             },
             {
               "type": "activity",
@@ -499,10 +573,6 @@
                 "Salts having the same positive or negative radicals are said to belong to a family. For example, NaCl and Na2SO4 belong to the family of sodium salts. Similarly, NaCl and KCl belong to the family of chloride salts. How many families can you identify among the salts given in this Activity?"
               ],
               "cautions": []
-            },
-            {
-              "type": "paragraph",
-              "text": ""
             }
           ]
         },
@@ -548,7 +618,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Bleaching powder You have already come to know that chlorine is produced during the electrolysis of aqueous sodium chloride (brine). This chlorine gas is used for the manufacture of bleaching powder. Bleaching powder is produced by the action of chlorine on dry slaked lime [Ca(OH)2]. Bleaching powder is represented as Ca(ClO)2, though the actual composition is quite complex. 2Ca(OH)2 + 2Cl2 ® Ca(ClO)2 + CaCl2 + 2H2O Bleaching powder is used – (i)for bleaching cotton and linen in the textile industry, for bleaching wood pulp in paper factories and for bleaching washed clothes in laundry; (ii)as an oxidising agent in many chemical industries; and (iii)to make drinking water free from germs. Baking soda The baking soda is commonly used in the kitchen for making tasty crispy pakoras, etc. Sometimes it is added for faster cooking. The chemical name of the compound is sodium hydrogencarbonate (NaHCO3). It is produced using sodium chloride as one of the raw materials. → NaCl + H O + CO+ NH Cl + NaHCO (Ammonium (Sodium chloride) hydrogencarbonate) Did you check the pH of sodium hydrogencarbonate in Activity 2.14? Can you correlate why it can be used to neutralise an acid? It is a mild non-corrosive basic salt. The following reaction takes place when it is heated during cooking – Heat → 2NaHCO Na CO + H O+CO 2 3 2 (Sodium hydrogencarbonate) Sodium hydrogencarbonate has got various uses in the household. Uses of Baking soda (i)Baking powder is a mixture of baking soda (sodium hydrogen carbonate) and tartaric acid which is a weak edible acid. When baking powder is heated or mixed in water, the following reaction takes place – NaHCO3 + H+ ® CO2 + H2O + Sodium salt of acid (From any acid) Carbon dioxide produced during the reaction can cause bread or cake to rise making them soft and spongy. (ii)Sodium hydrogencarbonate is also an ingredient in antacids. Being alkaline, it neutralises excess acid in the stomach and provides relief. (iii)It is also used in soda-acid fire extinguishers. Washing soda Another chemical that can be obtained from sodium chloride is Na2CO3.10H2O (washing soda). You have seen above that sodium carbonate can be obtained by heating baking soda; recrystallisation of sodium carbonate gives washing soda. It is also a basic salt. + → Na CO 10H O .10H O 2 3 3 2 Sodium ( carbonate ) What does 10H2O signify? Does it make Na2CO3 wet? We will address this question in the next section. Sodium carbonate and sodium hydrogencarbonate are useful chemicals for many industrial processes as well. Uses of washing soda (i)Sodium carbonate (washing soda) is used in glass, soap and paper industries. (ii)It is used in the manufacture of sodium compounds such as borax. (iii)Sodium carbonate can be used as a cleaning agent for domestic purposes. (iv)It is used for removing permanent hardness of water."
+              "text": "Bleaching powder You have already come to know that chlorine is produced during the electrolysis of aqueous sodium chloride (brine). This chlorine gas is used for the manufacture of bleaching powder. Bleaching powder is produced by the action of chlorine on dry slaked lime [Ca(OH)2]. Bleaching powder is represented as Ca(ClO)2, though the actual composition is quite complex. 2Ca(OH)2 + 2Cl2 ® Ca(ClO)2 + CaCl2 + 2H2O Bleaching powder is used – (i)for bleaching cotton and linen in the textile industry, for bleaching wood pulp in paper factories and for bleaching washed clothes in laundry; (ii)as an oxidising agent in many chemical industries; and (iii)to make drinking water free from germs. Baking soda The baking soda is commonly used in the kitchen for making tasty crispy pakoras, etc. Sometimes it is added for faster cooking. The chemical name of the compound is sodium hydrogencarbonate (NaHCO3). It is produced using sodium chloride as one of the raw materials. NaCl + H O + CO+ NH Cl + NaHCO (Ammonium (Sodium chloride) hydrogencarbonate) Did you check the pH of sodium hydrogencarbonate in Activity 2.14? Can you correlate why it can be used to neutralise an acid? It is a mild non-corrosive basic salt. The following reaction takes place when it is heated during cooking – Heat 2NaHCO Na CO + H O+CO 2 3 2 (Sodium hydrogencarbonate) Sodium hydrogencarbonate has got various uses in the household. Uses of Baking soda (i)Baking powder is a mixture of baking soda (sodium hydrogen carbonate) and tartaric acid which is a weak edible acid. When baking powder is heated or mixed in water, the following reaction takes place – NaHCO3 + H+ ® CO2 + H2O + Sodium salt of acid (From any acid) Carbon dioxide produced during the reaction can cause bread or cake to rise making them soft and spongy. (ii)Sodium hydrogencarbonate is also an ingredient in antacids. Being alkaline, it neutralises excess acid in the stomach and provides relief. (iii)It is also used in soda-acid fire extinguishers. Washing soda Another chemical that can be obtained from sodium chloride is Na2CO3.10H2O (washing soda). You have seen above that sodium carbonate can be obtained by heating baking soda; recrystallisation of sodium carbonate gives washing soda. It is also a basic salt. + Na CO 10H O .10H O 2 3 3 2 Sodium ( carbonate ) What does 10H2O signify? Does it make Na2CO3 wet? We will address this question in the next section. Sodium carbonate and sodium hydrogencarbonate are useful chemicals for many industrial processes as well. Uses of washing soda (i)Sodium carbonate (washing soda) is used in glass, soap and paper industries. (ii)It is used in the manufacture of sodium compounds such as borax. (iii)Sodium carbonate can be used as a cleaning agent for domestic purposes. (iv)It is used for removing permanent hardness of water."
             }
           ]
         },
@@ -582,7 +652,7 @@
             },
             {
               "type": "paragraph",
-              "text": "Removing water crystallisation. When we heat the crystals, this water is removed and the of crystallisation salt turns white. If you moisten the crystals again with water, you will find that blue colour of the crystals reappears. Water of crystallisation is the fixed number of water molecules present in one formula unit of a salt. Five water molecules are present in one formula unit of copper sulphate. Chemical formula for hydrated copper sulphate is Cu SO4. 5H2O. Now you would be able to answer the question whether the molecule of Na2CO3.10H2O is wet. One other salt, which possesses water of crystallisation is gypsum. It has two water molecules as water of cyrstallisation. It has the chemical formula CaSO4.2H2O. Let us look into the use of this salt. Plaster of Paris On heating gypsum at 373 K, it loses water molecules and becomes 1 CaSO . H O calcium sulphate hemihydrate ( ). This is called Plaster of 4 2 2 Paris, the substance which doctors use as plaster for supporting fractured bones in the right position. Plaster of Paris is a white powder and on mixing with water, it changes to gypsum once again giving a hard solid mass. CaSO .12 H O +11 → 2 H O CaSO .2H O 4 2 (Plaster of Paris) Gypsum) ( Note that only half a water molecule is shown to be attached as water of crystallisation. How can you get half a water molecule? It is written in this form because two formula units of CaSO4 share one molecule of water. Plaster of Paris is used for making toys, materials for decoration and for making surfaces smooth. Try to find out why is calcium sulphate hemihydrate called ‘Plaster of Paris’ ?"
+              "text": "Removing water crystallisation. When we heat the crystals, this water is removed and the of crystallisation salt turns white. If you moisten the crystals again with water, you will find that blue colour of the crystals reappears. Water of crystallisation is the fixed number of water molecules present in one formula unit of a salt. Five water molecules are present in one formula unit of copper sulphate. Chemical formula for hydrated copper sulphate is Cu SO4. 5H2O. Now you would be able to answer the question whether the molecule of Na2CO3.10H2O is wet. One other salt, which possesses water of crystallisation is gypsum. It has two water molecules as water of cyrstallisation. It has the chemical formula CaSO4.2H2O. Let us look into the use of this salt. Plaster of Paris On heating gypsum at 373 K, it loses water molecules and becomes 1 CaSO . H O calcium sulphate hemihydrate ( ). This is called Plaster of 4 2 2 Paris, the substance which doctors use as plaster for supporting fractured bones in the right position. Plaster of Paris is a white powder and on mixing with water, it changes to gypsum once again giving a hard solid mass. CaSO .12 H O +11 2 H O CaSO .2H O 4 2 (Plaster of Paris) Gypsum) ( Note that only half a water molecule is shown to be attached as water of crystallisation. How can you get half a water molecule? It is written in this form because two formula units of CaSO4 share one molecule of water. Plaster of Paris is used for making toys, materials for decoration and for making surfaces smooth. Try to find out why is calcium sulphate hemihydrate called ‘Plaster of Paris’ ?"
             },
             {
               "type": "in_text_questions",
@@ -610,10 +680,6 @@
               ]
             },
             {
-              "type": "do_you_know",
-              "text": "Group Activity (I) Prepare your own indicator n Crush beetroot in a mortar. n Add sufficient water to obtain the extract. n Filter the extract by the procedure learnt by you in earlier classes. n Collect the filtrate to test the substances you may have tasted earlier. n Arrange four test tubes in a test tube stand and label them as A,B,C and D. Pour 2 mL each of lemon juice solution, soda-water, vinegar and baking soda solution in them respectively. n Put 2-3 drops of the beetroot extract in each test tube and note the colour change if any. Write your observation in a Table. n You can prepare indicators by using other natural materials like extracts of red cabbage leaves, coloured petals of some flowers such as Petunia, Hydrangea and Geranium."
-            },
-            {
               "type": "figure",
               "num": "2.10",
               "caption": "(a) Ignition tube containing dilute sulphuric acid suspended in a wash-bottle containing",
@@ -621,7 +687,7 @@
             },
             {
               "type": "do_you_know",
-              "text": "(II) Preparing a soda-acid fire extinguisher The reaction of acids with metal hydrogencarbonates is used in the fire extinguishers which produce carbon dioxide. n Take 20 mL of sodium hydrogencarbonate (NaHCO3) solution in a wash-bottle. n Suspend an ignition tube containing dilute sulphuric acid in the wash-bottle (Fig. 2.10). n Close the mouth of the wash-bottle. n Tilt the wash-bottle so that the acid from the ignition tube mixes with the sodium hydrogencarbonate solution below. n You will notice discharge coming out of the nozzle. n Direct this discharge on a burning candle. What happens? Figure 2.10 (a) Ignition tube containing dilute sulphuric acid suspended in a wash-bottle containing sodium hydrogencarbonate, (b) Discharge coming out of the nozzle"
+              "text": "Group Activity (I) Prepare your own indicator n Crush beetroot in a mortar. n Add sufficient water to obtain the extract. n Filter the extract by the procedure learnt by you in earlier classes. n Collect the filtrate to test the substances you may have tasted earlier. n Arrange four test tubes in a test tube stand and label them as A,B,C and D. Pour 2 mL each of lemon juice solution, soda-water, vinegar and baking soda solution in them respectively. n Put 2-3 drops of the beetroot extract in each test tube and note the colour change if any. Write your observation in a Table. n You can prepare indicators by using other natural materials like extracts of red cabbage leaves, coloured petals of some flowers such as Petunia, Hydrangea and Geranium. (II) Preparing a soda-acid fire extinguisher The reaction of acids with metal hydrogencarbonates is used in the fire extinguishers which produce carbon dioxide. n Take 20 mL of sodium hydrogencarbonate (NaHCO3) solution in a wash-bottle. n Suspend an ignition tube containing dilute sulphuric acid in the wash-bottle (Fig. 2.10). n Close the mouth of the wash-bottle. n Tilt the wash-bottle so that the acid from the ignition tube mixes with the sodium hydrogencarbonate solution below. n You will notice discharge coming out of the nozzle. n Direct this discharge on a burning candle. What happens? Figure 2.10 (a) Ignition tube containing dilute sulphuric acid suspended in a wash-bottle containing sodium hydrogencarbonate, (b) Discharge coming out of the nozzle"
             }
           ]
         }
@@ -762,7 +828,7 @@
     },
     {
       "num": 15,
-      "question": "Give two important uses of washing soda and baking soda.",
+      "question": "Give two important uses of  washing soda and baking soda.",
       "options": [],
       "type": "short"
     }

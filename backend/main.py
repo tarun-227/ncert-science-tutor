@@ -59,6 +59,15 @@ def get_chapter_rich(chapter_id: int):
             f"Rich content for chapter {chapter_id} not found.",
         )
     data = json.loads(rich_path.read_text(encoding="utf-8"))
+    # Deduplicate sections: the PDF extractor sometimes emits an empty shell
+    # (0 blocks) followed by the real section with the same ID.  Keep only
+    # the entry with the most blocks for each section ID.
+    seen: dict[str, dict] = {}
+    for s in data.get("sections", []):
+        sid = s["id"]
+        if sid not in seen or len(s.get("blocks", [])) > len(seen[sid].get("blocks", [])):
+            seen[sid] = s
+    data["sections"] = list(seen.values())
     _RICH_CACHE[chapter_id] = data
     return data
 

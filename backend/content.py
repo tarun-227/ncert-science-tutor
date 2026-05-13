@@ -22,10 +22,32 @@ def get_subtopic(chapter_id: int, subtopic_id: str) -> dict | None:
     chapter = get_chapter(chapter_id)
     if not chapter:
         return None
+    # 1. Exact match (works for old ncert subtopic IDs like "3.1.1")
     for section in chapter.get("sections", []):
         for sub in section.get("subtopics", []):
             if sub["id"] == subtopic_id:
                 return {"section": section["title"], "subtopic": sub}
+    # 2. Section-level prefix fallback: rich section ID "3.2" → matches "3.2.1", "3.2.2" …
+    prefix = subtopic_id + "."
+    matched_subs: list[dict] = []
+    section_title: str | None = None
+    for section in chapter.get("sections", []):
+        for sub in section.get("subtopics", []):
+            if sub["id"].startswith(prefix):
+                matched_subs.append(sub)
+                section_title = section["title"]
+    if matched_subs:
+        combined = "\n\n".join(
+            f"{sub['title']}: {sub.get('content', '')}" for sub in matched_subs
+        )
+        return {
+            "section": section_title,
+            "subtopic": {
+                "id": subtopic_id,
+                "title": section_title or matched_subs[0]["title"],
+                "content": combined,
+            },
+        }
     return None
 
 

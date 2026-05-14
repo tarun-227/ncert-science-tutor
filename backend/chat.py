@@ -26,6 +26,23 @@ def _call_hf(prompt: str) -> str:
     return resp.json()["choices"][0]["message"]["content"].strip()
 
 
+def _call_hf_long(prompt: str, max_tokens: int = 2000) -> str:
+    """Single-turn call with higher token limit — used by qpaper pipeline."""
+    resp = requests.post(
+        GROQ_URL,
+        headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+        json={
+            "model": MODEL,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.3,
+            "max_tokens": max_tokens,
+        },
+        timeout=90,
+    )
+    resp.raise_for_status()
+    return resp.json()["choices"][0]["message"]["content"].strip()
+
+
 def _call_chat(messages: list[dict]) -> str:
     """Multi-turn call — used by the interactive tutor chat."""
     resp = requests.post(

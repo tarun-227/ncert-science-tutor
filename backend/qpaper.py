@@ -11,6 +11,7 @@ progress. Status values: queued → extracting → solving → rendering → don
 """
 import io
 import re
+import time
 import uuid
 import threading
 import traceback
@@ -130,7 +131,17 @@ def solve_question(question: str) -> str:
         "- Keep it concise (4-8 sentences) unless the question demands more.\n\n"
         "Answer:"
     )
-    return chat_mod._call_hf(prompt)
+    # Retry with exponential backoff for rate-limit (429) errors
+    max_retries = 4
+    for attempt in range(max_retries + 1):
+        try:
+            return chat_mod._call_hf(prompt)
+        except Exception as e:
+            if "429" in str(e) and attempt < max_retries:
+                wait = 2 ** attempt  # 1, 2, 4, 8 seconds
+                time.sleep(wait)
+                continue
+            raise
 
 
 # ─── PDF rendering (ReportLab Platypus, Scholarly Ink palette) ───────────────
@@ -197,7 +208,7 @@ def render_answer_pdf(qa_pairs: list[tuple[str, str]], out_path: Path, meta: dic
     from reportlab.lib.units import mm
     from reportlab.lib.colors import HexColor
     from reportlab.platypus import (
-        SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable,
+        SimpleDocTemplate, Paragraph, Spacer, HRFlowable,
     )
 
     # Scholarly Ink palette (mirrors frontend index.css)
@@ -263,20 +274,20 @@ def render_answer_pdf(qa_pairs: list[tuple[str, str]], out_path: Path, meta: dic
 
     content_width = A4[0] - 44 * mm  # page width minus L+R margins
 
+    # Question card style — uses background + border so it can split across pages
+    # (Table cells can't split, causing crashes on long questions)
+    q_card = ParagraphStyle(
+        "QCard", parent=q_text,
+        backColor=CARD_ALT,
+        borderColor=BORDER,
+        borderWidth=0.5,
+        borderPadding=(9, 12, 9, 12),  # top, right, bottom, left
+    )
+
     for i, (q, a) in enumerate(qa_pairs, 1):
         # Q label + question card
         story.append(Paragraph(f"QUESTION {i}", q_label))
-        q_para = Paragraph(_inline_md(q).replace("\n", "<br/>"), q_text)
-        q_tbl = Table([[q_para]], colWidths=[content_width])
-        q_tbl.setStyle(TableStyle([
-            ("BACKGROUND",    (0, 0), (-1, -1), CARD_ALT),
-            ("BOX",           (0, 0), (-1, -1), 0.5, BORDER),
-            ("LEFTPADDING",   (0, 0), (-1, -1), 12),
-            ("RIGHTPADDING",  (0, 0), (-1, -1), 12),
-            ("TOPPADDING",    (0, 0), (-1, -1), 9),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 9),
-        ]))
-        story.append(q_tbl)
+        story.append(Paragraph(_inline_md(q).replace("\n", "<br/>"), q_card))
         story.append(Spacer(1, 10))
 
         # Answer
@@ -330,6 +341,9 @@ def process_job(job_id: str, pdf_bytes: bytes, filename: str) -> None:
                 ans = f"_Failed to generate answer: {e}_"
             qa_pairs.append((q, ans))
             _set_job(job_id, progress=i + 1)
+            # Pace requests to stay under Groq's rate limit
+            if i < len(questions) - 1:
+                time.sleep(1.5)
 
         _set_job(job_id, status="rendering", stage="Rendering answer PDF")
         out_path = OUTPUT_DIR / f"{job_id}.pdf"

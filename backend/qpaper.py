@@ -62,14 +62,15 @@ def extract_text_from_pdf(pdf_bytes: bytes) -> tuple[str, bool]:
             try:
                 import pytesseract
                 from PIL import Image
-                pix = page.get_pixmap(dpi=220)
+                pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+                pix = page.get_pixmap(dpi=300)
                 img = Image.frombytes(
                     "RGB" if pix.n < 4 else "RGBA",
                     (pix.width, pix.height), pix.samples,
                 )
                 if img.mode == "RGBA":
                     img = img.convert("RGB")
-                ocr = pytesseract.image_to_string(img)
+                ocr = pytesseract.image_to_string(img, config="--psm 6")
                 text_parts.append(ocr)
                 used_ocr = True
             except ImportError:
@@ -105,21 +106,35 @@ def _clean_text(text: str) -> str:
     return text.strip()
 
 
+def _ocr_correct_num(num: int) -> int | None:
+    """Try to fix common OCR digit confusions for question numbers > 45."""
+    s = str(num)
+    # Common OCR swaps: 9↔2, 8↔3, 6↔5
+    swap = str.maketrans("928365", "293856")
+    corrected = int(s.translate(swap))
+    if 1 <= corrected <= 45 and corrected != num:
+        return corrected
+    # Try just fixing the first digit
+    if len(s) == 2:
+        for d1 in "123456789":
+            candidate = int(d1 + s[1])
+            if 1 <= candidate <= 45:
+                return candidate
+    return None
+
+
 def _find_question_boundaries(text: str) -> list[tuple[int, int]]:
     """Find (question_number, char_offset) for every top-level question.
 
-    CBSE SQP format: question number appears at the start of a line as a bare
-    number (e.g. '1\\n' or '17\\n') FOLLOWED on the next line(s) by actual
-    question text (words, not just a number). Marks also appear as bare numbers
-    on their own line but are NOT followed by question text.
+    Two candidate sources:
+      1. Bare numbers on their own line preceded by a blank line.
+      2. "N." / "Q N." / "N)" at start of line followed by text.
 
-    Strategy: find every line that is just a 1-2 digit number. Then look at
-    what follows — if the next non-blank content is text (not another bare
-    number), it's a question boundary. Track expected sequence to avoid false
-    positives.
+    Uses a greedy approach: collect all valid candidates, then pick the longest
+    roughly-increasing subsequence. This tolerates OCR noise (garbled numbers,
+    missed questions) much better than a strict expected-counter.
     """
     # Pattern: line that is JUST a number (possibly with trailing spaces)
-    # Must be preceded by a blank line or start of text (not mid-content)
     bare_num = re.compile(r"(?:^|\n\s*\n)(\d{1,2})\s*\n", re.MULTILINE)
 
     candidates: list[tuple[int, int, int]] = []  # (num, line_start, line_end)
@@ -127,32 +142,29 @@ def _find_question_boundaries(text: str) -> list[tuple[int, int]]:
         num = int(m.group(1))
         if num < 1 or num > 45:
             continue
-        # Position of the digit itself
         digit_start = m.start(1)
         candidates.append((num, digit_start, m.end()))
 
-    # Also try "Q1." / "1." / "1)" format (some PDFs use this)
-    q_dot = re.compile(r"^[ \t]*(?:Q\.?\s*)?(\d{1,2})\s*[\.\)]\s+\S", re.MULTILINE)
+    # Also try "Q1." / "1." / "1)" / "1," format (some PDFs use this)
+    # Allow OCR noise chars (|, :, ;, !, ]) before the number
+    q_dot = re.compile(r"^[| \t:;!\]]*(?:Q\.?\s*)?(\d{1,2})\s*[\.\),]\s+\S", re.MULTILINE)
     for m in q_dot.finditer(text):
         num = int(m.group(1))
         if num < 1 or num > 45:
-            continue
+            # OCR digit correction: common confusions (9↔2, 8↔3)
+            corrected = _ocr_correct_num(num)
+            if corrected and 1 <= corrected <= 45:
+                num = corrected
+            else:
+                continue
         candidates.append((num, m.start(), m.end() - 1))
 
     # Sort by position
     candidates.sort(key=lambda x: x[1])
 
-    # Filter: keep only those that form a strictly increasing sequence
-    # and are followed by actual question text (not just marks/noise)
-    boundaries: list[tuple[int, int]] = []
-    expected = 1
-
+    # Validate each candidate: must be followed by real question text
+    valid: list[tuple[int, int]] = []  # (num, start)
     for num, start, end in candidates:
-        # Must be >= expected and not too far ahead
-        if num < expected or num > expected + 2:
-            continue
-
-        # Check what follows this number — should be question text
         after = text[end:end + 300].strip()
 
         # If the content after the number is another bare number or empty, skip
@@ -168,24 +180,68 @@ def _find_question_boundaries(text: str) -> list[tuple[int, int]]:
             if not found_text:
                 continue
 
-        # The text following must contain actual words (not just numbers/noise)
+        # Must contain actual English words (not just numbers/noise/Hindi)
         words_after = re.findall(r"[a-zA-Z]{3,}", after[:150])
         if len(words_after) < 3:
             continue
 
-        # Guard against table data: if the lines immediately before AND after
-        # are also bare numbers, this is likely a table cell, not a question
-        before_ctx = text[max(0, start - 20):start].strip()
-        after_first = after.split("\n")[0].strip() if after else ""
-        before_lines = before_ctx.split("\n")
-        prev_line = before_lines[-1].strip() if before_lines else ""
-        if re.match(r"^\d{1,3}$", prev_line) and re.match(r"^\d{1,3}$", after_first):
+        # Guard against table data: skip if this number sits in a dense
+        # cluster of bare numbers. CBSE papers have occasional bare marks
+        # indicators (single digits 1-5) between questions — those are OK.
+        # Tables have 4+ bare numbers in a narrow window.
+        window_start = max(0, start - 80)
+        window_end = min(len(text), end + 80)
+        window = text[window_start:window_end]
+        bare_count = sum(
+            1 for wl in window.split("\n")
+            if re.match(r"^\s*\d{1,3}\s*$", wl)
+        )
+        if bare_count >= 4:
             continue
 
-        boundaries.append((num, start))
-        expected = num + 1
+        valid.append((num, start))
 
-    return boundaries
+    # Build the best increasing subsequence from valid candidates.
+    # Greedy: walk through valid candidates in position order, accept any
+    # candidate whose number > last accepted number (allows gaps for
+    # OCR-missed questions).
+    if not valid:
+        return []
+
+    boundaries: list[tuple[int, int]] = [valid[0]]
+    for num, start in valid[1:]:
+        if num > boundaries[-1][0]:
+            boundaries.append((num, start))
+
+    # Gap-filling pass: for single-number gaps, look for question-like text
+    # between known boundaries. This catches questions whose number was
+    # completely garbled by OCR but whose text is still readable.
+    filled: list[tuple[int, int]] = list(boundaries)
+    for idx in range(len(boundaries) - 1):
+        prev_num, prev_pos = boundaries[idx]
+        next_num, next_pos = boundaries[idx + 1]
+        gap = next_num - prev_num
+        if gap == 2:
+            # Exactly one question missing — look for a question-like block
+            mid_text = text[prev_pos:next_pos]
+            # Find substantial text blocks separated by blank lines
+            blocks = re.split(r"\n\s*\n", mid_text)
+            for block in blocks[1:]:  # skip the first (belongs to prev question)
+                block = block.strip()
+                if len(block) < 30:
+                    continue
+                words = re.findall(r"[a-zA-Z]{3,}", block[:200])
+                if len(words) < 5:
+                    continue
+                # This looks like a question — assign the missing number
+                block_pos = text.find(block, prev_pos)
+                if block_pos > 0 and block_pos < next_pos:
+                    missing_num = prev_num + 1
+                    filled.append((missing_num, block_pos))
+                    break
+
+    filled.sort(key=lambda x: x[1])
+    return filled
 
 
 def split_questions(text: str) -> list[dict]:

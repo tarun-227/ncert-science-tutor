@@ -29,7 +29,7 @@ export async function loadPlansAsync() {
     if (error) throw error
 
     // Normalise DB rows → client shape
-    const plans = (data || []).map(row => ({
+    const dbPlans = (data || []).map(row => ({
       id: row.id,
       name: row.name,
       selections: row.selections,
@@ -38,9 +38,17 @@ export async function loadPlansAsync() {
       createdAt: row.created_at?.slice(0, 10),
     }))
 
-    // Sync to localStorage as cache
-    localStorage.setItem(LS_PLANS, JSON.stringify(plans))
-    return plans
+    // Merge: DB is authoritative for plans it knows about, but keep any
+    // local-only plans that never made it to DB (e.g. during an RLS error or
+    // offline upsert failure). This prevents plans from vanishing when DB
+    // returns an empty list due to a write that never persisted.
+    const localPlans = loadPlansLocal()
+    const dbIds = new Set(dbPlans.map(p => p.id))
+    const localOnly = localPlans.filter(p => !dbIds.has(p.id))
+    const merged = [...dbPlans, ...localOnly]
+
+    localStorage.setItem(LS_PLANS, JSON.stringify(merged))
+    return merged
   } catch {
     return loadPlansLocal()
   }

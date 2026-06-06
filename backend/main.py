@@ -191,6 +191,7 @@ def chat_endpoint(req: ChatRequest, user: dict = Depends(get_current_user)):
             subtopic_title   = subtopic_title,
             subtopic_content = subtopic_content,
             history          = history,
+            subject          = chapter.get("subject", "Science"),
         )
     except Exception as e:
         raise HTTPException(503, f"AI unavailable: {str(e)}")

@@ -81,8 +81,26 @@ function BookBlocks({ blocks }) {
             {block.items?.map((q, qi) => <div key={qi} className="rb-itq-q">{qi + 1}. {q.text || q}</div>)}
           </div>
         )
+      case 'poem':
+        return (
+          <div key={i} className="rb-poem">
+            {(block.content || block.text || '').split('\n').map((line, li) =>
+              line.trim() === ''
+                ? <div key={li} className="rb-poem-gap" />
+                : <div key={li} className="rb-poem-line">{line}</div>
+            )}
+          </div>
+        )
+      case 'text':
+        return (block.content || block.text || '').split('\n\n').map((para, pi) =>
+          para.trim() ? <p key={`${i}-${pi}`} className="rb-p">{para.trim()}</p> : null
+        )
       default:
-        return block.text ? <p key={i} className="rb-p">{block.text}</p> : null
+        return block.text ? <p key={i} className="rb-p">{block.text}</p>
+             : block.content ? block.content.split('\n\n').map((para, pi) =>
+                 para.trim() ? <p key={`${i}-${pi}`} className="rb-p">{para.trim()}</p> : null
+               )
+             : null
     }
   })
 }

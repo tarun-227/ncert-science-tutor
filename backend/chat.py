@@ -66,6 +66,7 @@ def chat(
     subtopic_title: str,
     subtopic_content: str,
     history: list[dict],
+    subject: str = "Science",
 ) -> str:
     """Interactive tutor chat using proper multi-turn message format.
 
@@ -73,8 +74,25 @@ def chat(
     conversation history with its own output and never hallucinates a fake
     'Student:' turn.
     """
+    is_english = subject.lower() == "english"
+    subject_label = "English Literature & Language" if is_english else "Science"
+    subject_rules = (
+        "- Help the student understand the story/poem theme, characters, and language.\n"
+        "- For comprehension questions: guide with hints before giving the full answer.\n"
+        "- For grammar/vocabulary: give clear definitions with examples from the text.\n"
+        "- For essay/writing prompts: suggest an outline and key points.\n"
+        "- Quote from the text when it helps clarify meaning.\n"
+        "- End with the key literary point or exam tip when relevant.\n"
+        if is_english else
+        "- Be concise but complete (3–6 sentences is usually enough).\n"
+        "- If asked to explain: start with a real-life observation, then the concept.\n"
+        "- If asked to simplify: use an everyday analogy a 15-year-old would relate to.\n"
+        "- If asked for an example: give a concrete real-world example.\n"
+        "- For numericals: show step-by-step with each formula clearly stated.\n"
+        "- End with the key exam point when relevant.\n"
+    )
     system_content = (
-        f"You are a friendly, patient Class 10 Science tutor.\n"
+        f"You are a friendly, patient Class 10 {subject_label} tutor.\n"
         f"The student is currently studying:\n"
         f"  Chapter: {chapter_title}\n"
         f"  Topic:   {subtopic_title}\n\n"
@@ -82,12 +100,7 @@ def chat(
         f"---\n{subtopic_content[:1500]}\n---\n\n"
         f"Rules:\n"
         f"- ALWAYS answer the student's current question directly — do not continue or invent previous topics.\n"
-        f"- Be concise but complete (3–6 sentences is usually enough).\n"
-        f"- If asked to explain: start with a real-life observation, then the concept.\n"
-        f"- If asked to simplify: use an everyday analogy a 15-year-old would relate to.\n"
-        f"- If asked for an example: give a concrete real-world example.\n"
-        f"- For numericals: show step-by-step with each formula clearly stated.\n"
-        f"- End with the key exam point when relevant.\n"
+        f"{subject_rules}"
     )
 
     messages: list[dict] = [{"role": "system", "content": system_content}]

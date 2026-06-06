@@ -96,6 +96,13 @@
   --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
   --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
   --surface: #FAF8F3;
+
+  /* Subject colour tokens */
+  --physics-bg: #EFF6FF;       --physics-border: #BFDBFE;  --physics-text: #1D4ED8;
+  --chemistry-bg: #F5F3FF;     --chemistry-border: #C4B5FD;--chemistry-text: #6D28D9;
+  --biology-bg: #F0FDF4;       --biology-border: #86EFAC;  --biology-text: #16A34A;
+  --env-bg: #ECFDF5;           --env-border: #6EE7B7;      --env-text: #047857;
+  --english-bg: #FFF7ED;       --english-border: #FED7AA;  --english-text: #C2410C;
 }
 
 [data-density="compact"] {
@@ -130,6 +137,13 @@
   --soc-tint: #25203A;
   --hin-tint: #2A1B22;
   --san-tint: #1A2826;
+
+  /* Subject colour tokens — dark mode */
+  --physics-bg: #1E2A3A;       --physics-border: #1D4ED8;  --physics-text: #93C5FD;
+  --chemistry-bg: #221E35;     --chemistry-border: #6D28D9;--chemistry-text: #C4B5FD;
+  --biology-bg: #1A2E1E;       --biology-border: #16A34A;  --biology-text: #86EFAC;
+  --env-bg: #1A2E28;           --env-border: #047857;      --env-text: #6EE7B7;
+  --english-bg: #2E2014;       --english-border: #C2410C;  --english-text: #FED7AA;
 
   color-scheme: dark;
 }

@@ -80,6 +80,11 @@
 .rb-itq-h { font: 600 13px var(--f-sans); color: var(--green-2); margin-bottom: 10px; }
 .rb-itq-q { font-size: 14px; color: var(--ink); margin-bottom: 6px; }
 
+/* Poem blocks */
+.rb-poem { margin: 20px 0 24px; padding: 20px 24px; background: var(--card-2); border-left: 3px solid var(--green); border-radius: 12px; font-family: var(--f-sans); }
+.rb-poem-line { font-size: 15px; line-height: 1.9; color: var(--ink); white-space: pre-wrap; }
+.rb-poem-gap { height: 12px; }
+
 /* Text-selection Ask-AI toolbar (book mode) */
 .rb-ai-sparkle { width: 20px; height: 20px; border-radius: 99px; background: var(--green-tint); color: var(--green-2); display: grid; place-items: center; flex-shrink: 0; }
 .rb-sel-pop {

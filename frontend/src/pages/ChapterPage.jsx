@@ -17,6 +17,7 @@ const SUBJECT_STYLES = {
   Chemistry:                { bg: 'var(--chemistry-bg)',  border: 'var(--chemistry-border)',  color: 'var(--chemistry-text)'  },
   Biology:                  { bg: 'var(--biology-bg)',    border: 'var(--biology-border)',    color: 'var(--biology-text)'    },
   'Environmental Science':  { bg: 'var(--env-bg)',        border: 'var(--env-border)',        color: 'var(--env-text)'        },
+  English:                  { bg: 'var(--english-bg)',    border: 'var(--english-border)',    color: 'var(--english-text)'    },
 }
 
 function subjectVars(subject) {

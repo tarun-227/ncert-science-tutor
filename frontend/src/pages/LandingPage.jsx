@@ -8,9 +8,10 @@ const SUBJECT_VARS = {
   Chemistry:                { text: 'var(--chemistry-text)',  bg: 'var(--chemistry-bg)',  border: 'var(--chemistry-border)'  },
   Biology:                  { text: 'var(--biology-text)',    bg: 'var(--biology-bg)',    border: 'var(--biology-border)'    },
   'Environmental Science':  { text: 'var(--env-text)',        bg: 'var(--env-bg)',        border: 'var(--env-border)'        },
+  English:                  { text: 'var(--english-text)',    bg: 'var(--english-bg)',    border: 'var(--english-border)'    },
 }
 
-const SUBJECT_ORDER = ['Chemistry', 'Physics', 'Biology', 'Environmental Science']
+const SUBJECT_ORDER = ['Chemistry', 'Physics', 'Biology', 'Environmental Science', 'English']
 
 function readSectionCountLocal(chapterId) {
   // Local fallback used until Supabase data loads

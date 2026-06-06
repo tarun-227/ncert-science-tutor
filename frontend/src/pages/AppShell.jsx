@@ -52,6 +52,7 @@ export default function AppShell() {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem('ui-dark') === '1')
   const [density, setDensity] = useState(() => localStorage.getItem('ui-density') || 'cozy')
   const [chapterId, setChapterId] = useState(null)
+  const [activeSubject, setActiveSubject] = useState('science')
   const [profile, setProfile] = useState(null)
 
   // Load profile — localStorage first (instant), then Supabase (authoritative)
@@ -80,14 +81,20 @@ export default function AppShell() {
 
   const effectiveMode = sidebarMode === 'icons' && sidebarHovered ? 'expanded' : sidebarMode
 
-  const openChapter = (id) => { setChapterId(id); setView('reader') }
+  const openChapter = (id, subject) => {
+    setChapterId(id)
+    setView('reader')
+    if (subject) setActiveSubject(subject)
+  }
 
   return (
     <div className="app" data-sidebar={sidebarMode}>
       <Sidebar
         mode={effectiveMode}
         activeView={view}
+        activeSubject={activeSubject}
         setView={setView}
+        onOpenChapter={openChapter}
         onCollapse={() => setSidebarMode(m => m === 'expanded' ? 'icons' : 'expanded')}
         onHoverExpand={() => setSidebarHovered(true)}
         onHoverCollapse={() => setSidebarHovered(false)}

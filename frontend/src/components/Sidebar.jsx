@@ -1,11 +1,13 @@
 import Icon from './Icons'
 import './Sidebar.css'
 
+// firstChapterId: the chapter to open when clicking the subject from the sidebar
 const SUBJECTS = [
-  { id: 'science', name: 'Science', color: 'sci', icon: '⚛' },
+  { id: 'science', name: 'Science', color: 'sci', icon: '⚛', firstChapterId: 1  },
+  { id: 'english', name: 'English', color: 'eng', icon: '📖', firstChapterId: 14 },
 ]
 
-export default function Sidebar({ mode, activeView, setView, onCollapse, onHoverExpand, onHoverCollapse }) {
+export default function Sidebar({ mode, activeView, activeSubject, setView, onOpenChapter, onCollapse, onHoverExpand, onHoverCollapse }) {
   const isIcons = mode === 'icons'
   const isCollapsed = mode === 'collapsed'
   if (isCollapsed) return null
@@ -40,17 +42,20 @@ export default function Sidebar({ mode, activeView, setView, onCollapse, onHover
       <div className="sb-scroll scroll">
         {!isIcons && <div className="sb-label">Core subjects</div>}
         <div className="sb-list">
-          {SUBJECTS.map(s => (
-            <button
-              key={s.id}
-              className={`sb-item ${activeView === 'reader' ? 'on' : ''}`}
-              onClick={() => setView('reader')}
-              title={s.name}
-            >
-              <span className="sb-ic" data-color={s.color}>{s.icon}</span>
-              {!isIcons && <span className="sb-name">{s.name}</span>}
-            </button>
-          ))}
+          {SUBJECTS.map(s => {
+            const isActive = activeView === 'reader' && activeSubject === s.id
+            return (
+              <button
+                key={s.id}
+                className={`sb-item ${isActive ? 'on' : ''}`}
+                onClick={() => onOpenChapter ? onOpenChapter(s.firstChapterId, s.id) : setView('reader')}
+                title={s.name}
+              >
+                <span className="sb-ic" data-color={s.color}>{s.icon}</span>
+                {!isIcons && <span className="sb-name">{s.name}</span>}
+              </button>
+            )
+          })}
         </div>
       </div>
     </aside>

@@ -131,6 +131,94 @@ export async function fetchAllChapterProgress() {
   } catch { return {} }
 }
 
+// ── Tutor saved notes (array of snippets per section) ────────────────────────
+// Stored in the notes table — the array is JSON-serialized into `content`.
+
+export async function fetchTutorNotes(chapterId, sectionId) {
+  try {
+    const { data, error } = await supabase
+      .from('notes')
+      .select('content')
+      .eq('chapter_id', chapterId)
+      .eq('section_id', sectionId)
+      .maybeSingle()
+    if (error || !data) throw new Error('miss')
+    const arr = JSON.parse(data.content)
+    localStorage.setItem(`tnotes-${chapterId}-${sectionId}`, data.content)
+    return Array.isArray(arr) ? arr : []
+  } catch {
+    try {
+      const raw = localStorage.getItem(`tnotes-${chapterId}-${sectionId}`)
+      const arr = raw ? JSON.parse(raw) : []
+      return Array.isArray(arr) ? arr : []
+    } catch { return [] }
+  }
+}
+
+export async function saveTutorNotes(chapterId, sectionId, notesArray) {
+  const json = JSON.stringify(notesArray)
+  localStorage.setItem(`tnotes-${chapterId}-${sectionId}`, json)
+  try {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return
+    await supabase.from('notes').upsert(
+      { user_id: user.id, chapter_id: chapterId, section_id: sectionId, content: json },
+      { onConflict: 'user_id,chapter_id,section_id' }
+    )
+  } catch { /* silent */ }
+}
+
+// ── User Profile (onboarding data) ───────────────────────────────────────────
+
+export async function saveUserProfile(profileData) {
+  try {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+      localStorage.setItem('onboarding-data', JSON.stringify(profileData))
+      return
+    }
+    await supabase.from('user_profiles').upsert({
+      user_id: user.id,
+      name: profileData.name || '',
+      class: profileData.cls || 'X',
+      board: profileData.board || 'CBSE',
+      school: profileData.school || '',
+      ratings: profileData.ratings || {},
+      tough_subjects: profileData.tough || [],
+      pace: profileData.pace || 'balanced',
+      onboarding_done: true,
+    }, { onConflict: 'user_id' })
+    localStorage.setItem('onboarding-data', JSON.stringify(profileData))
+    localStorage.setItem('onboarding-done', 'true')
+  } catch {
+    localStorage.setItem('onboarding-data', JSON.stringify(profileData))
+    localStorage.setItem('onboarding-done', 'true')
+  }
+}
+
+export async function fetchUserProfile() {
+  try {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return null
+    const { data, error } = await supabase
+      .from('user_profiles')
+      .select('*')
+      .eq('user_id', user.id)
+      .maybeSingle()
+    if (error || !data) return null
+    return {
+      name: data.name,
+      cls: data.class,
+      board: data.board,
+      school: data.school,
+      ratings: data.ratings || {},
+      tough: data.tough_subjects || [],
+      pace: data.pace,
+      onboardingDone: data.onboarding_done,
+    }
+  } catch { return null }
+}
+
 // ── Local → Supabase migration (one-time, called from migration banner) ───────
 
 export async function migrateLocalDataToSupabase() {

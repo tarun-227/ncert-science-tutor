@@ -1,0 +1,91 @@
+.dash { padding-top: var(--d-gap); display: flex; flex-direction: column; gap: var(--d-gap); }
+
+/* Stats row */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.stat {
+  background: var(--card); border: 1px solid var(--hairline); border-radius: var(--d-radius);
+  padding: 14px 14px; position: relative; overflow: hidden;
+  display: flex; align-items: center; gap: 10px;
+  min-width: 0;
+}
+.stat::before {
+  content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+  background: var(--green);
+}
+.stat[data-tone="green"]::before { background: var(--green); }
+.stat[data-tone="eng"]::before { background: var(--eng); }
+.stat[data-tone="math"]::before { background: var(--math); }
+.stat[data-tone="soc"]::before { background: var(--soc); }
+.stat-ic {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--card-2); color: var(--ink-2);
+  display: grid; place-items: center; flex-shrink: 0;
+}
+.stat-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; overflow: hidden; }
+.stat-num { font: 700 20px/1.05 var(--f-sans); letter-spacing: -.02em; white-space: nowrap; }
+.stat-label { font-size: 11px; color: var(--ink-3); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Main grid */
+.dash-grid { display: grid; grid-template-columns: 1fr 320px; gap: var(--d-gap); align-items: start; }
+@media (max-width: 900px) { .dash-grid { grid-template-columns: 1fr; } }
+.dash-col { display: flex; flex-direction: column; gap: var(--d-gap); min-width: 0; }
+.dash-col.side { gap: var(--d-gap); }
+
+/* Subject sections */
+.dash-subject { margin-bottom: 8px; }
+.dash-subject-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.dash-subject-line { flex: 1; height: 1px; background: var(--hairline); }
+
+.dash-chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+/* Chapter card */
+.dash-chapter {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--card); border: 1px solid var(--hairline); border-radius: 14px;
+  padding: 14px; cursor: pointer; text-align: left; appearance: none;
+  color: var(--ink); font-family: var(--f-sans);
+  transition: transform .15s, border-color .15s, box-shadow .15s;
+}
+.dash-chapter:hover {
+  transform: translateY(-1px);
+  border-color: var(--ink-4);
+  box-shadow: 0 4px 14px rgba(0,0,0,.06);
+}
+.dash-ch-top { display: flex; align-items: center; justify-content: space-between; }
+.dash-ch-title { font: 600 14px/1.3 var(--f-sans); letter-spacing: -.005em; }
+.dash-ch-meta { display: flex; gap: 6px; font-size: 11px; color: var(--ink-3); }
+
+/* Resume card */
+.resume {
+  display: grid; grid-template-columns: 110px 1fr; gap: 16px;
+  cursor: pointer; align-items: center;
+}
+.resume:hover { opacity: .9; }
+.resume-cover {
+  position: relative; height: 140px; border-radius: 8px; overflow: hidden;
+  box-shadow: 0 4px 14px rgba(28,25,23,.14);
+}
+.resume-cover[data-color="sci"] { background: linear-gradient(135deg, var(--sci) 0%, var(--green-2) 100%); }
+.resume-cover[data-color="eng"] { background: linear-gradient(135deg, var(--eng) 0%, #3A5FBB 100%); }
+.resume-cover[data-color="soc"] { background: linear-gradient(135deg, var(--soc) 0%, #6A3FC0 100%); }
+.resume-cover[data-color="san"] { background: linear-gradient(135deg, var(--san) 0%, #1F8A77 100%); }
+.resume-cover-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: rgba(0,0,0,.18); }
+.resume-cover-art {
+  padding: 12px; color: white; height: 100%;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.cv-meta { font-size: 8px; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+.cv-title { font: 600 18px/1.05 var(--f-sans); letter-spacing: -.01em; }
+.cv-icon { margin-top: auto; opacity: .85; }
+.resume-body { display: flex; flex-direction: column; min-width: 0; }
+.resume-eyebrow { display: flex; align-items: center; justify-content: space-between; }
+.resume-title { font: 600 17px/1.25 var(--f-sans); letter-spacing: -.01em; margin: 6px 0 2px; }
+.resume-section { font-size: 12px; color: var(--ink-2); margin-bottom: 10px; }
+.resume-cta { display: flex; }
+.resume-cta .btn { padding: 6px 10px; font-size: 12px; }

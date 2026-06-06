@@ -32,16 +32,12 @@ def get_current_user(
 ) -> dict:
     """FastAPI dependency — extracts the Supabase user from the JWT.
 
-    Decodes without signature verification (the exact internal signing key
-    is not exposed in the Supabase dashboard). Validates that the token came
-    from our Supabase project via the `ref` claim and that `sub` (user UUID)
-    is present.
-
-    Falls back to a dev user when Supabase is not configured so local dev
-    works without any env vars.
+    Falls back to an anonymous dev user when no token is provided or Supabase
+    is not configured, so the app works without auth for local dev / testing.
     """
     if not creds:
-        raise HTTPException(status_code=401, detail="Missing Authorization header")
+        # No auth token — allow as anonymous user (RLS will restrict DB writes)
+        return {"sub": "anonymous", "email": "anonymous@local"}
 
     if not SUPABASE_URL:
         # Dev fallback: Supabase not configured.

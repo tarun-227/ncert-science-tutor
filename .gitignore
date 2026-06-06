@@ -14,6 +14,8 @@ build/
 frontend/node_modules/
 frontend/dist/
 frontend/.env
+frontend/.env.local
+frontend/.env*.local
 frontend/vite.log
 
 # Data — excluded from repo (large / build artifacts)

@@ -78,6 +78,67 @@ def get_chapter_rich(chapter_id: int):
     return data
 
 
+# ── Tutor summary endpoint (no auth required) ────────────────────────────────
+
+class SummaryRequest(BaseModel):
+    chapter_id: int
+    subtopic_id: str
+    depth: str = "medium"  # short | medium | long
+
+
+@app.post("/api/tutor-summary")
+def tutor_summary(req: SummaryRequest):
+    chapter = content.get_chapter(req.chapter_id)
+    if not chapter:
+        raise HTTPException(404, "Chapter not found")
+
+    sub_data = content.get_subtopic(req.chapter_id, req.subtopic_id)
+    if not sub_data:
+        subtopic_title = chapter["title"]
+        subtopic_content = chapter.get("intro", "")
+    else:
+        subtopic_title = sub_data["subtopic"]["title"]
+        subtopic_content = sub_data["subtopic"].get("content", "")
+
+    depth_prompts = {
+        "short": (
+            f"Give a brief 2-3 sentence summary of the topic '{subtopic_title}'. "
+            f"Focus only on the core concept. Be concise."
+        ),
+        "medium": (
+            f"Summarize the topic '{subtopic_title}' in 5-8 sentences. "
+            f"Include key concepts, use **bold** for important terms, and give one practical example or analogy. "
+            f"Structure it clearly."
+        ),
+        "long": (
+            f"Give a detailed explanation of the topic '{subtopic_title}'. "
+            f"Use ## headings for subtopics, bullet points (- item) for lists, **bold** for key terms. "
+            f"Include examples, step-by-step explanations where relevant, and end with a key exam takeaway. "
+            f"Make it thorough but clear — a student should be able to study from this summary."
+        ),
+        "notes": (
+            f"Create concise revision notes for the topic '{subtopic_title}'. "
+            f"Group them under 2-4 short headings using '## Heading' on its own line, "
+            f"and under each heading list 2-3 brief bullet points (- point). "
+            f"Keep each bullet to one short line — these are quick-revision key points."
+        ),
+    }
+
+    prompt = depth_prompts.get(req.depth, depth_prompts["medium"])
+
+    try:
+        response = chat.chat(
+            user_message=prompt,
+            chapter_title=chapter["title"],
+            subtopic_title=subtopic_title,
+            subtopic_content=subtopic_content,
+            history=[],
+        )
+        return {"summary": response}
+    except Exception as e:
+        raise HTTPException(500, f"AI generation failed: {e}")
+
+
 # ── Chat endpoint ─────────────────────────────────────────────────────────────
 
 class ChatRequest(BaseModel):

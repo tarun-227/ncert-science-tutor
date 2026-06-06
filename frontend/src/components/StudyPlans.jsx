@@ -445,7 +445,7 @@ function PlanModal({ onClose, onCreate, initial, chapters, planNumber }) {
 
 // ─── StudyPlansSection — dashboard widget ────────────────────
 
-export default function StudyPlansSection({ chapters, onOpenChapter }) {
+export default function StudyPlansSection({ chapters, chaptersLoading, onOpenChapter }) {
   const [plans, setPlans] = useState(() => loadPlansLocal())
   const [showModal, setShowModal] = useState(false)
   const [editing, setEditing] = useState(null)
@@ -488,7 +488,12 @@ export default function StudyPlansSection({ chapters, onOpenChapter }) {
         </button>
       </div>
 
-      {plans.length > 0 ? (
+      {chaptersLoading ? (
+        <div className="splans-empty" style={{ opacity: 0.4 }}>
+          <Icon name="calendar" size={24} />
+          <p>Loading…</p>
+        </div>
+      ) : plans.length > 0 ? (
         <div className="splans-grid">
           {plans.map(p => (
             <PlanCard

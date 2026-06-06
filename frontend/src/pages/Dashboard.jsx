@@ -15,7 +15,7 @@ export default function Dashboard({ onOpenChapter }) {
 
   return (
     <div className="dash">
-      <StudyPlansSection chapters={chapters} onOpenChapter={onOpenChapter} />
+      <StudyPlansSection chapters={chapters} chaptersLoading={loading} onOpenChapter={onOpenChapter} />
     </div>
   )
 }

@@ -675,7 +675,10 @@ export default function StudyView({ studyMode, chapterId, setChapterId }) {
     Promise.all([
       fetch(`/api/chapters/${chapterId}`).then(r => r.json()),
       fetch(`/api/chapters/${chapterId}/rich`).then(r => r.json()),
-    ]).then(([ch, rich]) => { setChapter(ch); setRichData(rich) }).catch(() => {})
+    ]).then(([ch, rich]) => {
+      setChapter(ch); setRichData(rich)
+      if (rich?.sections?.length) syncPlanCompletions(chapterId, rich.sections.length)
+    }).catch(() => {})
   }, [chapterId])
 
   const handleMarkDone = (sectionIndex, undo = false) => {

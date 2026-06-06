@@ -172,9 +172,11 @@ export function markSectionDone(chapterId, sectionIndex) {
   return done
 }
 
-export function isChapterComplete(chapterId, totalSections) {
+export function isChapterComplete(chapterId, fallbackTotal) {
   const done = getDoneSectionsLocal(chapterId)
-  return totalSections > 0 && done.length >= totalSections
+  const stored = parseInt(localStorage.getItem(`ch-${chapterId}-totalSections`) || '0')
+  const total = stored > 0 ? stored : fallbackTotal
+  return total > 0 && done.length >= total
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -210,9 +212,12 @@ export async function saveSummaryCache(chapterId, sectionId, depth, summary) {
 // PLAN SYNC (chapter completion → plan progress)
 // ═══════════════════════════════════════════════════════════
 
-// Plan completion is now computed live in PlanCard from section_completion,
-// so no local mutation or DB write is needed here.
-export function syncPlanCompletions(_chapterId, _totalSections) {}
+// Cache the actual rich-section count so isChapterComplete uses the right threshold.
+export function syncPlanCompletions(chapterId, totalSections) {
+  if (totalSections > 0) {
+    localStorage.setItem(`ch-${chapterId}-totalSections`, String(totalSections))
+  }
+}
 
 // ═══════════════════════════════════════════════════════════
 // TIME ESTIMATION

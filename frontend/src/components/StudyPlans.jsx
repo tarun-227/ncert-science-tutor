@@ -65,11 +65,10 @@ function PlanCard({ plan, chapters, onDelete, onEdit, onStart }) {
   const totalChapters = planChapters.length
   const totalMinutes = planChapters.reduce((a, c) => a + chapterMinutes(c), 0)
 
-  // Check which chapters are actually complete (all sections done)
-  const doneIds = (plan.doneChapterIds || []).filter(id => {
-    const ch = chapters.find(c => c.id === id)
-    return ch && isChapterComplete(id, ch.subtopic_count || 0)
-  })
+  // Compute completed chapters live from section_completion (localStorage + Supabase cache)
+  const doneIds = planChapters
+    .filter(ch => isChapterComplete(ch.id, ch.subtopic_count || 0))
+    .map(ch => ch.id)
   const chaptersDone = doneIds.length
   const doneMinutes = planChapters.filter(c => doneIds.includes(c.id)).reduce((a, c) => a + chapterMinutes(c), 0)
   const pendingMinutes = totalMinutes - doneMinutes
@@ -258,8 +257,6 @@ function PlanModal({ onClose, onCreate, initial, chapters, planNumber }) {
       hoursPerDay: hours,
       target,
       createdAt: initial?.createdAt || new Date().toISOString().slice(0, 10),
-      doneChapterIds: initial?.doneChapterIds || [],
-      engagedChapterIds: initial?.engagedChapterIds || [],
     })
   }
 

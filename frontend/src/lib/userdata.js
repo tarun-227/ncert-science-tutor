@@ -135,12 +135,13 @@ export async function fetchAllChapterProgress() {
 // Stored in the notes table — the array is JSON-serialized into `content`.
 
 export async function fetchTutorNotes(chapterId, sectionId) {
+  const tSectionId = `_t:${sectionId}`
   try {
     const { data, error } = await supabase
       .from('notes')
       .select('content')
       .eq('chapter_id', chapterId)
-      .eq('section_id', sectionId)
+      .eq('section_id', tSectionId)
       .maybeSingle()
     if (error || !data) throw new Error('miss')
     const arr = JSON.parse(data.content)
@@ -156,13 +157,14 @@ export async function fetchTutorNotes(chapterId, sectionId) {
 }
 
 export async function saveTutorNotes(chapterId, sectionId, notesArray) {
+  const tSectionId = `_t:${sectionId}`
   const json = JSON.stringify(notesArray)
   localStorage.setItem(`tnotes-${chapterId}-${sectionId}`, json)
   try {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return
     await supabase.from('notes').upsert(
-      { user_id: user.id, chapter_id: chapterId, section_id: sectionId, content: json },
+      { user_id: user.id, chapter_id: chapterId, section_id: tSectionId, content: json },
       { onConflict: 'user_id,chapter_id,section_id' }
     )
   } catch { /* silent */ }

@@ -4,6 +4,7 @@ import Icon from '../components/Icons'
 import SettingsPanel from '../components/SettingsPanel'
 import Dashboard from './Dashboard'
 import StudyView from './StudyView'
+import { fetchUserProfile } from '../lib/userdata'
 import './AppShell.css'
 
 const Topbar = ({ view, setView, studyMode, setStudyMode, profile }) => {
@@ -53,12 +54,18 @@ export default function AppShell() {
   const [chapterId, setChapterId] = useState(null)
   const [profile, setProfile] = useState(null)
 
-  // Load profile from onboarding
+  // Load profile — localStorage first (instant), then Supabase (authoritative)
   useEffect(() => {
     try {
       const raw = localStorage.getItem('onboarding-data')
       if (raw) setProfile(JSON.parse(raw))
     } catch {}
+    fetchUserProfile().then(p => {
+      if (p) {
+        setProfile(p)
+        localStorage.setItem('onboarding-data', JSON.stringify(p))
+      }
+    })
   }, [])
 
   // Apply + persist density/theme

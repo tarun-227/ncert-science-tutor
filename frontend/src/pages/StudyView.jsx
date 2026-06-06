@@ -5,6 +5,7 @@ import {
   getCachedSummary, saveSummaryCache,
 } from '../lib/studyPlanStore'
 import { fetchTutorNotes, saveTutorNotes } from '../lib/userdata'
+import { apiFetch } from '../lib/api'
 import './StudyView.css'
 
 // ─── Markdown-ish → blocks parser (for AI summaries) ──────────────────────────
@@ -196,8 +197,8 @@ function ReaderBody({ chapter, richData, currentSection }) {
     setCard({ text, answer: '', loading: true, x: sel.x, top: sel.top, bottom: sel.bottom })
     setSel(null); setNoted(false)
     try {
-      const res = await fetch('/api/chat', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
+      const res = await apiFetch('/api/chat', {
+        method: 'POST',
         body: JSON.stringify({
           session_id: sessionRef.current, chapter_id: chapter.id, subtopic_id: sec?.id || '',
           message: `Explain this excerpt from the textbook in simple terms: "${text}"`, history: [],
@@ -317,8 +318,8 @@ function AskPanel({ chapter, richData, currentSection, variant }) {
     setAnswers(a => [...a, { id, q, a: '', loading: true }])
     setDraft('')
     try {
-      const res = await fetch('/api/chat', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
+      const res = await apiFetch('/api/chat', {
+        method: 'POST',
         body: JSON.stringify({ session_id: sessionId, chapter_id: chapter.id, subtopic_id: sec?.id || '', message: q, history: [] }),
       })
       const data = await res.json()

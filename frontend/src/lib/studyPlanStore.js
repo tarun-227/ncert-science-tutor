@@ -36,8 +36,6 @@ export async function loadPlansAsync() {
       hoursPerDay: row.hours_per_day,
       target: row.target_date,
       createdAt: row.created_at?.slice(0, 10),
-      doneChapterIds: row.done_chapter_ids || [],
-      engagedChapterIds: row.engaged_chapter_ids || [],
     }))
 
     // Sync to localStorage as cache
@@ -75,8 +73,6 @@ export async function upsertPlanAsync(plan) {
       selections: plan.selections,
       hours_per_day: plan.hoursPerDay,
       target_date: plan.target,
-      done_chapter_ids: plan.doneChapterIds || [],
-      engaged_chapter_ids: plan.engagedChapterIds || [],
     }, { onConflict: 'id' })
   } catch (e) {
     console.warn('[plans] DB upsert failed, kept local:', e)
@@ -96,22 +92,6 @@ export async function deletePlanAsync(planId) {
   return localPlans
 }
 
-// Update done/engaged chapter IDs on a plan
-export async function updatePlanProgressAsync(planId, doneChapterIds, engagedChapterIds) {
-  const localPlans = loadPlansLocal()
-  const plan = localPlans.find(p => p.id === planId)
-  if (!plan) return
-  plan.doneChapterIds = doneChapterIds
-  plan.engagedChapterIds = engagedChapterIds
-  localStorage.setItem(LS_PLANS, JSON.stringify(localPlans))
-
-  try {
-    await supabase.from('study_plans').update({
-      done_chapter_ids: doneChapterIds,
-      engaged_chapter_ids: engagedChapterIds,
-    }).eq('id', planId)
-  } catch {}
-}
 
 // ═══════════════════════════════════════════════════════════
 // SECTION COMPLETION
@@ -222,30 +202,9 @@ export async function saveSummaryCache(chapterId, sectionId, depth, summary) {
 // PLAN SYNC (chapter completion → plan progress)
 // ═══════════════════════════════════════════════════════════
 
-export function syncPlanCompletions(chapterId, totalSections) {
-  if (!isChapterComplete(chapterId, totalSections)) return
-  const plans = loadPlansLocal()
-  let changed = false
-  for (const plan of plans) {
-    const allIds = plan.selections?.flatMap(s => s.chapterIds) || []
-    if (allIds.includes(chapterId)) {
-      if (!plan.doneChapterIds) plan.doneChapterIds = []
-      if (!plan.doneChapterIds.includes(chapterId)) {
-        plan.doneChapterIds.push(chapterId)
-        changed = true
-      }
-    }
-  }
-  if (changed) {
-    localStorage.setItem(LS_PLANS, JSON.stringify(plans))
-    // Sync each changed plan to DB
-    plans.forEach(p => {
-      if (p.doneChapterIds?.includes(chapterId)) {
-        updatePlanProgressAsync(p.id, p.doneChapterIds, p.engagedChapterIds || [])
-      }
-    })
-  }
-}
+// Plan completion is now computed live in PlanCard from section_completion,
+// so no local mutation or DB write is needed here.
+export function syncPlanCompletions(_chapterId, _totalSections) {}
 
 // ═══════════════════════════════════════════════════════════
 // TIME ESTIMATION

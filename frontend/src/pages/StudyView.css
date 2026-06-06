@@ -17,7 +17,7 @@
 .reader.reader-collapsed-toc { grid-template-columns: 48px 1fr 340px; }
 
 /* Contents panel (left) */
-.rc { background: var(--surface); border-right: 1px solid var(--hairline); display: flex; flex-direction: column; min-height: 0; }
+.rc { height: 100%; background: var(--surface); border-right: 1px solid var(--hairline); display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
 .rc-collapsed { width: 44px; display: flex; flex-direction: column; align-items: center; padding-top: 14px; overflow: hidden; transition: width .2s ease; }
 .rc-toggle { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--hairline); background: var(--card); color: var(--ink-2); cursor: pointer; display: grid; place-items: center; }
 .rc-toggle:hover { background: var(--card-2); color: var(--ink); }
@@ -52,7 +52,7 @@
 .rc-other-h { font: 600 11px var(--f-sans); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-4); padding: 14px 10px 6px; }
 
 /* Body (center) */
-.rb { background: var(--card); display: flex; flex-direction: column; min-height: 0; padding: 28px 56px; overflow-y: auto; }
+.rb { height: 100%; background: var(--card); display: flex; flex-direction: column; min-height: 0; padding: 28px 56px; overflow-y: auto; box-sizing: border-box; }
 [data-density="compact"] .rb { padding: 20px 40px; }
 .rb-headblk { padding-bottom: 18px; border-bottom: 1px solid var(--hairline); margin-bottom: 24px; }
 .rb-headblk h1 { font: 600 32px/1.15 var(--f-display); letter-spacing: -.015em; color: var(--ink); }
@@ -262,7 +262,7 @@
 .tutor-saved-x:hover { background: var(--bg); color: #d4604f; }
 
 /* Right side panel (Ask the tutor) */
-.tutor-side { background: var(--surface); border-left: 1px solid var(--hairline); display: flex; flex-direction: column; min-height: 0; transition: box-shadow .2s; }
+.tutor-side { height: 100%; background: var(--surface); border-left: 1px solid var(--hairline); display: flex; flex-direction: column; min-height: 0; overflow: hidden; transition: box-shadow .2s; box-sizing: border-box; }
 @keyframes sideFlash { 0% { box-shadow: inset 0 0 0 2px var(--green); } 100% { box-shadow: inset 0 0 0 0px transparent; } }
 .tutor-side-flash { animation: sideFlash 0.8s ease-out forwards; }
 .tutor-side-head { padding: 18px 18px 12px; border-bottom: 1px solid var(--hairline); }

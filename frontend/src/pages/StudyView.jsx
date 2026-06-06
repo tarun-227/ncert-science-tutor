@@ -174,13 +174,10 @@ function ReaderContents({ chapters, chapter, richData, currentSection, setCurren
   )
 }
 
-function ReaderBody({ chapter, richData, currentSection }) {
+function ReaderBody({ chapter, richData, currentSection, onAskAI }) {
   const sec = richData?.sections?.[currentSection]
   const artRef = useRef(null)
   const [sel, setSel] = useState(null)    // { text, x, top, bottom }
-  const [card, setCard] = useState(null)  // { text, answer, loading, x, top, bottom }
-  const [noted, setNoted] = useState(false)
-  const sessionRef = useRef(`book-${Date.now()}`)
 
   // Text-selection detection
   useEffect(() => {
@@ -193,13 +190,12 @@ function ReaderBody({ chapter, richData, currentSection }) {
         if (!range || !artRef.current.contains(range.commonAncestorContainer)) return
         const r = range.getBoundingClientRect()
         if (!r || (r.width === 0 && r.height === 0)) return
-        setCard(null)
         setSel({ text: txt, x: r.left + r.width / 2, top: r.top, bottom: r.bottom })
       }, 10)
     }
     const onDown = (e) => {
-      if (e.target.closest && (e.target.closest('.rb-sel-pop') || e.target.closest('.rb-sel-card'))) return
-      setSel(null); setCard(null)
+      if (e.target.closest && e.target.closest('.rb-sel-pop')) return
+      setSel(null)
     }
     document.addEventListener('mouseup', onUp)
     document.addEventListener('mousedown', onDown)
@@ -207,26 +203,22 @@ function ReaderBody({ chapter, richData, currentSection }) {
   }, [])
 
   // Reset on section change
-  useEffect(() => { setSel(null); setCard(null) }, [currentSection, chapter?.id])
+  useEffect(() => { setSel(null) }, [currentSection, chapter?.id])
 
-  const askAI = async () => {
+  const handleAskAI = () => {
     if (!sel) return
     const text = sel.text
-    setCard({ text, answer: '', loading: true, x: sel.x, top: sel.top, bottom: sel.bottom })
-    setSel(null); setNoted(false)
-    try {
-      const res = await apiFetch('/api/chat', {
-        method: 'POST',
-        body: JSON.stringify({
-          session_id: sessionRef.current, chapter_id: chapter.id, subtopic_id: sec?.id || '',
-          message: `Explain this excerpt from the textbook in simple terms: "${text}"`, history: [],
-        }),
-      })
-      const data = await res.json()
-      setCard(c => c ? { ...c, answer: data.reply || data.response || 'No response.', loading: false } : c)
-    } catch {
-      setCard(c => c ? { ...c, answer: 'Could not reach the tutor.', loading: false } : c)
-    }
+    setSel(null)
+    window.getSelection()?.removeAllRanges()
+    onAskAI?.({ text: 'Explain this from the textbook in simple terms: ' + text, id: Date.now() })
+  }
+
+  const handleExplain = () => {
+    if (!sel) return
+    const text = sel.text
+    setSel(null)
+    window.getSelection()?.removeAllRanges()
+    onAskAI?.({ text: 'Give a detailed explanation of: ' + text, id: Date.now() })
   }
 
   const noteSelection = async () => {
@@ -237,15 +229,6 @@ function ReaderBody({ chapter, richData, currentSection }) {
       await saveTutorNotes(chapter.id, sec.id, [...existing, { id: Date.now() + Math.random(), text }])
     }
     setSel(null)
-  }
-
-  const addCardNote = async () => {
-    if (!card || !chapter || !sec) return
-    const existing = await fetchTutorNotes(chapter.id, sec.id)
-    if (!existing.some(n => n.text === card.text)) {
-      await saveTutorNotes(chapter.id, sec.id, [...existing, { id: Date.now() + Math.random(), text: card.text }])
-    }
-    setNoted(true)
   }
 
   if (!sec) return <div className="rb"><p className="muted" style={{ padding: 40 }}>Select a section.</p></div>
@@ -271,39 +254,10 @@ function ReaderBody({ chapter, richData, currentSection }) {
         const below = sel.top < 80
         return (
           <div className={`rb-sel-pop ${below ? 'below' : ''}`} style={{ left: sel.x, top: below ? sel.bottom : sel.top }}>
-            <button className="rb-sel-ai" onMouseDown={e => e.preventDefault()} onClick={askAI}><Icon name="sparkles" size={13} /> Ask AI</button>
+            <button className="rb-sel-ai" onMouseDown={e => e.preventDefault()} onClick={handleAskAI}><Icon name="sparkles" size={13} /> Ask AI</button>
             <span className="rb-sel-div" />
-            <button className="rb-sel-act" onMouseDown={e => e.preventDefault()} onClick={askAI}>Explain</button>
+            <button className="rb-sel-act" onMouseDown={e => e.preventDefault()} onClick={handleExplain}>Explain</button>
             <button className="rb-sel-act" onMouseDown={e => e.preventDefault()} onClick={noteSelection}><Icon name="note" size={12} /> Note</button>
-          </div>
-        )
-      })()}
-
-      {/* Answer card anchored to selection */}
-      {card && (() => {
-        const below = card.top < 280
-        return (
-          <div className={`rb-sel-card ${below ? 'below' : ''}`} style={{ left: card.x, top: below ? card.bottom : card.top }}>
-            <div className="rb-sel-card-q">
-              <span className="rb-ai-sparkle"><Icon name="sparkles" size={11} /></span>
-              <span className="rb-sel-card-quote">“{card.text.length > 90 ? card.text.slice(0, 90) + '…' : card.text}”</span>
-              <button className="rb-sel-card-x" onClick={() => setCard(null)}><Icon name="x" size={13} /></button>
-            </div>
-            {card.loading ? (
-              <div className="rb-sel-card-loading">
-                <span className="tutor-dot" /><span className="tutor-dot" /><span className="tutor-dot" />
-                <span className="muted small" style={{ marginLeft: 4 }}>AI is thinking…</span>
-              </div>
-            ) : (
-              <>
-                <p className="rb-sel-card-a">{card.answer}</p>
-                <div className="rb-sel-card-foot">
-                  <button className="rb-sel-card-note" onClick={addCardNote}>
-                    <Icon name={noted ? 'check' : 'plus'} size={12} /> {noted ? 'Saved' : 'Add note'}
-                  </button>
-                </div>
-              </>
-            )}
           </div>
         )
       })()}
@@ -311,30 +265,40 @@ function ReaderBody({ chapter, richData, currentSection }) {
   )
 }
 
-function ReaderSide({ chapter, richData, currentSection }) {
-  return <AskPanel chapter={chapter} richData={richData} currentSection={currentSection} variant="book" />
+function ReaderSide({ chapter, richData, currentSection, triggerQuery }) {
+  return <AskPanel chapter={chapter} richData={richData} currentSection={currentSection} variant="book" triggerQuery={triggerQuery} />
 }
 
 // ════════════════════════════════════════════════════════════════════════════
 // SHARED — Ask the tutor panel
 // ════════════════════════════════════════════════════════════════════════════
 
-function AskPanel({ chapter, richData, currentSection, variant }) {
+function AskPanel({ chapter, richData, currentSection, variant, triggerQuery }) {
   const [answers, setAnswers] = useState([])
   const [draft, setDraft] = useState('')
   const [sessionId] = useState(() => `sv-${Date.now()}-${Math.random().toString(36).slice(2)}`)
   const bodyRef = useRef(null)
+  const lastTriggerIdRef = useRef(null)
   const sec = richData?.sections?.[currentSection]
 
   useEffect(() => { setAnswers([]) }, [currentSection, chapter?.id])
   useEffect(() => { bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight, behavior: 'smooth' }) }, [answers])
 
-  const ask = async () => {
-    const q = draft.trim()
-    if (!q) return
+  const [flashing, setFlashing] = useState(false)
+
+  // Fire query triggered from Ask AI / Explain buttons in Book mode
+  useEffect(() => {
+    if (!triggerQuery || triggerQuery.id === lastTriggerIdRef.current) return
+    lastTriggerIdRef.current = triggerQuery.id
+    setFlashing(true)
+    setTimeout(() => setFlashing(false), 800)
+    askQuestion(triggerQuery.text)
+  }, [triggerQuery])
+
+  const askQuestion = async (q) => {
+    if (!q || !q.trim() || !chapter) return
     const id = Date.now() + Math.random()
     setAnswers(a => [...a, { id, q, a: '', loading: true }])
-    setDraft('')
     try {
       const res = await apiFetch('/api/chat', {
         method: 'POST',
@@ -348,10 +312,17 @@ function AskPanel({ chapter, richData, currentSection, variant }) {
     }
   }
 
+  const ask = async () => {
+    const q = draft.trim()
+    if (!q) return
+    setDraft('')
+    await askQuestion(q)
+  }
+
   const dismiss = (id) => setAnswers(a => a.filter(x => x.id !== id))
 
   return (
-    <aside className="tutor-side">
+    <aside className={`tutor-side${flashing ? ' tutor-side-flash' : ''}`}>
       <div className="tutor-side-head">
         <span className="tutor-eyebrow"><Icon name="sparkles" size={13} /> Ask the tutor</span>
       </div>
@@ -666,6 +637,36 @@ function TutorMode({ chapters, chapter, richData, currentSection, setCurrentSect
 }
 
 // ════════════════════════════════════════════════════════════════════════════
+// BOOK MODE WRAPPER — keeps triggerQuery state local so Ask AI / Explain
+// in the body can fire into the right-side AskPanel
+// ════════════════════════════════════════════════════════════════════════════
+
+function BookModeWrapper({ chapters, chapter, richData, currentSection, setCurrentSection, onChapterChange, doneSections, tocOpen, setTocOpen, tocHovered, setTocHovered, isExpanded }) {
+  const [triggerQuery, setTriggerQuery] = useState(null)
+
+  return (
+    <div className={`reader ${isExpanded ? '' : 'reader-collapsed-toc'}`}>
+      <div onMouseEnter={() => setTocHovered(true)} onMouseLeave={() => setTocHovered(false)}>
+        <ReaderContents
+          chapters={chapters} chapter={chapter} richData={richData}
+          currentSection={currentSection} setCurrentSection={setCurrentSection}
+          onChapterChange={onChapterChange}
+          collapsed={!isExpanded} onToggle={() => setTocOpen(o => !o)} doneSections={doneSections}
+        />
+      </div>
+      <ReaderBody
+        chapter={chapter} richData={richData} currentSection={currentSection}
+        onAskAI={setTriggerQuery}
+      />
+      <ReaderSide
+        chapter={chapter} richData={richData} currentSection={currentSection}
+        triggerQuery={triggerQuery}
+      />
+    </div>
+  )
+}
+
+// ════════════════════════════════════════════════════════════════════════════
 // MAIN
 // ════════════════════════════════════════════════════════════════════════════
 
@@ -735,18 +736,14 @@ export default function StudyView({ studyMode, chapterId, setChapterId }) {
   if (studyMode === 'book') {
     const isExpanded = tocOpen || tocHovered
     return (
-      <div className={`reader ${isExpanded ? '' : 'reader-collapsed-toc'}`}>
-        <div onMouseEnter={() => setTocHovered(true)} onMouseLeave={() => setTocHovered(false)}>
-          <ReaderContents
-            chapters={chapters} chapter={chapter} richData={richData}
-            currentSection={currentSection} setCurrentSection={setCurrentSection}
-            onChapterChange={onChapterChange}
-            collapsed={!isExpanded} onToggle={() => setTocOpen(o => !o)} doneSections={doneSections}
-          />
-        </div>
-        <ReaderBody chapter={chapter} richData={richData} currentSection={currentSection} />
-        <ReaderSide chapter={chapter} richData={richData} currentSection={currentSection} />
-      </div>
+      <BookModeWrapper
+        chapters={chapters} chapter={chapter} richData={richData}
+        currentSection={currentSection} setCurrentSection={setCurrentSection}
+        onChapterChange={onChapterChange} doneSections={doneSections}
+        tocOpen={tocOpen} setTocOpen={setTocOpen}
+        tocHovered={tocHovered} setTocHovered={setTocHovered}
+        isExpanded={isExpanded}
+      />
     )
   }
 

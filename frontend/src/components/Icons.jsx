@@ -99,6 +99,12 @@ export default function Icon({ name, size = 18, className, style, ...rest }) {
       return (<svg {...common}><circle cx="12" cy="12" r="9"/><path d="m15 9-2 6-4 0 2-6z"/></svg>);
     case 'list':
       return (<svg {...common}><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>);
+    case 'person':
+      return (<svg {...common}><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>);
+    case 'logout':
+      return (<svg {...common}><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l-5-5 5-5M5 12h12"/></svg>);
+    case 'chevron':
+      return (<svg {...common}><path d="m6 9 6 6 6-6"/></svg>);
     default: return null;
   }
 }

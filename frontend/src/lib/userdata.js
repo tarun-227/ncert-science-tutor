@@ -6,7 +6,7 @@
  *   2. On success, sync result back to localStorage as a local cache
  *   3. On error, fall back to localStorage so the app still works offline
  */
-import { supabase } from './supabase'
+import { supabase, getCurrentUser } from './supabase'
 
 // ── Read Progress ─────────────────────────────────────────────────────────────
 
@@ -30,7 +30,7 @@ export async function fetchReadSections(chapterId) {
 
 export async function toggleReadSection(chapterId, sectionId, isRead) {
   try {
-    const { data: { user } } = await supabase.auth.getUser()
+    const user = await getCurrentUser()
     if (!user) return
     if (isRead) {
       await supabase.from('read_progress').upsert(
@@ -69,7 +69,7 @@ export async function fetchNotes(chapterId) {
 
 export async function saveNote(chapterId, sectionId, content) {
   try {
-    const { data: { user } } = await supabase.auth.getUser()
+    const user = await getCurrentUser()
     if (!user) return
     await supabase.from('notes').upsert(
       { user_id: user.id, chapter_id: chapterId, section_id: sectionId, content },
@@ -100,7 +100,7 @@ export async function fetchHighlights(chapterId) {
 
 export async function toggleHighlight(chapterId, paragraphId, isHighlighted) {
   try {
-    const { data: { user } } = await supabase.auth.getUser()
+    const user = await getCurrentUser()
     if (!user) return
     if (isHighlighted) {
       await supabase.from('highlights').upsert(
@@ -161,7 +161,7 @@ export async function saveTutorNotes(chapterId, sectionId, notesArray) {
   const json = JSON.stringify(notesArray)
   localStorage.setItem(`tnotes-${chapterId}-${sectionId}`, json)
   try {
-    const { data: { user } } = await supabase.auth.getUser()
+    const user = await getCurrentUser()
     if (!user) return
     await supabase.from('notes').upsert(
       { user_id: user.id, chapter_id: chapterId, section_id: tSectionId, content: json },
@@ -170,11 +170,34 @@ export async function saveTutorNotes(chapterId, sectionId, notesArray) {
   } catch { /* silent */ }
 }
 
+// ── Profile analytics (real stats + per-subject progress) ────────────────────
+// Pulls the raw completion + notes rows for the signed-in user in one shot so
+// the profile page can compute streak / sections / study-time / notes and
+// per-subject progress from real data.
+
+export async function fetchProfileData() {
+  try {
+    const user = await getCurrentUser()
+    if (!user) return { completions: [], notes: [] }
+    const [comp, notes] = await Promise.all([
+      supabase.from('section_completion')
+        .select('chapter_id, section_index, created_at')
+        .eq('user_id', user.id),
+      supabase.from('notes')
+        .select('section_id, content, created_at')
+        .eq('user_id', user.id),
+    ])
+    return { completions: comp.data || [], notes: notes.data || [] }
+  } catch {
+    return { completions: [], notes: [] }
+  }
+}
+
 // ── User Profile (onboarding data) ───────────────────────────────────────────
 
 export async function saveUserProfile(profileData) {
   try {
-    const { data: { user } } = await supabase.auth.getUser()
+    const user = await getCurrentUser()
     if (!user) {
       localStorage.setItem('onboarding-data', JSON.stringify(profileData))
       return
@@ -200,7 +223,7 @@ export async function saveUserProfile(profileData) {
 
 export async function fetchUserProfile() {
   try {
-    const { data: { user } } = await supabase.auth.getUser()
+    const user = await getCurrentUser()
     if (!user) return null
     const { data, error } = await supabase
       .from('user_profiles')

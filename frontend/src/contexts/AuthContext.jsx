@@ -11,18 +11,29 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     let resolved = false
 
-    // Hard timeout — if Supabase doesn't respond in 2s, proceed as logged out
+    // Hard timeout — if Supabase doesn't respond in 3s, proceed as logged out
     const timeout = setTimeout(() => {
       if (!resolved) {
         resolved = true
         setUser(null)
       }
-    }, 2000)
+    }, 3000)
 
-    const resolve = (sess) => {
+    const resolve = async (sess) => {
       if (!resolved) {
         resolved = true
         clearTimeout(timeout)
+        // If no session but onboarding is done, sign in anonymously so DB writes work
+        if (!sess && localStorage.getItem('onboarding-done')) {
+          try {
+            const { data, error } = await supabase.auth.signInAnonymously()
+            if (!error && data?.session) {
+              setSession(data.session)
+              setUser(data.session.user)
+              return
+            }
+          } catch { /* anonymous auth not enabled — fall through */ }
+        }
         setSession(sess)
         setUser(sess?.user ?? null)
       }

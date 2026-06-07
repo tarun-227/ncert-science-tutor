@@ -1,5 +1,6 @@
 import { Navigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import Loading from './Loading'
 
 /**
  * Auth + onboarding gate:
@@ -12,15 +13,7 @@ export default function ProtectedRoute({ children }) {
   const { user } = useAuth()
 
   if (user === undefined) {
-    return (
-      <div style={{
-        minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
-        background: 'var(--bg)', color: 'var(--ink-3)',
-        fontFamily: 'var(--f-sans)', fontSize: 14,
-      }}>
-        Loading…
-      </div>
-    )
+    return <Loading />
   }
 
   // Not logged in → onboarding (which has sign-in buttons)

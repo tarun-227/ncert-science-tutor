@@ -1,16 +1,31 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Sidebar from '../components/Sidebar'
 import Icon from '../components/Icons'
 import SettingsPanel from '../components/SettingsPanel'
 import Dashboard from './Dashboard'
 import StudyView from './StudyView'
-import { fetchUserProfile } from '../lib/userdata'
+import ProfilePage from './ProfilePage'
+import { fetchUserProfile, saveUserProfile } from '../lib/userdata'
+import { useAuth } from '../contexts/AuthContext'
 import './AppShell.css'
 
-const Topbar = ({ view, setView, studyMode, setStudyMode, profile }) => {
+const Topbar = ({ view, setView, studyMode, setStudyMode, profile, onOpenProfile, onLogout }) => {
   const name = profile?.name || 'Student'
   const initial = name.charAt(0).toUpperCase()
   const sub = `Class ${profile?.cls || 'X'} · ${profile?.board || 'CBSE'}`
+
+  const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    if (!open) return
+    const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [open])
+
   return (
     <div className="topbar">
       <div className="tabs">
@@ -33,18 +48,47 @@ const Topbar = ({ view, setView, studyMode, setStudyMode, profile }) => {
 
       <div className="tb-spacer" />
 
-      <div className="profile">
-        <div className="avatar">{initial}</div>
-        <div className="profile-text">
-          <div className="profile-name">{name}</div>
-          <div className="profile-sub">{sub}</div>
-        </div>
+      <div className="profile profile-trigger" ref={ref}>
+        <button
+          className="profile-btn"
+          onClick={() => setOpen(o => !o)}
+          aria-expanded={open}
+          aria-haspopup="menu"
+        >
+          <div className="avatar">{initial}</div>
+          <div className="profile-text">
+            <div className="profile-name">{name}</div>
+            <div className="profile-sub">{sub}</div>
+          </div>
+          <Icon name="chevron" size={12} style={{ color: 'var(--ink-4)', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform .15s', flexShrink: 0 }} />
+        </button>
+
+        {open && (
+          <div className="profile-dropdown" role="menu">
+            <div className="profile-dropdown-head">
+              <div className="pd-avatar">{initial}</div>
+              <div>
+                <div className="pd-name">{name}</div>
+                <div className="pd-meta">{sub}</div>
+              </div>
+            </div>
+            <div className="profile-dropdown-divider" />
+            <button className="profile-dropdown-item" role="menuitem" onClick={() => { onOpenProfile(); setOpen(false) }}>
+              <Icon name="person" size={14} /> Profile
+            </button>
+            <button className="profile-dropdown-item danger" role="menuitem" onClick={() => { setOpen(false); onLogout() }}>
+              <Icon name="logout" size={14} /> Log out
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
 export default function AppShell() {
+  const { signOut } = useAuth()
+  const navigate = useNavigate()
   const [view, setView] = useState('dashboard')
   const [studyMode, setStudyMode] = useState('tutor')
   const [sidebarMode, setSidebarMode] = useState(() => localStorage.getItem('ui-sidebar') || 'icons')
@@ -87,6 +131,19 @@ export default function AppShell() {
     if (subject) setActiveSubject(subject)
   }
 
+  // Persist profile edits → Supabase user_profiles + localStorage, update UI
+  const handleSaveProfile = async (next) => {
+    setProfile(next)
+    localStorage.setItem('onboarding-data', JSON.stringify(next))
+    await saveUserProfile(next)
+  }
+
+  // Log out of Supabase and return to the onboarding / sign-in screen
+  const handleLogout = async () => {
+    try { await signOut() } catch {}
+    navigate('/onboarding')
+  }
+
   return (
     <div className="app" data-sidebar={sidebarMode}>
       <Sidebar
@@ -100,10 +157,17 @@ export default function AppShell() {
         onHoverCollapse={() => setSidebarHovered(false)}
       />
       <div className="main">
-        <Topbar view={view} setView={setView} studyMode={studyMode} setStudyMode={setStudyMode} profile={profile} />
+        <Topbar
+          view={view} setView={setView}
+          studyMode={studyMode} setStudyMode={setStudyMode}
+          profile={profile}
+          onOpenProfile={() => setView('profile')}
+          onLogout={handleLogout}
+        />
         <div className={`canvas scroll${view === 'reader' ? ' canvas-reader' : ''}`}>
           {view === 'dashboard' && <Dashboard onOpenChapter={openChapter} />}
           {view === 'reader' && <StudyView studyMode={studyMode} chapterId={chapterId} setChapterId={setChapterId} />}
+          {view === 'profile' && <ProfilePage profile={profile} onSaveProfile={handleSaveProfile} />}
         </div>
       </div>
 

@@ -1,0 +1,158 @@
+/* Master.AI — Loading splash. Ported from Loading.html design.
+   Uses theme tokens so it adapts to light/dark. */
+
+.ld-stage {
+  position: fixed; inset: 0; z-index: 9999;
+  width: 100vw; height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  overflow: hidden;
+  background: var(--bg);
+  font-family: var(--f-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Background grid lines (very subtle) ─────────────── */
+.ld-grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  opacity: .035;
+  background-image:
+    linear-gradient(var(--ink) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ink) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: ld-grid-fade 1.2s ease forwards;
+}
+@keyframes ld-grid-fade { from { opacity: 0; } to { opacity: .035; } }
+
+/* ── Orbit container ─────────────────────────────────── */
+.ld-orbit-wrap {
+  position: relative; width: 210px; height: 210px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.ld-orbit-ring {
+  position: absolute;
+  width: 210px; height: 210px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(63,174,91,.18);
+  animation: ld-orbit-appear .5s ease 1.4s both;
+}
+@keyframes ld-orbit-appear { from { opacity: 0; transform: scale(.7); } to { opacity: 1; transform: scale(1); } }
+
+.ld-dot-orb {
+  position: absolute;
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font: 700 11px var(--f-sans);
+  transform-origin: 105px 105px;
+  opacity: 0;
+  transform: rotate(var(--rot)) translateY(-105px) rotate(calc(-1 * var(--rot)));
+}
+.ld-dot-orb:nth-child(1) { --rot: 0deg;   background: #E8EFFD; color: #4F7AE5; animation: ld-dot-in .4s ease calc(1.5s + 0*.12s) forwards, ld-orbit-spin 8s linear 2s infinite; }
+.ld-dot-orb:nth-child(2) { --rot: 60deg;  background: #FCEEDB; color: #E89020; animation: ld-dot-in .4s ease calc(1.5s + 1*.12s) forwards, ld-orbit-spin 8s linear 2s infinite; }
+.ld-dot-orb:nth-child(3) { --rot: 120deg; background: #E2F2E7; color: #2F8F47; animation: ld-dot-in .4s ease calc(1.5s + 2*.12s) forwards, ld-orbit-spin 8s linear 2s infinite; }
+.ld-dot-orb:nth-child(4) { --rot: 180deg; background: #ECE3FB; color: #8458D9; animation: ld-dot-in .4s ease calc(1.5s + 3*.12s) forwards, ld-orbit-spin 8s linear 2s infinite; }
+.ld-dot-orb:nth-child(5) { --rot: 240deg; background: #FBE4EC; color: #E45D7F; animation: ld-dot-in .4s ease calc(1.5s + 4*.12s) forwards, ld-orbit-spin 8s linear 2s infinite; }
+.ld-dot-orb:nth-child(6) { --rot: 300deg; background: #DEF2EE; color: #2DB39A; animation: ld-dot-in .4s ease calc(1.5s + 5*.12s) forwards, ld-orbit-spin 8s linear 2s infinite; }
+
+@keyframes ld-dot-in {
+  from { opacity: 0; transform: rotate(var(--rot)) translateY(-105px) rotate(calc(-1 * var(--rot))) scale(0); }
+  to   { opacity: 1; transform: rotate(var(--rot)) translateY(-105px) rotate(calc(-1 * var(--rot))) scale(1); }
+}
+@keyframes ld-orbit-spin {
+  from { transform: rotate(var(--rot)) translateY(-105px) rotate(calc(-1 * var(--rot))); }
+  to   { transform: rotate(calc(var(--rot) + 360deg)) translateY(-105px) rotate(calc(-1 * (var(--rot) + 360deg))); }
+}
+
+/* ── SVG M that draws itself ─────────────────────────── */
+.ld-m-wrap {
+  position: absolute;
+  width: 120px; height: 120px;
+  display: flex; align-items: center; justify-content: center;
+}
+.ld-m-bg {
+  position: absolute; inset: 0;
+  border-radius: 30px;
+  background: linear-gradient(160deg, #5BC470 0%, #2B8C42 100%);
+  box-shadow:
+    inset 0 -4px 0 rgba(0,0,0,.12),
+    0 20px 60px rgba(63,174,91,.4),
+    0 4px 16px rgba(63,174,91,.18);
+  transform: scale(0);
+  animation: ld-bg-pop .5s cubic-bezier(.34,1.56,.64,1) .1s forwards;
+}
+@keyframes ld-bg-pop {
+  from { transform: scale(0) rotate(-6deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);  opacity: 1; }
+}
+.ld-m-svg {
+  position: relative; z-index: 1;
+  animation: ld-m-appear .1s ease .6s both;
+}
+@keyframes ld-m-appear { from { opacity: 0; } to { opacity: 1; } }
+.ld-m-path {
+  stroke: white; stroke-width: 7;
+  stroke-linecap: round; stroke-linejoin: round;
+  fill: none;
+  stroke-dasharray: 180; stroke-dashoffset: 180;
+  animation: ld-draw-m 0.8s cubic-bezier(.4,0,.2,1) .65s forwards;
+}
+@keyframes ld-draw-m { to { stroke-dashoffset: 0; } }
+
+/* ── Brand name ──────────────────────────────────────── */
+.ld-brand {
+  margin-top: 40px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  animation: ld-brand-rise .6s cubic-bezier(.2,.7,.3,1) 1.5s both;
+}
+@keyframes ld-brand-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ld-brand-name {
+  font: 700 22px var(--f-sans);
+  letter-spacing: -.03em; color: var(--ink);
+}
+.ld-brand-dot { color: var(--green); }
+.ld-brand-sub {
+  font: 400 13px var(--f-display);
+  font-style: italic; color: var(--ink-3); letter-spacing: .01em;
+}
+
+/* ── Status message ──────────────────────────────────── */
+.ld-status-wrap {
+  margin-top: 28px;
+  animation: ld-brand-rise .6s cubic-bezier(.2,.7,.3,1) 1.7s both;
+}
+.ld-status-msgs {
+  text-align: center;
+  font: 500 12px var(--f-sans);
+  color: var(--ink-4);
+  letter-spacing: .04em;
+}
+
+/* ── Segmented progress bar ──────────────────────────── */
+.ld-seg-bar {
+  margin-top: 20px; display: flex; gap: 5px; align-items: center;
+  animation: ld-brand-rise .5s ease 1.8s both;
+}
+.ld-seg {
+  width: 28px; height: 4px; border-radius: 99px;
+  background: var(--ink-4); opacity: .3;
+  transform-origin: left center;
+  transition: background .3s, opacity .3s;
+}
+.ld-seg.fill {
+  background: var(--green); opacity: 1;
+  animation: ld-seg-fill .3s ease forwards;
+}
+@keyframes ld-seg-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ── Corner hint ─────────────────────────────────────── */
+.ld-corner {
+  position: fixed; bottom: 24px; right: 24px;
+  font: 500 11px var(--f-sans);
+  color: var(--ink-4); letter-spacing: .04em;
+  animation: ld-brand-rise .6s ease 2s both;
+}

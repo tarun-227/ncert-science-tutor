@@ -1,12 +1,12 @@
 // Study plan store — Supabase-backed with localStorage fallback
 // ──────────────────────────────────────────────────────────────
-import { supabase } from './supabase'
+import { supabase, getCurrentUser } from './supabase'
 
 const LS_PLANS = 'study-plans'
 
-// ─── Helper: get current user id ───────────────────────────
+// ─── Helper: get current user id (resilient to token expiry) ───────────────────
 async function getUserId() {
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   return user?.id || null
 }
 

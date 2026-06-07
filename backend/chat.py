@@ -5,7 +5,7 @@ import re
 import requests
 
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
-MODEL        = "llama-3.1-8b-instant"
+MODEL        = "llama-3.3-70b-versatile"
 GROQ_URL     = "https://api.groq.com/openai/v1/chat/completions"
 
 
@@ -73,7 +73,7 @@ def _call_chat_json(messages: list[dict]) -> str:
             "model": MODEL,
             "messages": messages,
             "temperature": 0.4,
-            "max_tokens": 900,
+            "max_tokens": 1400,
             "response_format": {"type": "json_object"},
         },
         timeout=60,
@@ -142,35 +142,75 @@ def _style_f_instructions(is_english: bool) -> str:
     """How the model must shape its JSON so it fits the Style F answer card."""
     formula_rule = (
         "- \"formula\": always null (English answers have no formulas).\n"
+        "- \"steps\": always null (English answers are not numerical).\n"
         if is_english else
-        "- \"formula\": include ONLY when a genuine chemical equation or math formula is "
-        "central to the answer; otherwise set it to null. Use Unicode subscripts/superscripts "
-        "(e.g. C₆H₁₂O₆, H₂O, CO₂) and → for reaction arrows. Keep it to a single line.\n"
+        "- \"formula\": a single key equation, ONLY when a chemical equation or math formula is "
+        "central to the answer; otherwise null. Use Unicode subscripts/superscripts "
+        "(e.g. C₆H₁₂O₆, H₂O, CO₂) and → for reaction arrows. One line only.\n"
+        "- \"steps\": ONLY for numerical / calculation questions, an ordered list of short solution "
+        "steps, each {\"text\": \"...\", \"formula\": \"...\"} (the per-step \"formula\" is optional). "
+        "Use null for non-numerical questions.\n"
     )
     term_kind = (
         "important literary or language terms (e.g. theme, metaphor, narrator)"
         if is_english else
         "important scientific/technical vocabulary"
     )
+    # Few-shot gold example so the model locks onto the point-wise format.
+    example = (
+        '{\n'
+        '  "intro": "Respiration is how cells release energy from food — it is not the same as breathing.",\n'
+        '  "points": [\n'
+        '    "Respiration is a chemical reaction inside every cell that releases energy from glucose.",\n'
+        '    "In aerobic respiration, glucose reacts with oxygen inside the mitochondria.",\n'
+        '    "The energy released is stored as ATP, the cell\'s usable energy currency.",\n'
+        '    "Breathing only exchanges gases, while respiration is the chemical release of energy."\n'
+        '  ],\n'
+        '  "terms": {\n'
+        '    "Respiration": "The breakdown of glucose inside cells to release energy as ATP.",\n'
+        '    "aerobic respiration": "Respiration that uses oxygen and takes place in the mitochondria.",\n'
+        '    "ATP": "Adenosine Triphosphate — the cell\'s usable energy currency.",\n'
+        '    "mitochondria": "Organelles where aerobic respiration occurs; the cell\'s power plants."\n'
+        '  },\n'
+        '  "formula": "C₆H₁₂O₆ + O₂ → CO₂ + H₂O + ATP",\n'
+        '  "steps": null,\n'
+        '  "callouts": [\n'
+        '    {"type": "definition", "text": "Respiration = releasing energy from glucose inside cells."},\n'
+        '    {"type": "mistake", "text": "Breathing is not respiration — breathing only moves air, while '
+        'respiration is a chemical reaction inside cells."},\n'
+        '    {"type": "exam", "text": "A 3-mark question often asks you to distinguish breathing from '
+        'respiration and name where aerobic respiration happens (mitochondria)."}\n'
+        '  ]\n'
+        '}'
+    )
     return (
         "Respond with a SINGLE JSON object (no text outside it) in exactly this shape:\n"
         "{\n"
-        '  "paragraphs": ["...", "..."],\n'
+        '  "intro": "one short framing sentence (optional)",\n'
+        '  "points": ["...", "..."],\n'
         '  "terms": {"TermText": "one-sentence definition"},\n'
         '  "formula": null,\n'
-        '  "keyLink": "one-sentence key takeaway"\n'
+        '  "steps": null,\n'
+        '  "callouts": [{"type": "definition|mistake|exam", "text": "..."}]\n'
         "}\n"
         "Rules for the JSON values:\n"
-        "- \"paragraphs\": 2–3 SHORT plain-text paragraphs that are the actual answer. "
-        "No markdown, no bullet characters, no headings.\n"
+        "- \"intro\": AT MOST one short framing sentence, or \"\" if not needed. Never put the full answer here.\n"
+        "- \"points\": 3–6 short, self-contained bullet points that ARE the answer. One idea per point, "
+        "plain text, no leading bullet characters or numbering, no markdown. This is the main content — "
+        "always answer point-wise, never as long paragraphs.\n"
         f"- \"terms\": a map of 2–5 of the MOST {term_kind} used in your answer, each to a "
         "concise one-sentence definition. Every term key MUST appear verbatim (identical spelling "
-        "and capitalisation) somewhere in the paragraphs so it can be highlighted. Choose real "
+        "and capitalisation) somewhere in the intro or points so it can be highlighted. Choose real "
         "domain terms, never common words. Use {} if the answer has no notable terms.\n"
         f"{formula_rule}"
-        "- \"keyLink\": one short sentence with the single most important takeaway for a conceptual "
-        "answer; use null for trivial or one-line answers.\n"
-        "- Keep everything accurate to the textbook content and concise. Output ONLY the JSON object."
+        "- \"callouts\": 1–3 short callouts that help a Class 10 student, each {\"type\": ..., \"text\": ...}. "
+        "Use type \"definition\" for a crisp definition of the core concept, \"mistake\" for a common "
+        "student error or confusion to avoid, and \"exam\" for the marks-worthy point or how the topic is "
+        "asked in the board exam. Include only the types that genuinely add value; use [] if none apply. "
+        "Never repeat the same type twice.\n"
+        "- Keep everything accurate to the textbook content and concise. Output ONLY the JSON object.\n\n"
+        "Example of a well-formed answer:\n"
+        f"{example}"
     )
 
 
@@ -223,10 +263,23 @@ def chat_structured(
         raw = _call_chat_json(messages)
         data = json.loads(raw)
 
-        paragraphs = [p.strip() for p in data.get("paragraphs", [])
-                      if isinstance(p, str) and p.strip()]
-        if not paragraphs:
-            raise ValueError("no paragraphs in structured answer")
+        # Intro: a short framing line (string, or first of a paragraphs[] list)
+        intro_raw = data.get("intro")
+        if isinstance(intro_raw, list):
+            paragraphs = [p.strip() for p in intro_raw if isinstance(p, str) and p.strip()]
+        elif isinstance(intro_raw, str) and intro_raw.strip():
+            paragraphs = [intro_raw.strip()]
+        else:
+            # Back-compat: older "paragraphs" field
+            paragraphs = [p.strip() for p in data.get("paragraphs", [])
+                          if isinstance(p, str) and p.strip()]
+
+        # Points: the main point-wise answer
+        points = [p.strip() for p in data.get("points", [])
+                  if isinstance(p, str) and p.strip()]
+
+        if not points and not paragraphs:
+            raise ValueError("empty structured answer")
 
         raw_terms = data.get("terms") or {}
         terms = {
@@ -241,27 +294,114 @@ def chat_structured(
         else:
             formula = formula.strip()
 
+        # Worked-example steps (numericals only)
+        steps = None
+        raw_steps = data.get("steps")
+        if isinstance(raw_steps, list):
+            steps = []
+            for s in raw_steps:
+                if isinstance(s, dict) and isinstance(s.get("text"), str) and s["text"].strip():
+                    step = {"text": s["text"].strip()}
+                    sf = s.get("formula")
+                    if isinstance(sf, str) and sf.strip():
+                        step["formula"] = sf.strip()
+                    steps.append(step)
+            if not steps:
+                steps = None
+
+        # Typed callouts (definition / mistake / exam) — keep order, one per type
+        callouts = []
+        seen_types = set()
+        for c in (data.get("callouts") or []):
+            if not isinstance(c, dict):
+                continue
+            ctype = str(c.get("type", "")).strip().lower()
+            ctext = str(c.get("text", "")).strip()
+            if ctype in ("definition", "mistake", "exam") and ctext and ctype not in seen_types:
+                callouts.append({"type": ctype, "text": ctext})
+                seen_types.add(ctype)
+
+        # Legacy single key-link → fold into an exam callout if no callouts present
         key_link = data.get("keyLink")
-        if not (isinstance(key_link, str) and key_link.strip()):
-            key_link = None
-        else:
-            key_link = key_link.strip()
+        if isinstance(key_link, str) and key_link.strip() and not callouts:
+            callouts.append({"type": "exam", "text": key_link.strip()})
 
         structured = {
             "paragraphs": paragraphs,
+            "points": points,
             "terms": terms,
             "formula": formula,
-            "keyLink": key_link,
+            "steps": steps,
+            "callouts": callouts,
         }
-        plain_text = " ".join(paragraphs)
-        if key_link:
-            plain_text += " " + key_link
+        plain_text = " ".join(paragraphs + points)
+        for c in callouts:
+            plain_text += " " + c["text"]
         return plain_text, structured
     except Exception:
         # Model didn't return usable JSON — fall back to plain prose answer.
         text = chat(user_message, chapter_title, subtopic_title,
                     subtopic_content, history, subject)
         return text, None
+
+
+def generate_quiz(
+    topic: str,
+    chapter_title: str,
+    subtopic_content: str,
+    subject: str = "Science",
+) -> dict | None:
+    """Generate a short interactive MCQ quiz for the "Quiz me" follow-up.
+
+    Returns {"quiz": [{question, options[4], answer(int 0-3), explanation}, ...]}
+    or None if the model could not produce a valid quiz (caller falls back).
+    """
+    system = {
+        "role": "system",
+        "content": (
+            f"You are a Class 10 {subject} examiner who writes clear, unambiguous "
+            f"multiple-choice questions for the CBSE board."
+        ),
+    }
+    user = {
+        "role": "user",
+        "content": (
+            f"Create exactly 2 multiple-choice questions to test understanding of: {topic}\n"
+            f"Chapter: {chapter_title}\n"
+            f"Reference textbook content:\n---\n{subtopic_content[:1200]}\n---\n\n"
+            "Return ONLY a JSON object in this shape:\n"
+            '{"quiz": [{"question": "...", "options": ["...", "...", "...", "..."], '
+            '"answer": 0, "explanation": "..."}]}\n'
+            "Rules: exactly 2 questions; each has EXACTLY 4 plain-text options (no \"a)\"/\"b)\" "
+            "prefixes); \"answer\" is the 0-based index (0–3) of the correct option; "
+            "\"explanation\" is one or two sentences on why that option is correct; keep the "
+            "questions board-exam appropriate and unambiguous."
+        ),
+    }
+    try:
+        data = json.loads(_call_chat_json([system, user]))
+        quiz = []
+        for q in data.get("quiz", []):
+            if not isinstance(q, dict):
+                continue
+            question = str(q.get("question", "")).strip()
+            opts = q.get("options")
+            expl = str(q.get("explanation", "")).strip()
+            if not question or not isinstance(opts, list) or len(opts) != 4:
+                continue
+            opts = [str(o).strip() for o in opts]
+            if not all(opts):
+                continue
+            try:
+                ans = int(q.get("answer"))
+            except (TypeError, ValueError):
+                continue
+            if not 0 <= ans <= 3:
+                continue
+            quiz.append({"question": question, "options": opts, "answer": ans, "explanation": expl})
+        return {"quiz": quiz[:3]} if quiz else None
+    except Exception:
+        return None
 
 
 def generate_practice(subtopic_title: str, content: str) -> dict:

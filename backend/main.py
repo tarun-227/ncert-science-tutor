@@ -183,16 +183,29 @@ def chat_endpoint(req: ChatRequest, user: dict = Depends(get_current_user)):
     if not history:
         history = sessions.get_history(req.session_id)
 
-    # Call AI — structured "Style F" answer (falls back to plain prose internally)
+    # Call AI — quiz action returns interactive MCQs; otherwise a structured
+    # "Style F" answer (each path falls back to plain prose internally).
     try:
-        response, structured = chat.chat_structured(
-            user_message     = user_message,
-            chapter_title    = chapter["title"],
-            subtopic_title   = subtopic_title,
-            subtopic_content = subtopic_content,
-            history          = history,
-            subject          = chapter.get("subject", "Science"),
-        )
+        structured = None
+        response = None
+        if req.action == "quiz":
+            structured = chat.generate_quiz(
+                topic            = user_message,
+                chapter_title    = chapter["title"],
+                subtopic_content = subtopic_content,
+                subject          = chapter.get("subject", "Science"),
+            )
+            if structured:
+                response = "Here's a quick quiz — tap an option to check your answer."
+        if structured is None:
+            response, structured = chat.chat_structured(
+                user_message     = user_message,
+                chapter_title    = chapter["title"],
+                subtopic_title   = subtopic_title,
+                subtopic_content = subtopic_content,
+                history          = history,
+                subject          = chapter.get("subject", "Science"),
+            )
     except Exception as e:
         raise HTTPException(503, f"AI unavailable: {str(e)}")
 

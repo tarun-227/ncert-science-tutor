@@ -10,11 +10,11 @@
 
 /* ─── BOOK MODE — reader grid ──────────────────────────────── */
 .reader {
-  display: grid; grid-template-columns: 260px 1fr 340px; grid-template-rows: 100%;
+  display: grid; grid-template-columns: 260px 1fr 380px; grid-template-rows: 100%;
   gap: 0; height: 100%; min-height: 0; overflow: hidden; background: var(--bg);
   transition: grid-template-columns .45s cubic-bezier(.4,0,.2,1);
 }
-.reader.reader-collapsed-toc { grid-template-columns: 48px 1fr 340px; }
+.reader.reader-collapsed-toc { grid-template-columns: 48px 1fr 380px; }
 
 /* Contents panel (left) */
 .rc { height: 100%; background: var(--surface); border-right: 1px solid var(--hairline); display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
@@ -126,7 +126,7 @@
 /* ════════════════════════════════════════════════════════════
    TUTOR MODE — 2-column (content + ask panel)
    ════════════════════════════════════════════════════════════ */
-.tutor { display: grid; grid-template-columns: 1fr 360px; height: 100%; min-height: 0; background: var(--bg); position: relative; }
+.tutor { display: grid; grid-template-columns: 1fr 400px; height: 100%; min-height: 0; background: var(--bg); position: relative; }
 .tutor-main { min-height: 0; overflow-y: auto; }
 .tutor-col { max-width: 960px; margin: 0; padding: 14px 40px 100px 4px; }
 
@@ -201,7 +201,7 @@
 
 /* Floating advance panel */
 .tutor-advance-float {
-  position: absolute; z-index: 12; bottom: 16px; right: calc(360px + 16px);
+  position: absolute; z-index: 12; bottom: 16px; right: calc(400px + 16px);
   display: inline-flex; align-items: center; gap: 4px; padding: 4px;
   background: var(--card); border: 1px solid var(--hairline); border-radius: 11px;
   box-shadow: 0 8px 22px rgba(20,18,14,.10), 0 2px 4px rgba(20,18,14,.04);
@@ -300,6 +300,18 @@
 /* Body */
 .tutor-rich-body { display: flex; flex-direction: column; gap: 10px; }
 .tutor-rich-p { margin: 0; font: 400 13.5px/1.78 var(--f-sans); color: var(--ink-2); text-wrap: pretty; }
+.tutor-rich-intro { color: var(--ink); font-weight: 500; }
+
+/* Point-wise answer list */
+.tutor-points { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.tutor-point {
+  position: relative; padding-left: 18px;
+  font: 400 13.5px/1.7 var(--f-sans); color: var(--ink-2); text-wrap: pretty;
+}
+.tutor-point::before {
+  content: ''; position: absolute; left: 3px; top: 9px;
+  width: 6px; height: 6px; border-radius: 99px; background: var(--green);
+}
 
 /* Inline highlighted key term + hover tooltip */
 .tutor-term-wrap { position: relative; display: inline; }
@@ -333,13 +345,126 @@
   font: 500 11px/1.6 var(--f-mono); color: var(--ink); letter-spacing: .01em;
 }
 
-/* Green "Key link" callout */
-.tutor-keylink {
-  background: var(--green-tint); border-radius: 9px; padding: 9px 12px;
+/* Worked-example steps (numericals) */
+.tutor-steps { display: flex; flex-direction: column; gap: 8px; }
+.tutor-step { display: flex; gap: 10px; align-items: flex-start; }
+.tutor-step-n {
+  flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px; margin-top: 1px;
+  background: var(--green-tint); color: var(--green-2);
+  font: 700 11px var(--f-sans); display: grid; place-items: center;
+}
+.tutor-step-body { display: flex; flex-direction: column; gap: 5px; align-items: flex-start; }
+.tutor-step-text { font: 400 13px/1.6 var(--f-sans); color: var(--ink-2); }
+.tutor-step-formula { font-size: 11.5px; }
+
+/* Typed callouts: definition (blue) · common mistake (amber) · exam tip (green) */
+.tutor-callout {
+  border-radius: 9px; padding: 9px 12px;
   display: flex; gap: 9px; align-items: flex-start;
 }
-.tutor-keylink-ic { color: var(--green-2); flex-shrink: 0; margin-top: 2px; display: grid; place-items: center; }
-.tutor-keylink-text { font: 500 13px/1.55 var(--f-sans); color: var(--green-2); }
+.tutor-callout-ic { flex-shrink: 0; margin-top: 1px; display: grid; place-items: center; }
+.tutor-callout-text { font: 500 13px/1.55 var(--f-sans); }
+.tutor-callout-text strong { font-weight: 700; }
+
+.tutor-callout-def {
+  background: color-mix(in oklab, var(--eng) 13%, var(--card));
+  border: 1px solid color-mix(in oklab, var(--eng) 26%, transparent);
+}
+.tutor-callout-def .tutor-callout-ic, .tutor-callout-def .tutor-callout-text { color: var(--eng); }
+
+.tutor-callout-mistake {
+  background: color-mix(in oklab, #E89020 14%, var(--card));
+  border: 1px solid color-mix(in oklab, #E89020 30%, transparent);
+}
+.tutor-callout-mistake .tutor-callout-ic, .tutor-callout-mistake .tutor-callout-text { color: #B4660B; }
+
+.tutor-callout-exam {
+  background: var(--green-tint);
+  border: 1px solid color-mix(in oklab, var(--green) 22%, transparent);
+}
+.tutor-callout-exam .tutor-callout-ic, .tutor-callout-exam .tutor-callout-text { color: var(--green-2); }
+
+/* Interactive MCQ quiz */
+.tutor-quiz-list { display: flex; flex-direction: column; gap: 16px; }
+.tutor-quiz { display: flex; flex-direction: column; gap: 9px; }
+.tutor-quiz-q { font: 600 13.5px/1.5 var(--f-sans); color: var(--ink); }
+.tutor-quiz-num {
+  display: inline-block; margin-right: 5px;
+  font: 700 11px var(--f-sans); color: var(--green-2);
+}
+.tutor-quiz-opts { display: flex; flex-direction: column; gap: 7px; }
+.tutor-quiz-opt {
+  display: flex; align-items: center; gap: 9px; width: 100%; text-align: left;
+  background: var(--card-2); border: 1.5px solid var(--hairline); border-radius: 10px;
+  padding: 9px 11px; cursor: pointer;
+  font: 500 13px/1.45 var(--f-sans); color: var(--ink-2);
+  transition: background .14s, border-color .14s, color .14s;
+}
+.tutor-quiz-opt:not(:disabled):hover { border-color: color-mix(in oklab, var(--green) 40%, transparent); background: var(--card); }
+.tutor-quiz-opt:disabled { cursor: default; }
+.tutor-quiz-letter {
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px;
+  background: var(--card); border: 1px solid var(--hairline);
+  display: grid; place-items: center;
+  font: 700 11px var(--f-sans); color: var(--ink-3);
+  transition: background .14s, color .14s, border-color .14s;
+}
+.tutor-quiz-opt-text { flex: 1; }
+.tutor-quiz-mark { flex-shrink: 0; display: grid; place-items: center; }
+
+/* Correct (green) */
+.tutor-quiz-opt.correct {
+  background: var(--green-tint); border-color: var(--green); color: var(--green-2);
+}
+.tutor-quiz-opt.correct .tutor-quiz-letter { background: var(--green); border-color: var(--green); color: #fff; }
+.tutor-quiz-opt.correct .tutor-quiz-mark { color: var(--green-2); }
+/* Wrong pick (red) */
+.tutor-quiz-opt.wrong {
+  background: color-mix(in oklab, #D63031 12%, var(--card));
+  border-color: #D63031; color: #B02524;
+}
+.tutor-quiz-opt.wrong .tutor-quiz-letter { background: #D63031; border-color: #D63031; color: #fff; }
+.tutor-quiz-opt.wrong .tutor-quiz-mark { color: #B02524; }
+/* Unpicked after answering */
+.tutor-quiz-opt.dim { opacity: .6; }
+
+/* Feedback / explanation */
+.tutor-quiz-fb {
+  border-radius: 9px; padding: 9px 12px;
+  font: 500 12.5px/1.55 var(--f-sans);
+}
+.tutor-quiz-fb strong { font-weight: 700; }
+.tutor-quiz-fb.right { background: var(--green-tint); color: var(--green-2); }
+.tutor-quiz-fb.wrong { background: color-mix(in oklab, #D63031 10%, var(--card)); color: #B02524; }
+
+/* Follow-up action chips + copy */
+.tutor-ans-actions {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 12px; padding-top: 11px; border-top: 1px solid var(--hairline);
+}
+.tutor-chip {
+  appearance: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--card-2); border: 1px solid var(--hairline);
+  border-radius: 8px; padding: 5px 10px;
+  font: 500 11.5px var(--f-sans); color: var(--ink-3);
+  transition: background .14s, color .14s, border-color .14s;
+}
+.tutor-chip:hover { background: var(--green-tint); color: var(--green-2); border-color: color-mix(in oklab, var(--green) 30%, transparent); }
+.tutor-chip-icon { margin-left: auto; }
+
+/* Stagger-in for answer content */
+.tutor-rich-body > *, .tutor-terms-row { animation: tutorChildIn .34s cubic-bezier(.4,0,.2,1) both; }
+.tutor-rich-body > *:nth-child(1) { animation-delay: .02s; }
+.tutor-rich-body > *:nth-child(2) { animation-delay: .08s; }
+.tutor-rich-body > *:nth-child(3) { animation-delay: .14s; }
+.tutor-rich-body > *:nth-child(4) { animation-delay: .20s; }
+.tutor-rich-body > *:nth-child(5) { animation-delay: .26s; }
+.tutor-rich-body > *:nth-child(n+6) { animation-delay: .30s; }
+@keyframes tutorChildIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .tutor-rich-body > *, .tutor-terms-row { animation: none; }
+}
 .tutor-ans-loading { display: flex; align-items: center; gap: 6px; padding: 2px 0; }
 .tutor-ans-thinking { font: 500 13px var(--f-sans); color: var(--ink-3); margin-left: 4px; }
 .tutor-dot { width: 6px; height: 6px; border-radius: 99px; background: var(--green); animation: tutorBlink 1s infinite ease-in-out; }

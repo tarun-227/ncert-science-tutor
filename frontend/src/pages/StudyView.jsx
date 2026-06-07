@@ -279,11 +279,40 @@ const TagIcon = () => (
     <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" /><circle cx="7" cy="7" r="1.5" fill="currentColor" />
   </svg>
 )
-const BoltIcon = () => (
+const DefIcon = () => (
   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M13 3L4 14h8l-1 7 9-11h-8l1-7z" />
+    <path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z" /><path d="M19 17H7" />
   </svg>
 )
+const MistakeIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 3 2 20h20L12 3z" /><path d="M12 10v4M12 17h.01" />
+  </svg>
+)
+const ExamIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" />
+  </svg>
+)
+
+// Typed callout config: definition (blue) · common mistake (amber) · exam tip (green)
+const CALLOUT_CFG = {
+  definition: { cls: 'def',     label: 'Definition',     Icon: DefIcon },
+  mistake:    { cls: 'mistake', label: 'Common mistake', Icon: MistakeIcon },
+  exam:       { cls: 'exam',    label: 'Exam tip',       Icon: ExamIcon },
+}
+const CALLOUT_ORDER = ['definition', 'mistake', 'exam']
+
+function Callout({ type, text }) {
+  const cfg = CALLOUT_CFG[type] || CALLOUT_CFG.exam
+  const { Icon } = cfg
+  return (
+    <div className={`tutor-callout tutor-callout-${cfg.cls}`}>
+      <span className="tutor-callout-ic"><Icon /></span>
+      <span className="tutor-callout-text"><strong>{cfg.label}:</strong> {text}</span>
+    </div>
+  )
+}
 
 // Inline highlighted key term with a hover definition tooltip.
 function TermSpan({ term, def }) {
@@ -316,16 +345,73 @@ function renderWithTerms(text, terms, keyPrefix) {
   ))
 }
 
+// One interactive MCQ: click an option → correct turns green, wrong turns red
+// and the correct one is revealed, with an explanation below.
+function QuizQuestion({ q, index }) {
+  const [picked, setPicked] = useState(null)
+  const answered = picked !== null
+  const correct = answered && picked === q.answer
+
+  return (
+    <div className="tutor-quiz">
+      <div className="tutor-quiz-q"><span className="tutor-quiz-num">Q{index + 1}</span> {q.question}</div>
+      <div className="tutor-quiz-opts">
+        {q.options.map((opt, oi) => {
+          let state = ''
+          if (answered) {
+            if (oi === q.answer) state = ' correct'
+            else if (oi === picked) state = ' wrong'
+            else state = ' dim'
+          }
+          return (
+            <button
+              key={oi}
+              className={`tutor-quiz-opt${state}`}
+              disabled={answered}
+              onClick={() => setPicked(oi)}
+            >
+              <span className="tutor-quiz-letter">{String.fromCharCode(65 + oi)}</span>
+              <span className="tutor-quiz-opt-text">{opt}</span>
+              {answered && oi === q.answer && <span className="tutor-quiz-mark"><Icon name="check" size={13} /></span>}
+              {answered && oi === picked && oi !== q.answer && <span className="tutor-quiz-mark"><Icon name="x" size={13} /></span>}
+            </button>
+          )
+        })}
+      </div>
+      {answered && (
+        <div className={`tutor-quiz-fb ${correct ? 'right' : 'wrong'}`}>
+          <strong>{correct ? 'Correct! ' : `Correct answer: ${String.fromCharCode(65 + q.answer)}. `}</strong>
+          {q.explanation}
+        </div>
+      )}
+    </div>
+  )
+}
+
 function RichAnswer({ data }) {
-  const { paragraphs = [], terms = {}, formula, keyLink } = data || {}
+  const { paragraphs = [], points = [], terms = {}, formula, steps, callouts, keyLink, quiz } = data || {}
   const termKeys = Object.keys(terms || {})
 
-  // Place the formula chip after the paragraph that mentions it, else after the 2nd.
-  let formulaIdx = -1
-  if (formula) {
-    formulaIdx = paragraphs.findIndex(p => p.includes(formula))
-    if (formulaIdx === -1) formulaIdx = Math.min(1, paragraphs.length - 1)
+  // Interactive quiz answer
+  if (Array.isArray(quiz) && quiz.length > 0) {
+    return (
+      <div className="tutor-rich">
+        <div className="tutor-rich-body">
+          {paragraphs.map((p, i) => (
+            <p className="tutor-rich-p tutor-rich-intro" key={i}>{p}</p>
+          ))}
+          <div className="tutor-quiz-list">
+            {quiz.map((q, i) => <QuizQuestion key={i} index={i} q={q} />)}
+          </div>
+        </div>
+      </div>
+    )
   }
+
+  // Typed callouts (definition → mistake → exam). Fall back to a legacy keyLink.
+  let calloutList = Array.isArray(callouts) ? callouts.slice() : []
+  if (!calloutList.length && keyLink) calloutList = [{ type: 'exam', text: keyLink }]
+  calloutList.sort((a, b) => CALLOUT_ORDER.indexOf(a.type) - CALLOUT_ORDER.indexOf(b.type))
 
   return (
     <div className="tutor-rich">
@@ -340,26 +426,53 @@ function RichAnswer({ data }) {
 
       <div className="tutor-rich-body">
         {paragraphs.map((p, i) => (
-          <Fragment key={i}>
-            <p className="tutor-rich-p">{renderWithTerms(p, terms, `p${i}`)}</p>
-            {i === formulaIdx && formula && (
-              <div className="tutor-formula-line">
-                <span className="tutor-formula-chip">{formula}</span>
-              </div>
-            )}
-          </Fragment>
+          <p className="tutor-rich-p tutor-rich-intro" key={`p${i}`}>{renderWithTerms(p, terms, `p${i}`)}</p>
         ))}
 
-        {keyLink && (
-          <div className="tutor-keylink">
-            <span className="tutor-keylink-ic"><BoltIcon /></span>
-            <span className="tutor-keylink-text"><strong>Key link:</strong> {keyLink}</span>
+        {points.length > 0 && (
+          <ul className="tutor-points">
+            {points.map((pt, i) => (
+              <li className="tutor-point" key={i}>{renderWithTerms(pt, terms, `pt${i}`)}</li>
+            ))}
+          </ul>
+        )}
+
+        {formula && (
+          <div className="tutor-formula-line">
+            <span className="tutor-formula-chip">{formula}</span>
           </div>
         )}
+
+        {Array.isArray(steps) && steps.length > 0 && (
+          <div className="tutor-steps">
+            {steps.map((s, i) => (
+              <div className="tutor-step" key={i}>
+                <span className="tutor-step-n">{i + 1}</span>
+                <div className="tutor-step-body">
+                  <span className="tutor-step-text">{s.text}</span>
+                  {s.formula && <span className="tutor-formula-chip tutor-step-formula">{s.formula}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {calloutList.map((c, i) => (
+          <Callout key={i} type={c.type} text={c.text} />
+        ))}
       </div>
     </div>
   )
 }
+
+// One-tap follow-ups shown under each answer. `make` builds the next question,
+// referencing the original so it works regardless of chat-history ordering.
+const FOLLOWUPS = [
+  { label: 'Explain simpler', make: q => `Regarding "${q}" — explain it again in a simpler way, using an everyday analogy a 15-year-old would get.` },
+  { label: 'Give an example', make: q => `Give me one concrete real-world example related to: "${q}".` },
+  { label: 'Quiz me',         action: 'quiz', make: q => `Quiz me on: "${q}"` },
+  { label: 'Why it matters',  make: q => `Why does this matter and where is it used in real life or asked in exams, regarding "${q}"?` },
+]
 
 // ════════════════════════════════════════════════════════════════════════════
 // SHARED — Ask the tutor panel
@@ -368,10 +481,17 @@ function RichAnswer({ data }) {
 function AskPanel({ chapter, richData, currentSection, variant, triggerQuery }) {
   const [answers, setAnswers] = useState([])
   const [draft, setDraft] = useState('')
+  const [copiedId, setCopiedId] = useState(null)
   const [sessionId] = useState(() => `sv-${Date.now()}-${Math.random().toString(36).slice(2)}`)
   const bodyRef = useRef(null)
   const lastTriggerIdRef = useRef(null)
   const sec = richData?.sections?.[currentSection]
+
+  const copyAnswer = async (ans) => {
+    try { await navigator.clipboard.writeText(ans.a || '') } catch {}
+    setCopiedId(ans.id)
+    setTimeout(() => setCopiedId(c => (c === ans.id ? null : c)), 1500)
+  }
 
   useEffect(() => { setAnswers([]) }, [currentSection, chapter?.id])
   useEffect(() => { bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight, behavior: 'smooth' }) }, [answers])
@@ -387,14 +507,14 @@ function AskPanel({ chapter, richData, currentSection, variant, triggerQuery }) 
     askQuestion(triggerQuery.text)
   }, [triggerQuery])
 
-  const askQuestion = async (q) => {
+  const askQuestion = async (q, action = null) => {
     if (!q || !q.trim() || !chapter) return
     const id = Date.now() + Math.random()
     setAnswers(a => [...a, { id, q, a: '', loading: true }])
     try {
       const res = await apiFetch('/api/chat', {
         method: 'POST',
-        body: JSON.stringify({ session_id: sessionId, chapter_id: chapter.id, subtopic_id: sec?.id || '', message: q, history: [] }),
+        body: JSON.stringify({ session_id: sessionId, chapter_id: chapter.id, subtopic_id: sec?.id || '', message: q, action, history: [] }),
       })
       const data = await res.json()
       const reply = data.reply || data.response || 'No response.'
@@ -441,11 +561,28 @@ function AskPanel({ chapter, richData, currentSection, variant, triggerQuery }) 
                     <span className="tutor-ans-thinking">Tutor is thinking…</span>
                   </div>
                 ) : (
-                  <div className="tutor-ans-body">
-                    {ans.structured
-                      ? <RichAnswer data={ans.structured} />
-                      : <p className="tutor-p">{ans.a}</p>}
-                  </div>
+                  <>
+                    <div className="tutor-ans-body">
+                      {ans.structured
+                        ? <RichAnswer data={ans.structured} />
+                        : <p className="tutor-p">{ans.a}</p>}
+                    </div>
+                    <div className="tutor-ans-actions">
+                      {FOLLOWUPS.map(f => (
+                        <button key={f.label} className="tutor-chip" onClick={() => askQuestion(f.make(ans.q), f.action || null)}>
+                          {f.label}
+                        </button>
+                      ))}
+                      <button
+                        className="tutor-chip tutor-chip-icon"
+                        onClick={() => copyAnswer(ans)}
+                        title="Copy answer"
+                      >
+                        <Icon name={copiedId === ans.id ? 'check' : 'note'} size={12} />
+                        {copiedId === ans.id ? 'Copied' : 'Copy'}
+                      </button>
+                    </div>
+                  </>
                 )}
               </div>
             ))}

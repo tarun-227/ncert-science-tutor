@@ -183,9 +183,9 @@ def chat_endpoint(req: ChatRequest, user: dict = Depends(get_current_user)):
     if not history:
         history = sessions.get_history(req.session_id)
 
-    # Call AI
+    # Call AI — structured "Style F" answer (falls back to plain prose internally)
     try:
-        response = chat.chat(
+        response, structured = chat.chat_structured(
             user_message     = user_message,
             chapter_title    = chapter["title"],
             subtopic_title   = subtopic_title,
@@ -196,7 +196,7 @@ def chat_endpoint(req: ChatRequest, user: dict = Depends(get_current_user)):
     except Exception as e:
         raise HTTPException(503, f"AI unavailable: {str(e)}")
 
-    # Persist messages to DB (and in-memory as fallback)
+    # Persist messages to DB (and in-memory as fallback) — store the plain text
     db_sessions.add_message(req.session_id, "user",      user_message, user_id)
     db_sessions.add_message(req.session_id, "assistant", response,     user_id)
     sessions.add_message(req.session_id, "user",      user_message)
@@ -204,6 +204,7 @@ def chat_endpoint(req: ChatRequest, user: dict = Depends(get_current_user)):
 
     return {
         "response":       response,
+        "structured":     structured,
         "subtopic_title": subtopic_title,
         "session_id":     req.session_id,
     }

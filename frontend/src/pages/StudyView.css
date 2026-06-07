@@ -278,6 +278,68 @@
 .tutor-ans-x { flex-shrink: 0; width: 26px; height: 26px; border-radius: 7px; cursor: pointer; background: transparent; border: 0; color: var(--ink-4); display: grid; place-items: center; }
 .tutor-ans-x:hover { background: var(--bg); color: var(--ink-2); }
 .tutor-ans-body .tutor-p { margin: 0; font-size: 14px; line-height: 1.6; }
+
+/* ── Rich tutor answer (Style F) ─────────────────────────────────────────── */
+.tutor-rich { display: flex; flex-direction: column; }
+
+/* Key-terms chip row */
+.tutor-terms-row { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 13px; align-items: center; }
+.tutor-terms-label {
+  font: 600 10px var(--f-sans); text-transform: uppercase; letter-spacing: .05em;
+  color: var(--ink-4); margin-right: 2px; align-self: center;
+}
+.tutor-term-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: color-mix(in oklab, #F5E4D7 45%, var(--card-2));
+  color: #9B3B18;
+  border: 1px solid color-mix(in oklab, #D97757 28%, transparent);
+  border-radius: 6px; padding: 3px 8px;
+  font: 600 11px var(--f-sans);
+}
+
+/* Body */
+.tutor-rich-body { display: flex; flex-direction: column; gap: 10px; }
+.tutor-rich-p { margin: 0; font: 400 13.5px/1.78 var(--f-sans); color: var(--ink-2); text-wrap: pretty; }
+
+/* Inline highlighted key term + hover tooltip */
+.tutor-term-wrap { position: relative; display: inline; }
+.tutor-term {
+  border-bottom: 2px solid color-mix(in oklab, #D97757 55%, transparent);
+  color: color-mix(in oklab, var(--ink) 80%, #C44A1F 20%);
+  font-weight: 700; cursor: default; border-radius: 2px; padding: 0 1px;
+  background: transparent; transition: background .12s;
+}
+.tutor-term-wrap:hover .tutor-term { background: color-mix(in oklab, #F5E4D7 55%, transparent); }
+.tutor-term-tip {
+  position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%);
+  background: var(--ink); color: var(--bg); border-radius: 9px;
+  padding: 7px 10px; font: 500 11.5px/1.5 var(--f-sans);
+  width: 200px; text-align: center; z-index: 20; pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,.18); white-space: normal;
+}
+.tutor-term-arrow {
+  position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 5px solid transparent; border-right: 5px solid transparent;
+  border-top: 5px solid var(--ink);
+}
+
+/* Inline formula chip */
+.tutor-formula-line { display: flex; }
+.tutor-formula-chip {
+  display: inline-flex; align-items: center; gap: 3px; vertical-align: middle;
+  background: var(--card-2); border: 1px solid var(--hairline);
+  border-radius: 5px; padding: 1px 7px;
+  font: 500 11px/1.6 var(--f-mono); color: var(--ink); letter-spacing: .01em;
+}
+
+/* Green "Key link" callout */
+.tutor-keylink {
+  background: var(--green-tint); border-radius: 9px; padding: 9px 12px;
+  display: flex; gap: 9px; align-items: flex-start;
+}
+.tutor-keylink-ic { color: var(--green-2); flex-shrink: 0; margin-top: 2px; display: grid; place-items: center; }
+.tutor-keylink-text { font: 500 13px/1.55 var(--f-sans); color: var(--green-2); }
 .tutor-ans-loading { display: flex; align-items: center; gap: 6px; padding: 2px 0; }
 .tutor-ans-thinking { font: 500 13px var(--f-sans); color: var(--ink-3); margin-left: 4px; }
 .tutor-dot { width: 6px; height: 6px; border-radius: 99px; background: var(--green); animation: tutorBlink 1s infinite ease-in-out; }

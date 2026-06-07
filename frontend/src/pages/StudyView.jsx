@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useRef, useMemo, Fragment } from 'react'
 import Icon from '../components/Icons'
 import {
   getDoneSections, getDoneSectionsAsync, markSectionDone, syncPlanCompletions,
@@ -270,6 +270,98 @@ function ReaderSide({ chapter, richData, currentSection, triggerQuery }) {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
+// SHARED — Rich tutor answer ("Style F": key terms + vocab highlights + formula
+//          chip + key-link callout). Falls back to plain text when no structure.
+// ════════════════════════════════════════════════════════════════════════════
+
+const TagIcon = () => (
+  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" /><circle cx="7" cy="7" r="1.5" fill="currentColor" />
+  </svg>
+)
+const BoltIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M13 3L4 14h8l-1 7 9-11h-8l1-7z" />
+  </svg>
+)
+
+// Inline highlighted key term with a hover definition tooltip.
+function TermSpan({ term, def }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <span className="tutor-term-wrap">
+      <span
+        className="tutor-term"
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+      >{term}</span>
+      {open && def && (
+        <span className="tutor-term-tip">{def}<span className="tutor-term-arrow" /></span>
+      )}
+    </span>
+  )
+}
+
+// Split a paragraph into text + <TermSpan> nodes, wrapping every term occurrence.
+// Longest terms first so e.g. "aerobic respiration" wins over "respiration".
+function renderWithTerms(text, terms, keyPrefix) {
+  const keys = Object.keys(terms || {}).filter(Boolean).sort((a, b) => b.length - a.length)
+  if (!keys.length) return text
+  const escaped = keys.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+  const re = new RegExp(`(${escaped.join('|')})`, 'g')
+  return text.split(re).map((part, i) => (
+    terms[part] !== undefined
+      ? <TermSpan key={`${keyPrefix}-${i}`} term={part} def={terms[part]} />
+      : <Fragment key={`${keyPrefix}-${i}`}>{part}</Fragment>
+  ))
+}
+
+function RichAnswer({ data }) {
+  const { paragraphs = [], terms = {}, formula, keyLink } = data || {}
+  const termKeys = Object.keys(terms || {})
+
+  // Place the formula chip after the paragraph that mentions it, else after the 2nd.
+  let formulaIdx = -1
+  if (formula) {
+    formulaIdx = paragraphs.findIndex(p => p.includes(formula))
+    if (formulaIdx === -1) formulaIdx = Math.min(1, paragraphs.length - 1)
+  }
+
+  return (
+    <div className="tutor-rich">
+      {termKeys.length > 0 && (
+        <div className="tutor-terms-row">
+          <span className="tutor-terms-label">Key terms</span>
+          {termKeys.map(t => (
+            <span className="tutor-term-chip" key={t}><TagIcon />{t}</span>
+          ))}
+        </div>
+      )}
+
+      <div className="tutor-rich-body">
+        {paragraphs.map((p, i) => (
+          <Fragment key={i}>
+            <p className="tutor-rich-p">{renderWithTerms(p, terms, `p${i}`)}</p>
+            {i === formulaIdx && formula && (
+              <div className="tutor-formula-line">
+                <span className="tutor-formula-chip">{formula}</span>
+              </div>
+            )}
+          </Fragment>
+        ))}
+
+        {keyLink && (
+          <div className="tutor-keylink">
+            <span className="tutor-keylink-ic"><BoltIcon /></span>
+            <span className="tutor-keylink-text"><strong>Key link:</strong> {keyLink}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ════════════════════════════════════════════════════════════════════════════
 // SHARED — Ask the tutor panel
 // ════════════════════════════════════════════════════════════════════════════
 
@@ -306,9 +398,10 @@ function AskPanel({ chapter, richData, currentSection, variant, triggerQuery }) 
       })
       const data = await res.json()
       const reply = data.reply || data.response || 'No response.'
-      setAnswers(a => a.map(x => x.id === id ? { ...x, a: reply, loading: false } : x))
+      const structured = data.structured || null
+      setAnswers(a => a.map(x => x.id === id ? { ...x, a: reply, structured, loading: false } : x))
     } catch {
-      setAnswers(a => a.map(x => x.id === id ? { ...x, a: 'Could not reach the tutor. Make sure the backend is running.', loading: false } : x))
+      setAnswers(a => a.map(x => x.id === id ? { ...x, a: 'Could not reach the tutor. Make sure the backend is running.', structured: null, loading: false } : x))
     }
   }
 
@@ -348,7 +441,11 @@ function AskPanel({ chapter, richData, currentSection, variant, triggerQuery }) 
                     <span className="tutor-ans-thinking">Tutor is thinking…</span>
                   </div>
                 ) : (
-                  <div className="tutor-ans-body"><p className="tutor-p">{ans.a}</p></div>
+                  <div className="tutor-ans-body">
+                    {ans.structured
+                      ? <RichAnswer data={ans.structured} />
+                      : <p className="tutor-p">{ans.a}</p>}
+                  </div>
                 )}
               </div>
             ))}

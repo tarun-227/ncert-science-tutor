@@ -60,6 +60,28 @@ def _call_chat(messages: list[dict]) -> str:
     return resp.json()["choices"][0]["message"]["content"].strip()
 
 
+def _call_chat_json(messages: list[dict]) -> str:
+    """Multi-turn call constrained to a JSON object response (Groq JSON mode).
+
+    Used by the structured "Style F" tutor answer so the model reliably returns
+    parseable JSON instead of free-form prose.
+    """
+    resp = requests.post(
+        GROQ_URL,
+        headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+        json={
+            "model": MODEL,
+            "messages": messages,
+            "temperature": 0.4,
+            "max_tokens": 900,
+            "response_format": {"type": "json_object"},
+        },
+        timeout=60,
+    )
+    resp.raise_for_status()
+    return resp.json()["choices"][0]["message"]["content"].strip()
+
+
 def chat(
     user_message: str,
     chapter_title: str,
@@ -112,6 +134,134 @@ def chat(
     messages.append({"role": "user", "content": user_message})
 
     return _call_chat(messages)
+
+
+# ── Structured "Style F" tutor answer ─────────────────────────────────────────
+
+def _style_f_instructions(is_english: bool) -> str:
+    """How the model must shape its JSON so it fits the Style F answer card."""
+    formula_rule = (
+        "- \"formula\": always null (English answers have no formulas).\n"
+        if is_english else
+        "- \"formula\": include ONLY when a genuine chemical equation or math formula is "
+        "central to the answer; otherwise set it to null. Use Unicode subscripts/superscripts "
+        "(e.g. C₆H₁₂O₆, H₂O, CO₂) and → for reaction arrows. Keep it to a single line.\n"
+    )
+    term_kind = (
+        "important literary or language terms (e.g. theme, metaphor, narrator)"
+        if is_english else
+        "important scientific/technical vocabulary"
+    )
+    return (
+        "Respond with a SINGLE JSON object (no text outside it) in exactly this shape:\n"
+        "{\n"
+        '  "paragraphs": ["...", "..."],\n'
+        '  "terms": {"TermText": "one-sentence definition"},\n'
+        '  "formula": null,\n'
+        '  "keyLink": "one-sentence key takeaway"\n'
+        "}\n"
+        "Rules for the JSON values:\n"
+        "- \"paragraphs\": 2–3 SHORT plain-text paragraphs that are the actual answer. "
+        "No markdown, no bullet characters, no headings.\n"
+        f"- \"terms\": a map of 2–5 of the MOST {term_kind} used in your answer, each to a "
+        "concise one-sentence definition. Every term key MUST appear verbatim (identical spelling "
+        "and capitalisation) somewhere in the paragraphs so it can be highlighted. Choose real "
+        "domain terms, never common words. Use {} if the answer has no notable terms.\n"
+        f"{formula_rule}"
+        "- \"keyLink\": one short sentence with the single most important takeaway for a conceptual "
+        "answer; use null for trivial or one-line answers.\n"
+        "- Keep everything accurate to the textbook content and concise. Output ONLY the JSON object."
+    )
+
+
+def chat_structured(
+    user_message: str,
+    chapter_title: str,
+    subtopic_title: str,
+    subtopic_content: str,
+    history: list[dict],
+    subject: str = "Science",
+) -> tuple[str, dict | None]:
+    """Interactive tutor chat that returns a structured "Style F" answer.
+
+    Returns (plain_text, structured) where `structured` is
+    {paragraphs, terms, formula, keyLink} ready for the RichAnswer renderer, or
+    None if the model could not produce valid structured output (caller should
+    fall back to rendering plain_text). `plain_text` is always a usable answer
+    string for chat history / fallback rendering.
+    """
+    is_english = subject.lower() == "english"
+    subject_label = "English Literature & Language" if is_english else "Science"
+    subject_rules = (
+        "- Help the student understand the story/poem theme, characters, and language.\n"
+        "- For comprehension: guide with the reasoning, then the answer.\n"
+        "- Quote briefly from the text when it clarifies meaning.\n"
+        if is_english else
+        "- Be concise but complete.\n"
+        "- When explaining a concept, start from a real-life observation, then the idea.\n"
+        "- When simplifying, use an everyday analogy a 15-year-old relates to.\n"
+        "- For numericals, state each formula and step clearly.\n"
+    )
+    system_content = (
+        f"You are a friendly, patient Class 10 {subject_label} tutor.\n"
+        f"The student is currently studying:\n"
+        f"  Chapter: {chapter_title}\n"
+        f"  Topic:   {subtopic_title}\n\n"
+        f"Relevant textbook content:\n---\n{subtopic_content[:1500]}\n---\n\n"
+        f"Teaching style:\n"
+        f"- ALWAYS answer the student's current question directly.\n"
+        f"{subject_rules}\n"
+        f"{_style_f_instructions(is_english)}"
+    )
+
+    messages: list[dict] = [{"role": "system", "content": system_content}]
+    for msg in history[-8:]:
+        messages.append({"role": msg["role"], "content": msg["content"][:400]})
+    messages.append({"role": "user", "content": user_message})
+
+    try:
+        raw = _call_chat_json(messages)
+        data = json.loads(raw)
+
+        paragraphs = [p.strip() for p in data.get("paragraphs", [])
+                      if isinstance(p, str) and p.strip()]
+        if not paragraphs:
+            raise ValueError("no paragraphs in structured answer")
+
+        raw_terms = data.get("terms") or {}
+        terms = {
+            str(k).strip(): str(v).strip()
+            for k, v in raw_terms.items()
+            if isinstance(k, str) and k.strip() and isinstance(v, str) and v.strip()
+        }
+
+        formula = data.get("formula")
+        if not (isinstance(formula, str) and formula.strip()):
+            formula = None
+        else:
+            formula = formula.strip()
+
+        key_link = data.get("keyLink")
+        if not (isinstance(key_link, str) and key_link.strip()):
+            key_link = None
+        else:
+            key_link = key_link.strip()
+
+        structured = {
+            "paragraphs": paragraphs,
+            "terms": terms,
+            "formula": formula,
+            "keyLink": key_link,
+        }
+        plain_text = " ".join(paragraphs)
+        if key_link:
+            plain_text += " " + key_link
+        return plain_text, structured
+    except Exception:
+        # Model didn't return usable JSON — fall back to plain prose answer.
+        text = chat(user_message, chapter_title, subtopic_title,
+                    subtopic_content, history, subject)
+        return text, None
 
 
 def generate_practice(subtopic_title: str, content: str) -> dict:

@@ -151,6 +151,9 @@
 .tutor-bc-btn svg:last-child { color: var(--ink-4); flex-shrink: 0; }
 .tutor-bc-k { font: 700 11px var(--f-mono); color: var(--ink-4); flex-shrink: 0; }
 .tutor-bc-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Subject picker: shrink to its content with clear spacing between "Class X" and the subject */
+.tutor-bc-btn.subj { width: auto; gap: 10px; padding-right: 12px; }
+.tutor-bc-btn.subj .tutor-bc-title { flex: 0 0 auto; }
 .tutor-bc-btn.strong .tutor-bc-k, .tutor-bc-btn.open .tutor-bc-k { color: var(--green-2); }
 .tutor-bc-navs { margin-left: auto; display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .tutor-bc-nav {

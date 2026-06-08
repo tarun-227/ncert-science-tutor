@@ -623,7 +623,7 @@ function TutorBreadcrumb({ chapters, chapter, richData, currentSection, setCurre
   return (
     <div className="tutor-bc" onClick={stop}>
       <div className="tutor-bc-pick">
-        <button className={`tutor-bc-btn ${open === 'subj' ? 'open' : ''}`} onClick={() => setOpen(open === 'subj' ? null : 'subj')}>
+        <button className={`tutor-bc-btn subj ${open === 'subj' ? 'open' : ''}`} onClick={() => setOpen(open === 'subj' ? null : 'subj')}>
           <span className="tutor-bc-k">Class X</span>
           <span className="tutor-bc-title">{chapter?.subject}</span>
           <Icon name="chev-down" size={13} />

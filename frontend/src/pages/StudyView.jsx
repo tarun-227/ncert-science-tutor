@@ -606,8 +606,11 @@ function AskPanel({ chapter, richData, currentSection, variant, triggerQuery }) 
 // ════════════════════════════════════════════════════════════════════════════
 
 function TutorBreadcrumb({ chapters, chapter, richData, currentSection, setCurrentSection, onChapterChange, prev, next, doneSections }) {
-  const [open, setOpen] = useState(null) // 'ch' | 'sec' | null
+  const [open, setOpen] = useState(null) // 'subj' | 'ch' | 'sec' | null
   const sec = richData?.sections?.[currentSection]
+  // Distinct subjects, and the chapters that belong to the current subject only
+  const subjects = [...new Set(chapters.map(c => c.subject))]
+  const subjectChapters = chapters.filter(c => c.subject === chapter?.subject)
 
   useEffect(() => {
     if (!open) return
@@ -619,19 +622,44 @@ function TutorBreadcrumb({ chapters, chapter, richData, currentSection, setCurre
 
   return (
     <div className="tutor-bc" onClick={stop}>
-      <span className="tutor-bc-root">Class X {chapter?.subject}</span>
+      <div className="tutor-bc-pick">
+        <button className={`tutor-bc-btn ${open === 'subj' ? 'open' : ''}`} onClick={() => setOpen(open === 'subj' ? null : 'subj')}>
+          <span className="tutor-bc-k">Class X</span>
+          <span className="tutor-bc-title">{chapter?.subject}</span>
+          <Icon name="chev-down" size={13} />
+        </button>
+        {open === 'subj' && (
+          <div className="tutor-bc-menu scroll">
+            <div className="tutor-bc-menu-lbl">Subjects</div>
+            {subjects.map(subj => (
+              <button
+                key={subj}
+                className={`tutor-bc-item ${subj === chapter?.subject ? 'on' : ''}`}
+                onClick={() => {
+                  // Switch to the first chapter of the chosen subject
+                  const first = chapters.find(c => c.subject === subj)
+                  if (first && first.id !== chapter?.id) onChapterChange(first.id)
+                  setOpen(null)
+                }}
+              >
+                <span className="tutor-bc-t">{subj}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
       <Icon name="chev" size={13} className="tutor-bc-sep" />
 
       <div className="tutor-bc-pick">
         <button className={`tutor-bc-btn ${open === 'ch' ? 'open' : ''}`} onClick={() => setOpen(open === 'ch' ? null : 'ch')}>
-          <span className="tutor-bc-k">Ch {chapters.findIndex(c => c.id === chapter?.id) + 1}</span>
+          <span className="tutor-bc-k">Ch {subjectChapters.findIndex(c => c.id === chapter?.id) + 1}</span>
           <span className="tutor-bc-title">{chapter?.title}</span>
           <Icon name="chev-down" size={13} />
         </button>
         {open === 'ch' && (
           <div className="tutor-bc-menu scroll">
-            <div className="tutor-bc-menu-lbl">All chapters</div>
-            {chapters.map((c, ci) => (
+            <div className="tutor-bc-menu-lbl">{chapter?.subject} chapters</div>
+            {subjectChapters.map((c, ci) => (
               <button key={c.id} className={`tutor-bc-item ${c.id === chapter?.id ? 'on' : ''}`} onClick={() => { onChapterChange(c.id); setOpen(null) }}>
                 <span className="tutor-bc-badge">{ci + 1}</span>
                 <span className="tutor-bc-t">{c.title}</span>

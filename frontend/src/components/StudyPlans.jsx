@@ -68,7 +68,10 @@ function PlanCard({ plan, chapters, doneByChapter, onDelete, onEdit, onStart }) 
   const doneIds = planChapters
     .filter(ch => {
       const done = (doneByChapter || {})[ch.id] || []
-      const total = ch.subtopic_count || 0
+      // section_count = number of completable sections in StudyView (what gets
+      // marked done). subtopic_count counts nested subtopics and is larger, so
+      // using it here makes a chapter impossible to complete.
+      const total = ch.section_count || 0
       return total > 0 && done.length >= total
     })
     .map(ch => ch.id)

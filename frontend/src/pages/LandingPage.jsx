@@ -48,7 +48,7 @@ function ProgressArc({ value, size = 38 }) {
 function ChapterCard({ chapter, onClick, readCount }) {
   const [hov, setHov] = useState(false)
   const v = SUBJECT_VARS[chapter.subject] || SUBJECT_VARS.Physics
-  const total = chapter.subtopic_count || 1
+  const total = chapter.section_count || 1
   const read = readCount ?? readSectionCountLocal(chapter.id)
   const progress = Math.min(1, read / total)
   const done = progress >= 1
@@ -153,12 +153,12 @@ export default function LandingPage() {
   const getRead = (chId) => allProgress[chId] ?? readSectionCountLocal(chId)
 
   const totalRead = chapters.reduce((n, ch) => {
-    const total = ch.subtopic_count || 1
+    const total = ch.section_count || 1
     return n + (getRead(ch.id) >= total ? 1 : 0)
   }, 0)
   const pct = chapters.length
     ? Math.round(chapters.reduce((s, ch) => {
-        const total = ch.subtopic_count || 1
+        const total = ch.section_count || 1
         return s + Math.min(1, getRead(ch.id) / total)
       }, 0) / chapters.length * 100)
     : 0

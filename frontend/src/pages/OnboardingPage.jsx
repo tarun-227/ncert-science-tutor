@@ -296,7 +296,7 @@ function StepDone({ data, onFinish, onRestart }) {
 // ── Wizard host ─────────────────────────────────────────────
 export default function OnboardingPage() {
   const navigate = useNavigate()
-  const { user, signInWithGoogle } = useAuth()
+  const { user, signInWithGoogle, markOnboardingDone } = useAuth()
   const [step, setStep] = useState(0)
   const [data, setData] = useState({
     cls: 'X', board: 'CBSE',
@@ -321,6 +321,7 @@ export default function OnboardingPage() {
 
   const finish = async () => {
     await saveUserProfile(data)  // saves to Supabase + localStorage
+    markOnboardingDone()         // open the gate immediately (avoids redirect loop)
     navigate('/')
   }
 

@@ -3,31 +3,21 @@ import { useAuth } from '../contexts/AuthContext'
 import Loading from './Loading'
 
 /**
- * Auth + onboarding gate:
- * - user === undefined → loading (auth state resolving)
- * - user === null → not logged in → redirect to /onboarding
- * - user exists but no onboarding-done → redirect to /onboarding
- * - user exists + onboarding-done → render children
+ * Auth + onboarding gate. Onboarding status comes from AuthContext, where the
+ * DB profile is authoritative (localStorage is only a fallback), so an existing
+ * account that already onboarded is never asked to onboard again on re-login.
+ * - user === undefined OR onboardingDone === undefined → loading (resolving)
+ * - onboardingDone false → redirect to /onboarding (has sign-in buttons)
+ * - onboardingDone true → render children
  */
 export default function ProtectedRoute({ children }) {
-  const { user } = useAuth()
+  const { user, onboardingDone } = useAuth()
 
-  if (user === undefined) {
+  // Still resolving auth state or the DB onboarding check
+  if (user === undefined || onboardingDone === undefined) {
     return <Loading />
   }
 
-  // Not logged in → onboarding (which has sign-in buttons)
-  if (user === null) {
-    const onboardingDone = localStorage.getItem('onboarding-done')
-    if (!onboardingDone) {
-      return <Navigate to="/onboarding" replace />
-    }
-    // Onboarding done but not authenticated — still allow access for dev
-    return children
-  }
-
-  // Logged in but hasn't completed onboarding
-  const onboardingDone = localStorage.getItem('onboarding-done')
   if (!onboardingDone) {
     return <Navigate to="/onboarding" replace />
   }

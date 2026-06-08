@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
+import { fetchUserProfile } from '../lib/userdata'
 
 const AuthContext = createContext(null)
 
@@ -7,6 +8,9 @@ export function AuthProvider({ children }) {
   // undefined = still loading; null = logged out; object = logged in
   const [user, setUser]       = useState(undefined)
   const [session, setSession] = useState(null)
+  // undefined = not yet resolved; true/false = whether onboarding is complete.
+  // The DB profile is authoritative — localStorage is only a cache/fallback.
+  const [onboardingDone, setOnboardingDone] = useState(undefined)
 
   useEffect(() => {
     let resolved = false
@@ -66,6 +70,41 @@ export function AuthProvider({ children }) {
     }
   }, [])
 
+  // Resolve onboarding status whenever the signed-in account changes.
+  // For a real (non-anonymous) user the DB profile decides — so an existing
+  // account that already onboarded is never asked to onboard again, and a
+  // brand-new account always is. localStorage is only a fast fallback.
+  const userKey = user === undefined ? '__loading__' : user === null ? '__none__' : user.id
+  useEffect(() => {
+    if (user === undefined) return // auth still resolving
+    if (user === null) {
+      setOnboardingDone(!!localStorage.getItem('onboarding-done'))
+      return
+    }
+    if (user.is_anonymous) {
+      setOnboardingDone(!!localStorage.getItem('onboarding-done'))
+      return
+    }
+    let cancelled = false
+    setOnboardingDone(undefined) // show loading until the DB answers
+    fetchUserProfile()
+      .then(p => {
+        if (cancelled) return
+        const done = !!(p && p.onboardingDone)
+        setOnboardingDone(done)
+        if (done) localStorage.setItem('onboarding-done', 'true')
+        else localStorage.removeItem('onboarding-done')
+      })
+      .catch(() => { if (!cancelled) setOnboardingDone(!!localStorage.getItem('onboarding-done')) })
+    return () => { cancelled = true }
+  }, [userKey])
+
+  // Called by the onboarding wizard on completion so the gate opens immediately.
+  const markOnboardingDone = () => {
+    localStorage.setItem('onboarding-done', 'true')
+    setOnboardingDone(true)
+  }
+
   const signInWithGoogle = () =>
     supabase.auth.signInWithOAuth({
       provider: 'google',
@@ -84,7 +123,7 @@ export function AuthProvider({ children }) {
   const signOut = () => supabase.auth.signOut()
 
   return (
-    <AuthContext.Provider value={{ user, session, signInWithGoogle, signInWithLinkedin, signOut }}>
+    <AuthContext.Provider value={{ user, session, onboardingDone, markOnboardingDone, signInWithGoogle, signInWithLinkedin, signOut }}>
       {children}
     </AuthContext.Provider>
   )

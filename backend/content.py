@@ -61,11 +61,34 @@ def get_exercise(chapter_id: int, ex_id: str) -> dict | None:
     return None
 
 
+@lru_cache(maxsize=64)
+def rich_section_count(chapter_id: int) -> int | None:
+    """Number of sections StudyView actually renders for a chapter.
+
+    StudyView reads ch{id}_rich.json (the /rich endpoint), which dedups
+    sections by id. This can differ from the basic ncert_chapters.json — e.g.
+    a stray exercise line sometimes leaks into the basic sections list. The
+    completion UI indexes into these rich sections, so progress must be
+    measured against this count. Returns None when no rich file exists.
+    """
+    rich_path = Path(f"data/ch{chapter_id}_rich.json")
+    if not rich_path.exists():
+        return None
+    try:
+        data = json.loads(rich_path.read_text(encoding="utf-8"))
+        return len({s["id"] for s in data.get("sections", [])})
+    except Exception:
+        return None
+
+
 def chapters_summary() -> list[dict]:
     """Lightweight list for landing page."""
     result = []
     for c in load_chapters():
-        section_count  = len(c.get("sections", []))
+        # Prefer the rich section count (what StudyView renders and what the
+        # completion UI marks); fall back to the basic list if no rich file.
+        rich_count = rich_section_count(c["id"])
+        section_count = rich_count if rich_count is not None else len(c.get("sections", []))
         subtopic_count = sum(len(s.get("subtopics", [])) for s in c.get("sections", []))
         exercise_count = len(c.get("exercises", []))
         result.append({

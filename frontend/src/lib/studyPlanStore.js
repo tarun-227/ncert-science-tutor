@@ -1,24 +1,44 @@
-// Study plan store — Supabase-backed with localStorage fallback
-// ──────────────────────────────────────────────────────────────
+// Study plan store — Supabase only, no localStorage
 import { supabase, getCurrentUser } from './supabase'
 
-const LS_PLANS = 'study-plans'
-
-// ─── Helper: get current user id (resilient to token expiry) ───────────────────
 async function getUserId() {
   const user = await getCurrentUser()
   return user?.id || null
+}
+
+// ── One-time migration of old localStorage section completion data ─────────────
+// Runs once per session (guarded by a module-level flag). Reads any
+// ch-{N}-doneSections keys left by the old code, upserts them into Supabase,
+// then removes the localStorage keys so they don't migrate again.
+let _migrationDone = false
+export async function migrateOldSectionCompletion() {
+  if (_migrationDone) return
+  _migrationDone = true
+  try {
+    const userId = await getUserId()
+    if (!userId) return
+    const keysToMigrate = Object.keys(localStorage).filter(k => /^ch-\d+-doneSections$/.test(k))
+    if (!keysToMigrate.length) return
+    for (const key of keysToMigrate) {
+      const chapterId = parseInt(key.match(/ch-(\d+)-doneSections/)[1])
+      const raw = localStorage.getItem(key)
+      const indices = raw ? JSON.parse(raw) : []
+      if (!Array.isArray(indices) || !indices.length) { localStorage.removeItem(key); continue }
+      const rows = indices.map(i => ({ user_id: userId, chapter_id: chapterId, section_index: i }))
+      await supabase.from('section_completion').upsert(rows, { onConflict: 'user_id,chapter_id,section_index' })
+      localStorage.removeItem(key)
+    }
+  } catch { /* silent — stale local data isn't critical */ }
 }
 
 // ═══════════════════════════════════════════════════════════
 // STUDY PLANS
 // ═══════════════════════════════════════════════════════════
 
-// Load from Supabase, fall back to localStorage
 export async function loadPlansAsync() {
   try {
     const userId = await getUserId()
-    if (!userId) return loadPlansLocal()
+    if (!userId) return []
 
     const { data, error } = await supabase
       .from('study_plans')
@@ -28,8 +48,7 @@ export async function loadPlansAsync() {
 
     if (error) throw error
 
-    // Normalise DB rows → client shape
-    const dbPlans = (data || []).map(row => ({
+    return (data || []).map(row => ({
       id: row.id,
       name: row.name,
       selections: row.selections,
@@ -37,42 +56,15 @@ export async function loadPlansAsync() {
       target: row.target_date,
       createdAt: row.created_at?.slice(0, 10),
     }))
-
-    // Merge: DB is authoritative for plans it knows about, but keep any
-    // local-only plans that never made it to DB (e.g. during an RLS error or
-    // offline upsert failure). This prevents plans from vanishing when DB
-    // returns an empty list due to a write that never persisted.
-    const localPlans = loadPlansLocal()
-    const dbIds = new Set(dbPlans.map(p => p.id))
-    const localOnly = localPlans.filter(p => !dbIds.has(p.id))
-    const merged = [...dbPlans, ...localOnly]
-
-    localStorage.setItem(LS_PLANS, JSON.stringify(merged))
-    return merged
   } catch {
-    return loadPlansLocal()
+    return []
   }
 }
 
-export function loadPlansLocal() {
-  try {
-    const raw = localStorage.getItem(LS_PLANS)
-    return raw ? JSON.parse(raw) : []
-  } catch { return [] }
-}
-
 export async function upsertPlanAsync(plan) {
-  // Optimistic local update first
-  const localPlans = loadPlansLocal()
-  const idx = localPlans.findIndex(p => p.id === plan.id)
-  if (idx >= 0) localPlans[idx] = plan
-  else localPlans.unshift(plan)
-  localStorage.setItem(LS_PLANS, JSON.stringify(localPlans))
-
-  // Persist to Supabase
   try {
     const userId = await getUserId()
-    if (!userId) return localPlans
+    if (!userId) return []
 
     await supabase.from('study_plans').upsert({
       id: plan.id,
@@ -83,21 +75,18 @@ export async function upsertPlanAsync(plan) {
       target_date: plan.target,
     }, { onConflict: 'id' })
   } catch (e) {
-    console.warn('[plans] DB upsert failed, kept local:', e)
+    console.warn('[plans] DB upsert failed:', e)
   }
-  return localPlans
+  return loadPlansAsync()
 }
 
 export async function deletePlanAsync(planId) {
-  const localPlans = loadPlansLocal().filter(p => p.id !== planId)
-  localStorage.setItem(LS_PLANS, JSON.stringify(localPlans))
-
   try {
     await supabase.from('study_plans').delete().eq('id', planId)
   } catch (e) {
     console.warn('[plans] DB delete failed:', e)
   }
-  return localPlans
+  return loadPlansAsync()
 }
 
 
@@ -108,7 +97,7 @@ export async function deletePlanAsync(planId) {
 export async function getDoneSectionsAsync(chapterId) {
   try {
     const userId = await getUserId()
-    if (!userId) return getDoneSectionsLocal(chapterId)
+    if (!userId) return []
 
     const { data, error } = await supabase
       .from('section_completion')
@@ -117,38 +106,41 @@ export async function getDoneSectionsAsync(chapterId) {
       .eq('chapter_id', chapterId)
 
     if (error) throw error
-    const indices = (data || []).map(r => r.section_index)
-    localStorage.setItem(`ch-${chapterId}-doneSections`, JSON.stringify(indices))
-    return indices
+    return (data || []).map(r => r.section_index)
   } catch {
-    return getDoneSectionsLocal(chapterId)
+    return []
   }
 }
 
-export function getDoneSectionsLocal(chapterId) {
+// Fetch done section indices for multiple chapters in one query (used by PlanCard)
+export async function getDoneSectionsForChapters(chapterIds) {
+  if (!chapterIds.length) return {}
   try {
-    const raw = localStorage.getItem(`ch-${chapterId}-doneSections`)
-    return raw ? JSON.parse(raw) : []
-  } catch { return [] }
-}
+    const userId = await getUserId()
+    if (!userId) return {}
 
-// Keep sync version for immediate UI updates (writes local, fires DB async)
-export function getDoneSections(chapterId) {
-  return getDoneSectionsLocal(chapterId)
+    const { data, error } = await supabase
+      .from('section_completion')
+      .select('chapter_id, section_index')
+      .eq('user_id', userId)
+      .in('chapter_id', chapterIds)
+
+    if (error) throw error
+    const result = {}
+    for (const r of (data || [])) {
+      if (!result[r.chapter_id]) result[r.chapter_id] = []
+      result[r.chapter_id].push(r.section_index)
+    }
+    return result
+  } catch {
+    return {}
+  }
 }
 
 export async function markSectionDoneAsync(chapterId, sectionIndex) {
-  // Local first
-  const done = getDoneSectionsLocal(chapterId)
-  if (!done.includes(sectionIndex)) {
-    done.push(sectionIndex)
-    localStorage.setItem(`ch-${chapterId}-doneSections`, JSON.stringify(done))
-  }
-
-  // DB async
   try {
     const userId = await getUserId()
-    if (!userId) return done
+    if (!userId) return []
     await supabase.from('section_completion').upsert({
       user_id: userId,
       chapter_id: chapterId,
@@ -157,27 +149,24 @@ export async function markSectionDoneAsync(chapterId, sectionIndex) {
   } catch (e) {
     console.warn('[completion] DB upsert failed:', e)
   }
-  return done
+  return getDoneSectionsAsync(chapterId)
 }
 
-// Sync alias used internally
-export function markSectionDone(chapterId, sectionIndex) {
-  const done = getDoneSectionsLocal(chapterId)
-  if (!done.includes(sectionIndex)) {
-    done.push(sectionIndex)
-    localStorage.setItem(`ch-${chapterId}-doneSections`, JSON.stringify(done))
+export async function unmarkSectionDoneAsync(chapterId, sectionIndex) {
+  try {
+    const userId = await getUserId()
+    if (!userId) return []
+    await supabase.from('section_completion')
+      .delete()
+      .eq('user_id', userId)
+      .eq('chapter_id', chapterId)
+      .eq('section_index', sectionIndex)
+  } catch (e) {
+    console.warn('[completion] DB delete failed:', e)
   }
-  // Fire-and-forget DB write
-  markSectionDoneAsync(chapterId, sectionIndex)
-  return done
+  return getDoneSectionsAsync(chapterId)
 }
 
-export function isChapterComplete(chapterId, fallbackTotal) {
-  const done = getDoneSectionsLocal(chapterId)
-  const stored = parseInt(localStorage.getItem(`ch-${chapterId}-totalSections`) || '0')
-  const total = stored > 0 ? stored : fallbackTotal
-  return total > 0 && done.length >= total
-}
 
 // ═══════════════════════════════════════════════════════════
 // TUTOR SUMMARY CACHE
@@ -208,16 +197,6 @@ export async function saveSummaryCache(chapterId, sectionId, depth, summary) {
   } catch {}
 }
 
-// ═══════════════════════════════════════════════════════════
-// PLAN SYNC (chapter completion → plan progress)
-// ═══════════════════════════════════════════════════════════
-
-// Cache the actual rich-section count so isChapterComplete uses the right threshold.
-export function syncPlanCompletions(chapterId, totalSections) {
-  if (totalSections > 0) {
-    localStorage.setItem(`ch-${chapterId}-totalSections`, String(totalSections))
-  }
-}
 
 // ═══════════════════════════════════════════════════════════
 // TIME ESTIMATION

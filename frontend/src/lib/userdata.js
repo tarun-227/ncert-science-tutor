@@ -1,10 +1,6 @@
 /**
  * userdata.js — all Supabase student-data helpers.
- *
- * Every function follows the same pattern:
- *   1. Try Supabase (authoritative)
- *   2. On success, sync result back to localStorage as a local cache
- *   3. On error, fall back to localStorage so the app still works offline
+ * Pure Supabase — no localStorage reads or writes for user data.
  */
 import { supabase, getCurrentUser } from './supabase'
 
@@ -17,14 +13,9 @@ export async function fetchReadSections(chapterId) {
       .select('section_id')
       .eq('chapter_id', chapterId)
     if (error) throw error
-    const result = new Set(data.map(r => r.section_id))
-    localStorage.setItem(`ch-${chapterId}-readSections`, JSON.stringify([...result]))
-    return result
+    return new Set(data.map(r => r.section_id))
   } catch {
-    try {
-      const raw = localStorage.getItem(`ch-${chapterId}-readSections`)
-      return raw ? new Set(JSON.parse(raw)) : new Set()
-    } catch { return new Set() }
+    return new Set()
   }
 }
 
@@ -44,7 +35,7 @@ export async function toggleReadSection(chapterId, sectionId, isRead) {
         .eq('chapter_id', chapterId)
         .eq('section_id', sectionId)
     }
-  } catch { /* silent — local state already updated optimistically */ }
+  } catch { /* silent */ }
 }
 
 // ── Notes ─────────────────────────────────────────────────────────────────────
@@ -56,14 +47,9 @@ export async function fetchNotes(chapterId) {
       .select('section_id, content')
       .eq('chapter_id', chapterId)
     if (error) throw error
-    const result = Object.fromEntries(data.map(r => [r.section_id, r.content]))
-    localStorage.setItem(`notes-ch-${chapterId}`, JSON.stringify(result))
-    return result
+    return Object.fromEntries(data.map(r => [r.section_id, r.content]))
   } catch {
-    try {
-      const raw = localStorage.getItem(`notes-ch-${chapterId}`)
-      return raw ? JSON.parse(raw) : {}
-    } catch { return {} }
+    return {}
   }
 }
 
@@ -87,14 +73,9 @@ export async function fetchHighlights(chapterId) {
       .select('paragraph_id')
       .eq('chapter_id', chapterId)
     if (error) throw error
-    const result = Object.fromEntries(data.map(r => [r.paragraph_id, true]))
-    localStorage.setItem(`st3_hl_${chapterId}`, JSON.stringify(result))
-    return result
+    return Object.fromEntries(data.map(r => [r.paragraph_id, true]))
   } catch {
-    try {
-      const raw = localStorage.getItem(`st3_hl_${chapterId}`)
-      return raw ? JSON.parse(raw) : {}
-    } catch { return {} }
+    return {}
   }
 }
 
@@ -127,12 +108,11 @@ export async function fetchAllChapterProgress() {
     if (error) throw error
     const counts = {}
     data.forEach(r => { counts[r.chapter_id] = (counts[r.chapter_id] || 0) + 1 })
-    return counts  // { 3: 4, 5: 2, ... }
+    return counts
   } catch { return {} }
 }
 
 // ── Tutor saved notes (array of snippets per section) ────────────────────────
-// Stored in the notes table — the array is JSON-serialized into `content`.
 
 export async function fetchTutorNotes(chapterId, sectionId) {
   const tSectionId = `_t:${sectionId}`
@@ -143,23 +123,17 @@ export async function fetchTutorNotes(chapterId, sectionId) {
       .eq('chapter_id', chapterId)
       .eq('section_id', tSectionId)
       .maybeSingle()
-    if (error || !data) throw new Error('miss')
+    if (error || !data) return []
     const arr = JSON.parse(data.content)
-    localStorage.setItem(`tnotes-${chapterId}-${sectionId}`, data.content)
     return Array.isArray(arr) ? arr : []
   } catch {
-    try {
-      const raw = localStorage.getItem(`tnotes-${chapterId}-${sectionId}`)
-      const arr = raw ? JSON.parse(raw) : []
-      return Array.isArray(arr) ? arr : []
-    } catch { return [] }
+    return []
   }
 }
 
 export async function saveTutorNotes(chapterId, sectionId, notesArray) {
   const tSectionId = `_t:${sectionId}`
   const json = JSON.stringify(notesArray)
-  localStorage.setItem(`tnotes-${chapterId}-${sectionId}`, json)
   try {
     const user = await getCurrentUser()
     if (!user) return
@@ -170,10 +144,7 @@ export async function saveTutorNotes(chapterId, sectionId, notesArray) {
   } catch { /* silent */ }
 }
 
-// ── Profile analytics (real stats + per-subject progress) ────────────────────
-// Pulls the raw completion + notes rows for the signed-in user in one shot so
-// the profile page can compute streak / sections / study-time / notes and
-// per-subject progress from real data.
+// ── Profile analytics ─────────────────────────────────────────────────────────
 
 export async function fetchProfileData() {
   try {
@@ -181,11 +152,12 @@ export async function fetchProfileData() {
     if (!user) return { completions: [], notes: [] }
     const [comp, notes] = await Promise.all([
       supabase.from('section_completion')
-        .select('chapter_id, section_index, created_at')
+        .select('chapter_id, section_index, created_at:completed_at')
         .eq('user_id', user.id),
       supabase.from('notes')
         .select('section_id, content, created_at')
-        .eq('user_id', user.id),
+        .eq('user_id', user.id)
+        .not('section_id', 'like', '_t:%'),
     ])
     return { completions: comp.data || [], notes: notes.data || [] }
   } catch {
@@ -196,12 +168,12 @@ export async function fetchProfileData() {
 // ── User Profile (onboarding data) ───────────────────────────────────────────
 
 export async function saveUserProfile(profileData) {
+  // Always keep onboarding-data in localStorage as a fast-load cache for the topbar
+  localStorage.setItem('onboarding-data', JSON.stringify(profileData))
+  localStorage.setItem('onboarding-done', 'true')
   try {
     const user = await getCurrentUser()
-    if (!user) {
-      localStorage.setItem('onboarding-data', JSON.stringify(profileData))
-      return
-    }
+    if (!user) return
     await supabase.from('user_profiles').upsert({
       user_id: user.id,
       name: profileData.name || '',
@@ -213,12 +185,7 @@ export async function saveUserProfile(profileData) {
       pace: profileData.pace || 'balanced',
       onboarding_done: true,
     }, { onConflict: 'user_id' })
-    localStorage.setItem('onboarding-data', JSON.stringify(profileData))
-    localStorage.setItem('onboarding-done', 'true')
-  } catch {
-    localStorage.setItem('onboarding-data', JSON.stringify(profileData))
-    localStorage.setItem('onboarding-done', 'true')
-  }
+  } catch { /* silent — local cache already saved */ }
 }
 
 export async function fetchUserProfile() {
@@ -244,10 +211,20 @@ export async function fetchUserProfile() {
   } catch { return null }
 }
 
-// ── Local → Supabase migration (one-time, called from migration banner) ───────
+// ── One-time migration: localStorage → Supabase ───────────────────────────────
+// Runs once per session. Pushes any old localStorage data to Supabase then
+// removes those keys so it never migrates the same data twice.
+
+let _migrationDone = false
 
 export async function migrateLocalDataToSupabase() {
-  for (let chId = 1; chId <= 13; chId++) {
+  if (_migrationDone) return
+  _migrationDone = true
+
+  const user = await getCurrentUser()
+  if (!user) return
+
+  for (let chId = 1; chId <= 23; chId++) {
     // Notes
     try {
       const raw = localStorage.getItem(`notes-ch-${chId}`)
@@ -256,6 +233,7 @@ export async function migrateLocalDataToSupabase() {
         for (const [sectionId, content] of Object.entries(notes)) {
           if (content) await saveNote(chId, sectionId, content)
         }
+        localStorage.removeItem(`notes-ch-${chId}`)
       }
     } catch { /* skip */ }
 
@@ -267,6 +245,7 @@ export async function migrateLocalDataToSupabase() {
         for (const sectionId of sections) {
           await toggleReadSection(chId, sectionId, true)
         }
+        localStorage.removeItem(`ch-${chId}-readSections`)
       }
     } catch { /* skip */ }
 
@@ -276,7 +255,22 @@ export async function migrateLocalDataToSupabase() {
       if (raw) {
         const hl = JSON.parse(raw)
         for (const paragraphId of Object.keys(hl)) {
-          await toggleHighlight(chId, paragraphId, true)
+          if (hl[paragraphId]) await toggleHighlight(chId, paragraphId, true)
+        }
+        localStorage.removeItem(`st3_hl_${chId}`)
+      }
+    } catch { /* skip */ }
+
+    // Tutor notes (tnotes-{chId}-{sectionId})
+    try {
+      const tKeys = Object.keys(localStorage).filter(k => k.startsWith(`tnotes-${chId}-`))
+      for (const key of tKeys) {
+        const sectionId = key.replace(`tnotes-${chId}-`, '')
+        const raw = localStorage.getItem(key)
+        if (raw) {
+          const arr = JSON.parse(raw)
+          if (Array.isArray(arr) && arr.length) await saveTutorNotes(chId, sectionId, arr)
+          localStorage.removeItem(key)
         }
       }
     } catch { /* skip */ }

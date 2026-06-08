@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
 import Icon from './Icons'
 import {
-  loadPlansAsync, loadPlansLocal,
-  upsertPlanAsync, deletePlanAsync,
-  chapterMinutes, getDoneSectionsLocal, isChapterComplete,
+  loadPlansAsync, upsertPlanAsync, deletePlanAsync,
+  chapterMinutes, getDoneSectionsForChapters,
 } from '../lib/studyPlanStore'
 import './StudyPlans.css'
 
@@ -56,7 +55,7 @@ function StartModal({ plan, chapters, onClose, onStart }) {
 
 // ─── PlanCard — single study plan ────────────────────────────
 
-function PlanCard({ plan, chapters, onDelete, onEdit, onStart }) {
+function PlanCard({ plan, chapters, doneByChapter, onDelete, onEdit, onStart }) {
   const [confirmDelete, setConfirmDelete] = useState(false)
   const [showStart, setShowStart] = useState(false)
 
@@ -65,9 +64,13 @@ function PlanCard({ plan, chapters, onDelete, onEdit, onStart }) {
   const totalChapters = planChapters.length
   const totalMinutes = planChapters.reduce((a, c) => a + chapterMinutes(c), 0)
 
-  // Compute completed chapters live from section_completion (localStorage + Supabase cache)
+  // Compute completed chapters from Supabase-loaded doneByChapter map
   const doneIds = planChapters
-    .filter(ch => isChapterComplete(ch.id, ch.subtopic_count || 0))
+    .filter(ch => {
+      const done = (doneByChapter || {})[ch.id] || []
+      const total = ch.subtopic_count || 0
+      return total > 0 && done.length >= total
+    })
     .map(ch => ch.id)
   const chaptersDone = doneIds.length
   const doneMinutes = planChapters.filter(c => doneIds.includes(c.id)).reduce((a, c) => a + chapterMinutes(c), 0)
@@ -446,13 +449,17 @@ function PlanModal({ onClose, onCreate, initial, chapters, planNumber }) {
 // ─── StudyPlansSection — dashboard widget ────────────────────
 
 export default function StudyPlansSection({ chapters, chaptersLoading, onOpenChapter }) {
-  const [plans, setPlans] = useState(() => loadPlansLocal())
+  const [plans, setPlans] = useState([])
+  const [doneByChapter, setDoneByChapter] = useState({})
   const [showModal, setShowModal] = useState(false)
   const [editing, setEditing] = useState(null)
 
-  // Load from Supabase on mount
   useEffect(() => {
-    loadPlansAsync().then(setPlans)
+    loadPlansAsync().then(p => {
+      setPlans(p)
+      const allIds = [...new Set(p.flatMap(pl => pl.selections.flatMap(s => s.chapterIds)))]
+      if (allIds.length) getDoneSectionsForChapters(allIds).then(setDoneByChapter)
+    })
   }, [])
 
   const handleCreate = async (plan) => {
@@ -500,6 +507,7 @@ export default function StudyPlansSection({ chapters, chaptersLoading, onOpenCha
               key={p.id}
               plan={p}
               chapters={chapters}
+              doneByChapter={doneByChapter}
               onDelete={handleDelete}
               onEdit={handleEdit}
               onStart={handleStart}

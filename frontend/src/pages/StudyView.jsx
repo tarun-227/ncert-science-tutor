@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo, Fragment } from 'react'
 import Icon from '../components/Icons'
 import {
-  getDoneSections, getDoneSectionsAsync, markSectionDone, syncPlanCompletions,
+  getDoneSectionsAsync, markSectionDoneAsync, unmarkSectionDoneAsync,
   getCachedSummary, saveSummaryCache,
 } from '../lib/studyPlanStore'
 import { fetchTutorNotes, saveTutorNotes } from '../lib/userdata'
@@ -923,27 +923,23 @@ export default function StudyView({ studyMode, chapterId, setChapterId }) {
   useEffect(() => {
     if (!chapterId) return
     setCurrentSection(0); setRichData(null); setChapter(null)
-    setDoneSections(getDoneSections(chapterId))
     getDoneSectionsAsync(chapterId).then(setDoneSections)
     Promise.all([
       fetch(`/api/chapters/${chapterId}`).then(r => r.json()),
       fetch(`/api/chapters/${chapterId}/rich`).then(r => r.json()),
     ]).then(([ch, rich]) => {
       setChapter(ch); setRichData(rich)
-      if (rich?.sections?.length) syncPlanCompletions(chapterId, rich.sections.length)
     }).catch(() => {})
   }, [chapterId])
 
   const handleMarkDone = (sectionIndex, undo = false) => {
     if (undo) {
-      const next = doneSections.filter(s => s !== sectionIndex)
-      setDoneSections(next)
-      localStorage.setItem(`ch-${chapterId}-doneSections`, JSON.stringify(next))
+      setDoneSections(prev => prev.filter(s => s !== sectionIndex))
+      unmarkSectionDoneAsync(chapterId, sectionIndex)
       return
     }
-    const updated = markSectionDone(chapterId, sectionIndex)
-    setDoneSections([...updated])
-    syncPlanCompletions(chapterId, richData?.sections?.length || 0)
+    setDoneSections(prev => prev.includes(sectionIndex) ? prev : [...prev, sectionIndex])
+    markSectionDoneAsync(chapterId, sectionIndex)
   }
 
   const onChapterChange = (id) => setChapterId(id)

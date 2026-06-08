@@ -16,15 +16,31 @@ except ImportError:
 
 MAX_HISTORY = 10  # last 10 pairs = 20 messages
 
-def _use_db() -> bool:
-    return _sb is not None
+import uuid as _uuid
+
+def _valid_uid(user_id: str) -> bool:
+    """True only for real Supabase UUIDs. Placeholder ids like "anonymous"
+    or "dev-user" would fail the uuid column / auth.users FK, so we skip the
+    DB and let the in-memory store handle those sessions."""
+    try:
+        _uuid.UUID(str(user_id))
+        return True
+    except (ValueError, TypeError):
+        return False
+
+def _use_db(user_id: str = None) -> bool:
+    if _sb is None:
+        return False
+    if user_id is not None and not _valid_uid(user_id):
+        return False
+    return True
 
 
 # ── Session management ────────────────────────────────────────────────────────
 
 def get_or_create(session_id: str, user_id: str = "anonymous", chapter_id: int = 0) -> dict:
     """Ensure a chat_sessions row exists and return it."""
-    if not _use_db():
+    if not _use_db(user_id):
         return _mem.get_or_create(session_id)
     try:
         res = _sb.table("chat_sessions").select("*").eq("id", session_id).maybe_single().execute()
@@ -46,7 +62,7 @@ def get_or_create(session_id: str, user_id: str = "anonymous", chapter_id: int =
 def set_context(session_id: str, chapter_id: int | None, subtopic_id: str | None,
                 user_id: str = "anonymous") -> None:
     """Update the chapter + subtopic context for a session."""
-    if not _use_db():
+    if not _use_db(user_id):
         _mem.set_context(session_id, chapter_id, subtopic_id)
         return
     try:
@@ -63,7 +79,7 @@ def set_context(session_id: str, chapter_id: int | None, subtopic_id: str | None
 def add_message(session_id: str, role: str, content: str,
                 user_id: str = "anonymous") -> None:
     """Append a single message to a session."""
-    if not _use_db():
+    if not _use_db(user_id):
         _mem.add_message(session_id, role, content)
         return
     try:

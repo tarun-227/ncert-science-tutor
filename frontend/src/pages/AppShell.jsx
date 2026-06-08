@@ -6,7 +6,8 @@ import SettingsPanel from '../components/SettingsPanel'
 import Dashboard from './Dashboard'
 import StudyView from './StudyView'
 import ProfilePage from './ProfilePage'
-import { fetchUserProfile, saveUserProfile } from '../lib/userdata'
+import { fetchUserProfile, saveUserProfile, migrateLocalDataToSupabase } from '../lib/userdata'
+import { migrateOldSectionCompletion } from '../lib/studyPlanStore'
 import { useAuth } from '../contexts/AuthContext'
 import './AppShell.css'
 
@@ -87,7 +88,7 @@ const Topbar = ({ view, setView, studyMode, setStudyMode, profile, onOpenProfile
 }
 
 export default function AppShell() {
-  const { signOut } = useAuth()
+  const { user, signOut } = useAuth()
   const navigate = useNavigate()
   const [view, setView] = useState('dashboard')
   const [studyMode, setStudyMode] = useState('tutor')
@@ -99,19 +100,34 @@ export default function AppShell() {
   const [activeSubject, setActiveSubject] = useState('science')
   const [profile, setProfile] = useState(null)
 
-  // Load profile — localStorage first (instant), then Supabase (authoritative)
+  // Migrate all old localStorage data to Supabase (runs once per session)
   useEffect(() => {
+    migrateOldSectionCompletion()
+    migrateLocalDataToSupabase()
+  }, [])
+
+  // Load profile for the CURRENT account. Re-runs whenever the signed-in user
+  // changes so switching Google accounts never shows the previous user's name.
+  useEffect(() => {
+    if (!user) return
     try {
       const raw = localStorage.getItem('onboarding-data')
-      if (raw) setProfile(JSON.parse(raw))
+      if (raw) setProfile(JSON.parse(raw)) // instant placeholder; reconciled below
     } catch {}
     fetchUserProfile().then(p => {
       if (p) {
         setProfile(p)
         localStorage.setItem('onboarding-data', JSON.stringify(p))
+      } else {
+        // New account with no saved profile yet — derive the name from the
+        // Google identity instead of leaving the previous account's name up.
+        const meta = user.user_metadata || {}
+        const fresh = { name: meta.full_name || meta.name || 'Student', cls: 'X', board: 'CBSE' }
+        setProfile(fresh)
+        localStorage.setItem('onboarding-data', JSON.stringify(fresh))
       }
     })
-  }, [])
+  }, [user?.id])
 
   // Apply + persist density/theme
   useEffect(() => {
@@ -138,9 +154,13 @@ export default function AppShell() {
     await saveUserProfile(next)
   }
 
-  // Log out of Supabase and return to the onboarding / sign-in screen
+  // Log out of Supabase and return to the onboarding / sign-in screen.
+  // Clear the cached profile so the next account doesn't inherit this name.
   const handleLogout = async () => {
     try { await signOut() } catch {}
+    localStorage.removeItem('onboarding-data')
+    localStorage.removeItem('onboarding-done')
+    setProfile(null)
     navigate('/onboarding')
   }
 

@@ -13,6 +13,13 @@ import Loading from './Loading'
 export default function ProtectedRoute({ children }) {
   const { user, onboardingDone } = useAuth()
 
+  // Local-dev convenience: skip the auth/onboarding gate so the UI can be
+  // previewed on `npm run dev` without signing in. import.meta.env.DEV is
+  // false in production builds, so Railway still enforces onboarding fully.
+  if (import.meta.env.DEV) {
+    return children
+  }
+
   // Still resolving auth state or the DB onboarding check
   if (user === undefined || onboardingDone === undefined) {
     return <Loading />

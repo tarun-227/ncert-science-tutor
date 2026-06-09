@@ -484,6 +484,7 @@ function AskPanel({ chapter, richData, currentSection, variant, triggerQuery }) 
   const [copiedId, setCopiedId] = useState(null)
   const [sessionId] = useState(() => `sv-${Date.now()}-${Math.random().toString(36).slice(2)}`)
   const bodyRef = useRef(null)
+  const latestAnswerRef = useRef(null)
   const lastTriggerIdRef = useRef(null)
   const sec = richData?.sections?.[currentSection]
 
@@ -494,7 +495,18 @@ function AskPanel({ chapter, richData, currentSection, variant, triggerQuery }) 
   }
 
   useEffect(() => { setAnswers([]) }, [currentSection, chapter?.id])
-  useEffect(() => { bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight, behavior: 'smooth' }) }, [answers])
+  // Scroll so the TOP of the latest Q&A block is visible — not the bottom.
+  // This way the student reads from the question down rather than arriving
+  // mid-answer or at the very end.
+  useEffect(() => {
+    if (!latestAnswerRef.current || !bodyRef.current) return
+    const container = bodyRef.current
+    const el = latestAnswerRef.current
+    const containerRect = container.getBoundingClientRect()
+    const elRect = el.getBoundingClientRect()
+    const scrollTarget = container.scrollTop + (elRect.top - containerRect.top) - 8
+    container.scrollTo({ top: Math.max(0, scrollTarget), behavior: 'smooth' })
+  }, [answers])
 
   const [flashing, setFlashing] = useState(false)
 
@@ -548,8 +560,8 @@ function AskPanel({ chapter, richData, currentSection, variant, triggerQuery }) 
           </div>
         ) : (
           <div className="tutor-answers">
-            {answers.map(ans => (
-              <div key={ans.id} className="tutor-ans">
+            {answers.map((ans, i) => (
+              <div key={ans.id} className="tutor-ans" ref={i === answers.length - 1 ? latestAnswerRef : null}>
                 <div className="tutor-ans-q">
                   <span className="tutor-ans-qmark"><Icon name="sparkles" size={12} /></span>
                   <span className="tutor-ans-qtext">{ans.q}</span>

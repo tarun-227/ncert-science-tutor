@@ -767,6 +767,13 @@ function TutorMode({ chapters, chapter, richData, currentSection, setCurrentSect
   })
 
   const isDone = doneSections.includes(currentSection)
+  const totalSecs = richData?.sections?.length || 0
+  const isLastSection = currentSection >= totalSecs - 1
+  const hasNext = !!(next && !next.disabled)
+  const nextIsChapter = isLastSection && hasNext // next jumps into a new chapter
+  const isFirstSection = currentSection <= 0
+  const hasPrev = !!(prev && !prev.disabled)
+  const prevIsChapter = isFirstSection && hasPrev // prev jumps into the previous chapter
   const blocks = useMemo(() => parseBlocks(cached || ''), [cached])
 
   // Notes view: parse grouped key points from cached notes-depth text
@@ -869,26 +876,32 @@ function TutorMode({ chapters, chapter, richData, currentSection, setCurrentSect
         </div>
       </div>
 
-      {/* Floating advance panel */}
-      {next && !next.disabled && (
-        <div className={`tutor-advance-float ${isDone ? 'is-done' : ''}`} aria-label="Finish section">
-          {isDone ? (
-            <>
-              <button className="tutor-advance-status" onClick={() => onMarkDone(currentSection, true)} title="Undo">
-                <span className="tutor-advance-status-ic"><Icon name="check" size={11} /></span> Completed
-              </button>
-              <button className="tutor-advance-done" onClick={() => next.go()} title="Next section">
-                <span>Move next</span><Icon name="arrow-right" size={13} />
-              </button>
-            </>
-          ) : (
-            <>
-              <button className="tutor-advance-skip" onClick={() => next.go()} title="Skip">Move next</button>
-              <button className="tutor-advance-done" onClick={() => { onMarkDone(currentSection); next.go() }} title="Mark complete & move next">
-                <span className="tutor-advance-done-ic"><Icon name="check" size={11} /></span>
-                <span>Mark Completed &amp; Move next</span>
-              </button>
-            </>
+      {/* Section actions: tick to mark complete (stays put) + plain next nav.
+          Clicking Next never marks the section complete. */}
+      {sec && (
+        <div className={`tutor-advance-float ${isDone ? 'is-done' : ''}`} aria-label="Section actions">
+          {hasPrev && (
+            <button className="tutor-advance-prev" onClick={() => prev.go()} title={prevIsChapter ? 'Previous chapter' : 'Previous section'}>
+              <Icon name="arrow-right" size={13} style={{ transform: 'rotate(180deg)' }} />
+              <span>{prevIsChapter ? 'Prev chapter' : 'Prev'}</span>
+            </button>
+          )}
+
+          <button
+            className={`tutor-advance-check ${isDone ? 'on' : ''}`}
+            onClick={() => onMarkDone(currentSection, isDone)}
+            aria-pressed={isDone}
+            title={isDone ? 'Marked complete — click to undo' : 'Mark as complete'}
+          >
+            <span className="tutor-advance-box">{isDone && <Icon name="check" size={12} />}</span>
+            <span>{isDone ? 'Marked complete' : 'Mark as complete'}</span>
+          </button>
+
+          {hasNext && (
+            <button className="tutor-advance-next" onClick={() => next.go()} title={nextIsChapter ? 'Next chapter' : 'Next section'}>
+              <span>{nextIsChapter ? 'Next chapter' : 'Next'}</span>
+              <Icon name="arrow-right" size={13} />
+            </button>
           )}
         </div>
       )}

@@ -861,7 +861,7 @@ export default function RichContent({
               color: 'var(--ink3)', letterSpacing: '.04em',
               marginBottom: 6,
             }}>
-              § {section.id} · {section.title}
+              {section.id} · {section.title}
             </div>
             <InTextQuestions block={itq} />
           </div>

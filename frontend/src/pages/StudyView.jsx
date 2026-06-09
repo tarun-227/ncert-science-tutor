@@ -663,7 +663,6 @@ function TutorBreadcrumb({ chapters, chapter, richData, currentSection, setCurre
               <button key={c.id} className={`tutor-bc-item ${c.id === chapter?.id ? 'on' : ''}`} onClick={() => { onChapterChange(c.id); setOpen(null) }}>
                 <span className="tutor-bc-badge">{ci + 1}</span>
                 <span className="tutor-bc-t">{c.title}</span>
-                <span className="tutor-bc-count">{c.subtopic_count}</span>
               </button>
             ))}
           </div>
@@ -674,7 +673,7 @@ function TutorBreadcrumb({ chapters, chapter, richData, currentSection, setCurre
 
       <div className="tutor-bc-pick">
         <button className={`tutor-bc-btn strong ${open === 'sec' ? 'open' : ''}`} onClick={() => setOpen(open === 'sec' ? null : 'sec')}>
-          <span className="tutor-bc-k">§{sec?.id}</span>
+          <span className="tutor-bc-k">{sec?.id}</span>
           <span className="tutor-bc-title">{sec?.title}</span>
           <Icon name="chev-down" size={13} />
         </button>
@@ -688,7 +687,7 @@ function TutorBreadcrumb({ chapters, chapter, richData, currentSection, setCurre
                     : doneSections.includes(si) ? <span className="tutor-bc-dot done" />
                     : <span className="tutor-bc-ring" />}
                 </span>
-                <span className="tutor-bc-k mono">§{s.id}</span>
+                <span className="tutor-bc-k mono">{s.id}</span>
                 <span className="tutor-bc-t">{s.title}</span>
               </button>
             ))}

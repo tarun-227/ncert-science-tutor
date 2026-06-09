@@ -78,7 +78,7 @@ function NotesPanel({ sections, chapterId }) {
         </div>
         <textarea
           value={draft} onChange={e => setDraft(e.target.value)}
-          placeholder={`Write notes for §${activeSec} here…\n\nTip: use your own words — it sticks better! 💡`}
+          placeholder={`Write notes for ${activeSec} here…\n\nTip: use your own words — it sticks better! 💡`}
           style={{
             flex: 1, resize: 'none',
             border: '1.5px solid var(--bg3)', borderRadius: 'var(--radius-lg)',

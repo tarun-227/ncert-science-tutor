@@ -1,0 +1,37 @@
+{
+ "id": 34,
+ "title": "For Anne Gregory",
+ "subject": "English",
+ "sections": [
+  {
+   "id": "34.1",
+   "title": "For Anne Gregory",
+   "blocks": [
+    {
+     "type": "text",
+     "content": "This poem is a conversation between a young man and a young woman. What are they arguing about?"
+    },
+    {
+     "type": "poem",
+     "content": "“Never shall a young man,\nThrown into despair\nBy those great honey-coloured\nRamparts at your ear,\nLove you for yourself alone\nAnd not your yellow hair.”\n\n“But I can get a hair-dye\nAnd set such colour there,\nBrown, or black, or carrot,\nThat young men in despair\nMay love me for myself alone\nAnd not my yellow hair.”\n\n“I heard an old religious man\nBut yesternight declare\nThat he had found a text to prove\nThat only God, my dear,\nCould love you for yourself alone\nAnd not your yellow hair.”\n\nWilliam Butler Yeats"
+    }
+   ]
+  },
+  {
+   "id": "34.2",
+   "title": "Questions",
+   "blocks": [
+    {
+     "type": "subsection",
+     "title": "Thinking about the Poem",
+     "blocks": [
+      {
+       "type": "text",
+       "content": "ramparts: the high, wide walls around a castle or fort, for example, the ramparts of the Red Fort"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

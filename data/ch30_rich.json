@@ -1,0 +1,33 @@
+{
+ "id": 30,
+ "title": "Fog",
+ "subject": "English",
+ "sections": [
+  {
+   "id": "30.1",
+   "title": "Fog",
+   "blocks": [
+    {
+     "type": "poem",
+     "content": "The fog comes\non little cat feet.\nIt sits looking\nover harbour and city\non silent haunches\nand then moves on.\n\nCarl Sandburg"
+    }
+   ]
+  },
+  {
+   "id": "30.2",
+   "title": "Questions",
+   "blocks": [
+    {
+     "type": "subsection",
+     "title": "Thinking about the Poem",
+     "blocks": [
+      {
+       "type": "text",
+       "content": "1.\n\n(i) What does Sandburg think the fog is like?\n\n(ii) How does the fog come?\n\n(iii) What does ‘it’ in the third line refer to?\n\n(iv) Does the poet actually say that the fog is like a cat? Find three things that tell us that the fog is like a cat.\n\n2. You know that a metaphor compares two things by transferring a feature of one thing to the other (See Unit 1).\n\n(i) Find metaphors for the following words and complete the table below. Also try to say how they are alike. The first is done for you. Storm tiger pounces over the fields, growls Train Fire School Home\n\n(ii) Think about a storm. Try to visualise the force of the storm, hear the sound of the storm, feel the power of the storm and the sudden calm that happens afterwards. Write a poem about the storm comparing it with an animal.\n\n3. Does this poem have a rhyme scheme? Poetry that does not have an obvious rhythm or rhyme is called ‘free verse’."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

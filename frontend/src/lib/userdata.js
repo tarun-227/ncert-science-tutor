@@ -224,7 +224,7 @@ export async function migrateLocalDataToSupabase() {
   const user = await getCurrentUser()
   if (!user) return
 
-  for (let chId = 1; chId <= 23; chId++) {
+  for (let chId = 1; chId <= 35; chId++) {
     // Notes
     try {
       const raw = localStorage.getItem(`notes-ch-${chId}`)

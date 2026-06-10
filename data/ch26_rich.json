@@ -1,0 +1,37 @@
+{
+ "id": 26,
+ "title": "Animals",
+ "subject": "English",
+ "sections": [
+  {
+   "id": "26.1",
+   "title": "Animals",
+   "blocks": [
+    {
+     "type": "text",
+     "content": "The poet tells us that he feels more at home with animals than humans, whom he finds complicated and false."
+    },
+    {
+     "type": "poem",
+     "content": "I think I could turn and live with animals, they are\nso placid and self-contain’d,\nI stand and look at them long and long.\n\nThey do not sweat and whine about their condition,\nThey do not lie awake in the dark and weep for their sins,\nThey do not make me sick discussing their duty to God,\nNot one is dissatisfied, not one is demented with\nthe mania of owning things,\nNot one kneels to another, nor to his kind that\nlived thousands of years ago,\nNot one is respectable or unhappy over the whole earth.\nSo they show their relations to me and I accept them,\nThey bring me tokens of myself, they evince\nthem plainly in their possession\n\nI wonder where they get those tokens,\nDid I pass that way huge times ago and negligently drop them?\n\nWalt Whitman"
+    }
+   ]
+  },
+  {
+   "id": "26.2",
+   "title": "Questions",
+   "blocks": [
+    {
+     "type": "subsection",
+     "title": "Thinking about the Poem",
+     "blocks": [
+      {
+       "type": "text",
+       "content": "1. Notice the use of the word ‘turn’ in the first line, “I think I could turn and live with animals…”. What is the poet turning from?\n\n2. Mention three things that humans do and animals don’t.\n\n3. Do humans kneel to other humans who lived thousands of years ago? Discuss this in groups.\n\n4. What are the ‘tokens’ that the poet says he may have dropped long ago, and which the animals have kept for him? Discuss this in class. (Hint: Whitman belongs to the Romantic tradition that includes Rousseau and Wordsworth, which holds that civilisation has made humans false to their own true nature. What could be the basic aspects of our nature as living beings that humans choose to ignore or deny?)"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

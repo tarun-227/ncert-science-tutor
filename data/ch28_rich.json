@@ -1,0 +1,37 @@
+{
+ "id": 28,
+ "title": "The Trees",
+ "subject": "English",
+ "sections": [
+  {
+   "id": "28.1",
+   "title": "The Trees",
+   "blocks": [
+    {
+     "type": "text",
+     "content": "Can there be a forest without trees? Where are the trees in this poem, and where do they go?"
+    },
+    {
+     "type": "poem",
+     "content": "The trees inside are moving out into the forest,\nthe forest that was empty all these days\nwhere no bird could sit\nno insect hide\nno sun bury its feet in shadow\nthe forest that was empty all these nights\nwill be full of trees by morning.\n\nAll night the roots work\nto disengage themselves from the cracks\nin the veranda floor.\nThe leaves strain toward the glass\nsmall twigs stiff with exertion\nlong-cramped boughs shuffling under the roof\nlike newly discharged patients\nhalf-dazed, moving\nto the clinic doors.\n\nI sit inside, doors open to the veranda\nwriting long letters\nin which I scarcely mention the departure\nof the forest from the house.\nThe night is fresh, the whole moon shines\nin a sky still open\nthe smell of leaves and lichen\nstill reaches like a voice into the rooms.\n\nMy head is full of whispers\nwhich tomorrow will be silent.\nListen. The glass is breaking.\nThe trees are stumbling forward\ninto the night. Winds rush to meet them.\nThe moon is broken like a mirror,\nits pieces flash now in the crown\nof the tallest oak.\n\nAdrienne Rich"
+    }
+   ]
+  },
+  {
+   "id": "28.2",
+   "title": "Questions",
+   "blocks": [
+    {
+     "type": "subsection",
+     "title": "Thinking about the Poem",
+     "blocks": [
+      {
+       "type": "text",
+       "content": "to disengage themselves: to separate themselves strain: make efforts to move bough: branch shuffling: moving repeatedly from one position to another lichen: crusty patches or bushy growth on tree trunks/bare ground formed by association of fungus and alga."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

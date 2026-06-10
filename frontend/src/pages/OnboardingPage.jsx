@@ -19,7 +19,7 @@ const MARKS_SUBJECTS = SUBJECT_CHIPS.slice(0, 5)
 const STEPS = [
   { id: 'welcome',  label: 'Welcome' },
   { id: 'basics',   label: 'About you' },
-  { id: 'history',  label: 'Self-rating' },
+  { id: 'history',  label: 'Recent marks' },
   { id: 'assess',   label: 'Tough subjects' },
   { id: 'pace',     label: 'Learning pace' },
   { id: 'done',     label: 'All set' },
@@ -33,41 +33,103 @@ const PACES = [
 
 const RATING_LABELS = ['', 'Just starting', 'Still learning', 'Doing okay', 'Pretty confident', 'I’ve got this']
 
+// ── Confirm Popup ────────────────────────────────────────────
+function ConfirmPopup({ show, title, message, onConfirm, onCancel, confirmText = 'Yes, continue', cancelText = 'Go back & change', singleAction = false }) {
+  if (!show) return null
+  return (
+    <div className="ob-overlay" onClick={singleAction ? onConfirm : onCancel}>
+      <div className="ob-popup" onClick={e => e.stopPropagation()}>
+        <div className="ob-popup-icon">!</div>
+        <h3 className="ob-popup-title">{title}</h3>
+        <p className="ob-popup-msg">{message}</p>
+        <div className="ob-popup-actions">
+          {!singleAction && <button className="ob-btn ghost" onClick={onCancel}>{cancelText}</button>}
+          <button className="ob-btn primary" onClick={onConfirm}>{confirmText}</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ── Brand + Progress ────────────────────────────────────────
-const Brand = () => (
-  <div className="ob-brand">
-    <span className="ob-mark">M</span>
-    <span>Master<span className="ob-brand-dot">.</span>AI</span>
-  </div>
-)
-
-const Progress = ({ step }) => (
-  <>
-    <div className="ob-prog">
-      {STEPS.map((s, i) => (
-        <div key={s.id}
-          className={`ob-prog-pip ${i < step ? 'done' : i === step ? 'current' : ''}`} />
-      ))}
+function Brand() {
+  return (
+    <div className="ob-brand">
+      <span className="ob-mark">M</span>
+      <span>Master<span className="ob-brand-dot">.</span>AI</span>
     </div>
-    <div className="ob-prog-label">
-      Step <b>{Math.min(step + 1, STEPS.length)}</b> of <b>{STEPS.length}</b> &middot; {STEPS[step]?.label}
-    </div>
-  </>
-)
+  )
+}
 
-// ── Step 0 — Welcome ────────────────────────────────────────
+function Progress({ step }) {
+  return (
+    <>
+      <div className="ob-prog">
+        {STEPS.map((s, i) => (
+          <div key={s.id}
+            className={`ob-prog-pip ${i < step ? 'done' : i === step ? 'current' : ''}`} />
+        ))}
+      </div>
+      <div className="ob-prog-label">
+        Step <b>{Math.min(step + 1, STEPS.length)}</b> of <b>{STEPS.length}</b> &middot; {STEPS[step]?.label}
+      </div>
+    </>
+  )
+}
+
+// ── Topographic SVG pattern ─────────────────────────────────
+function TopoPattern() {
+  return (
+    <svg className="split-topo" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <style>{`.tl { fill: none; stroke: rgba(255,255,255,.15); stroke-width: 1.5; }`}</style>
+      </defs>
+      <path className="tl" d="M-20 120Q80 80 200 140T420 100T620 160"/>
+      <path className="tl" d="M-20 180Q100 130 220 200T460 150T620 220"/>
+      <path className="tl" d="M-20 250Q90 200 180 260T380 230T540 280T620 270"/>
+      <path className="tl" d="M-20 320Q120 270 240 330T480 290T620 350"/>
+      <path className="tl" d="M-20 380Q80 340 190 400T400 360T620 420"/>
+      <path className="tl" d="M-20 440Q130 390 260 460T500 410T620 480"/>
+      <path className="tl" d="M-20 510Q90 470 200 520T420 490T620 540"/>
+      <path className="tl" d="M-20 570Q110 530 240 590T460 550T620 610"/>
+      <path className="tl" d="M-20 640Q80 600 180 650T400 620T620 680"/>
+      <path className="tl" d="M-20 700Q120 660 250 720T500 680T620 750"/>
+      <ellipse className="tl" cx="300" cy="350" rx="160" ry="80" transform="rotate(-8 300 350)"/>
+      <ellipse className="tl" cx="300" cy="350" rx="110" ry="50" transform="rotate(-8 300 350)"/>
+      <ellipse className="tl" cx="300" cy="350" rx="55" ry="22" transform="rotate(-8 300 350)"/>
+      <ellipse className="tl" cx="160" cy="550" rx="120" ry="60" transform="rotate(12 160 550)"/>
+      <ellipse className="tl" cx="160" cy="550" rx="70" ry="30" transform="rotate(12 160 550)"/>
+      <ellipse className="tl" cx="460" cy="200" rx="100" ry="50" transform="rotate(-15 460 200)"/>
+      <ellipse className="tl" cx="460" cy="200" rx="50" ry="22" transform="rotate(-15 460 200)"/>
+      <ellipse className="tl" cx="400" cy="650" rx="90" ry="45" transform="rotate(6 400 650)"/>
+    </svg>
+  )
+}
+
+// ── Step 0 — Welcome (split panel) ─────────────────────────
 function StepWelcome({ onGoogle }) {
   return (
-    <div className="welcome">
-      <div className="welcome-mark">M</div>
-      <h1>Hi! Let's set up <em>your study companion</em>.</h1>
-      <p>
-        Master.AI learns the way you study — your pace, your strong subjects,
-        and the chapters that need more love — and quietly builds your daily plan.
-      </p>
-      <div className="welcome-cta">
-        <button className="google-btn" onClick={onGoogle}>
-          <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+    <div className="split-welcome">
+      <div className="split-left">
+        <TopoPattern />
+        <div className="split-left-content">
+          <div className="split-left-brand">
+            <span className="ob-mark" style={{ width: 36, height: 36, borderRadius: 10, fontSize: 16 }}>M</span>
+          </div>
+          <div className="split-left-text">
+            <h1>Your Personal<br/>Study Companion.</h1>
+            <div className="split-left-divider"></div>
+            <p className="split-left-feature">AI-Powered Learning</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="split-right">
+        <h2 className="split-right-title">Welcome to <span>MasterAI</span></h2>
+        <p className="split-right-sub">Sign in to create your own study plan, track your progress, and learn at your pace — all in one place.</p>
+
+        <button className="google-btn-lg" onClick={onGoogle}>
+          <svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true">
             <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/>
             <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.1 19 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
             <path fill="#4CAF50" d="M24 44c5.2 0 10-2 13.5-5.3l-6.2-5.3c-2 1.5-4.5 2.6-7.3 2.6-5.2 0-9.6-3.3-11.3-7.9l-6.6 5.1C9.5 39.6 16.2 44 24 44z"/>
@@ -75,72 +137,88 @@ function StepWelcome({ onGoogle }) {
           </svg>
           <span>Continue with Google</span>
         </button>
-        <div className="welcome-perks">
-          <span className="welcome-perk"><Icon name="check-circle" size={12} /> Takes 2 minutes</span>
-          <span className="welcome-perk"><Icon name="check-circle" size={12} /> Personal study plan</span>
-          <span className="welcome-perk"><Icon name="check-circle" size={12} /> Free to start</span>
-        </div>
-        <p className="welcome-fine">
-          By continuing you agree to our <a href="#">terms</a> and <a href="#">privacy policy</a>.
-        </p>
       </div>
     </div>
   )
 }
 
 // ── Step 1 — Basics ─────────────────────────────────────────
-function StepBasics({ data, set }) {
+function StepBasics({ data, set, nameError }) {
   return (
     <>
-      <div className="ob-eyebrow">Step 2 of 6 &middot; About you</div>
       <h2 className="ob-title">Tell us who you are.</h2>
       <p className="ob-sub">A few quick details so we can address you properly and tailor the content.</p>
       <div className="ob-form" style={{ marginTop: 22 }}>
         <div className="ob-field">
-          <label>Full name</label>
-          <input className="ob-input" type="text" placeholder="e.g. Aanya Sharma"
-            value={data.name || ''} onChange={e => set('name', e.target.value)} />
+          <label>Full name <span className="ob-req">*</span></label>
+          <input
+            className={`ob-input ${nameError && !(data.name || '').trim() ? 'ob-input-error' : ''}`}
+            type="text" placeholder="Full name"
+            value={data.name || ''}
+            onChange={e => set('name', e.target.value)} />
+          {nameError && !(data.name || '').trim() && <span className="ob-error">Please enter your name to continue</span>}
         </div>
         <div className="ob-row2">
           <div className="ob-field">
-            <label>Class</label>
+            <label>Class <span className="ob-req">*</span></label>
             <select className="ob-select" value={data.cls || 'X'} onChange={e => set('cls', e.target.value)}>
-              {['VI','VII','VIII','IX','X','XI','XII'].map(c => <option key={c} value={c}>Class {c}</option>)}
+              <option value="X">Class X</option>
             </select>
           </div>
           <div className="ob-field">
-            <label>Board</label>
+            <label>Board <span className="ob-req">*</span></label>
             <select className="ob-select" value={data.board || 'CBSE'} onChange={e => set('board', e.target.value)}>
-              {['CBSE','ICSE','State Board','IB','Cambridge'].map(b => <option key={b} value={b}>{b}</option>)}
+              <option value="CBSE">CBSE</option>
             </select>
           </div>
         </div>
         <div className="ob-field">
-          <label>School (optional)</label>
-          <input className="ob-input" type="text" placeholder="e.g. DPS R.K. Puram"
-            value={data.school || ''} onChange={e => set('school', e.target.value)} />
+          <label>School <span className="ob-req">*</span></label>
+          <input
+            className={`ob-input ${nameError && !(data.school || '').trim() ? 'ob-input-error' : ''}`}
+            type="text" placeholder="School name"
+            value={data.school || ''}
+            onChange={e => set('school', e.target.value)} />
+          {nameError && !(data.school || '').trim() && <span className="ob-error">Please enter your school name</span>}
+        </div>
+        <div className="ob-field">
+          <label>Phone number <span className="ob-req">*</span></label>
+          <div className="ob-phone-row">
+            <span className="ob-phone-prefix">+91</span>
+            <input
+              className={`ob-input ob-phone-input ${nameError && (data.phone || '').length !== 10 ? 'ob-input-error' : ''}`}
+              type="tel" placeholder="10-digit mobile number"
+              maxLength={10}
+              value={data.phone || ''}
+              onChange={e => {
+                const val = e.target.value.replace(/\D/g, '').slice(0, 10)
+                set('phone', val)
+              }} />
+          </div>
+          {data.phone && data.phone.length > 0 && data.phone.length < 10 && (
+            <span className="ob-error">Enter a valid 10-digit number</span>
+          )}
+          {nameError && !(data.phone || '').trim() && (
+            <span className="ob-error">Please enter your phone number</span>
+          )}
         </div>
       </div>
     </>
   )
 }
 
-// ── Step 2 — Self-rating (stars) ────────────────────────────
+// ── Step 2 — Self-rating (1–5 stars per subject) ────────────
 function StepHistory({ data, set }) {
   const ratings = data.ratings || {}
   const setRating = (id, v) => set('ratings', { ...ratings, [id]: v })
 
   return (
     <>
-      <div className="ob-eyebrow">Step 3 of 6 &middot; Self-rating</div>
       <h2 className="ob-title">Rate yourself in each subject.</h2>
-      <p className="ob-sub">
-        Be honest — this is just for Master.AI to know where to start. A low score means
-        we'll explain things more gently; a high score lets us skip the basics.
-      </p>
+      <p className="ob-sub">Your inputs help us guide you better.</p>
       <div className="marks-grid" style={{ marginTop: 22 }}>
         {MARKS_SUBJECTS.map(s => {
-          const v = ratings[s.id] ?? 3
+          const v = ratings[s.id] ?? 1
           return (
             <div className="rating-row" key={s.id}>
               <div className="marks-name">
@@ -148,8 +226,9 @@ function StepHistory({ data, set }) {
                 {s.name}
               </div>
               <div className="stars">
-                {[1,2,3,4,5].map(i => (
-                  <button key={i} type="button" className={`star ${i <= v ? 'on' : ''}`}
+                {[1, 2, 3, 4, 5].map(i => (
+                  <button key={i} type="button"
+                    className={`star ${i <= v ? 'on' : ''}`}
                     onClick={() => setRating(s.id, i)} aria-label={`${i} of 5`}>
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 2l3 6.6 7.2.7-5.5 4.9 1.6 7-6.3-3.8L5.7 21.2l1.6-7L1.8 9.3l7.2-.7L12 2z"/>
@@ -173,12 +252,8 @@ function StepAssess({ data, set }) {
 
   return (
     <>
-      <div className="ob-eyebrow">Step 4 of 6 &middot; Self-assessment</div>
       <h2 className="ob-title">Which subjects feel hard?</h2>
-      <p className="ob-sub">
-        Pick everything that gives you trouble. We'll give those chapters extra attention
-        in your daily plan.
-      </p>
+      <p className="ob-sub">Select the subjects you find challenging.</p>
       <div className="chip-grid-h" style={{ marginTop: 22 }}>Tap any that apply — pick as many as you like.</div>
       <div className="chip-grid">
         {SUBJECT_CHIPS.map(s => {
@@ -201,12 +276,8 @@ function StepPace({ data, set }) {
   const pace = data.pace || 'balanced'
   return (
     <>
-      <div className="ob-eyebrow">Step 5 of 6 &middot; Learning pace</div>
       <h2 className="ob-title">How fast do you usually learn?</h2>
-      <p className="ob-sub">
-        We'll calibrate explanations, recap frequency, and daily reading load to match.
-        Change it anytime later.
-      </p>
+      <p className="ob-sub">We'll calibrate explanations, recap frequency, and daily load to match.</p>
       <div className="pace-grid" style={{ marginTop: 22 }}>
         {PACES.map(p => {
           const on = pace === p.id
@@ -230,7 +301,7 @@ function StepPace({ data, set }) {
 }
 
 // ── Step 5 — Done ───────────────────────────────────────────
-function StepDone({ data, onFinish, onRestart }) {
+function StepDone({ data, onFinish }) {
   const toughChips = (data.tough || []).map(id => SUBJECT_CHIPS.find(s => s.id === id)?.name).filter(Boolean)
   const avgRating = (() => {
     const vals = Object.values(data.ratings || {})
@@ -245,7 +316,7 @@ function StepDone({ data, onFinish, onRestart }) {
         You're all set, {(data.name || 'Student').split(' ')[0]}!
       </h1>
       <p className="ob-sub" style={{ textAlign: 'center', margin: '8px auto 0' }}>
-        Your personalized dashboard is ready. Let's start with today's plan.
+        Your dashboard is ready. Let's get started.
       </p>
 
       <div className="summary">
@@ -281,13 +352,20 @@ function StepDone({ data, onFinish, onRestart }) {
             <span className="summary-val"><b>{PACES.find(p => p.id === data.pace)?.title}</b></span>
           </div>
         )}
+        {data.google && (
+          <div className="summary-row">
+            <span className="summary-label">Signed in via</span>
+            <span className="summary-val">
+              <b>Google</b>
+            </span>
+          </div>
+        )}
       </div>
 
       <div style={{ display: 'flex', gap: 10, justifyContent: 'center', marginTop: 24, flexWrap: 'wrap' }}>
         <button className="ob-btn primary big" onClick={onFinish}>
           Go to dashboard <Icon name="arrow-right" size={14} />
         </button>
-        <button className="ob-btn ghost" onClick={onRestart}>Restart tour</button>
       </div>
     </div>
   )
@@ -300,76 +378,130 @@ export default function OnboardingPage() {
   const [step, setStep] = useState(0)
   const [data, setData] = useState({
     cls: 'X', board: 'CBSE',
-    ratings: { science: 4, maths: 3, english: 5, social: 3, hindi: 4 },
+    ratings: { science: 1, maths: 1, english: 1, social: 1, hindi: 1 },
     pace: 'balanced',
   })
+  const [nameError, setNameError] = useState(false)
+  const [confirmPopup, setConfirmPopup] = useState(null)
 
-  // If user is already authenticated (came back from OAuth redirect),
-  // skip welcome and go to step 1 (basics), pre-fill name from auth
   useEffect(() => {
     if (user && step === 0) {
-      const name = user.user_metadata?.full_name || user.user_metadata?.name || ''
-      setData(d => ({ ...d, name, google: true }))
+      setData(d => ({ ...d, google: true }))
       setStep(1)
     }
   }, [user])
 
-  const set = (k, v) => setData(d => ({ ...d, [k]: v }))
-  const next = () => setStep(s => Math.min(s + 1, STEPS.length - 1))
+  const set = (k, v) => {
+    setData(d => ({ ...d, [k]: v }))
+    if (k === 'name' || k === 'school' || k === 'phone') setNameError(false)
+    if (k === 'ratings') setConfirmPopup(null)
+    if (k === 'tough') setConfirmPopup(null)
+  }
+
+  const next = () => {
+    if (step === 1) {
+      const nameMissing = !(data.name || '').trim()
+      const schoolMissing = !(data.school || '').trim()
+      const phoneMissing = !(data.phone || '').trim()
+      const phoneInvalid = (data.phone || '').length !== 10
+      if (nameMissing || schoolMissing || phoneMissing || phoneInvalid) {
+        setNameError(true)
+        return
+      }
+    }
+    if (step === 2) {
+      const rats = data.ratings || {}
+      const allDefault = Object.values(rats).every(v => v === 1)
+      if (allDefault) {
+        setConfirmPopup({
+          title: 'All ratings are at 1 star',
+          message: 'You haven\'t changed any subject ratings. Are you sure you want to continue with the default?',
+          onConfirm: () => { setConfirmPopup(null); setStep(s => Math.min(s + 1, STEPS.length - 1)) },
+        })
+        return
+      }
+    }
+    if (step === 3) {
+      if (!(data.tough || []).length) {
+        setConfirmPopup({
+          title: 'No subjects selected',
+          message: 'Please select at least one subject you find challenging before continuing.',
+          confirmText: 'OK',
+          singleAction: true,
+          onConfirm: () => setConfirmPopup(null),
+        })
+        return
+      }
+    }
+    setNameError(false)
+    setStep(s => Math.min(s + 1, STEPS.length - 1))
+  }
+
   const back = () => setStep(s => Math.max(s - 1, 0))
-  const restart = () => setStep(0)
 
   const finish = async () => {
-    await saveUserProfile(data)  // saves to Supabase + localStorage
-    markOnboardingDone()         // open the gate immediately (avoids redirect loop)
+    await saveUserProfile(data)
+    markOnboardingDone()
     navigate('/')
   }
 
   const handleGoogle = () => {
     signInWithGoogle()
-    // After Google OAuth redirect, user will land back here and the useEffect above handles it
   }
 
   const renderStep = () => {
     switch (step) {
       case 0: return <StepWelcome onGoogle={handleGoogle} />
-      case 1: return <StepBasics data={data} set={set} />
+      case 1: return <StepBasics data={data} set={set} nameError={nameError} />
       case 2: return <StepHistory data={data} set={set} />
       case 3: return <StepAssess data={data} set={set} />
       case 4: return <StepPace data={data} set={set} />
-      case 5: return <StepDone data={data} onFinish={finish} onRestart={restart} />
+      case 5: return <StepDone data={data} onFinish={finish} />
       default: return null
     }
   }
 
   const showFooter = step > 0 && step < STEPS.length - 1
   const isLastInput = step === STEPS.length - 2
+  const isWelcome = step === 0
 
   return (
-    <div className="ob-page">
-      <div className="ob">
-        {step !== STEPS.length - 1 && (
+    <div className="ob-page" style={isWelcome ? { '--ob-max-width': '860px' } : undefined}>
+      <div className={`ob ${isWelcome ? 'ob--welcome' : ''}`}>
+        {!isWelcome && step !== STEPS.length - 1 && (
           <div className="ob-head">
             <Brand />
             {step > 0 && <Progress step={step} />}
           </div>
         )}
 
-        <div className="ob-body">
-          {renderStep()}
-        </div>
+        {isWelcome ? renderStep() : (
+          <div className="ob-body">
+            {renderStep()}
+          </div>
+        )}
 
         {showFooter && (
           <div className="ob-foot">
             <button className="ob-btn text" onClick={back}>
               <Icon name="arrow-right" size={13} style={{ transform: 'rotate(180deg)' }} /> Back
             </button>
-            <div className="ob-foot-meta">Step {step + 1} of {STEPS.length - 1}</div>
+            <div style={{ flex: 1 }}></div>
             <button className="ob-btn primary" onClick={next}>
               {isLastInput ? 'Finish setup' : 'Continue'} <Icon name="arrow-right" size={13} />
             </button>
           </div>
         )}
+
+        <ConfirmPopup
+          show={!!confirmPopup}
+          title={confirmPopup?.title}
+          message={confirmPopup?.message}
+          confirmText={confirmPopup?.confirmText}
+          singleAction={confirmPopup?.singleAction}
+          onConfirm={confirmPopup?.onConfirm}
+          onCancel={() => setConfirmPopup(null)}
+        />
       </div>
     </div>
   )

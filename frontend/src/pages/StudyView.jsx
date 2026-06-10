@@ -109,85 +109,20 @@ function BookBlocks({ blocks }) {
 // BOOK MODE — 3-column reader
 // ════════════════════════════════════════════════════════════════════════════
 
-function ReaderContents({ chapters, chapter, richData, currentSection, setCurrentSection, onChapterChange, collapsed, onToggle, doneSections }) {
-  const [openCh, setOpenCh] = useState(true)
+// ─── Text-selection popup (shared by Book + Tutor modes) ──────────────────────
+// Tracks text selected inside containerRef. Returns [sel, clearSel] where sel
+// is { text, x, top, bottom } in viewport coordinates.
+function useTextSelection(containerRef, resetKeys) {
+  const [sel, setSel] = useState(null)
 
-  if (collapsed) {
-    return (
-      <div className="rc rc-collapsed">
-        <button className="rc-toggle" onClick={onToggle} title="Open contents"><Icon name="list" size={15} /></button>
-        <div className="rc-heatmap">
-          {richData?.sections?.map((_, si) => (
-            <div key={si}
-              className={`rc-hm-cell ${si === currentSection ? 'current' : doneSections.includes(si) ? 'read' : ''}`}
-              title={richData.sections[si].title}
-              onClick={() => { setCurrentSection(si); onToggle() }} />
-          ))}
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div className="rc">
-      <div className="rc-head">
-        <div>
-          <div className="rc-eyebrow">Contents</div>
-          <div className="rc-book">{chapter?.title} · {chapter?.subject}</div>
-        </div>
-        <button className="tb-icon" onClick={onToggle} title="Collapse"><Icon name="side-toggle" size={14} /></button>
-      </div>
-      <div className="rc-list scroll">
-        <div className="rc-unit">
-          <button className="rc-unit-h" onClick={() => setOpenCh(o => !o)}>
-            <span>Sections</span>
-            <Icon name="chev-down" size={14} style={{ transform: openCh ? 'none' : 'rotate(-90deg)', transition: 'transform .15s' }} />
-          </button>
-          {openCh && (
-            <div className="rc-chapters">
-              {richData?.sections?.map((sec, si) => {
-                const isDone = doneSections.includes(si)
-                const isCur = si === currentSection
-                return (
-                  <div key={sec.id} className={`rc-item ${isCur ? 'on' : ''} ${isDone ? 'read' : ''}`} onClick={() => setCurrentSection(si)}>
-                    {isCur && <span className="rc-dot" />}
-                    {!isCur && isDone && <Icon name="check" size={11} className="rc-check" />}
-                    {!isCur && !isDone && <span className="rc-empty" />}
-                    <span className="rc-title">{sec.title}</span>
-                    <span className="rc-num">{si + 1}</span>
-                  </div>
-                )
-              })}
-            </div>
-          )}
-        </div>
-        {/* Other chapters */}
-        <div className="rc-other-h">Other chapters</div>
-        {chapters.filter(c => c.id !== chapter?.id).map(c => (
-          <div key={c.id} className="rc-item" onClick={() => onChapterChange(c.id)}>
-            <span className="rc-empty" />
-            <span className="rc-title">{c.title}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function ReaderBody({ chapter, richData, currentSection, onAskAI }) {
-  const sec = richData?.sections?.[currentSection]
-  const artRef = useRef(null)
-  const [sel, setSel] = useState(null)    // { text, x, top, bottom }
-
-  // Text-selection detection
   useEffect(() => {
     const onUp = () => {
       setTimeout(() => {
         const s = window.getSelection()
         const txt = s && s.toString().trim()
-        if (!txt || !artRef.current) return
+        if (!txt || !containerRef.current) return
         const range = s.rangeCount ? s.getRangeAt(0) : null
-        if (!range || !artRef.current.contains(range.commonAncestorContainer)) return
+        if (!range || !containerRef.current.contains(range.commonAncestorContainer)) return
         const r = range.getBoundingClientRect()
         if (!r || (r.width === 0 && r.height === 0)) return
         setSel({ text: txt, x: r.left + r.width / 2, top: r.top, bottom: r.bottom })
@@ -202,21 +137,38 @@ function ReaderBody({ chapter, richData, currentSection, onAskAI }) {
     return () => { document.removeEventListener('mouseup', onUp); document.removeEventListener('mousedown', onDown) }
   }, [])
 
-  // Reset on section change
-  useEffect(() => { setSel(null) }, [currentSection, chapter?.id])
+  // Clear when the section/chapter changes
+  useEffect(() => { setSel(null) }, resetKeys)
 
-  const handleAskAI = () => {
-    if (!sel) return
-    const text = sel.text
-    setSel(null)
-    window.getSelection()?.removeAllRanges()
-    onAskAI?.({ text: 'Explain this from the textbook in simple terms: ' + text, id: Date.now() })
-  }
+  return [sel, () => setSel(null)]
+}
+
+// Floating toolbar over the selection: Explain (primary) + Note
+function SelectionPopup({ sel, onExplain, onNote }) {
+  if (!sel) return null
+  const below = sel.top < 80
+  return (
+    <div className={`rb-sel-pop ${below ? 'below' : ''}`} style={{ left: sel.x, top: below ? sel.bottom : sel.top }}>
+      <button className="rb-sel-ai" onMouseDown={e => e.preventDefault()} onClick={onExplain}><Icon name="sparkles" size={13} /> Explain</button>
+      <span className="rb-sel-div" />
+      <button className="rb-sel-act" onMouseDown={e => e.preventDefault()} onClick={onNote}><Icon name="note" size={12} /> Note</button>
+    </div>
+  )
+}
+
+function ReaderBody({ chapter, richData, currentSection, onAskAI }) {
+  const sec = richData?.sections?.[currentSection]
+  const artRef = useRef(null)
+  const bodyRef = useRef(null)
+  const [sel, clearSel] = useTextSelection(artRef, [currentSection, chapter?.id])
+
+  // Back to the top of the page when navigating between sections/chapters
+  useEffect(() => { bodyRef.current?.scrollTo({ top: 0 }) }, [currentSection, chapter?.id])
 
   const handleExplain = () => {
     if (!sel) return
     const text = sel.text
-    setSel(null)
+    clearSel()
     window.getSelection()?.removeAllRanges()
     onAskAI?.({ text: 'Give a detailed explanation of: ' + text, id: Date.now() })
   }
@@ -228,13 +180,14 @@ function ReaderBody({ chapter, richData, currentSection, onAskAI }) {
     if (!existing.some(n => n.text === text)) {
       await saveTutorNotes(chapter.id, sec.id, [...existing, { id: Date.now() + Math.random(), text }])
     }
-    setSel(null)
+    clearSel()
+    window.getSelection()?.removeAllRanges()
   }
 
   if (!sec) return <div className="rb"><p className="muted" style={{ padding: 40 }}>Select a section.</p></div>
 
   return (
-    <div className="rb scroll">
+    <div className="rb scroll" ref={bodyRef}>
       <div className="rb-headblk">
         <h1>{sec.title}</h1>
         <div className="rb-meta">
@@ -249,18 +202,7 @@ function ReaderBody({ chapter, richData, currentSection, onAskAI }) {
         <BookBlocks blocks={sec.blocks || []} />
       </article>
 
-      {/* Floating Ask-AI selection toolbar */}
-      {sel && (() => {
-        const below = sel.top < 80
-        return (
-          <div className={`rb-sel-pop ${below ? 'below' : ''}`} style={{ left: sel.x, top: below ? sel.bottom : sel.top }}>
-            <button className="rb-sel-ai" onMouseDown={e => e.preventDefault()} onClick={handleAskAI}><Icon name="sparkles" size={13} /> Ask AI</button>
-            <span className="rb-sel-div" />
-            <button className="rb-sel-act" onMouseDown={e => e.preventDefault()} onClick={handleExplain}>Explain</button>
-            <button className="rb-sel-act" onMouseDown={e => e.preventDefault()} onClick={noteSelection}><Icon name="note" size={12} /> Note</button>
-          </div>
-        )
-      })()}
+      <SelectionPopup sel={sel} onExplain={handleExplain} onNote={noteSelection} />
     </div>
   )
 }
@@ -731,7 +673,10 @@ function TutorMode({ chapters, chapter, richData, currentSection, setCurrentSect
   const [cache, setCache] = useState({})            // key -> text
   const [loading, setLoading] = useState(false)
   const [saved, setSaved] = useState([])            // [{id, text}]
+  const [triggerQuery, setTriggerQuery] = useState(null)
   const mainRef = useRef(null)
+  const colRef = useRef(null)
+  const [sel, clearSel] = useTextSelection(colRef, [currentSection, chapter?.id])
 
   const cacheKey = `${chapter?.id}-${currentSection}-${mode}`
   const cached = cache[cacheKey]
@@ -777,6 +722,21 @@ function TutorMode({ chapters, chapter, richData, currentSection, setCurrentSect
     return nx
   })
 
+  // Selection popup actions: Explain fires into the Ask panel, Note saves the snippet
+  const explainSelection = () => {
+    if (!sel) return
+    const text = sel.text
+    clearSel()
+    window.getSelection()?.removeAllRanges()
+    setTriggerQuery({ text: 'Give a detailed explanation of: ' + text, id: Date.now() })
+  }
+  const noteSelection = () => {
+    if (!sel) return
+    if (!isSaved(sel.text)) toggleNote(sel.text)
+    clearSel()
+    window.getSelection()?.removeAllRanges()
+  }
+
   const isDone = doneSections.includes(currentSection)
   const totalSecs = richData?.sections?.length || 0
   const isLastSection = currentSection >= totalSecs - 1
@@ -809,7 +769,7 @@ function TutorMode({ chapters, chapter, richData, currentSection, setCurrentSect
           onChapterChange={onChapterChange} prev={prev} next={next} doneSections={doneSections}
         />
 
-        <div className="tutor-col">
+        <div className="tutor-col" ref={colRef}>
           <header className="tutor-head"><h1>{sec?.title}</h1></header>
 
           <div className="tutor-controls">
@@ -917,7 +877,9 @@ function TutorMode({ chapters, chapter, richData, currentSection, setCurrentSect
         </div>
       )}
 
-      <AskPanel chapter={chapter} richData={richData} currentSection={currentSection} variant="tutor" />
+      <SelectionPopup sel={sel} onExplain={explainSelection} onNote={noteSelection} />
+
+      <AskPanel chapter={chapter} richData={richData} currentSection={currentSection} variant="tutor" triggerQuery={triggerQuery} />
     </div>
   )
 }
@@ -927,23 +889,22 @@ function TutorMode({ chapters, chapter, richData, currentSection, setCurrentSect
 // in the body can fire into the right-side AskPanel
 // ════════════════════════════════════════════════════════════════════════════
 
-function BookModeWrapper({ chapters, chapter, richData, currentSection, setCurrentSection, onChapterChange, doneSections, tocOpen, setTocOpen, tocHovered, setTocHovered, isExpanded }) {
+function BookModeWrapper({ chapters, chapter, richData, currentSection, setCurrentSection, onChapterChange, doneSections, prev, next }) {
   const [triggerQuery, setTriggerQuery] = useState(null)
 
   return (
-    <div className={`reader ${isExpanded ? '' : 'reader-collapsed-toc'}`}>
-      <div onMouseEnter={() => setTocHovered(true)} onMouseLeave={() => setTocHovered(false)}>
-        <ReaderContents
+    <div className="reader">
+      <div className="reader-main">
+        <TutorBreadcrumb
           chapters={chapters} chapter={chapter} richData={richData}
           currentSection={currentSection} setCurrentSection={setCurrentSection}
-          onChapterChange={onChapterChange}
-          collapsed={!isExpanded} onToggle={() => setTocOpen(o => !o)} doneSections={doneSections}
+          onChapterChange={onChapterChange} prev={prev} next={next} doneSections={doneSections}
+        />
+        <ReaderBody
+          chapter={chapter} richData={richData} currentSection={currentSection}
+          onAskAI={setTriggerQuery}
         />
       </div>
-      <ReaderBody
-        chapter={chapter} richData={richData} currentSection={currentSection}
-        onAskAI={setTriggerQuery}
-      />
       <ReaderSide
         chapter={chapter} richData={richData} currentSection={currentSection}
         triggerQuery={triggerQuery}
@@ -962,8 +923,6 @@ export default function StudyView({ studyMode, chapterId, setChapterId }) {
   const [richData, setRichData] = useState(null)
   const [currentSection, setCurrentSection] = useState(0)
   const [doneSections, setDoneSections] = useState([])
-  const [tocOpen, setTocOpen] = useState(true)
-  const [tocHovered, setTocHovered] = useState(false)
 
   useEffect(() => {
     fetch('/api/chapters').then(r => r.json()).then(data => {
@@ -1016,15 +975,12 @@ export default function StudyView({ studyMode, chapterId, setChapterId }) {
 
   // ─── BOOK MODE ───
   if (studyMode === 'book') {
-    const isExpanded = tocOpen || tocHovered
     return (
       <BookModeWrapper
         chapters={chapters} chapter={chapter} richData={richData}
         currentSection={currentSection} setCurrentSection={setCurrentSection}
         onChapterChange={onChapterChange} doneSections={doneSections}
-        tocOpen={tocOpen} setTocOpen={setTocOpen}
-        tocHovered={tocHovered} setTocHovered={setTocHovered}
-        isExpanded={isExpanded}
+        prev={prev} next={next}
       />
     )
   }

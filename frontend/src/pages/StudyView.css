@@ -10,46 +10,12 @@
 
 /* ─── BOOK MODE — reader grid ──────────────────────────────── */
 .reader {
-  display: grid; grid-template-columns: 260px 1fr 380px; grid-template-rows: 100%;
+  display: grid; grid-template-columns: 1fr 380px; grid-template-rows: 100%;
   gap: 0; height: 100%; min-height: 0; overflow: hidden; background: var(--bg);
-  transition: grid-template-columns .45s cubic-bezier(.4,0,.2,1);
 }
-.reader.reader-collapsed-toc { grid-template-columns: 48px 1fr 380px; }
-
-/* Contents panel (left) */
-.rc { height: 100%; background: var(--surface); border-right: 1px solid var(--hairline); display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
-.rc-collapsed { width: 44px; display: flex; flex-direction: column; align-items: center; padding-top: 14px; overflow: hidden; transition: width .2s ease; }
-.rc-toggle { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--hairline); background: var(--card); color: var(--ink-2); cursor: pointer; display: grid; place-items: center; }
-.rc-toggle:hover { background: var(--card-2); color: var(--ink); }
-.rc-heatmap { display: flex; flex-direction: column; gap: 2px; margin-top: 14px; padding: 0 7px; width: 100%; }
-.rc-hm-cell { height: 7px; border-radius: 3px; background: var(--hairline); cursor: pointer; transition: background .1s; }
-.rc-hm-cell:hover { background: var(--ink-4); }
-.rc-hm-cell.read { background: var(--green-tint); }
-.rc-hm-cell.current { background: var(--green); box-shadow: 0 0 0 2px var(--green-tint); }
-
-.rc-head { padding: 20px 18px 12px; display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-.rc-eyebrow { font: 600 16px var(--f-sans); letter-spacing: -.01em; color: var(--ink); }
-.rc-book { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
-.rc-list { flex: 1; overflow-y: auto; padding: 4px 8px 16px; }
-.rc-item {
-  display: grid; grid-template-columns: 16px 1fr auto; gap: 8px;
-  align-items: center; padding: 7px 10px; border-radius: 6px;
-  font-size: 13px; color: var(--ink-2); cursor: pointer; position: relative;
-}
-.rc-item:hover { background: var(--card); }
-.rc-item .rc-num { font-size: 11px; color: var(--ink-4); text-align: right; }
-.rc-item.on { background: var(--card); color: var(--ink); font-weight: 600; }
-.rc-dot { width: 7px; height: 7px; border-radius: 99px; background: var(--green); justify-self: center; }
-.rc-check { color: var(--green); justify-self: center; }
-.rc-empty { width: 7px; }
-.rc-unit-h {
-  display: flex; align-items: center; justify-content: space-between;
-  width: 100%; padding: 11px 10px 9px; border: 0; background: transparent;
-  font: 600 13px var(--f-sans); color: var(--ink); cursor: pointer; border-bottom: 1px solid var(--hairline);
-}
-.rc-unit-h:hover { background: var(--card); }
-.rc-chapters { padding: 4px 0 8px; }
-.rc-other-h { font: 600 11px var(--f-sans); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-4); padding: 14px 10px 6px; }
+/* Left column: breadcrumb bar on top, scrolling page body below */
+.reader-main { display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+.reader-main .rb { flex: 1; height: auto; }
 
 /* Body (center) */
 .rb { height: 100%; background: var(--card); display: flex; flex-direction: column; min-height: 0; padding: 28px 56px; overflow-y: auto; box-sizing: border-box; }

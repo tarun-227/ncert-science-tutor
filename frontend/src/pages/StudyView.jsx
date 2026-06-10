@@ -680,7 +680,7 @@ function TutorMode({ chapters, chapter, richData, currentSection, setCurrentSect
 
   const cacheKey = `${chapter?.id}-${currentSection}-${mode}`
   const cached = cache[cacheKey]
-  const READ = { short: '1 min', medium: '3 min', long: '6 min', notes: 'Key points' }
+  const READ = { medium: '3 min', long: '6 min', notes: 'Key points' }
 
   // Load saved notes for this section
   useEffect(() => {
@@ -774,9 +774,9 @@ function TutorMode({ chapters, chapter, richData, currentSection, setCurrentSect
 
           <div className="tutor-controls">
             <div className="tutor-seg">
-              {['short', 'medium', 'long'].map(l => (
-                <button key={l} className={mode === l ? 'on' : ''} onClick={() => setMode(l)}>
-                  {l.charAt(0).toUpperCase() + l.slice(1)}
+              {[{ id: 'medium', label: 'Overview' }, { id: 'long', label: 'Detail' }].map(l => (
+                <button key={l.id} className={mode === l.id ? 'on' : ''} onClick={() => setMode(l.id)}>
+                  {l.label}
                 </button>
               ))}
             </div>

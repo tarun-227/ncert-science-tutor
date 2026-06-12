@@ -43,9 +43,12 @@ def get_or_create(session_id: str, user_id: str = "anonymous", chapter_id: int =
     if not _use_db(user_id):
         return _mem.get_or_create(session_id)
     try:
-        res = _sb.table("chat_sessions").select("*").eq("id", session_id).maybe_single().execute()
+        # Use limit(1) rather than maybe_single(): in some postgrest-py versions
+        # maybe_single().execute() returns None on zero rows, which then crashes
+        # on `.data` and silently drops the write to the in-memory fallback.
+        res = _sb.table("chat_sessions").select("*").eq("id", session_id).limit(1).execute()
         if res.data:
-            return res.data
+            return res.data[0]
         new = _sb.table("chat_sessions").insert({
             "id":         session_id,
             "user_id":    user_id,
